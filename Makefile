@@ -10,10 +10,10 @@ RM = rm -rf
 
 CC = gcc
 
-CFLAGS	=	-Wall -Wextra -Werror
-IFLAGS	=	$(foreach dir, $(INC_PATH), -I $(dir))
-LFLAGS	=	$(foreach dir, $(LIB_PATH), -L $(dir)) \
-			$(foreach lib, $(LIB), -l $(lib))
+CFLAGS		=	-Wall -Wextra -Werror
+IFLAGS		=	$(foreach dir, $(INC_PATH), -I $(dir))
+LFLAGS		=	$(foreach dir, $(LIB_PATH), -L $(dir)) \
+				$(foreach lib, $(LIB), -l $(lib))
 
 # ******************************** DIR AND PATHS ***************************** #
 
@@ -33,9 +33,13 @@ LIB			=	ft
 
 # ********************************** FILES *********************************** #
 
-INC_FILES	=	sh.h
+INC_FILES	=	ft_sh.h				\
+				command.h			\
+				lexer.h
 
-SRC			=	main.c
+SRC			=	main.c				\
+				lexer.c				\
+				fill_lexer.c		\
 
 # ********************************** RULES *********************************** #
 

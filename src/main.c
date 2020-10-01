@@ -6,13 +6,15 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/10/01 13:31:04 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/10/01 14:11:13 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh.h"
+#include "ft_sh.h"
 
-int		main(void)
+int			main(int argc, char **argv)
 {
+	(void)argc;
+	(void)argv;
 	return (0);
 }

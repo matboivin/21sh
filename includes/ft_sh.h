@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh.h                                               :+:      :+:    :+:   */
+/*   ft_sh.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/10/01 13:43:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/10/01 14:11:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_H
-# define SH_H
-
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
+#ifndef FT_SH_H
+# define FT_SH_H
 
 # include "libft.h"
+
+# include "command.h"
+# include "lexer.h"
 
 #endif
