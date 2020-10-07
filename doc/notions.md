@@ -20,3 +20,7 @@ Signal handling
 
 - [Wiki: C signal handling](https://en.wikipedia.org/wiki/C_signal_handling)
 - [Signal Handling (Linux* OS and Mac OS* X only)](https://scc.ustc.edu.cn/zlsc/sugon/intel/compiler_f/main_for/bldaps_for/lin/bldaps_sighandl.htm)
+
+Design
+
+- [Data Processing - (Pipeline | Compose | Chain)](https://datacadamia.com/data/processing/pipeline)

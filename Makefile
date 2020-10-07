@@ -1,9 +1,9 @@
 NAME := 21sh
 
 SHELL = /bin/sh
-RM = rm -rf
+RM = /bin/rm
 
-.SUFFIXE:
+.SUFFIXES:
 .SUFFIXES: .c .o .h
 
 # ******************************** CC AND FLAGS ****************************** #
@@ -11,21 +11,24 @@ RM = rm -rf
 CC = gcc
 
 CFLAGS		=	-Wall -Wextra -Werror
-IFLAGS		=	$(foreach dir, $(INC_PATH), -I $(dir))
-LFLAGS		=	$(foreach dir, $(LIB_PATH), -L $(dir)) \
+IFLAGS		=	$(foreach path, $(INC_PATHS), -I $(path))
+LFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir)) \
 				$(foreach lib, $(LIB), -l $(lib))
 
 # ******************************** DIR AND PATHS ***************************** #
 
-LIB_PATH	=	libft
-INC_PATH	=	$(shell find includes -type d) libft/includes
-SRC_PATH	=	$(shell find src -type d)
-OBJ_PATH	=	obj
+LIB_DIR		=	libft
 
-INC			=	$(addprefix includes/, $(INC_FILES))
-OBJ			=	$(addprefix $(OBJ_PATH)/, $(SRC:%.c=%.o))
+INC_DIR		=	includes
+SRC_DIR		=	src
+OBJ_DIR		=	obj
 
-vpath %.c $(foreach dir, $(SRC_PATH), $(dir):)
+INC			=	$(addprefix $(INC_DIR)/, $(INC_FILES))
+OBJ			=	$(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
+
+INC_PATHS	=	$(INC_DIR) $(addsuffix /$(INC_DIR), $(LIB_DIR))
+
+VPATH		=	$(SRC_DIR) $(LIB_DIR)
 
 # *********************************** LIB ************************************ #
 
@@ -50,30 +53,34 @@ all: $(NAME)
 
 .PHONY: install
 install :
-	@$(foreach dir, $(LIB_PATH), make -C $(dir);)
+	@$(foreach dir, $(LIB_DIR), make -C $(dir);)
 
 .PHONY: re-install
 re-install :
-	@make -C libft fclean
+	@$(foreach dir, $(LIB_DIR), make -C $(dir) fclean;)
 	@make install
 
-$(NAME): $(OBJ_PATH) $(OBJ) $(INC)
+$(NAME): $(OBJ_DIR) $(OBJ) $(INC)
 	@$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) -o $@
 	@echo "\nOK\t\t$(NAME) is ready"
 
 # OBJ DIR #
 
-$(OBJ_PATH):
+$(OBJ_DIR):
 	@mkdir -p $@
 	@echo "Created\t\t$@ directory"
 
 # COMPILING #
 
-$(OBJ_PATH)/%.o : %.c
+$(OBJ_DIR)/%.o : %.c
 	@echo "\r\033[KCompiling\t$< \c"
 	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 # DEBUG #
+
+.PHONY: show
+show:
+	@echo "VPATH: $(VPATH)"
 
 .PHONY: debug
 debug: CFLAGS+=-g3 -fsanitize=address
@@ -83,8 +90,8 @@ debug: re
 
 .PHONY: clean
 clean:
-	@make -C libft clean
-	@$(RM) $(OBJ_PATH)
+	@$(foreach dir, $(LIB_DIR), make -C $(dir) clean;)
+	@$(RM) -rf $(OBJ_DIR)
 	@echo "Cleaned\t\tobject files"
 
 .PHONY: fclean
