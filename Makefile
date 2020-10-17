@@ -46,16 +46,13 @@ SRC			=	main.c				\
 
 # ********************************** RULES *********************************** #
 
-.PHONY: all
 all: $(NAME)
 
 # INSTALL #
 
-.PHONY: install
 install :
 	@$(foreach dir, $(LIB_DIR), make -C $(dir);)
 
-.PHONY: re-install
 re-install :
 	@$(foreach dir, $(LIB_DIR), make -C $(dir) fclean;)
 	@make install
@@ -78,26 +75,23 @@ $(OBJ_DIR)/%.o : %.c
 
 # DEBUG #
 
-.PHONY: show
 show:
 	@echo "VPATH: $(VPATH)"
 
-.PHONY: debug
 debug: CFLAGS+=-g3 -fsanitize=address
 debug: re
 
 # CLEAN #
 
-.PHONY: clean
 clean:
 	@$(foreach dir, $(LIB_DIR), make -C $(dir) clean;)
 	@$(RM) -rf $(OBJ_DIR)
 	@echo "Cleaned\t\tobject files"
 
-.PHONY: fclean
 fclean: clean
 	@$(RM) $(NAME)
 	@echo "Removed\t\t$(NAME)"
 
-.PHONY: re
 re: fclean all
+
+.PHONY: all install re-install show debug clean fclean re
