@@ -51,4 +51,8 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-21sh
+# debug
+.gdb_history
+peda-session-ft_sh.txt
+
+ft_sh
