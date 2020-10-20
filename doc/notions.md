@@ -8,7 +8,7 @@
 
 Lexer, Parser and AST  
 
-- [Let’s Build A Simple Interpreter. Part 7: Abstract Syntax Trees](https://ruslanspivak.com/lsbasi-part7/)
+- [Let’s Build A Simple Interpreter](https://ruslanspivak.com/lsbasi-part1/)
 - [Compiler Design - Top-Down Parser](https://www.tutorialspoint.com/compiler_design/compiler_design_top_down_parser.htm)
 - [Shunting-yard algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm)
 - [Grammars and Parsing](http://www.cs.cornell.edu/courses/cs2112/2015fa/lectures/lec_parsing/)
@@ -21,6 +21,10 @@ Signal handling
 - [Wiki: C signal handling](https://en.wikipedia.org/wiki/C_signal_handling)
 - [Signal Handling (Linux* OS and Mac OS* X only)](https://scc.ustc.edu.cn/zlsc/sugon/intel/compiler_f/main_for/bldaps_for/lin/bldaps_sighandl.htm)
 
-Design
+Design  
 
 - [Data Processing - (Pipeline | Compose | Chain)](https://datacadamia.com/data/processing/pipeline)
+
+Bash  
+
+- [Bash - La variable d'environnement PATH](https://www.commentcamarche.net/faq/3585-bash-la-variable-d-environnement-path)
