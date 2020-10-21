@@ -6,27 +6,27 @@ RM = /bin/rm
 .SUFFIXES:
 .SUFFIXES: .c .o .h
 
-# ************************************ LIBS ********************************** #
-
-LIB			=	ft
-
-# ********************************** INCLUDES ******************************** #
+# ********************************* INCLUDES ********************************* #
 
 INC_FILES	=	ft_sh.h				\
 				command.h			\
 				lexer.h
 
-# *********************************** C FILES ******************************** #
+# ********************************* C FILES ********************************** #
 
 SRC_FILES	=	main.c				\
 				lexer.c				\
 				fill_lexer.c		\
 
-# ********************************** OBJECTS ********************************* #
+# ********************************* OBJECTS ********************************** #
 
 OBJ_FILES	=	$(SRC_FILES:%.c=%.o)
 
-# ******************************** DIR AND PATHS ***************************** #
+# *********************************** LIBS *********************************** #
+
+LIBS		=	ft
+
+# ****************************** DIRS AND PATHS ****************************** #
 
 LIB_DIR		=	libft
 
@@ -45,14 +45,14 @@ INC_PATHS	=	$(INC_DIR) $(addsuffix /$(INC_DIR), $(LIB_DIR))
 
 VPATH		=	$(SRC_DIR) $(SRC_SUBDIRS)
 
-# ******************************** CC AND FLAGS ****************************** #
+# *************************** COMPILING AND FLAGS **************************** #
 
-CC = gcc
+CC			=	gcc
 
 CFLAGS		=	-Wall -Wextra -Werror -g3
-IFLAGS		=	$(foreach path, $(INC_PATHS), -I $(path))
-LFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir)) \
-				$(foreach lib, $(LIB), -l $(lib))
+CPPFLAGS	=	$(foreach path, $(INC_PATHS), -I $(path))
+LDFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir))
+LDLIBS		=	$(foreach lib, $(LIBS), -l $(lib))
 
 # ********************************** RULES *********************************** #
 
@@ -61,10 +61,10 @@ all: $(NAME)
 # INSTALL #
 
 install :
-	@$(foreach lib, $(LIB_DIR), make -C $(lib);)
+	@make -C $(LIB_DIR)
 
 re-install :
-	@$(foreach lib, $(LIB_DIR), make -C $(lib) fclean;)
+	@make -C $(LIB_DIR) fclean
 	@make install
 
 # OBJ DIR #
@@ -77,10 +77,10 @@ $(OBJ_DIR):
 
 $(OBJ_DIR)/%.o : %.c
 	@echo "\r\033[KCompiling\t$< \c"
-	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJ_DIR) $(OBJ) $(INC)
-	@$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) -o $@
+	@$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $@
 	@echo "\nOK\t\t$(NAME) is ready"
 
 # DEBUG #
@@ -88,18 +88,18 @@ $(NAME): $(OBJ_DIR) $(OBJ) $(INC)
 show:
 	@echo "VPATH: $(VPATH)"
 
-debug: CFLAGS+=-fsanitize=address
+debug: CFLAGS += -fsanitize=address
 debug: re
 
 # CLEAN #
 
 clean:
-	@$(foreach lib, $(LIB_DIR), make -C $(lib) clean;)
+	@make -C $(LIB_DIR) clean
 	@$(RM) -rf $(OBJ_DIR)
 	@echo "Cleaned\t\tobject files"
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) -f $(NAME)
 	@echo "Removed\t\t$(NAME)"
 
 re: fclean all
