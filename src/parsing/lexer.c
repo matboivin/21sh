@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 01:27:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/10/01 14:10:58 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/10/21 15:12:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_token		create_token(char *content, size_t size, t_token_type type)
 
 void		create_lexer(t_lexer *lexer, size_t capacity)
 {
-	lexer->tokens = (t_token *)ft_calloc(capacity, sizeof(t_token));
+	lexer->tokens = ft_calloc(capacity, sizeof(t_token));
 	lexer->size = 0;
 	lexer->capacity = capacity;
 }
@@ -35,10 +35,10 @@ void		add_token_to_lexer(t_lexer *lexer, t_token new_token)
 	if (lexer->size == lexer->capacity)
 	{
 		lexer->capacity *= 2;
-		lexer->tokens = (t_token *)reallocarray(
-			lexer->tokens, lexer->size, (lexer->capacity * sizeof(t_token)));
+		lexer->tokens = reallocarray(
+			lexer->tokens, lexer->capacity, sizeof(t_token));
 	}
-	lexer->size++;
+	lexer->size += 1;
 	lexer->tokens[lexer->size] = new_token;
 }
 
