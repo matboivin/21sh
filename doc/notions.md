@@ -6,6 +6,11 @@
 - [Wiki ubuntu-fr: Initiation au Shell](https://doc.ubuntu-fr.org/projets/ecole/scripting/initiation_au_shell)
 - [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
 
+Env
+
+- [Gnu.org: Program Arguments](https://www.gnu.org/software/libc/manual/html_node/Program-Arguments.html)
+- [Gnu.org: Environment Access](https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html)
+
 Lexer, Parser and AST  
 
 - [Let’s Build A Simple Interpreter](https://ruslanspivak.com/lsbasi-part1/)

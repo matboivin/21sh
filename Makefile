@@ -49,7 +49,7 @@ VPATH		=	$(SRC_DIR) $(SRC_SUBDIRS)
 
 CC			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -g3
+CFLAGS		=	-Wall -Wextra -Werror
 CPPFLAGS	=	$(foreach path, $(INC_PATHS), -I $(path))
 LDFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir))
 LDLIBS		=	$(foreach lib, $(LIBS), -l $(lib))
@@ -75,20 +75,22 @@ $(OBJ_DIR):
 
 # COMPILING #
 
-$(OBJ_DIR)/%.o : %.c
+$(OBJ_DIR)/%.o : %.c $(INC)
 	@echo "\r\033[KCompiling\t$< \c"
-	@$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
+	@$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ -c $<
+
+# LINKING #
 
 $(NAME): $(OBJ_DIR) $(OBJ) $(INC)
-	@$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $@
-	@echo "\nOK\t\t$(NAME) is ready"
+	@$(CC) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $@
+	@echo "\nOK\t\t$@ is ready"
 
 # DEBUG #
 
 show:
 	@echo "VPATH: $(VPATH)"
 
-debug: CFLAGS += -fsanitize=address
+debug: CFLAGS += -g3
 debug: re
 
 # CLEAN #
