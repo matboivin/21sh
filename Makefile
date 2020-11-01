@@ -1,4 +1,4 @@
-NAME := ft_sh
+BIN_NAME := ft_sh
 
 SHELL = /bin/sh
 RM = /bin/rm
@@ -16,7 +16,7 @@ INC_FILES	=	ft_sh.h				\
 
 SRC_FILES	=	main.c				\
 				lexer.c				\
-				fill_lexer.c		\
+				fill_lexer.c
 
 # ********************************* OBJECTS ********************************** #
 
@@ -50,13 +50,15 @@ VPATH		=	$(SRC_DIR) $(SRC_SUBDIRS)
 CC			=	gcc
 
 CFLAGS		=	-Wall -Wextra -Werror
-CPPFLAGS	=	$(foreach path, $(INC_PATHS), -I $(path))
-LDFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir))
-LDLIBS		=	$(foreach lib, $(LIBS), -l $(lib))
+CPPFLAGS	=	$(foreach path, $(INC_PATHS), -I$(path))
+LDFLAGS		=	-L$(LIB_DIR)
+LDLIBS		=	-l$(LIBS)
+
+DEBUG_CFLAGS = -g3 -D DEBUG
 
 # ********************************** RULES *********************************** #
 
-all: $(NAME)
+all: $(BIN_NAME)
 
 # INSTALL #
 
@@ -81,7 +83,7 @@ $(OBJ_DIR)/%.o : %.c $(INC)
 
 # LINKING #
 
-$(NAME): $(OBJ_DIR) $(OBJ) $(INC)
+$(BIN_NAME): $(OBJ_DIR) $(OBJ) $(INC)
 	@$(CC) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $@
 	@echo "\nOK\t\t$@ is ready"
 
@@ -90,8 +92,11 @@ $(NAME): $(OBJ_DIR) $(OBJ) $(INC)
 show:
 	@echo "VPATH: $(VPATH)"
 
-debug: CFLAGS += -g3
+# Debug build for gdb debugging #
+
+debug: export CFLAGS += $(DEBUG_CFLAGS)
 debug: re
+	@echo "DEBUG\t\tDebug build done"
 
 # CLEAN #
 
@@ -101,8 +106,8 @@ clean:
 	@echo "Cleaned\t\tobject files"
 
 fclean: clean
-	@$(RM) -f $(NAME)
-	@echo "Removed\t\t$(NAME)"
+	@$(RM) -f $(BIN_NAME)
+	@echo "Removed\t\t$(BIN_NAME)"
 
 re: fclean all
 
