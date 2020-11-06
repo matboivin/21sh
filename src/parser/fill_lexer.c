@@ -6,12 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 18:56:13 by mboivin           #+#    #+#             */
-/*   Updated: 2020/10/01 14:13:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 16:54:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sh.h"
 #include <stdio.h>
+#include "libft_str.h"
+#include "lexer.h"
 
 /*
 ** A lexer (Lexical Analyzer​) splits the command into tokens

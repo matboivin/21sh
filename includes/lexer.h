@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 18:06:35 by mboivin           #+#    #+#             */
-/*   Updated: 2020/10/01 14:10:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 17:00:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # define ARRAY_CAPACITY 300
 # define MAX_TOKENS 14
+
+# include <stdbool.h>
 
 typedef enum		e_token_type
 {

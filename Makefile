@@ -9,14 +9,24 @@ RM = /bin/rm
 # ********************************* INCLUDES ********************************* #
 
 INC_FILES	=	ft_sh.h				\
+				ft_define.h			\
 				command.h			\
 				lexer.h
 
 # ********************************* C FILES ********************************** #
 
 SRC_FILES	=	main.c				\
-				lexer.c				\
+				print_usage.c
+
+# PARSER #
+
+SRC_FILES	+=	lexer.c				\
 				fill_lexer.c
+
+# STRUCT #
+
+SRC_FILES	+=	command.c				\
+				simple_command.c
 
 # ********************************* OBJECTS ********************************** #
 
@@ -34,7 +44,7 @@ INC_DIR		=	includes
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 
-SUB_DIRS	=	parsing
+SUB_DIRS	=	parser executor subsystems struct utils
 
 SRC_SUBDIRS	=	$(addprefix $(SRC_DIR)/, $(SUB_DIRS))
 
@@ -54,7 +64,7 @@ CPPFLAGS	=	$(foreach path, $(INC_PATHS), -I$(path))
 LDFLAGS		=	-L$(LIB_DIR)
 LDLIBS		=	-l$(LIBS)
 
-DEBUG_CFLAGS = -g3 -D DEBUG
+DEBUG_CFLAGS = -g -D DEBUG
 
 # ********************************** RULES *********************************** #
 

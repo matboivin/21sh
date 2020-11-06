@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_usage.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:03:35 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/06 16:50:46 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/06 17:04:04 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft_printf.h"
 #include "ft_sh.h"
 
-int			main(int argc, char **argv, char **envp)
+void	print_usage(void)
 {
-	(void)argv;
-	(void)envp;
-	if (argc != DEFAULT_ARGC)
-		print_usage();
-	return (0);
+	ft_dprintf(STDERR_FILENO, "Usage: ./ft_sh\n");
+	exit(EXIT_FAILURE);
 }
