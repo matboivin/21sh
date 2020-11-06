@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 17:14:40 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 18:18:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 18:52:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include "libft_printf.h"
-#include "ft_subsystems.h"
+#include "subsystems.h"
 
 // ENOTRECOVERABLE
 

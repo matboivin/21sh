@@ -6,14 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 20:30:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:46:22 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 19:44:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft_str.h"
 #include "ft_define.h"
-#include "ft_env.h"
+#include "sh_env.h"
 
 /*
 ** This function returns a string that is the value of the environment variable
@@ -21,22 +21,18 @@
 ** pointer.
 */
 
-char		*ft_getenv(char **environ, const char *key)
+char		*ft_getenv(const char *key)
 {
-	size_t	key_len;
+	t_env	*cursor;
 
-	if (environ && key)
+	if (g_env && key)
 	{
-		key_len = ft_strlen(key);
-		while (*environ)
+		cursor = g_env;
+		while (cursor)
 		{
-			if (!ft_strncmp(*environ, key, key_len))
-			{
-				(*environ) += key_len;
-				if (!ft_strncmp(*environ, ENVKEY_SEP, 1))
-					return ((*environ) + 1);
-			}
-			environ++;
+			if (!ft_strcmp(cursor->key, key))
+				return (cursor->value);
+			cursor = cursor->next;
 		}
 	}
 	return (NULL);

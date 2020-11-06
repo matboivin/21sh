@@ -6,14 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 16:36:23 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:31:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 18:52:52 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft_str.h"
 #include "libft_printf.h"
-#include "ft_command.h"
+#include "command.h"
 
 t_cmd		*malloc_cmd_table(size_t p_capacity)
 {

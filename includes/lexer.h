@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lexer.h                                         :+:      :+:    :+:   */
+/*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 18:06:35 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:16:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 18:54:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LEXER_H
-# define FT_LEXER_H
+#ifndef LEXER_H
+# define LEXER_H
 
 # define ARRAY_CAPACITY 300
 # define MAX_TOKENS 14
