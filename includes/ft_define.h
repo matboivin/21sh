@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:02:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 17:23:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DEFINE_H
 # define FT_DEFINE_H
 
+# define SHELL_NAME "ft_sh"
 # define DEFAULT_ARGC 1
 
 # define FAIL_RET -1

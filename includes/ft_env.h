@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh.h                                            :+:      :+:    :+:   */
+/*   ft_env.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:32:51 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/06 17:43:59 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/06 17:45:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SH_H
-# define FT_SH_H
+#ifndef FT_ENV_H
+# define FT_ENV_H
 
-# include "ft_define.h"
-# include "ft_command.h"
-# include "ft_lexer.h"
-# include "ft_subsystems.h"
-
-void	print_usage(void);
-void	exit_error(char *s);
+char	*ft_getenv(char **environ, const char *key);
+char	*get_path_value(char **environ);
 
 #endif

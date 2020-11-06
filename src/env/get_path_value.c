@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh.h                                            :+:      :+:    :+:   */
+/*   get_path_value.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:32:51 by mboivin          ###   ########.fr       */
+/*   Created: 2020/10/27 22:30:22 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/06 17:46:52 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SH_H
-# define FT_SH_H
+#include "ft_define.h"
+#include "ft_env.h"
 
-# include "ft_define.h"
-# include "ft_command.h"
-# include "ft_lexer.h"
-# include "ft_subsystems.h"
+char		*get_path_value(char **environ)
+{
+	char	*path_value;
 
-void	print_usage(void);
-void	exit_error(char *s);
-
-#endif
+	path_value = ft_getenv(environ, "PATH");
+	if (!path_value)
+		path_value = DEFAULT_PATH;
+	return (path_value);
+}

@@ -25,6 +25,8 @@ Signal handling
 
 - [Wiki: C signal handling](https://en.wikipedia.org/wiki/C_signal_handling)
 - [Signal Handling (Linux* OS and Mac OS* X only)](https://scc.ustc.edu.cn/zlsc/sugon/intel/compiler_f/main_for/bldaps_for/lin/bldaps_sighandl.htm)
+- [Gnu.org: Termination Signals](https://www.gnu.org/software/libc/manual/html_node/Termination-Signals.html)
+- [Passing Values to C Signal Handlers](http://sgeos.github.io/unix/c/signals/2016/02/24/passing-values-to-c-signal-handlers.html)
 
 Design  
 

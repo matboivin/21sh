@@ -6,14 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 01:27:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 16:58:17 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 17:25:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft_mem.h"
 #include "libft_str.h"
-#include "lexer.h"
+#include "ft_lexer.h"
 
 t_token		create_token(char *content, size_t size, t_token_type type)
 {

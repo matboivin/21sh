@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh.h                                            :+:      :+:    :+:   */
+/*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:32:51 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/06 17:14:40 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/06 17:56:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SH_H
-# define FT_SH_H
+#include <sys/types.h>
+#include <unistd.h>
+#include <signal.h>
+#include "libft_printf.h"
+#include "ft_subsystems.h"
 
-# include "ft_define.h"
-# include "ft_command.h"
-# include "ft_lexer.h"
-# include "ft_subsystems.h"
+// ENOTRECOVERABLE
 
-void	print_usage(void);
-void	exit_error(char *s);
-
-#endif
+void	signal_handler(int sig)
+{
+	g_done = true; // interrupt
+	ft_printf("Catched %d\n", sig);
+	ft_printf("Quit (core dumped)\n");
+}

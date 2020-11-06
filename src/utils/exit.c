@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh.h                                            :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:32:51 by mboivin          ###   ########.fr       */
+/*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/06 17:29:46 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SH_H
-# define FT_SH_H
+#include "libft_printf.h"
+#include "ft_sh.h"
 
-# include "ft_define.h"
-# include "ft_command.h"
-# include "ft_lexer.h"
-# include "ft_subsystems.h"
-
-void	print_usage(void);
-void	exit_error(char *s);
-
-#endif
+void		exit_error(char *s)
+{
+	ft_printf("%s\n", s);
+	exit(EXIT_FAILURE);
+}
