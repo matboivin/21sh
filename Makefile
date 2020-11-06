@@ -19,6 +19,7 @@ INC_FILES	=	ft_sh.h				\
 
 SRC_FILES	=	main.c				\
 				print_usage.c		\
+				print_error.c		\
 				exit.c
 
 # ENV #

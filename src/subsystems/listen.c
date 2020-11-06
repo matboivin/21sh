@@ -6,11 +6,10 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 17:18:51 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:58:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 18:18:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include "libft_str.h"
 #include "libft_io.h"
 #include "libft_printf.h"
@@ -30,8 +29,7 @@ int			listen(void)
 		// if (command)
 		// execute
 		// else
-		// g_done = true;
-		// ft_dprintf(STDERR_FILENO, "Impossible to treat commands");
+		//	exit_error();
 		ft_strdel(&command); // tmp
 	}
 	return (EXIT_SUCCESS);

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 18:07:38 by mboivin          ###   ########.fr       */
+/*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/06 18:17:45 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <signal.h>
+#include <errno.h>
+#include <string.h>
+#include "libft_printf.h"
 #include "ft_sh.h"
 
-volatile sig_atomic_t	g_done; // tmp
-
-int			main(int argc, char **argv, char **envp)
+void		print_error(void)
 {
-	g_done = 0;
-	(void)argv;
-	(void)envp;
-	if (argc != DEFAULT_ARGC)
-		print_usage();
-	register_signal_handlers();
-	return (listen());
+	char	*msg;
+
+	msg = (char *)strerror(errno);
+	ft_dprintf(STDERR_FILENO, "bash: %s\n", msg); // tmp get SHELL env value
+	exit(EXIT_FAILURE);
 }

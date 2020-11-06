@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 17:14:40 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:33:08 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 18:17:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 void	register_signal_handlers(void)
 {
 	if (signal(SIGINT, signal_handler) == SIG_ERR)
-		exit_error("Couldn't catch signal SIGINT\n"); // tmp
+		exit_error();
 	if (signal(SIGQUIT, signal_handler) == SIG_ERR)
-		exit_error("Couldn't catch signal SIGQUIT\n"); // tmp
+		exit_error();
 }

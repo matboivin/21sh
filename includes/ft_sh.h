@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:32:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 18:15:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "ft_subsystems.h"
 
 void	print_usage(void);
-void	exit_error(char *s);
+void	print_error(void);
+void	exit_error(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 17:14:40 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/06 17:56:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/06 18:18:30 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 void	signal_handler(int sig)
 {
-	g_done = true; // interrupt
-	ft_printf("Catched %d\n", sig);
-	ft_printf("Quit (core dumped)\n");
+	(void)sig;
+	g_done = 1; // interrupt
+	ft_printf("\n");
 }
