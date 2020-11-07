@@ -9,12 +9,7 @@ RM = /bin/rm
 # ********************************* INCLUDES ********************************* #
 
 INC_FILES	=	ft_sh.h				\
-				ft_define.h			\
-				command.h			\
-				parsing.h			\
-				lexer.h				\
-				sh_env.h			\
-				subsystems.h
+
 
 # ********************************* C FILES ********************************** #
 
@@ -22,30 +17,6 @@ SRC_FILES	=	main.c				\
 				print_usage.c		\
 				print_error.c		\
 				exit.c
-
-# ENV #
-
-SRC_FILES	+=	sh_env.c			\
-				ft_getenv.c			\
-				ft_clearenv.c
-
-# PARSING #
-
-# LEXER #
-
-SRC_FILES	+=	lexer.c				\
-				fill_lexer.c
-
-# SUBSYSTEMS #
-
-SRC_FILES	+=	listen.c				\
-				register_signal_handlers.c	\
-				signal_handler.c
-
-# STRUCT #
-
-SRC_FILES	+=	command.c				\
-				simple_command.c
 
 # ********************************* OBJECTS ********************************** #
 
@@ -63,7 +34,7 @@ INC_DIR		=	includes
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 
-SUB_DIRS	=	command env parser executor subsystems utils
+SUB_DIRS	=	utils
 
 SRC_SUBDIRS	=	$(addprefix $(SRC_DIR)/, $(SUB_DIRS))
 
