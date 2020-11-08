@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_unsetenv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 22:19:07 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/08 20:04:09 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/08 20:35:16 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <signal.h>
-#include "libft_printf.h"
-#include "ft_sh.h"
+#include <string.h>
+#include "libft_str.h"
+#include "sh_define.h"
+#include "sh_env.h"
 
-int			main(int argc, char **argv, char **envp)
+/*
+** This function removes an entry from the environment
+**
+** to_unset: Name of the variable to remove
+**
+** returns: 0 on success
+**          -1 on error
+*/
+
+int				ft_unsetenv(char *to_unset)
 {
-	(void)argv;
-	if (argc != DEFAULT_ARGC)
-		print_usage();
-	init_env(envp);
-	ft_clearenv();
+	(void)to_unset;
 	return (0);
 }

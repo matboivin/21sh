@@ -9,7 +9,10 @@ RM = /bin/rm
 # ********************************* INCLUDES ********************************* #
 
 INC_FILES	=	ft_sh.h				\
-
+				sh_builtin.h		\
+				sh_define.h			\
+				sh_env.h			\
+				sh_signal.h			\
 
 # ********************************* C FILES ********************************** #
 
@@ -17,6 +20,20 @@ SRC_FILES	=	main.c				\
 				print_usage.c		\
 				print_error.c		\
 				exit.c
+
+# BUILT-IN FUNCTIONS #
+
+SRC_FILES	+=	ft_env.c
+
+# ENV #
+
+SRC_FILES	+=	ft_clearenv.c		\
+				ft_getenv.c			\
+				ft_printenv.c		\
+				ft_putenv.c			\
+				ft_setenv.c			\
+				ft_unsetenv.c		\
+				init_env.c
 
 # ********************************* OBJECTS ********************************** #
 
@@ -34,7 +51,9 @@ INC_DIR		=	includes
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 
-SUB_DIRS	=	utils
+SUB_DIRS	=	builtin \
+				env \
+				utils
 
 SRC_SUBDIRS	=	$(addprefix $(SRC_DIR)/, $(SUB_DIRS))
 
@@ -98,6 +117,9 @@ debug: CFLAGS += $(DEBUG_CFLAGS)
 debug: re
 	@echo "DEBUG\t\tDebug build done"
 
+check_leaks: re
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ft_sh
+
 # CLEAN #
 
 clean:
@@ -111,4 +133,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all install re-install show debug clean fclean re
+.PHONY: all install re-install show debug check_leaks clean fclean re

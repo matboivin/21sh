@@ -24,3 +24,39 @@ Images source: [Writing Your Own Shell (PDF)](https://www.cs.purdue.edu/homes/gr
 - Environment Variables: set, expand and print environment variables.
 - Wildcards (bonus)
 - Subshells (check if bonus)
+
+# Steps
+
+## Get the environment
+
+Resource: [Gnu.org: Environment Access](https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html)
+
+A linked list struct to ol the key and the value for each variable.
+
+```c
+typedef struct		s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}					t_env;
+```
+
+Functions to:
+
+- Add a variable (different than `setenv`)
+- Delete a variable (different than `unsetenv`)
+- Init the env by getting all the pairs (use the 1st function)
+- Clear the env by deleting all the pairs (see `clearenv`)
+- `getenv`: get the value of a variable
+- `env`: print the env
+
+## Register signal handling (basic way first)
+
+> When Bash is interactive, in the absence of any traps, it ignores SIGTERM (so that ‘kill 0’ does not kill an interactive shell), and SIGINT is caught and handled (so that the wait builtin is interruptible). When Bash receives a SIGINT, it breaks out of any executing loops. In all cases, Bash ignores SIGQUIT. If job control is in effect (see Job Control), Bash ignores SIGTTIN, SIGTTOU, and SIGTSTP. [(Source)](https://www.gnu.org/software/bash/manual/html_node/Signals.html)
+
+[Why does Ctrl-D (EOF) exit the shell?](https://unix.stackexchange.com/questions/110240/why-does-ctrl-d-eof-exit-the-shell)
+
+```
+```
+

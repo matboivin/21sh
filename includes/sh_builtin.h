@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sh_builtin.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 22:19:07 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/08 20:53:13 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/08 20:53:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <signal.h>
-#include "libft_printf.h"
-#include "ft_sh.h"
+#ifndef SH_BUILTIN_H
+# define SH_BUILTIN_H
 
-int			main(int argc, char **argv, char **envp)
-{
-	(void)argv;
-	if (argc != DEFAULT_ARGC)
-		print_usage();
-	init_env(envp);
-	ft_clearenv();
-	return (0);
-}
+# include "sh_define.h"
+
+/*
+** builtin env with no options and no arguments
+*/
+
+void	ft_env(void);
+
+#endif

@@ -7,14 +7,18 @@
 - [Wiki ubuntu-fr: Initiation au Shell](https://doc.ubuntu-fr.org/projets/ecole/scripting/initiation_au_shell)
 - [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
 
-Env
+Bash  
+
+- [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bash.html)
+- [Bash - La variable d'environnement PATH](https://www.commentcamarche.net/faq/3585-bash-la-variable-d-environnement-path)
+
+Env  
 
 - [Gnu.org: Program Arguments](https://www.gnu.org/software/libc/manual/html_node/Program-Arguments.html)
 - [Gnu.org: Environment Access](https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html)
 
 Execution  
 
-- [Bash - La variable d'environnement PATH](https://www.commentcamarche.net/faq/3585-bash-la-variable-d-environnement-path)
 - [Shell search PATH – finding and running commands](http://teaching.idallen.com/cst8207/12f/notes/400_search_path.html)
 - [Forward Slash Definition](http://www.linfo.org/forward_slash.html)
 - [How do I use execve in C?](https://jameshfisher.com/2017/02/05/how-do-i-use-execve-in-c/)
@@ -34,10 +38,16 @@ Signals
 - [Signaux](https://sites.uclouvain.be/SystInfo/notes/Theorie/html/Fichiers/fichiers-signaux.html)
 - [Wiki: C signal handling](https://en.wikipedia.org/wiki/C_signal_handling)
 - [Signal Handling (Linux* OS and Mac OS* X only)](https://scc.ustc.edu.cn/zlsc/sugon/intel/compiler_f/main_for/bldaps_for/lin/bldaps_sighandl.htm)
+- [Gnu.org: Signals](https://www.gnu.org/software/bash/manual/html_node/Signals.html)
 - [Gnu.org: Termination Signals](https://www.gnu.org/software/libc/manual/html_node/Termination-Signals.html)
 - [Signal Concepts](https://pubs.opengroup.org/onlinepubs/009695399/functions/xsh_chap02_04.html)
 - [All about Linux signals](https://www.linuxprogrammingblog.com/all-about-linux-signals?page=show)
 - [Passing Values to C Signal Handlers](http://sgeos.github.io/unix/c/signals/2016/02/24/passing-values-to-c-signal-handlers.html)
+- [What does bash do when it receives the SIGINT signal?](https://unix.stackexchange.com/questions/400989/what-does-bash-do-when-it-receives-the-sigint-signal)
+- [Writing a Unix Shell - Part III](https://indradhanush.github.io/blog/writing-a-unix-shell-part-3/)
+
+* `SIG_IGN`: Ignores the signal. Usage: `signal(SIGINT, SIG_IGN)`.
+* `SIG_DFL`: Sets the default behaviour for the signal. This is useful when you want to reset the behaviour for a signal after having made some modifications. Usage: `signal(SIGINT, SIG_DFL)`.
 
 Pipes
 
@@ -80,3 +90,12 @@ newfd -----------------------------------+
 - If `oldfd` is a valid file descriptor, and `newfd` has the same value as `oldfd`, then `dup2()` does nothing, and returns`newfd`.
 
 Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/2318-c--programmation-systeme-execve-fork-et-pipe)
+
+
+# Built-in
+
+## env
+
+> If no command name is specified following the environment specifications, the resulting environment is printed. This is like specifying the printenv program.
+
+- [23.2 env: Run a command in a modified environment](https://www.gnu.org/software/coreutils/manual/html_node/env-invocation.html)

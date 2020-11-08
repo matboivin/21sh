@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 22:19:07 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/08 20:50:53 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/08 20:53:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <signal.h>
-#include "libft_printf.h"
-#include "ft_sh.h"
+#include <string.h>
+#include "sh_env.h"
+#include "sh_builtin.h"
 
-int			main(int argc, char **argv, char **envp)
+/*
+** builtin env with no options and no arguments
+**
+** If no command name is specified following the environment specifications,
+** the resulting environment is printed. This is like specifying the printenv
+** program.
+*/
+
+void		ft_env(void)
 {
-	(void)argv;
-	if (argc != DEFAULT_ARGC)
-		print_usage();
-	init_env(envp);
-	ft_clearenv();
-	return (0);
+	ft_printenv();
 }
