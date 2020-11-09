@@ -33,6 +33,7 @@ SRC_FILES	+=	ft_clearenv.c		\
 				ft_putenv.c			\
 				ft_setenv.c			\
 				ft_unsetenv.c		\
+				find_env.c			\
 				init_env.c
 
 # ********************************* OBJECTS ********************************** #

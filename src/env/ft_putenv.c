@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:56:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/09 16:49:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/09 18:17:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft_str.h"
 #include "sh_define.h"
 #include "sh_env.h"
+#include "ft_sh.h"
 
 /*
 ** This function appends a new definition to the environment
@@ -36,7 +37,7 @@ char		**ft_putenv(char *s)
 	count = ft_str_arr_len(g_env);
 	new_env = ft_calloc((count + 2), sizeof(char *));
 	if (!new_env)
-		return (NULL);
+		exit_error();
 	i = 0;
 	while (i < count)
 	{
@@ -44,7 +45,7 @@ char		**ft_putenv(char *s)
 		{
 			new_env[i] = ft_strdup(g_env[i]);
 			if (!new_env[i])
-				return (NULL);
+				exit_error();
 		}
 		i++;
 	}

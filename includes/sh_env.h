@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:33:44 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/09 16:06:09 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/09 18:21:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 void	init_env(char **envp);
 
 /*
+** Searches for the environment variable which name is key
+*/
+
+int		find_env(char *key);
+
+/*
 ** Appends a new definition to the environment
 */
 
@@ -32,7 +38,7 @@ char	**ft_putenv(char *s);
 ** Adds or replaces a new definition to the environment
 */
 
-int		ft_setenv(char *to_set, char *new_value, bool replace);
+int		ft_setenv(char *key, char *new_value, bool replace);
 
 /*
 ** Removes an entry from the environment

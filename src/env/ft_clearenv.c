@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:04:05 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 22:18:44 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/09 18:14:46 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@
 
 void	ft_clearenv(void)
 {
+	if (!g_env)
+		return ;
 	ft_str_arr_del(g_env);
 }

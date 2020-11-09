@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   find_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/09 18:15:38 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/09 18:08:57 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/09 18:13:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
+#include "libft_str.h"
 #include "sh_env.h"
-#include "ft_sh.h"
 
-void	exit_error(void)
+/*
+** This function searches for the environment variable which name is key
+**
+** key: Name of the variable
+**
+** returns: If found, the index of the variable
+**          -1 otherwise
+*/
+
+int		find_env(char *key)
 {
-	ft_clearenv();
-	print_error();
+	int	i;
+
+	if (!g_env || !key)
+		return (FAIL_RET);
+	i = 0;
+	while (g_env && g_env[i])
+	{
+		if (ft_strcmp(g_env[i], key) == ENVKEY_SEP)
+			return (i);
+		i++;
+	}
+	return (FAIL_RET);
 }
