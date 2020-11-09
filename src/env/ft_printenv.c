@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:44:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 20:51:04 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/09 16:04:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,5 @@ void		ft_printenv(void)
 		return ;
 	i = 0;
 	while (g_env[i])
-	{
-		ft_printf("%s\n", g_env[i]);
-		i++;
-	}
+		ft_printf("%s\n", g_env[i++]);
 }

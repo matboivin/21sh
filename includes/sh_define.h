@@ -6,18 +6,18 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 21:34:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/09 16:47:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_DEFINE_H
 # define SH_DEFINE_H
+# include "libft_define.h"
 
 # define SHELL_NAME "ft_sh"
 # define DEFAULT_ARGC 1
 
 # define FAIL_RET -1
-# define EMPTY_STR ""
 
 /*
 ** Parsing

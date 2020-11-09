@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:33:44 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 21:53:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/09 16:06:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** Retrieves the environment from envp
 */
 
-int		init_env(char **envp);
+void	init_env(char **envp);
 
 /*
 ** Appends a new definition to the environment

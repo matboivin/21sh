@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 20:30:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 22:11:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/09 16:04:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,22 @@
 
 char		*ft_getenv(char *key)
 {
+	char	*value;
 	size_t	i;
-	size_t	key_len;
 
-	if (g_env && key)
+	if (!g_env || !key)
+		return (NULL);
+	value = NULL;
+	i = 0;
+	while (g_env && g_env[i])
 	{
-		i = 0;
-		while (g_env && g_env[i])
+		if (ft_strcmp(g_env[i], key) == ENVKEY_SEP)
 		{
-			if (ft_strcmp(g_env[i], key) == ENVKEY_SEP)
-			{
-				key_len = ft_strlen(key);
-				return ((g_env[i]) + (key_len + 1));
-			}
-			i++;
+			value = g_env[i] + (ft_strlen(key) + 1);
+			if (value)
+				return (value);
 		}
+		i++;
 	}
 	return (NULL);
 }
