@@ -33,23 +33,15 @@ Resource: [Gnu.org: Environment Access](https://www.gnu.org/software/libc/manual
 
 A linked list struct to ol the key and the value for each variable.
 
-```c
-typedef struct		s_env
-{
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}					t_env;
-```
-
 Functions to:
 
-- Add a variable (different than `setenv`)
-- Delete a variable (different than `unsetenv`)
-- Init the env by getting all the pairs (use the 1st function)
-- Clear the env by deleting all the pairs (see `clearenv`)
-- `getenv`: get the value of a variable
-- `env`: print the env
+- Add a variable: `setenv` and `putenv`
+- Delete a variable: `unsetenv`
+- Find a variable: `find_env`
+- Init the env by getting all the pairs: `init_env`
+- Clear the env by deleting all the pairs: `clearenv`
+- Get the value of a variable: `getenv`
+- Print the env: `printenv`
 
 ## Register signal handling (basic way first)
 
