@@ -2,12 +2,6 @@
 
 ## TODO
 
-ENV
-
-- unsetenv()
-
---------
-
 SIGNAUX
 
 `SIGINT`
@@ -34,3 +28,10 @@ Le plus gros du travail
 EXECUTION
 
 - Récupérer le code du rush pipex
+
+--------
+
+CI
+
+- Automatiser tests
+
