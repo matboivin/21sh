@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 17:47:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 17:58:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_DEFINE_H
 # define SH_DEFINE_H
 # include "libft_define.h"
+# include <signal.h>
 
 # define SHELL_PROMPT "ft_sh > "
 # define DEFAULT_ARGC 1
@@ -65,6 +66,9 @@
 */
 
 # define FATAL_ERROR 128
+
+extern volatile sig_atomic_t	g_done;
+extern volatile sig_atomic_t	g_status;
 
 /*
 ** Environment

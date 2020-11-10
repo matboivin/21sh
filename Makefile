@@ -13,13 +13,13 @@ INC_FILES	=	ft_sh.h					\
 				sh_define.h				\
 				sh_env.h				\
 				sh_input_processing.h	\
-				sh_signal.h				\
+				sh_signal_handling.h
 
 # ********************************* C FILES ********************************** #
 
-SRC_FILES	=	main.c				\
-				print_usage.c		\
-				print_error.c		\
+SRC_FILES	=	main.c					\
+				print_usage.c			\
+				print_error.c			\
 				exit.c
 
 # BUILT-IN FUNCTIONS #
@@ -29,6 +29,11 @@ SRC_FILES	+=	ft_env.c
 # INPUT PROCESSING #
 
 SRC_FILES	+=	shell_loop.c
+
+# SIGNAL HANDLING #
+
+SRC_FILES	+=	handle_fatal_error.c		\
+				register_signal_handlers.c
 
 # SUBSYSTEMS #
 
@@ -60,6 +65,7 @@ OBJ_DIR		=	obj
 
 SUB_DIRS	=	builtin \
 				input_processing \
+				signal_handling \
 				subsystems \
 				utils
 

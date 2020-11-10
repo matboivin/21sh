@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 15:22:17 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 17:52:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "sh_define.h"
 # include "sh_env.h"
 # include "sh_input_processing.h"
-# include "sh_signal.h"
+# include "sh_signal_handling.h"
 # include "sh_builtin.h"
 
 /*

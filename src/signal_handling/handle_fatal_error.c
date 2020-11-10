@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_signal.h                                        :+:      :+:    :+:   */
+/*   handle_fatal_error.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 19:01:38 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/10 17:52:28 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/10 17:58:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_SIGNAL_H
-# define SH_SIGNAL_H
-
-# include "sh_define.h"
-
-/*
-** Registers signal handlers
-*/
-
-void	register_signal_handlers(void);
+#include <sys/types.h>
+#include <unistd.h>
+#include <signal.h>
+#include "libft_printf.h"
+#include "sh_signal_handling.h"
 
 /*
-** Handles SIGINT
+** This function handles fatal errors
+**
+** The return value of a command is its exit status, or 128 + N if the command
+** is terminated by signal N
 */
 
-void	handle_interrupt(int sig);
-
-#endif
+void	handle_fatal_error(int sig)
+{
+	if (sig == SIGINT)
+	{
+		g_done = true;
+		g_status = FATAL_ERROR + sig;
+	}
+}

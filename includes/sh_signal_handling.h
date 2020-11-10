@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_loop.c                                       :+:      :+:    :+:   */
+/*   sh_signal_handling.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 17:02:51 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 18:02:54 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/10 17:54:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include "libft_str.h"
-#include "sh_env.h"
-#include "sh_input_processing.h"
+#ifndef SH_SIGNAL_HANDLING_H
+# define SH_SIGNAL_HANDLING_H
 
-int			shell_loop(void)
-{
-	char	*command;
+# include "sh_define.h"
 
-	while (!g_done)
-	{
-		command = ft_readline(SHELL_PROMPT);
-		ft_strdel(&command);
-		// TODO: Feed lexer, parse and execute
-	}
-	ft_clearenv();
-	return (g_status);
-}
+/*
+** Registers signal handlers
+*/
+
+void	register_signal_handlers(void);
+
+/*
+** Handles fatal error
+*/
+
+void	handle_fatal_error(int sig);
+
+#endif
