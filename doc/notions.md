@@ -100,3 +100,7 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 > If no command name is specified following the environment specifications, the resulting environment is printed. This is like specifying the printenv program.
 
 - [23.2 env: Run a command in a modified environment](https://www.gnu.org/software/coreutils/manual/html_node/env-invocation.html)
+
+# Termcap
+
+- [The Termcap Manual](https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html)
