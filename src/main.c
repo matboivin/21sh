@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 13:38:09 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 13:58:16 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int			main(int argc, char **argv, char **envp)
 	ft_printf("\n\n----------- ADDED FOO VAR ----------\n\n");
 	ft_putenv("FOO=foo/foo/foo");
 	ft_printenv();
-	ft_printf("\n\nValue of FOO: %s\n\n", ft_getenv("FOO"));
+	ft_printf("\nValue of FOO: %s\n\n", ft_getenv("FOO"));
 	ft_printf("--------- UPDATE FOO VALUE ----------\n\n");
+	ft_printenv();
 	ft_setenv("FOO", "bar/bar/bar", true);
-	ft_printf("Value of FOO: %s\n\n", ft_getenv("FOO"));
+	ft_printf("\nValue of FOO: %s\n\n", ft_getenv("FOO"));
 	ft_printf("------------- RM FOO VAR ------------\n\n");
 	ft_unsetenv("FOO");
 	ft_printenv();

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 12:48:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 13:31:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 13:54:32 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char		**dup_env(size_t count)
 	if (!result)
 		return (NULL);
 	i = 0;
-	while (g_env[i] && i < count)
+	while (g_env && g_env[i] && i < count)
 	{
 		if (ft_strcmp(g_env[i], EMPTY_STR))
 		{

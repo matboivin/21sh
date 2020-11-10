@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:14:01 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 13:35:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 13:40:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_setenv(char *key, char *new_value, bool replace)
 	if ((to_set != FAIL_RET) && replace)
 	{
 		if (!ft_strcmp(new_value, EMPTY_STR))
-			g_env[to_set] = ft_strdup(EMPTY_STR);
+			g_env[to_set] = ft_strreplace(g_env[to_set], EMPTY_STR);
 		else
 		{
 			g_env[to_set] = ft_join_n_str(3, key, "=", new_value);
