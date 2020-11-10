@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:50:53 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 20:53:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 12:06:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** program.
 */
 
-void		ft_env(void)
+void	ft_env(void)
 {
 	ft_printenv();
 }

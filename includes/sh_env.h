@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:33:44 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/09 18:21:44 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 13:20:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,28 @@
 void	init_env(char **envp);
 
 /*
+** Duplicates the environment
+*/
+
+char	**dup_env(size_t count);
+
+/*
 ** Searches for the environment variable which name is key
 */
 
 int		find_env(char *key);
 
 /*
+** Returns a string that is the value of the environment variable key
+*/
+
+char	*ft_getenv(char *key);
+
+/*
 ** Appends a new definition to the environment
 */
 
-char	**ft_putenv(char *s);
+int		ft_putenv(char *s);
 
 /*
 ** Adds or replaces a new definition to the environment
@@ -44,7 +56,7 @@ int		ft_setenv(char *key, char *new_value, bool replace);
 ** Removes an entry from the environment
 */
 
-int		ft_unsetenv(char *to_unset);
+int		ft_unsetenv(char *key);
 
 /*
 ** Removes all entries from the environment
@@ -57,11 +69,5 @@ void	ft_clearenv(void);
 */
 
 void	ft_printenv(void);
-
-/*
-** Returns a string that is the value of the environment variable key
-*/
-
-char	*ft_getenv(char *key);
 
 #endif

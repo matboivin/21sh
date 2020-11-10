@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 20:30:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/09 18:14:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 13:21:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **
 ** key: Name of the variable
 **
-** returns: If found, the value of the variable
+** returns: The value of the variable
 **          NULL otherwise
 */
 

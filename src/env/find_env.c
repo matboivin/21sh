@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:08:57 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/09 18:13:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 13:34:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 /*
 ** This function searches for the environment variable which name is key
 **
-** key: Name of the variable
+** key: Name of the variable to search
 **
-** returns: If found, the index of the variable
+** returns: The index of the variable
 **          -1 otherwise
 */
 
