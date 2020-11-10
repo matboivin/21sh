@@ -1,7 +1,7 @@
 # ft_sh
 
 <p align="center">
-  <img src="doc/assets/bash-article-diagram.png" alt="bash diagram" width="800" />
+  <img src="doc/assets/bash-article-diagram.png" alt="bash diagram" />
 </p>
 
 Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
