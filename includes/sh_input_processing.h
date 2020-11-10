@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 15:21:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 15:22:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 17:04:22 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include "sh_define.h"
 
 /*
-** Displays shell prompt
+** Main loop
 */
 
-void	display_prompt(void);
+int		shell_loop(void);
 
 #endif

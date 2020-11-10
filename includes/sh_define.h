@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/09 16:47:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/10 15:39:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SH_DEFINE_H
 # include "libft_define.h"
 
-# define SHELL_NAME "ft_sh"
+# define SHELL_PROMPT "ft_sh > "
 # define DEFAULT_ARGC 1
 
 # define FAIL_RET -1

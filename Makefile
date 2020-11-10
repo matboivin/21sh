@@ -18,7 +18,6 @@ INC_FILES	=	ft_sh.h					\
 # ********************************* C FILES ********************************** #
 
 SRC_FILES	=	main.c				\
-				display_prompt.c	\
 				print_usage.c		\
 				print_error.c		\
 				exit.c
@@ -27,7 +26,11 @@ SRC_FILES	=	main.c				\
 
 SRC_FILES	+=	ft_env.c
 
-# ENV #
+# INPUT PROCESSING #
+
+SRC_FILES	+=	shell_loop.c
+
+# SUBSYSTEMS #
 
 SRC_FILES	+=	ft_clearenv.c		\
 				ft_getenv.c			\
