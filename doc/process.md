@@ -77,3 +77,7 @@ Resource: [Guide to Unix/Explanations/Shell Prompt](https://en.wikibooks.org/wik
 ```
 ```
 
+### Parsing
+
+- Send the command line to the lexer.
+- The parser builds the AST.
