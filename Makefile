@@ -8,15 +8,17 @@ RM = /bin/rm
 
 # ********************************* INCLUDES ********************************* #
 
-INC_FILES	=	ft_sh.h				\
-				sh_builtin.h		\
-				sh_define.h			\
-				sh_env.h			\
-				sh_signal.h			\
+INC_FILES	=	ft_sh.h					\
+				sh_builtin.h			\
+				sh_define.h				\
+				sh_env.h				\
+				sh_input_processing.h	\
+				sh_signal.h				\
 
 # ********************************* C FILES ********************************** #
 
 SRC_FILES	=	main.c				\
+				display_prompt.c	\
 				print_usage.c		\
 				print_error.c		\
 				exit.c
@@ -54,7 +56,8 @@ SRC_DIR		=	src
 OBJ_DIR		=	obj
 
 SUB_DIRS	=	builtin \
-				env \
+				input_processing \
+				subsystems \
 				utils
 
 SRC_SUBDIRS	=	$(addprefix $(SRC_DIR)/, $(SUB_DIRS))

@@ -9,6 +9,7 @@
 
 Bash  
 
+- [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 - [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bash.html)
 - [Bash - La variable d'environnement PATH](https://www.commentcamarche.net/faq/3585-bash-la-variable-d-environnement-path)
 
