@@ -1,5 +1,12 @@
 # Process
 
+1. Read the command line
+2. Interpret the command
+3. Execute the command
+4. Return the result
+
+## Organisation
+
 1. The Parser​
 
 - Reads the command line and stores it in a Command Table structure.
@@ -25,13 +32,23 @@ Images source: [Writing Your Own Shell (PDF)](https://www.cs.purdue.edu/homes/gr
 - Wildcards (bonus)
 - Subshells (check if bonus)
 
-# Steps
+## Steps
 
-## Get the environment
+### Get the environment
 
-Resource: [Gnu.org: Environment Access](https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html)
+```c
+int main (int argc, char **argv, char **envp)
+```
 
-A linked list struct to ol the key and the value for each variable.
+The `envp` argument gives the program’s environment; it is the same as the value of environ.
+
+Resource: [GNu.org: Program Arguments](https://www.gnu.org/software/libc/manual/html_node/Program-Arguments.html)
+
+### Functions to handle the environment
+
+An array of strings to represent the environment.
+
+> The environment is represented as an array of strings. Each string is of the format ‘name=value’. The order in which strings appear in the environment is not significant, but the same name must not appear more than once. The last element of the array is a null pointer.  [(Source)](https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html)
 
 Functions to:
 
@@ -43,7 +60,15 @@ Functions to:
 - Get the value of a variable: `getenv`
 - Print the env: `printenv`
 
-## Register signal handling (basic way first)
+Resource: [Gnu.org: Environment Access](https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html)
+
+### Shell prompt
+
+Run an infinite loop that displays a prompt and wait for the user's input.
+
+Resource: [Guide to Unix/Explanations/Shell Prompt](https://en.wikibooks.org/wiki/Guide_to_Unix/Explanations/Shell_Prompt)
+
+### Register signal handling (basic way first)
 
 > When Bash is interactive, in the absence of any traps, it ignores SIGTERM (so that ‘kill 0’ does not kill an interactive shell), and SIGINT is caught and handled (so that the wait builtin is interruptible). When Bash receives a SIGINT, it breaks out of any executing loops. In all cases, Bash ignores SIGQUIT. If job control is in effect (see Job Control), Bash ignores SIGTTIN, SIGTTOU, and SIGTSTP. [(Source)](https://www.gnu.org/software/bash/manual/html_node/Signals.html)
 
