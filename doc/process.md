@@ -82,6 +82,8 @@ Resource: [Appendix E. Exit Codes With Special Meanings](https://tldp.org/LDP/ab
 
 Resource: [3.7.5 Exit Status](https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html)
 
+> In all cases, Bash ignores `SIGQUIT`.  [(Source)](https://www.gnu.org/software/bash/manual/html_node/Signals.html)
+
 ### Parsing
 
 - Send the command line to the lexer.
