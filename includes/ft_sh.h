@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:38:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 19:21:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,11 @@
 # define FT_SH_H
 
 # include "sh_define.h"
+# include "sh_utils.h"
 # include "sh_env.h"
 # include "sh_subsystems.h"
 # include "sh_input_processing.h"
 # include "sh_builtin.h"
-
-/*
-** Utils
-*/
-
-void	print_usage(void);
-void	print_error(char *target);
-void	exit_error(char *target);
+# include "sh_termcaps.h"
 
 #endif

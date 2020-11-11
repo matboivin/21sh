@@ -6,15 +6,15 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:17:17 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 19:47:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft_mem.h"
 #include "libft_str.h"
+#include "sh_utils.h"
 #include "sh_env.h"
-#include "ft_sh.h"
 
 char	**g_env;
 
@@ -32,7 +32,7 @@ void		load_environment(char **envp)
 	count = ft_str_arr_len(envp);
 	g_env = ft_calloc((count + 1), sizeof(char *));
 	if (!g_env)
-		print_error("malloc");
+		print_error("Malloc failed.");
 	i = 0;
 	while (i < count)
 	{
@@ -40,7 +40,7 @@ void		load_environment(char **envp)
 		{
 			g_env[i] = ft_strdup(envp[i]);
 			if (!g_env[i])
-				print_error("ft_strdup");
+				exit_error("ft_strdup");
 		}
 		i++;
 	}

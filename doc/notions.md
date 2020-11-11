@@ -96,6 +96,7 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 ### Termcap
 
 - [The Termcap Manual](https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html)
+- [Termcap et Terminfo](https://zestedesavoir.com/tutoriels/1733/termcap-et-terminfo/)
 
 ### Misc.
 

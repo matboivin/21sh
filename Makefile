@@ -13,7 +13,9 @@ INC_FILES	=	ft_sh.h					\
 				sh_define.h				\
 				sh_env.h				\
 				sh_input_processing.h	\
-				sh_subsystems.h
+				sh_subsystems.h			\
+				sh_termcaps.h			\
+				sh_utils.h
 
 # ********************************* C FILES ********************************** #
 
@@ -48,13 +50,18 @@ SRC_FILES	+=	ft_clearenv.c		\
 				load_environment.c	\
 				start_shell.c
 
+
+# BONUS #
+
+SRC_FILES	+=	init_term_data.c
+
 # ********************************* OBJECTS ********************************** #
 
-OBJ_FILES	=	$(SRC_FILES:%.c=%.o)
+OBJ_FILES		=	$(SRC_FILES:%.c=%.o)
 
 # *********************************** LIBS *********************************** #
 
-LIBS		=	ft
+LIBS		=	ft termcap ncurses
 
 # ****************************** DIRS AND PATHS ****************************** #
 
@@ -64,10 +71,11 @@ INC_DIR		=	includes
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 
-SUB_DIRS	=	builtin \
-				input_processing \
-				subsystems \
-				utils
+SUB_DIRS	=	builtin				\
+				input_processing	\
+				subsystems			\
+				utils				\
+				bonus
 
 SRC_SUBDIRS	=	$(addprefix $(SRC_DIR)/, $(SUB_DIRS))
 
@@ -122,7 +130,7 @@ $(BIN_NAME): $(OBJ_DIR) $(OBJ) $(INC)
 
 # BONUS #
 
-bonus: LIBS += termcap
+bonus: CFLAGS += -D BONUS=1
 bonus: re
 
 # DEBUG #
@@ -136,7 +144,7 @@ debug: CFLAGS += $(DEBUG_CFLAGS)
 debug: re
 	@echo "DEBUG\t\tDebug build done"
 
-check_leaks: re
+check_leaks: $(BIN_NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ft_sh
 
 # CLEAN #

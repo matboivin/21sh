@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:24:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 20:28:17 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # define DEFAULT_ARGC 1
 
 # define FAIL_RET -1
+
+# ifndef BONUS
+#  define BONUS 0
+# endif
 
 /*
 ** Parsing

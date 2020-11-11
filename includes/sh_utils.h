@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   register_signal_handlers.c                         :+:      :+:    :+:   */
+/*   sh_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 17:51:19 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 19:23:36 by mboivin          ###   ########.fr       */
+/*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/11 20:24:47 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <signal.h>
-#include "sh_utils.h"
-#include "sh_subsystems.h"
+#ifndef SH_UTILS_H
+# define SH_UTILS_H
+
+# include "sh_define.h"
 
 /*
-** Register signal handlers
+** Prints the usage message
 */
 
-void	register_signal_handlers(void)
-{
-	if (signal(SIGINT, handle_fatal_error) == SIG_ERR)
-		exit_error("signal");
-	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
-		exit_error("signal");
-}
+void	print_usage(void);
+
+/*
+** Prints an error message and exits
+*/
+
+void	print_error(char *s);
+
+/*
+** Exits and returns 1
+*/
+
+void	exit_error(char *target);
+
+#endif
