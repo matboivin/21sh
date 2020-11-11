@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   register_signal_handlers.c                         :+:      :+:    :+:   */
+/*   sh_subsystems.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 17:51:19 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:25:37 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/11 15:39:16 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <signal.h>
-#include "sh_signal_handling.h"
-#include "ft_sh.h"
+#ifndef SH_SUBSYSTEMS_H
+# define SH_SUBSYSTEMS_H
+
+# include "sh_define.h"
 
 /*
-** Register signal handlers
+** Shell startup: loads environment, sets flags and registers signal handlers
 */
 
-void	register_signal_handlers(void)
-{
-	if (signal(SIGINT, handle_fatal_error) == SIG_ERR)
-		exit_error("signal");
-	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
-		exit_error("signal");
-}
+void	start_shell(char **envp);
+
+/*
+** Registers signal handlers
+*/
+
+void	register_signal_handlers(void);
+
+/*
+** Handles fatal error
+*/
+
+void	handle_fatal_error(int sig);
+
+#endif

@@ -13,7 +13,7 @@ INC_FILES	=	ft_sh.h					\
 				sh_define.h				\
 				sh_env.h				\
 				sh_input_processing.h	\
-				sh_signal_handling.h
+				sh_subsystems.h
 
 # ********************************* C FILES ********************************** #
 
@@ -66,7 +66,6 @@ OBJ_DIR		=	obj
 
 SUB_DIRS	=	builtin \
 				input_processing \
-				signal_handling \
 				subsystems \
 				utils
 

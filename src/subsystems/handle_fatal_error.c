@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:52:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 17:58:28 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 15:38:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include "libft_printf.h"
-#include "sh_signal_handling.h"
+#include "sh_subsystems.h"
 
 /*
 ** This function handles fatal errors

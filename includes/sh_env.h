@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:33:44 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:22:44 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 15:38:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 
 # include <stdbool.h>
 # include "sh_define.h"
-
-/*
-** Shell startup: loads environment and sets flags
-*/
-
-void	start_shell(char **envp);
 
 /*
 ** Retrieves the environment from envp
