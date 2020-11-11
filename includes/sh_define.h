@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 17:58:14 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 14:29:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@
 ** Parsing
 */
 
-# define CMD_NAME 0
 # define ARGS_SEP ' '
 # define ENVKEY_SEP '='
 # define PATHS_SEP ':'
 # define DIRS_SEP "/"
 
 /*
-** Pipes and files
+** Execution, pipes and files
 */
 
+# define CMD_NAME 0
 # define READ_END 0
 # define WRITE_END 1
 # define FILE_PERMISSIONS 0644
 
 /*
-** EXIT CODES
+** Exit codes
 */
 
 /*
@@ -67,8 +67,17 @@
 
 # define FATAL_ERROR 128
 
-extern volatile sig_atomic_t	g_done;
+/*
+** Exit status
+*/
+
 extern volatile sig_atomic_t	g_status;
+
+/*
+** Flags
+*/
+
+extern volatile sig_atomic_t	g_done;
 
 /*
 ** Environment

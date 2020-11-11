@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:53:13 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/08 20:53:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 14:22:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "sh_define.h"
 
 /*
-** builtin env with no options and no arguments
+** Builtin env with no options and no arguments
 */
 
 void	ft_env(void);

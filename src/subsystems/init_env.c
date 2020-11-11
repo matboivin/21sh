@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 13:32:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 14:17:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		init_env(char **envp)
 	count = ft_str_arr_len(envp);
 	g_env = ft_calloc((count + 1), sizeof(char *));
 	if (!g_env)
-		print_error();
+		print_error("malloc");
 	i = 0;
 	while (i < count)
 	{
@@ -40,7 +40,7 @@ void		init_env(char **envp)
 		{
 			g_env[i] = ft_strdup(envp[i]);
 			if (!g_env[i])
-				print_error();
+				print_error("ft_strdup");
 		}
 		i++;
 	}

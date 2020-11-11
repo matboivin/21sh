@@ -4,6 +4,7 @@
 2. Interpret the command
 3. Execute the command
 4. Return the result
+5. Collects the command return status
 
 ## Organisation
 
@@ -88,6 +89,14 @@ Resource: [3.7.5 Exit Status](https://www.gnu.org/software/bash/manual/html_node
 
 - Send the command line to the lexer.
 - The parser builds the AST.
+
+## Built-in commands
+
+### env
+
+> If no command name is specified following the environment specifications, the resulting environment is printed. This is like specifying the printenv program.
+
+- [23.2 env: Run a command in a modified environment](https://www.gnu.org/software/coreutils/manual/html_node/env-invocation.html)
 
 ```
 ```
