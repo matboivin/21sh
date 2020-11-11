@@ -85,7 +85,7 @@ CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 CPPFLAGS	=	$(foreach path, $(INC_PATHS), -I$(path))
 LDFLAGS		=	-L$(LIB_DIR)
-LDLIBS		=	-l$(LIBS)
+LDLIBS		=	$(foreach lib, $(LIBS), -l$(lib))
 
 DEBUG_CFLAGS = -g -D DEBUG
 
@@ -120,6 +120,11 @@ $(BIN_NAME): $(OBJ_DIR) $(OBJ) $(INC)
 	@$(CC) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $@
 	@echo "\nOK\t\t$@ is ready"
 
+# BONUS #
+
+bonus: LIBS += termcap
+bonus: re
+
 # DEBUG #
 
 show:
@@ -147,4 +152,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all install re-install show debug check_leaks clean fclean re
+.PHONY: all install re-install bonus show debug check_leaks clean fclean re
