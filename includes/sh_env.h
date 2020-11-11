@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:33:44 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:18:16 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 15:22:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void	load_environment(char **envp);
 ** Duplicates the environment
 */
 
-char	**dup_env(size_t count);
+char	**dup_environment(size_t count);
 
 /*
 ** Searches for the environment variable which name is key
 */
 
-int		find_env(char *key);
+int		ft_findenv(char *key);
 
 /*
 ** Returns a string that is the value of the environment variable key

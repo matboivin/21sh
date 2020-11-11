@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 20:30:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/10 13:21:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 15:23:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		*ft_getenv(char *key)
 	if (!g_env || !key)
 		return (NULL);
 	value = NULL;
-	i = find_env(key);
+	i = ft_findenv(key);
 	if (i != FAIL_RET)
 	{
 		value = g_env[i] + (ft_strlen(key) + 1);

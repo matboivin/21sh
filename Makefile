@@ -38,13 +38,13 @@ SRC_FILES	+=	handle_fatal_error.c		\
 # SUBSYSTEMS #
 
 SRC_FILES	+=	ft_clearenv.c		\
+				ft_findenv.c		\
 				ft_getenv.c			\
 				ft_printenv.c		\
 				ft_putenv.c			\
 				ft_setenv.c			\
 				ft_unsetenv.c		\
-				dup_env.c			\
-				find_env.c			\
+				dup_environment.c	\
 				load_environment.c	\
 				start_shell.c
 
