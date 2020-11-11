@@ -8,12 +8,12 @@
 - [Writing Your Own Shell](https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf)
 - [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
 - [Wiki ubuntu-fr: Initiation au Shell](https://doc.ubuntu-fr.org/projets/ecole/scripting/initiation_au_shell)
+- [Getting to Understand Linux Shell(s), start-up scripts and the environment’s PATH variable](https://medium.com/coding-blocks/getting-to-understand-linux-shell-s-start-up-scripts-and-the-environments-path-variable-fc672107b2d7)
 
 ### Bash
 
 - [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 - [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bash.html)
-- [Bash Startup Explained](https://zwischenzugs.com/2019/02/27/bash-startup-explained/)
 
 ### Env
 

@@ -45,7 +45,8 @@ SRC_FILES	+=	ft_clearenv.c		\
 				ft_unsetenv.c		\
 				dup_env.c			\
 				find_env.c			\
-				init_env.c
+				load_environment.c	\
+				start_shell.c
 
 # ********************************* OBJECTS ********************************** #
 

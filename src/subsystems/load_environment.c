@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_env.c                                         :+:      :+:    :+:   */
+/*   load_environment.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 14:17:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/11 15:17:17 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 char	**g_env;
 
 /*
-** This function retrieves the environment from envp
+** This function loads the environment from envp
 **
 ** envp: The environment represented as an array of strings
 */
 
-void		init_env(char **envp)
+void		load_environment(char **envp)
 {
 	size_t	i;
 	size_t	count;

@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   start_shell.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:19:05 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/11 15:11:11 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/11 15:19:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sh.h"
+#include <signal.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include "sh_env.h"
 
-int			main(int argc, char **argv, char **envp)
+volatile sig_atomic_t	g_done;
+volatile sig_atomic_t	g_status;
+
+/*
+** Shell startup
+** This function loads environment and sets flags
+**
+** envp: The environment represented as an array of strings
+*/
+
+void	start_shell(char **envp)
 {
-	(void)argv;
-	if (argc != DEFAULT_ARGC)
-		print_usage();
-	start_shell(envp);
-	register_signal_handlers();
-	return (shell_loop());
+	g_done = false;
+	g_status = EXIT_SUCCESS;
+	load_environment(envp);
 }
