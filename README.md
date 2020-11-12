@@ -8,19 +8,13 @@ Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 
 ## TODO
 
-SIGNAUX
-
-`SIGQUIT`
-
-> When Bash is interactive, in the absence of any traps, it ignores SIGTERM (so that ‘kill 0’ does not kill an interactive shell), and SIGINT is caught and handled (so that the wait builtin is interruptible). When Bash receives a SIGINT, it breaks out of any executing loops. In all cases, Bash ignores SIGQUIT. If job control is in effect (see Job Control), Bash ignores SIGTTIN, SIGTTOU, and SIGTSTP. [(Source)](https://www.gnu.org/software/bash/manual/html_node/Signals.html)
-
-[Why does Ctrl-D (EOF) exit the shell?](https://unix.stackexchange.com/questions/110240/why-does-ctrl-d-eof-exit-the-shell)
-
---------
-
 LEXER-PARSER-AST
 
 Le plus gros du travail
+
+- Lexer : mange les caractères inutiles et checke les erreurs de syntaxe + procédure debug qui affiche les tokens
+- Le parser : checke les erreurs de grammaire et construit l'AST + procédure debug pour avoir l'arbre en .dot
+- Les fonctions nécessaires à l'AST
 
 --------
 
