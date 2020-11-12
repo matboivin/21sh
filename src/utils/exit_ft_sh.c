@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/12 18:23:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/12 21:23:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 ** parameter
 */
 
-void	exit_ft_sh(int status)
+void	exit_ft_sh(int status, t_shctrl ft_sh)
 {
-	free_all();
+	free_all(ft_sh);
 	exit(status);
 }

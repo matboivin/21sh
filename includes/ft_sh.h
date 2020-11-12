@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/12 20:04:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/12 20:48:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "sh_env.h"
 # include "sh_subsystems.h"
 # include "sh_input_processing.h"
+# include "sh_lexer.h"
+# include "sh_parser.h"
+# include "sh_ctrl.h"
 # include "sh_builtin.h"
 
 #endif

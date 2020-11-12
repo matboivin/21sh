@@ -10,15 +10,19 @@ RM = /bin/rm
 
 INC_FILES	=	ft_sh.h					\
 				sh_builtin.h			\
+				sh_ctrl.h				\
 				sh_define.h				\
 				sh_env.h				\
 				sh_input_processing.h	\
+				sh_lexer.h				\
+				sh_parser.h				\
 				sh_subsystems.h			\
 				sh_utils.h
 
 # ********************************* C FILES ********************************** #
 
 SRC_FILES	=	main.c					\
+				sh_ctrl.c				\
 				print_usage.c			\
 				exit_error.c			\
 				exit_ft_sh.c			\
@@ -31,6 +35,12 @@ SRC_FILES	+=	ft_env.c
 # INPUT PROCESSING #
 
 SRC_FILES	+=	shell_loop.c
+
+# LEXER #
+
+SRC_FILES	+=	fill_lexer.c			\
+				lexer.c					\
+				tokens.c
 
 # SIGNAL HANDLING #
 
@@ -68,9 +78,9 @@ OBJ_DIR		=	obj
 
 SUB_DIRS	=	builtin				\
 				input_processing	\
+				parsing				\
 				subsystems			\
-				utils				\
-				bonus
+				utils
 
 SRC_SUBDIRS	=	$(addprefix $(SRC_DIR)/, $(SUB_DIRS))
 

@@ -6,18 +6,20 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 18:22:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/12 18:23:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/12 21:23:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_env.h"
+#include "sh_ctrl.h"
 #include "sh_utils.h"
 
 /*
 ** This function frees the allocated memory
 */
 
-void	free_all(void)
+void	free_all(t_shctrl ft_sh)
 {
 	ft_clearenv();
+	destroy_shell(ft_sh);
 }

@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_input_processing.h                              :+:      :+:    :+:   */
+/*   sh_ctrl.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 15:21:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/12 21:24:41 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/12 20:48:54 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/12 21:20:52 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_INPUT_PROCESSING_H
-# define SH_INPUT_PROCESSING_H
+#ifndef SH_CTRL_H
+# define SH_CTRL_H
 
 # include "sh_define.h"
-# include "sh_ctrl.h"
+# include "sh_lexer.h"
 
-/*
-** Main loop
-*/
+typedef struct	s_shctrl
+{
+	t_lexer		*lexer;
+}				t_shctrl;
 
-int		shell_loop(t_shctrl ft_sh);
+void			create_shell(t_shctrl *ft_sh, size_t capacity);
+void			destroy_shell(t_shctrl ft_sh);
 
 #endif
