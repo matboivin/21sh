@@ -97,12 +97,3 @@ Resource: [3.7.5 Exit Status](https://www.gnu.org/software/bash/manual/html_node
 > If no command name is specified following the environment specifications, the resulting environment is printed. This is like specifying the printenv program.
 
 - [23.2 env: Run a command in a modified environment](https://www.gnu.org/software/coreutils/manual/html_node/env-invocation.html)
-
-### Termcap
-
-```
-lib32ncurses5-dev libncurses5-dev ncurses-doc
-/usr/include/termcap.h
-```
-
-`tgetent()` -> LEAKS
