@@ -14,7 +14,6 @@ INC_FILES	=	ft_sh.h					\
 				sh_env.h				\
 				sh_input_processing.h	\
 				sh_subsystems.h			\
-				sh_termcaps.h			\
 				sh_utils.h
 
 # ********************************* C FILES ********************************** #
@@ -50,11 +49,6 @@ SRC_FILES	+=	ft_clearenv.c		\
 				dup_environment.c	\
 				load_environment.c	\
 				start_shell.c
-
-
-# BONUS #
-
-SRC_FILES	+=	init_term_data.c
 
 # ********************************* OBJECTS ********************************** #
 

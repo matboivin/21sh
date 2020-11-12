@@ -97,6 +97,9 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 
 - [The Termcap Manual](https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html)
 - [Termcap et Terminfo](https://zestedesavoir.com/tutoriels/1733/termcap-et-terminfo/)
+- [termios(3) — Linux manual page](https://man7.org/linux/man-pages/man3/termios.3.html)
+- [Gnu.org: Two Styles of Input: Canonical or Not](https://www.gnu.org/software/libc/manual/html_node/Canonical-or-Not.html)
+- [Gnu.org: Local Modes](https://www.gnu.org/software/libc/manual/html_node/Local-Modes.html)
 
 ### Misc.
 

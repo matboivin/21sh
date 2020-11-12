@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 19:21:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/12 20:04:50 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@
 # include "sh_subsystems.h"
 # include "sh_input_processing.h"
 # include "sh_builtin.h"
-# include "sh_termcaps.h"
 
 #endif
