@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 19:47:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/12 18:26:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		load_environment(char **envp)
 	count = ft_str_arr_len(envp);
 	g_env = ft_calloc((count + 1), sizeof(char *));
 	if (!g_env)
-		print_error("Malloc failed.");
+		exit_error("malloc");
 	i = 0;
 	while (i < count)
 	{

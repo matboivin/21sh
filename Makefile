@@ -21,8 +21,9 @@ INC_FILES	=	ft_sh.h					\
 
 SRC_FILES	=	main.c					\
 				print_usage.c			\
-				print_error.c			\
-				exit.c
+				exit_error.c			\
+				exit_ft_sh.c			\
+				free_all.c
 
 # BUILT-IN FUNCTIONS #
 

@@ -6,12 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 19:17:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 20:33:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/12 18:18:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <curses.h>
 #include <term.h>
+#include "libft_printf.h"
 #include "sh_env.h"
 #include "sh_utils.h"
 #include "sh_termcaps.h"
@@ -28,10 +28,23 @@ void		init_term_data(void)
 
 	termtype = ft_getenv("TERM");
 	if (!termtype)
-		print_error("Specify a terminal type with `setenv TERM <yourtype>'.");
+	{
+		ft_dprintf(
+			STDERR_FILENO,
+			"Specify a terminal type with `setenv TERM <yourtype>'.\n");
+		exit_ft_sh(EXIT_FAILURE);
+	}
 	ret = tgetent(NULL, termtype);
 	if (ret == 0)
-		print_error("Terminal type is not defined.");
+	{
+		ft_dprintf(
+			STDERR_FILENO,
+			"Terminal type %s is not defined.\n", termtype);
+		exit_ft_sh(EXIT_FAILURE);
+	}
 	else if (ret == FAIL_RET)
-		print_error("Could not access the termcap data base.");
+	{
+		ft_dprintf(STDERR_FILENO, "Could not access the termcap data base.\n");
+		exit_ft_sh(EXIT_FAILURE);
+	}
 }

@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 20:24:20 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/12 18:22:41 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/12 18:23:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
 #include "sh_env.h"
 #include "sh_utils.h"
 
-void	print_error(char *s)
+/*
+** This function frees the allocated memory
+*/
+
+void	free_all(void)
 {
-	ft_dprintf(STDERR_FILENO, "%s\n", s);
 	ft_clearenv();
-	exit(EXIT_FAILURE);
 }
