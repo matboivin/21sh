@@ -56,7 +56,7 @@ OBJ_FILES		=	$(SRC_FILES:%.c=%.o)
 
 # *********************************** LIBS *********************************** #
 
-LIBS		=	ft termcap ncurses
+LIBS		=	ft
 
 # ****************************** DIRS AND PATHS ****************************** #
 
@@ -123,11 +123,6 @@ $(BIN_NAME): $(OBJ_DIR) $(OBJ) $(INC)
 	@$(CC) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $@
 	@echo "\nOK\t\t$@ is ready"
 
-# BONUS #
-
-bonus: CFLAGS += -D BONUS=1
-bonus: re
-
 # DEBUG #
 
 show:
@@ -155,4 +150,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all install re-install bonus show debug check_leaks clean fclean re
+.PHONY: all install re-install show debug check_leaks clean fclean re
