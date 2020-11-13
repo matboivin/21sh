@@ -6,12 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 22:18:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/13 23:30:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft_mem.h"
+#include "libft_printf.h"
 #include "sh_lexer.h"
 
 /*
@@ -52,5 +53,23 @@ void		free_lexer(t_lexer *to_free)
 	{
 		destroy_lexer(*to_free);
 		free(to_free);
+	}
+}
+
+void		print_lexer(t_lexer *lexer)
+{
+	size_t	i;
+
+	i = 0;
+	ft_printf("----------- LEXER -----------\n");
+	ft_printf("size: %ld\n", lexer->size);
+	ft_printf("capacity: %ld\n", lexer->capacity);
+	ft_printf("tokens:\n");
+	while (i < lexer->size)
+	{
+		ft_printf(
+			"  %ld: %s | len: %ld\n",
+			i, lexer->tokens[i]->content, lexer->tokens[i]->len);
+		i++;
 	}
 }

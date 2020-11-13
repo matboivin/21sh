@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:02:51 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 21:52:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/13 23:28:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int			shell_loop(t_shctrl ft_sh)
 		fill_lexer(user_input, ft_sh.lexer);
 		ft_strdel(&user_input);
 	}
+	print_lexer(ft_sh.lexer);
 	free_all(ft_sh);
 	return (g_status);
 }
