@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 20:16:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 21:00:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/13 23:17:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 static t_regex	g_regex_list[] =
 {
-	{ "while", 5, TOKEN_WHILE },
-	{ "for", 3, TOKEN_FOR },
 	{ "&&", 2, TOKEN_DBLAND },
 	{ "||", 2, TOKEN_DBLOR },
 	{ ">>", 2, TOKEN_REDIR },
@@ -27,13 +25,14 @@ static t_regex	g_regex_list[] =
 	{ "&", 1, TOKEN_AND },
 	{ "=", 1, TOKEN_EQUAL },
 	{ ";", 1, TOKEN_SEMICOLON },
+	{ "\\", 1, TOKEN_BACKSLASH },
 	{ "\n", 1, TOKEN_EAT },
 	{ " ", 1, TOKEN_EAT },
 	{ "\v", 1, TOKEN_EAT },
 	{ "\t", 1, TOKEN_EAT },
 	{ "\r", 1, TOKEN_EAT },
 	{ "\f", 1, TOKEN_EAT },
-	{ NULL, 0, NOT_FOUND }
+	{ NULL, 0, TOKEN_TEXT }
 };
 
 /*
@@ -51,5 +50,5 @@ t_regex		get_token_type(char *input)
 			return (g_regex_list[i]);
 		i++;
 	}
-	return (g_regex_list[NOT_FOUND]);
+	return (g_regex_list[TOKEN_TEXT]);
 }

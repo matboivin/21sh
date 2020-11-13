@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:04:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 21:06:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/13 22:59:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,24 @@
 ** This function doubles the capacity of the lexer
 */
 
-static t_token	**dup_lexer(t_token **to_free, size_t count)
+static t_token	**dup_lexer(t_token **to_free, int max, size_t count)
 {
 	t_token		**result;
-	size_t		i;
+	int			i;
 
 	result = ft_calloc((count + 1), sizeof(t_token *));
 	if (!result)
 		return (NULL);
 	i = 0;
-	if (to_free)
+	if (to_free && max)
 	{
-		while (to_free && to_free[i] && i < count)
+		while (to_free[i] && i < max)
 		{
-			ft_memcpy(result[i], to_free[i], to_free[i]->len);
-			if (!result[i])
-				return (NULL);
+			result[i] = malloc_token(
+				to_free[i]->content, to_free[i]->len, to_free[i]->type);
 			i++;
 		}
-		delete_tokens(to_free, count);
+		delete_tokens(to_free, max);
 	}
 	return (result);
 }
@@ -44,5 +43,5 @@ static t_token	**dup_lexer(t_token **to_free, size_t count)
 void			increase_lexer(t_lexer *lexer)
 {
 	lexer->capacity *= 2;
-	lexer->tokens = dup_lexer(lexer->tokens, lexer->capacity);
+	lexer->tokens = dup_lexer(lexer->tokens, lexer->size, lexer->capacity);
 }

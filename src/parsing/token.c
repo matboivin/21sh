@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 21:07:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/13 23:05:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 ** delete_tokens()  :  Free all tokens in lexer
 */
 
-t_token		create_token(char *s, size_t p_len, t_token_type p_type)
+t_token		create_token(const char *s, size_t p_len, t_tok_type p_type)
 {
 	t_token	result;
 
@@ -36,7 +36,7 @@ t_token		create_token(char *s, size_t p_len, t_token_type p_type)
 	return (result);
 }
 
-t_token		*malloc_token(char *s, size_t p_len, t_token_type p_type)
+t_token		*malloc_token(const char *s, size_t p_len, t_tok_type p_type)
 {
 	t_token	*result;
 
@@ -47,29 +47,32 @@ t_token		*malloc_token(char *s, size_t p_len, t_token_type p_type)
 	return (result);
 }
 
-void		destroy_token(t_token to_destroy)
+void		destroy_token(t_token *to_destroy)
 {
-	ft_strdel(&(to_destroy.content));
+	ft_strdel(&to_destroy->content);
 }
 
 void		free_token(t_token *to_free)
 {
 	if (to_free)
 	{
-		destroy_token(*to_free);
+		destroy_token(to_free);
 		free(to_free);
 	}
 }
 
-void		delete_tokens(t_token **tokens, size_t capacity)
+void		delete_tokens(t_token **tokens, size_t size)
 {
 	size_t	i;
 
 	i = 0;
-	if (tokens && capacity)
+	if (tokens && size)
 	{
-		while (tokens[i] && i < capacity)
+		while (tokens && tokens[i] && i < size)
 			free_token(tokens[i++]);
+	}
+	if (tokens)
+	{
 		free(tokens);
 		tokens = NULL;
 	}

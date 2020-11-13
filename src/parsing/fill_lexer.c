@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 21:07:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/13 23:16:41 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,45 @@
 #include "libft_printf.h"
 #include "sh_lexer.h"
 
-void			fill_lexer(char *input, t_lexer *lexer)
-{
-	t_regex		current_regex;
-	//const char*	prev;
+// static int		raise_syntax_error(const char *token)
+// {
+// 	ft_dprintf(
+// 		STDERR_FILENO,
+// 		"syntax error near unexpected token `%s'\n",
+// 		token);
+// 	return (FAIL_RET);
+// }
 
-	(void)lexer;
-	//prev = input;
+int				fill_lexer(char *input, t_lexer *lexer)
+{
+	t_regex		found;
+	//t_regex	prev;
+
 	while (input && *input)
 	{
-		current_regex = get_token_type(input);
-		if (current_regex.type)
+		found = get_token_type(input);
+		if (found.type && found.type == TOKEN_EAT)
+			input++;
+		else if (found.type)
 		{
-			ft_printf("Regex: %s\n", current_regex.op);
-			input += current_regex.len;
+			if (found.type == TOKEN_BACKSLASH)
+			{
+				//TODO: handle escaping
+				ft_printf("Regex: %s\n", found.op);
+			}
+			else
+			{
+				ft_printf("Regex: %s\n", found.op);
+				add_token_to_lexer(lexer, found.op, found.len, found.type);
+			}
+			input += found.len;
 		}
 		else
 		{
 			ft_printf("Input: %s\n", input);
+			add_token_to_lexer(lexer, input, ft_strlen(input), TOKEN_TEXT);
 			input += ft_strlen(input);
 		}
 	}
+	return (0);
 }
