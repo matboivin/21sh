@@ -6,43 +6,47 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/12 21:25:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/13 21:06:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft_mem.h"
-#include "libft_str.h"
 #include "sh_lexer.h"
 
 /*
-** Lexer
+** Lexer: lexical analyzer
+**
+** create_lexer()   :  Constructor
+** malloc_lexer()   :  Malloc function
+** destroy_lexer()  :  Destructor
+** free_lexer()     :  Free function
 */
 
-void		create_lexer(t_lexer *lexer, size_t capacity)
+void		create_lexer(t_lexer *lexer, size_t p_capacity)
 {
 	lexer->size = 0;
-	lexer->capacity = capacity;
-	lexer->tokens = ft_calloc(capacity, sizeof(t_token));
+	lexer->capacity = p_capacity;
+	lexer->tokens = ft_calloc((p_capacity + 1), sizeof(t_token *));
 }
 
-t_lexer		*malloc_lexer(size_t capacity)
+t_lexer		*malloc_lexer(size_t p_capacity)
 {
 	t_lexer	*result;
 
 	result = malloc(sizeof(t_lexer));
 	if (!result)
 		return (NULL);
-	create_lexer(result, capacity);
+	create_lexer(result, p_capacity);
 	return (result);
 }
 
-void		destroy_lexer(t_lexer lexer)
+void		destroy_lexer(t_lexer to_destroy)
 {
-	lexer.size = 0;
-	lexer.capacity = 0;
-	if (lexer.tokens)
-		free(lexer.tokens);
+	if (to_destroy.tokens)
+		delete_tokens(to_destroy.tokens, to_destroy.capacity);
+	to_destroy.size = 0;
+	to_destroy.capacity = 0;
 }
 
 void		free_lexer(t_lexer *to_free)

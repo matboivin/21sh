@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/12 21:23:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/13 20:24:29 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@
 void	print_usage(void);
 
 /*
-** Frees the allocated memory
+** Frees all the allocated memory
 */
 
 void	free_all(t_shctrl ft_sh);
 
 /*
-** Frees the allocated memory and exits with the status passed as parameter
+** Frees all the allocated memory and exits with the status passed as parameter
 */
 
 void	exit_ft_sh(int status, t_shctrl ft_sh);
 
 /*
-** Prints and error messages, frees the allocated memory and exits with 1
+** Prints an error message, frees all the allocated memory and exits with 1
 */
 
 void	exit_error(char *target, t_shctrl ft_sh);

@@ -38,9 +38,13 @@ SRC_FILES	+=	shell_loop.c
 
 # LEXER #
 
-SRC_FILES	+=	fill_lexer.c			\
+SRC_FILES	+=	add_token_to_lexer.c	\
+				fill_lexer.c			\
+				get_token_type.c		\
+				increase_lexer.c		\
 				lexer.c					\
-				tokens.c
+				lexer_is_full.c			\
+				token.c
 
 # SIGNAL HANDLING #
 
