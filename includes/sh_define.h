@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 15:05:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/13 19:50:39 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 */
 
 # define DEFAULT_CAPACITY 300
-# define MAX_TOKENS 15
+# define MAX_TOKENS 19
 
 # define ARGS_SEP ' '
 # define ENVKEY_SEP '='

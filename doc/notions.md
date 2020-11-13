@@ -14,6 +14,7 @@
 
 - [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 - [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bash.html)
+- [Difference between ${} and $() in Bash](https://stackoverflow.com/questions/27472540/difference-between-and-in-bash/27472808)
 
 ### Env
 
