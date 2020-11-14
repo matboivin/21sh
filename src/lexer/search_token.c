@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 20:16:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/14 21:30:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/14 22:06:47 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_regex	g_regex_list[] =
 	{ "\t", 1, TOKEN_EAT },
 	{ "\r", 1, TOKEN_EAT },
 	{ "\f", 1, TOKEN_EAT },
-	{ NULL, 0, TOKEN_TEXT }
+	{ NULL, 0, TOKEN_NOT_FOUND }
 };
 
 /*
@@ -51,5 +51,5 @@ t_regex		search_token(char *input)
 			return (g_regex_list[i]);
 		i++;
 	}
-	return (g_regex_list[TOKEN_TEXT]);
+	return (g_regex_list[TOKEN_NOT_FOUND]);
 }

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/14 21:34:58 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/14 22:06:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 typedef enum	e_tok_type
 {
-	TOKEN_TEXT = 0,
+	TOKEN_NOT_FOUND = 0,
 	TOKEN_AND,
 	TOKEN_EAT,
 	TOKEN_EQUAL,
@@ -34,7 +34,8 @@ typedef enum	e_tok_type
 	TOKEN_NEG,
 	TOKEN_PIPE,
 	TOKEN_REDIR,
-	TOKEN_SEMICOLON
+	TOKEN_SEMICOLON,
+	TOKEN_TEXT
 }				t_tok_type;
 
 typedef struct	s_regex
