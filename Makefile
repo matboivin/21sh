@@ -23,8 +23,8 @@ INC_FILES	=	ft_sh.h					\
 
 SRC_FILES	=	main.c					\
 				sh_ctrl.c				\
+				print_error.c			\
 				print_usage.c			\
-				exit_error.c			\
 				exit_ft_sh.c			\
 				free_all.c
 

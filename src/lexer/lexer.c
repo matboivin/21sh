@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/14 20:18:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/14 21:37:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,19 @@ void		print_lexer(t_lexer *lexer)
 
 	i = 0;
 	ft_printf("----------- DEBUG: LEXER -----------\n");
-	ft_printf("size: %ld\n", lexer->size);
-	ft_printf("capacity: %ld\n", lexer->capacity);
-	ft_printf("tokens:\n");
-	while (i < lexer->size)
+	if (lexer)
 	{
 		ft_printf(
-			"  %ld: %s | len: %ld\n",
-			i, lexer->tokens[i]->content, lexer->tokens[i]->len);
-		i++;
+			"size: %ld\ncapacity: %ld\ntokens:\n",
+			lexer->size, lexer->capacity);
+		while (i < lexer->size)
+		{
+			ft_printf(
+				"  %ld: %s | len: %ld\n",
+				i, lexer->tokens[i]->content, lexer->tokens[i]->len);
+			i++;
+		}
 	}
+	else
+		ft_printf("Lexer is empty\n");
 }
