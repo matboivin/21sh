@@ -34,17 +34,18 @@ SRC_FILES	+=	ft_env.c
 
 # INPUT PROCESSING #
 
-SRC_FILES	+=	shell_loop.c
+SRC_FILES	+=	shell_loop.c			\
+				parse_command.c
 
 # LEXER #
 
 SRC_FILES	+=	add_token_to_lexer.c	\
-				fill_lexer.c			\
-				get_token_type.c		\
 				increase_lexer.c		\
 				lexer.c					\
 				lexer_is_full.c			\
-				token.c
+				search_token.c			\
+				token.c					\
+				tokenize.c
 
 # SIGNAL HANDLING #
 
@@ -82,7 +83,8 @@ OBJ_DIR		=	obj
 
 SUB_DIRS	=	builtin				\
 				input_processing	\
-				parsing				\
+				lexer				\
+				parser				\
 				subsystems			\
 				utils
 

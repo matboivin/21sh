@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_token_type.c                                   :+:      :+:    :+:   */
+/*   search_token.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 20:16:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 23:17:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/14 20:02:16 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static t_regex	g_regex_list[] =
 };
 
 /*
-** This function searches if input is a token and return its type
+** This function searches if input is a token
 */
 
-t_regex		get_token_type(char *input)
+t_regex		search_token(char *input)
 {
 	int		i;
 

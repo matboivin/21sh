@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 15:21:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/12 21:24:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/14 20:24:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 ** Main loop
 */
 
-int		shell_loop(t_shctrl ft_sh);
+int		shell_loop(t_shctrl *ft_sh);
+
+/*
+** Parses the command input
+*/
+
+int		parse_command(t_shctrl *ft_sh, char *user_input);
 
 #endif

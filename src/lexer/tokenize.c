@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_lexer.c                                       :+:      :+:    :+:   */
+/*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 23:16:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/14 20:21:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_str.h"
 #include "libft_printf.h"
 #include "sh_lexer.h"
+
+/*
+** This function splits the input string into tokens and handles syntax errors
+*/
 
 // static int		raise_syntax_error(const char *token)
 // {
@@ -23,36 +27,32 @@
 // 	return (FAIL_RET);
 // }
 
-int				fill_lexer(char *input, t_lexer *lexer)
+int				tokenize(t_lexer *lexer, char *input)
 {
 	t_regex		found;
-	//t_regex	prev;
+	const char	*backup;
 
+	backup = input;
 	while (input && *input)
 	{
-		found = get_token_type(input);
-		if (found.type && found.type == TOKEN_EAT)
-			input++;
-		else if (found.type)
+		found = search_token(input);
+		if (found.type && backup != input)
+			add_token_to_lexer(lexer, backup, (input - backup), TOKEN_TEXT);
+		if (found.type)
 		{
 			if (found.type == TOKEN_BACKSLASH)
 			{
 				//TODO: handle escaping
-				ft_printf("Regex: %s\n", found.op);
 			}
-			else
-			{
-				ft_printf("Regex: %s\n", found.op);
+			else if (found.type != TOKEN_EAT)
 				add_token_to_lexer(lexer, found.op, found.len, found.type);
-			}
 			input += found.len;
+			backup = input;
 		}
 		else
-		{
-			ft_printf("Input: %s\n", input);
-			add_token_to_lexer(lexer, input, ft_strlen(input), TOKEN_TEXT);
-			input += ft_strlen(input);
-		}
+			input++;
 	}
+	if (backup != input)
+		add_token_to_lexer(lexer, backup, (input - backup), TOKEN_TEXT);
 	return (0);
 }

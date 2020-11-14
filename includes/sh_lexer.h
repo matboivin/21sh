@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 23:29:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/14 20:21:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void			delete_tokens(t_token **tokens, size_t size);
 void			create_lexer(t_lexer *lexer, size_t p_capacity);
 t_lexer			*malloc_lexer(size_t p_capacity);
 void			destroy_lexer(t_lexer to_destroy);
-void			free_lexer(t_lexer *to_free);
+void			free_lexer(t_lexer **to_free);
 
 /*
 ** Checks whether the lexer is full
@@ -114,13 +114,13 @@ void			add_token_to_lexer(
 ** Searches if input is a token
 */
 
-t_regex			get_token_type(char *input);
+t_regex			search_token(char *input);
 
 /*
-** Fills the lexer from the input string and handles syntax errors
+** Splits the input string into tokens and handles syntax errors
 */
 
-int				fill_lexer(char *input, t_lexer *lexer);
+int				tokenize(t_lexer *lexer, char *input);
 
 /*
 ** Debug

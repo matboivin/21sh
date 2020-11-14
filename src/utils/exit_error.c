@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/12 21:23:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/14 20:00:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** with 1
 */
 
-void		exit_error(char *target, t_shctrl ft_sh)
+void		exit_error(char *target, t_shctrl *ft_sh)
 {
 	char	*msg;
 

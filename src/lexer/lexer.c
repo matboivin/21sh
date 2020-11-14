@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 23:30:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/14 20:18:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,17 @@ t_lexer		*malloc_lexer(size_t p_capacity)
 
 void		destroy_lexer(t_lexer to_destroy)
 {
-	delete_tokens(to_destroy.tokens, to_destroy.size);
+	if (to_destroy.tokens)
+		delete_tokens(to_destroy.tokens, to_destroy.size);
 }
 
-void		free_lexer(t_lexer *to_free)
+void		free_lexer(t_lexer **to_free)
 {
 	if (to_free)
 	{
-		destroy_lexer(*to_free);
-		free(to_free);
+		destroy_lexer(**to_free);
+		free(*to_free);
+		*to_free = NULL;
 	}
 }
 
@@ -61,7 +63,7 @@ void		print_lexer(t_lexer *lexer)
 	size_t	i;
 
 	i = 0;
-	ft_printf("----------- LEXER -----------\n");
+	ft_printf("----------- DEBUG: LEXER -----------\n");
 	ft_printf("size: %ld\n", lexer->size);
 	ft_printf("capacity: %ld\n", lexer->capacity);
 	ft_printf("tokens:\n");
