@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/14 22:06:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/15 15:25:46 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ typedef enum	e_tok_type
 	TOKEN_ERR,
 	TOKEN_DBLAND,
 	TOKEN_DBLOR,
+	TOKEN_HASH,
 	TOKEN_NEG,
 	TOKEN_PIPE,
+	TOKEN_QUOTE,
 	TOKEN_REDIR,
 	TOKEN_SEMICOLON,
 	TOKEN_TEXT
