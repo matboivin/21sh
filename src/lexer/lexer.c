@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/14 21:37:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/15 14:47:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		print_lexer(t_lexer *lexer)
 	size_t	i;
 
 	i = 0;
-	ft_printf("----------- DEBUG: LEXER -----------\n");
+	ft_printf("\n----------- DEBUG: LEXER -----------\n");
 	if (lexer)
 	{
 		ft_printf(
@@ -79,4 +79,5 @@ void		print_lexer(t_lexer *lexer)
 	}
 	else
 		ft_printf("Lexer is empty\n");
+	ft_printf("------------------------------------\n");
 }
