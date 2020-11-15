@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/15 21:13:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/15 21:31:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static void	handle_text(t_lexer *lexer, char **s)
 	add_token_to_lexer(lexer, *s, ft_strlen(*s), TOKEN_TEXT);
 	ft_strdel(s);
 }
+
+// TODO: ' and !
 
 static int	handle_strong_quotes(t_lexer *lexer, char **input)
 {
@@ -79,7 +81,7 @@ static void	handle_quotes(t_lexer *lexer, char **input)
 	if (**input == STRONG_QUOTE)
 		handle_strong_quotes(lexer, input);
 	else
-		handle_weak_quotes(lexer, input);
+		handle_weak_quotes(lexer, input); // tmp
 }
 
 /*
