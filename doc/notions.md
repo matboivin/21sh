@@ -84,14 +84,21 @@ newfd -----------------------------------+
 
 Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/2318-c--programmation-systeme-execve-fork-et-pipe)
 
+### Lexer
+
+- [Gnu.org: Tokenization](https://gcc.gnu.org/onlinedocs/cpp/Tokenization.html)
+
 ### Lexer, Parser and AST
 
 - [Let’s Build A Simple Interpreter](https://ruslanspivak.com/lsbasi-part1/)
+- [Lexing, Parsing & Evaluation](http://www-igm.univ-mlv.fr/~forax/ens/java-avance/cours/pdf/old/Generation%20de%20code%201.pdf)
+- [Lecture 4: Implementing Lexers and Parsers](http://www.cse.chalmers.se/edu/year/2015/course/DAT150/lectures/proglang-04.html)
+
+### Parser and AST
+
 - [Compiler Design - Top-Down Parser](https://www.tutorialspoint.com/compiler_design/compiler_design_top_down_parser.htm)
 - [Shunting-yard algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm)
 - [Grammars and Parsing](http://www.cs.cornell.edu/courses/cs2112/2015fa/lectures/lec_parsing/)
-- [Lexing, Parsing & Evaluation](http://www-igm.univ-mlv.fr/~forax/ens/java-avance/cours/pdf/old/Generation%20de%20code%201.pdf)
-- [Lecture 4: Implementing Lexers and Parsers](http://www.cse.chalmers.se/edu/year/2015/course/DAT150/lectures/proglang-04.html)
 - [Analyse syntaxique : l'AST](http://www.gaudry.be/langages-analyse-syntaxique-ast.html)
 
 ### Misc.
