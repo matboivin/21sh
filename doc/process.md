@@ -85,9 +85,24 @@ Resource: [3.7.5 Exit Status](https://www.gnu.org/software/bash/manual/html_node
 
 > In all cases, Bash ignores `SIGQUIT`.  [(Source)](https://www.gnu.org/software/bash/manual/html_node/Signals.html)
 
+### Lexer
+
+- Tokenize the input.
+- Send the command line to the lexer.
+
+#### Quoting/escaping meta-characters
+
+> First thing you have to understand is that certain characters, called meta-characters, have special meanings. The actual meaning depends on the program that sees this meta-character. Some characters are special to the Unix shell, and some are special to a utility like sed or grep.  
+Before you study regular expressions, it is important that you understand how to use the shell to send regular expressions to a program. Or to put it another way, you want to say "Hey Shell. Ignore these meta-characters. I want the utility to treat them special, not you!" The mechanism to do this is called quoting. In other works, you put quotes around the meta-characters to inticate to the shell that they are not special - as far as the shell is concerned. When you quote a character, you ask the shell to leave it alone - and pass it on unchanged to the utility.  [(Source)](https://www.grymoire.com/Unix/Quote.html)
+
+| Symbol   | Use                    |
+| -------- | ---------------------- |
+| `\`      | Single Character Quote |
+| `"`      | Weak Quotes            |
+| `'`      | Strong Quotes          |
+
 ### Parsing
 
-- Send the command line to the lexer.
 - The parser builds the AST.
 
 ## Built-in commands

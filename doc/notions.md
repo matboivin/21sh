@@ -87,6 +87,7 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 ### Lexer
 
 - [Gnu.org: Tokenization](https://gcc.gnu.org/onlinedocs/cpp/Tokenization.html)
+- [UNIX SHELL Quote Tutorial](https://www.grymoire.com/Unix/Quote.html)
 
 ### Lexer, Parser and AST
 
