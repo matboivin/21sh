@@ -85,11 +85,19 @@ Resource: [3.7.5 Exit Status](https://www.gnu.org/software/bash/manual/html_node
 
 > In all cases, Bash ignores `SIGQUIT`.  [(Source)](https://www.gnu.org/software/bash/manual/html_node/Signals.html)
 
+### Parsing
+
+- The command string is passed to the lexer
+- The string is split into tokens
+- The parser transforms the tokens into and abstract syntaxt tree
+- Traverse the abstract syntax tree to execute the commands
+
 ### Lexer
 
 - Pass the command line to the lexer
 - Tokenize the input
   - Process input char by char
+  - Backtracking
 - Pass the tokens to the parser
 
 #### Quoting/escaping meta-characters

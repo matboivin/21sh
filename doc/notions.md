@@ -88,6 +88,7 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 
 - [Gnu.org: Tokenization](https://gcc.gnu.org/onlinedocs/cpp/Tokenization.html)
 - [UNIX SHELL Quote Tutorial](https://www.grymoire.com/Unix/Quote.html)
+- [Parsing command line arguments finite state machine backtracking](https://jawher.me/parsing-command-line-arguments-finite-state-machine-backtracking/)
 
 ### Lexer, Parser and AST
 
