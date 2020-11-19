@@ -87,8 +87,10 @@ Resource: [3.7.5 Exit Status](https://www.gnu.org/software/bash/manual/html_node
 
 ### Lexer
 
-- Tokenize the input.
-- Send the command line to the lexer.
+- Pass the command line to the lexer
+- Tokenize the input
+  - Process input char by char
+- Pass the tokens to the parser
 
 #### Quoting/escaping meta-characters
 
