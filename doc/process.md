@@ -100,6 +100,8 @@ Resource: [3.7.5 Exit Status](https://www.gnu.org/software/bash/manual/html_node
   - Backtracking
 - Pass the tokens to the parser
 
+See 2.3 Token Recognition: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
+
 #### Quoting/escaping meta-characters
 
 > First thing you have to understand is that certain characters, called meta-characters, have special meanings. The actual meaning depends on the program that sees this meta-character. Some characters are special to the Unix shell, and some are special to a utility like sed or grep.  
@@ -110,6 +112,8 @@ Before you study regular expressions, it is important that you understand how to
 | `\`      | Single Character Quote |
 | `"`      | Weak Quotes            |
 | `'`      | Strong Quotes          |
+
+See 2.2 Quoting: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
 
 ### Parsing
 
