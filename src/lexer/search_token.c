@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 20:16:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/15 20:06:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/20 20:43:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 
 static t_regex	g_regex_list[] =
 {
-	{ "&&", 2, TOKEN_DBLAND },
-	{ "||", 2, TOKEN_DBLOR },
-	{ ">>", 2, TOKEN_REDIR },
-	{ ";;", 2, TOKEN_ERR },
+	{ "&&", 2, TOKEN_AND_IF },
+	{ "||", 2, TOKEN_OR_IF },
+	{ ">>", 2, TOKEN_DGREAT },
+	{ "<<", 2, TOKEN_DLESS },
+	{ ";;", 2, TOKEN_DSEMI },
 	{ "! ", 2, TOKEN_NEG },
 	{ "\\", 1, TOKEN_BACKSLASH },
 	{ "&", 1, TOKEN_AND },
 	{ "=", 1, TOKEN_EQUAL },
 	{ "#", 1, TOKEN_HASH },
 	{ "|", 1, TOKEN_PIPE },
-	{ ">", 1, TOKEN_REDIR },
-	{ "<", 1, TOKEN_REDIR },
-	{ ";", 1, TOKEN_SEMICOLON },
+	{ ">", 1, TOKEN_GREAT },
+	{ "<", 1, TOKEN_LESS },
+	{ ";", 1, TOKEN_SEMI },
 	{ "\n", 1, TOKEN_EAT },
 	{ " ", 1, TOKEN_EAT },
 	{ "\v", 1, TOKEN_EAT },

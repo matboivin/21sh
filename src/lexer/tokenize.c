@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/15 21:31:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/20 20:30:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int			tokenize(t_lexer *lexer, char *input)
 		token = search_token(input);
 		if (!stack && token.type == TOKEN_HASH)
 			break ;
-		if (token.type == TOKEN_ERR)
+		if (token.type == TOKEN_DSEMI)
 			return (raise_syntax_error(token.op));
 		if (token.type == TOKEN_BACKSLASH)
 		{

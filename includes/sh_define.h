@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/15 20:08:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/20 20:43:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 */
 
 # define DEFAULT_CAPACITY 42
-# define MAX_TOKENS 20
+# define MAX_TOKENS 21
 
 # define STRONG_QUOTE '\''
 # define WEAK_QUOTE '\"'
