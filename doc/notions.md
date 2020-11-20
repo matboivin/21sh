@@ -84,17 +84,19 @@ newfd -----------------------------------+
 
 Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/2318-c--programmation-systeme-execve-fork-et-pipe)
 
-### Lexer
-
-- [Gnu.org: Tokenization](https://gcc.gnu.org/onlinedocs/cpp/Tokenization.html)
-- [UNIX SHELL Quote Tutorial](https://www.grymoire.com/Unix/Quote.html)
-- [Parsing command line arguments finite state machine backtracking](https://jawher.me/parsing-command-line-arguments-finite-state-machine-backtracking/)
-
 ### Lexer, Parser and AST
 
 - [Let’s Build A Simple Interpreter](https://ruslanspivak.com/lsbasi-part1/)
 - [Lexing, Parsing & Evaluation](http://www-igm.univ-mlv.fr/~forax/ens/java-avance/cours/pdf/old/Generation%20de%20code%201.pdf)
 - [Lecture 4: Implementing Lexers and Parsers](http://www.cse.chalmers.se/edu/year/2015/course/DAT150/lectures/proglang-04.html)
+- [Grammar-Lexer-Parser Pipeline](https://createlang.rs/01_calculator/grammar_lexer_parser.html)
+- [Parsing expression grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar)
+
+### Lexer
+
+- [Gnu.org: Tokenization](https://gcc.gnu.org/onlinedocs/cpp/Tokenization.html)
+- [UNIX SHELL Quote Tutorial](https://www.grymoire.com/Unix/Quote.html)
+- [Parsing command line arguments finite state machine backtracking](https://jawher.me/parsing-command-line-arguments-finite-state-machine-backtracking/)
 
 ### Parser and AST
 
@@ -102,6 +104,7 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 - [Shunting-yard algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm)
 - [Grammars and Parsing](http://www.cs.cornell.edu/courses/cs2112/2015fa/lectures/lec_parsing/)
 - [Analyse syntaxique : l'AST](http://www.gaudry.be/langages-analyse-syntaxique-ast.html)
+- [The ANTLR Mega Tutorial](https://tomassetti.me/antlr-mega-tutorial/)
 
 ### Misc.
 
