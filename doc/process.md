@@ -126,3 +126,7 @@ See 2.2 Quoting: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onl
 > If no command name is specified following the environment specifications, the resulting environment is printed. This is like specifying the printenv program.
 
 - [23.2 env: Run a command in a modified environment](https://www.gnu.org/software/coreutils/manual/html_node/env-invocation.html)
+
+### unset
+
+[unset(1p) [posix man page]](https://www.unix.com/man-page/posix/1p/unset/)
