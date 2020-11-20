@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/20 20:30:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/20 21:00:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	raise_matching_error(char c)
 
 static void	handle_text(t_lexer *lexer, char **s)
 {
-	add_token_to_lexer(lexer, *s, ft_strlen(*s), TOKEN_TEXT);
+	add_token_to_lexer(lexer, *s, ft_strlen(*s), TOKEN_WORD);
 	ft_strdel(s);
 }
 
