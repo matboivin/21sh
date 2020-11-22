@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/22 18:29:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/22 19:20:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,14 @@ t_regex			search_token(char *input);
 */
 
 int				tokenize(t_lexer *lexer, char *input);
+
+/*
+** Token handlers
+*/
+
+int				handle_token(t_lexer *lexer, t_regex token, char **stack);
+void			handle_text(t_lexer *lexer, char **stack);
+void			handle_quote(t_lexer *lexer, char **input, char quote_type);
 
 /*
 ** Debug
