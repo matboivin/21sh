@@ -40,6 +40,9 @@ SRC_FILES	+=	shell_loop.c			\
 # LEXER #
 
 SRC_FILES	+=	add_token_to_lexer.c	\
+				handle_quote.c			\
+				handle_text.c			\
+				handle_token.c			\
 				increase_lexer.c		\
 				lexer.c					\
 				lexer_is_full.c			\

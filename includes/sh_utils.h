@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/14 22:00:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/22 19:02:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_usage(void);
 */
 
 void	print_syntax_error(const char *token);
-void	print_match_error(char c);
+void	print_matching_error(char c);
 
 /*
 ** Frees all the allocated memory

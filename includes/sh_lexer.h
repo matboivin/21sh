@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/20 21:00:46 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/22 19:20:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef enum	e_tok_type
 	TOKEN_NOT_FOUND = 0,
 	TOKEN_AND,
 	TOKEN_AND_IF,
-	TOKEN_BACKSLASH,
 	TOKEN_EAT,
 	TOKEN_EQUAL,
 	TOKEN_DGREAT,
@@ -35,7 +34,6 @@ typedef enum	e_tok_type
 	TOKEN_DSEMI,
 	TOKEN_GREAT,
 	TOKEN_LESS,
-	TOKEN_HASH,
 	TOKEN_NEG,
 	TOKEN_NEWLINE,
 	TOKEN_OR_IF,
@@ -128,6 +126,14 @@ t_regex			search_token(char *input);
 */
 
 int				tokenize(t_lexer *lexer, char *input);
+
+/*
+** Token handlers
+*/
+
+int				handle_token(t_lexer *lexer, t_regex token, char **stack);
+void			handle_text(t_lexer *lexer, char **stack);
+void			handle_quote(t_lexer *lexer, char **input, char quote_type);
 
 /*
 ** Debug
