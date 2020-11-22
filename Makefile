@@ -83,8 +83,9 @@ OBJ_DIR		=	obj
 
 SUB_DIRS	=	builtin				\
 				input_processing	\
-				lexer				\
-				parser				\
+				parsing/lexer		\
+				parsing/parser		\
+				parsing/tree		\
 				subsystems			\
 				utils
 

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/20 21:00:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/22 17:29:45 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static int	handle_strong_quotes(t_lexer *lexer, char **input)
 		handle_text(lexer, &stack);
 		return (0);
 	}
+	ft_strdel(&stack);
 	return (raise_matching_error(STRONG_QUOTE));
 }
 
@@ -73,6 +74,7 @@ static int	handle_weak_quotes(t_lexer *lexer, char **input)
 		handle_text(lexer, &stack);
 		return (0);
 	}
+	ft_strdel(&stack);
 	return (raise_matching_error(WEAK_QUOTE));
 }
 
