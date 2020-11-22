@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/22 17:29:45 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/22 18:18:22 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,75 +15,19 @@
 #include "sh_lexer.h"
 #include "sh_utils.h"
 
-/*
-** This function raises a syntax error
-*/
-
-static int	raise_syntax_error(const char *token)
+static void	handle_word(t_lexer *lexer, char **stack)
 {
-	g_status = INCORRECT_USAGE;
-	print_syntax_error(token);
-	return (FAIL_RET);
+	add_token_to_lexer(lexer, *stack, ft_strlen(*stack), TOKEN_WORD);
+	ft_strdel(stack);
 }
 
-static int	raise_matching_error(char c)
+static int	handle_token(t_lexer *lexer, t_regex token, char **stack)
 {
-	print_match_error(c);
-	return (FAIL_RET);
-}
-
-static void	handle_text(t_lexer *lexer, char **s)
-{
-	add_token_to_lexer(lexer, *s, ft_strlen(*s), TOKEN_WORD);
-	ft_strdel(s);
-}
-
-// TODO: ' and !
-
-static int	handle_strong_quotes(t_lexer *lexer, char **input)
-{
-	char	*stack;
-
-	stack = NULL;
-	stack = ft_strpushc(stack, input);
-	while (**input && **input != STRONG_QUOTE)
-		stack = ft_strpushc(stack, input);
-	if (**input == STRONG_QUOTE)
-	{
-		stack = ft_strpushc(stack, input);
-		handle_text(lexer, &stack);
-		return (0);
-	}
-	ft_strdel(&stack);
-	return (raise_matching_error(STRONG_QUOTE));
-}
-
-// TODO: Handle var expansion and cmd subtition
-
-static int	handle_weak_quotes(t_lexer *lexer, char **input)
-{
-	char	*stack;
-
-	stack = NULL;
-	stack = ft_strpushc(stack, input);
-	while (**input && **input != WEAK_QUOTE)
-		stack = ft_strpushc(stack, input);
-	if (**input == WEAK_QUOTE)
-	{
-		stack = ft_strpushc(stack, input);
-		handle_text(lexer, &stack);
-		return (0);
-	}
-	ft_strdel(&stack);
-	return (raise_matching_error(WEAK_QUOTE));
-}
-
-static void	handle_quotes(t_lexer *lexer, char **input)
-{
-	if (**input == STRONG_QUOTE)
-		handle_strong_quotes(lexer, input);
-	else
-		handle_weak_quotes(lexer, input); // tmp
+	if (*stack && stack)
+		handle_word(lexer, stack);
+	if (token.type != TOKEN_EAT)
+		add_token_to_lexer(lexer, token.op, token.len, token.type);
+	return (token.len);
 }
 
 /*
@@ -99,29 +43,12 @@ int			tokenize(t_lexer *lexer, char *input)
 	while (input && *input)
 	{
 		token = search_token(input);
-		if (!stack && token.type == TOKEN_HASH)
-			break ;
-		if (token.type == TOKEN_DSEMI)
-			return (raise_syntax_error(token.op));
-		if (token.type == TOKEN_BACKSLASH)
-		{
-			input++;
-			stack = ft_strpushc(stack, &input);
-		}
-		else if ((*input == STRONG_QUOTE) || (*input == WEAK_QUOTE))
-			handle_quotes(lexer, &input);
-		else if (token.type && token.type != TOKEN_HASH)
-		{
-			if (stack)
-				handle_text(lexer, &stack);
-			if (token.type != TOKEN_EAT)
-				add_token_to_lexer(lexer, token.op, token.len, token.type);
-			input += token.len;
-		}
+		if (token.type)
+			input += handle_token(lexer, token, &stack);
 		else
 			stack = ft_strpushc(stack, &input);
 	}
 	if (stack)
-		handle_text(lexer, &stack);
+		handle_word(lexer, &stack);
 	return (EXIT_SUCCESS);
 }
