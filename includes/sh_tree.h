@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh.h                                            :+:      :+:    :+:   */
+/*   sh_tree.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/22 20:34:57 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/22 20:34:29 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/22 20:38:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SH_H
-# define FT_SH_H
+#ifndef SH_TREE_H
+# define SH_TREE_H
 
 # include "sh_define.h"
-# include "sh_utils.h"
-# include "sh_env.h"
-# include "sh_subsystems.h"
-# include "sh_input_processing.h"
-# include "sh_lexer.h"
-# include "sh_tree.h"
-# include "sh_parser.h"
-# include "sh_ctrl.h"
-# include "sh_builtin.h"
+
+typedef struct			s_ast_node
+{
+	// type
+	// parent?
+	struct s_ast_node	*left;
+	struct s_ast_node	*right;
+	// info
+}						t_ast_node;
 
 #endif

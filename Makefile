@@ -17,6 +17,7 @@ INC_FILES	=	ft_sh.h					\
 				sh_lexer.h				\
 				sh_parser.h				\
 				sh_subsystems.h			\
+				sh_tree.h				\
 				sh_utils.h
 
 # ********************************* C FILES ********************************** #
