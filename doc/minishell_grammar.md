@@ -8,7 +8,6 @@ Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/online
    ------------------------------------------------------- */
 %token  WORD
 %token  NEWLINE
-%token  IO_NUMBER
 
 
 /* The following are the operators (see XBD Operator)
@@ -62,10 +61,7 @@ cmd_suffix       :            io_redirect
                  |            WORD
                  | cmd_suffix WORD
                  ;
-io_redirect      :           io_file
-                 | IO_NUMBER io_file
-                 ;
-io_file          : '<'       filename
+io_redirect      : '<'       filename
                  | '>'       filename
                  | DGREAT    filename
                  ;
