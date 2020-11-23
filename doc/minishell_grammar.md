@@ -67,8 +67,6 @@ io_redirect      : '<'       filename
                  ;
 filename         : WORD                      /* Apply rule 2 */
                  ;
-here_end         : WORD                      /* Apply rule 3 */
-                 ;
 linebreak        : NEWLINE
                  | /* empty */
                  ;
