@@ -1,6 +1,6 @@
 # Grammar for minishell
 
-Resource: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
+Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
 
 ```
 /* -------------------------------------------------------
@@ -28,10 +28,10 @@ Resource: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs
    ------------------------------------------------------- */
 %start program
 %%
-program          : linebreak complete_command linebreak
+program          : linebreak command linebreak
                  | linebreak
                  ;
-complete_command : list separator_op
+command          : list separator_op
                  | list
                  ;
 list             : list separator_op and_or
