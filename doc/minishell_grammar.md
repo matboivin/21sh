@@ -20,19 +20,16 @@ Resource: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs
 /*      '&&'      '||'     ';;'    */
 
 
-%token  DLESS  DGREAT
-/*      '<<'   '>>'    */
+%token  DGREAT
+/*      '>>'    */
 
 /* -------------------------------------------------------
    The Grammar
    ------------------------------------------------------- */
 %start program
 %%
-program          : linebreak complete_commands linebreak
+program          : linebreak complete_command linebreak
                  | linebreak
-                 ;
-complete_commands: complete_commands newline_list complete_command
-                 |                                complete_command
                  ;
 complete_command : list separator_op
                  | list
@@ -40,19 +37,12 @@ complete_command : list separator_op
 list             : list separator_op and_or
                  |                   and_or
                  ;
-and_or           :                         pipeline
-                 | and_or AND_IF linebreak pipeline
-                 | and_or OR_IF  linebreak pipeline
+and_or           :               pipe_sequence
+                 | and_or AND_IF pipe_sequence
+                 | and_or OR_IF  pipe_sequence
                  ;
-pipeline         :      pipe_sequence
-                 ;
-pipe_sequence    :                             command
-                 | pipe_sequence '|' linebreak command
-                 ;
-command          : simple_command
-                 | compound_command
-                 | compound_command redirect_list
-                 | function_definition
+pipe_sequence    :                   simple_command
+                 | pipe_sequence '|' simple_command
                  ;
 simple_command   : cmd_prefix cmd_word cmd_suffix
                  | cmd_prefix cmd_word
@@ -74,13 +64,8 @@ cmd_suffix       :            io_redirect
                  |            WORD
                  | cmd_suffix WORD
                  ;
-redirect_list    :               io_redirect
-                 | redirect_list io_redirect
-                 ;
 io_redirect      :           io_file
                  | IO_NUMBER io_file
-                 |           io_here
-                 | IO_NUMBER io_here
                  ;
 io_file          : '<'       filename
                  | '>'       filename
@@ -88,24 +73,15 @@ io_file          : '<'       filename
                  ;
 filename         : WORD                      /* Apply rule 2 */
                  ;
-io_here          : DLESS     here_end        /* Bonus */
-                 ;
 here_end         : WORD                      /* Apply rule 3 */
                  ;
-newline_list     :              NEWLINE
-                 | newline_list NEWLINE
-                 ;
-linebreak        : newline_list
+linebreak        : NEWLINE
                  | /* empty */
                  ;
 separator_op     : '&'
                  | ';'
                  ;
 separator        : separator_op linebreak
-                 | newline_list
-                 ;
-sequential_sep   : ';' linebreak
-                 | newline_list
                  ;
 ```
 
