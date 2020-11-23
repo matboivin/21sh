@@ -56,8 +56,6 @@ cmd_word         : WORD                   /* Apply rule 7b */
                  ;
 cmd_prefix       :            io_redirect
                  | cmd_prefix io_redirect
-                 |            ASSIGNMENT_WORD
-                 | cmd_prefix ASSIGNMENT_WORD
                  ;
 cmd_suffix       :            io_redirect
                  | cmd_suffix io_redirect
@@ -80,8 +78,6 @@ linebreak        : NEWLINE
                  ;
 separator_op     : '&'
                  | ';'
-                 ;
-separator        : separator_op linebreak
                  ;
 ```
 
