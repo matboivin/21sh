@@ -9,6 +9,7 @@ RM = /bin/rm
 # ********************************* INCLUDES ********************************* #
 
 INC_FILES	=	ft_sh.h					\
+				sh_ast.h				\
 				sh_builtin.h			\
 				sh_ctrl.h				\
 				sh_define.h				\
@@ -17,7 +18,6 @@ INC_FILES	=	ft_sh.h					\
 				sh_lexer.h				\
 				sh_parser.h				\
 				sh_subsystems.h			\
-				sh_tree.h				\
 				sh_utils.h
 
 # ********************************* C FILES ********************************** #
@@ -50,6 +50,10 @@ SRC_FILES	+=	add_token_to_lexer.c	\
 				search_token.c			\
 				token.c					\
 				tokenize.c
+
+# AST #
+
+SRC_FILES	+=	ast.c
 
 # SIGNAL HANDLING #
 
