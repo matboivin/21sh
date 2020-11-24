@@ -6,11 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/24 19:53:08 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/24 20:09:17 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_str.h"
+#include <stdlib.h>
 #include "sh_lexer.h"
 
 /*
@@ -37,7 +37,7 @@ int			tokenize(t_lexer *lexer, char *input)
 		else if (token.type)
 			input += handle_token(lexer, token, &stack);
 		else
-			stack = ft_strpushc(stack, &input);
+			stack = eat(stack, &input);
 	}
 	if (stack)
 		handle_text(lexer, &stack);

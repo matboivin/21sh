@@ -41,6 +41,7 @@ SRC_FILES	+=	shell_loop.c			\
 # LEXER #
 
 SRC_FILES	+=	add_token_to_lexer.c	\
+				eat.c					\
 				escape_char.c			\
 				get_next_token.c		\
 				handle_quote.c			\
