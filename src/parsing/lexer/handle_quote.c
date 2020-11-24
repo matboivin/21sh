@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:17:34 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/24 20:07:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/24 20:39:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@ static void	close_quote(t_lexer *lexer, char **input, char **stack)
 	handle_text(lexer, stack);
 }
 
-void		handle_quote(t_lexer *lexer, char **input, char quote_type)
+static void	raise_matching_error(char **stack, char quote_type)
+{
+	ft_strdel(stack);
+	print_matching_error(quote_type);
+}
+
+void		handle_quotes(t_lexer *lexer, char **input, char quote_type)
 {
 	char	*stack;
 
@@ -28,7 +34,7 @@ void		handle_quote(t_lexer *lexer, char **input, char quote_type)
 	stack = eat(stack, input);
 	while (**input && **input != quote_type)
 	{
-		if (**input == BACKSLASH)
+		if ((**input == BACKSLASH) && (quote_type == WEAK_QUOTE))
 			escape_char(input, &stack);
 		else
 			stack = eat(stack, input);
@@ -36,8 +42,5 @@ void		handle_quote(t_lexer *lexer, char **input, char quote_type)
 	if (**input == quote_type)
 		close_quote(lexer, input, &stack);
 	else
-	{
-		ft_strdel(&stack);
-		print_matching_error(quote_type);
-	}
+		raise_matching_error(&stack, quote_type);
 }
