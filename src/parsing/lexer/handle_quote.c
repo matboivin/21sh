@@ -6,19 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:17:34 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/22 19:29:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/24 19:51:08 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_str.h"
 #include "sh_utils.h"
 #include "sh_lexer.h"
-
-static void	escape_char(char **input, char **stack)
-{
-	*stack = ft_strpushc(*stack, input);
-	*stack = ft_strpushc(*stack, input);
-}
 
 static void	close_quote(t_lexer *lexer, char **input, char **stack)
 {

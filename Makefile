@@ -41,13 +41,14 @@ SRC_FILES	+=	shell_loop.c			\
 # LEXER #
 
 SRC_FILES	+=	add_token_to_lexer.c	\
+				escape_char.c			\
+				get_next_token.c		\
 				handle_quote.c			\
 				handle_text.c			\
 				handle_token.c			\
 				increase_lexer.c		\
 				lexer.c					\
 				lexer_is_full.c			\
-				search_token.c			\
 				token.c					\
 				tokenize.c
 

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/22 19:20:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/24 19:51:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef enum	e_tok_type
 	TOKEN_NOT_FOUND = 0,
 	TOKEN_AND,
 	TOKEN_AND_IF,
+	TOKEN_BACKSLASH,
 	TOKEN_EAT,
 	TOKEN_EQUAL,
 	TOKEN_DGREAT,
@@ -119,7 +120,7 @@ void			add_token_to_lexer(
 ** Searches if input is a token
 */
 
-t_regex			search_token(char *input);
+t_regex			get_next_token(char *input);
 
 /*
 ** Splits the input string into tokens and handles syntax errors
@@ -134,6 +135,7 @@ int				tokenize(t_lexer *lexer, char *input);
 int				handle_token(t_lexer *lexer, t_regex token, char **stack);
 void			handle_text(t_lexer *lexer, char **stack);
 void			handle_quote(t_lexer *lexer, char **input, char quote_type);
+void			escape_char(char **input, char **stack);
 
 /*
 ** Debug
