@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/24 19:13:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/24 21:22:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define SHELL_NAME "ft_sh"
 # define SHELL_PROMPT "ft_sh > "
+# define LINE_PROMPT "> "
 # define DEFAULT_ARGC 1
 
 # define FAIL_RET -1

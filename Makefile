@@ -35,8 +35,9 @@ SRC_FILES	+=	ft_env.c
 
 # INPUT PROCESSING #
 
-SRC_FILES	+=	shell_loop.c			\
-				parse_command.c
+SRC_FILES	+=	parse_command.c			\
+				prompt.c				\
+				shell_loop.c
 
 # LEXER #
 
