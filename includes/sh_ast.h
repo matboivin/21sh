@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 20:34:29 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/23 19:47:35 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/25 21:19:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef enum			e_node_type
 }						t_node_type;
 
 /*
-** AST node
+** Abstract Syntax Tree (AST) node
 **
 ** type: The node type
 ** parent: Pointer to the parent node
@@ -47,5 +47,10 @@ typedef struct			s_ast_node
 	struct s_ast_node	*right;
 	void				*expr;
 }						t_ast_node;
+
+void					create_ast_node(t_ast_node *ast);
+t_ast_node				*malloc_ast_node(void);
+void					destroy_ast(t_ast_node to_destroy);
+void					free_ast(t_ast_node **to_free);
 
 #endif

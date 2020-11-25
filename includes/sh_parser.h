@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:34:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/25 14:42:07 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/25 21:11:34 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include "sh_ast.h"
 
 /*
-** Processes the tokens according to the grammar and builds the AST
+** Processes the tokens into an Abstract Syntax Tree (AST)
 */
 
-void	parse(t_ast_node **parser, t_lexer *lexer);
+void	parse(t_ast_node **ast, t_lexer *lexer, size_t pos);
 
 #endif

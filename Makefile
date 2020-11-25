@@ -56,7 +56,8 @@ SRC_FILES	+=	add_token_to_lexer.c	\
 
 # PARSER #
 
-SRC_FILES	+=	parse.c
+SRC_FILES	+=	ast.c					\
+				parse.c
 
 # SIGNAL HANDLING #
 
