@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_command.c                                    :+:      :+:    :+:   */
+/*   get_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/24 21:28:03 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/25 14:43:25 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include "sh_input_processing.h"
 
 /*
-** This function parses the command input
+** This function gets the command input
 */
 
-int			parse_command(t_shctrl *ft_sh)
+int			get_command(t_shctrl *ft_sh)
 {
 	int		ret;
 	char	*user_input;

@@ -35,7 +35,7 @@ SRC_FILES	+=	ft_env.c
 
 # INPUT PROCESSING #
 
-SRC_FILES	+=	parse_command.c			\
+SRC_FILES	+=	get_command.c			\
 				prompt.c				\
 				shell_loop.c
 
@@ -54,9 +54,9 @@ SRC_FILES	+=	add_token_to_lexer.c	\
 				token.c					\
 				tokenize.c
 
-# AST #
+# PARSER #
 
-SRC_FILES	+=	ast.c
+SRC_FILES	+=	parse.c
 
 # SIGNAL HANDLING #
 

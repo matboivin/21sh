@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 15:21:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/24 20:55:32 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/25 14:44:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int		shell_loop(t_shctrl *ft_sh);
 char	*prompt(t_shctrl *ft_sh, const char *prompt);
 
 /*
-** Parses the command input
+** Gets the command input
 */
 
-int		parse_command(t_shctrl *ft_sh);
+int		get_command(t_shctrl *ft_sh);
 
 #endif
