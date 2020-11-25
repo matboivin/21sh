@@ -14,6 +14,7 @@ INC_FILES	=	ft_sh.h					\
 				sh_ctrl.h				\
 				sh_define.h				\
 				sh_env.h				\
+				sh_expr.h				\
 				sh_input_processing.h	\
 				sh_lexer.h				\
 				sh_parser.h				\

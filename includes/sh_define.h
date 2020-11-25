@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/24 21:22:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/25 21:41:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 */
 
 # define DEFAULT_CAPACITY 42
-# define MAX_TOKENS 20
+# define MAX_TOKENS 19
 
 # define COMMENT_START '#'
 # define BACKSLASH '\\'
