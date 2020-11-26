@@ -30,28 +30,17 @@ Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/online
 program          : linebreak command linebreak
                  | linebreak
                  ;
-command          : list separator_op
-                 | list
-                 ;
-list             : list separator_op and_or
-                 |                   and_or
-                 ;
-and_or           :               pipe_sequence
-                 | and_or AND_IF pipe_sequence
-                 | and_or OR_IF  pipe_sequence
+command          : pipe_sequence separator_op
+                 | pipe_sequence
                  ;
 pipe_sequence    :                   simple_command
                  | pipe_sequence '|' simple_command
                  ;
-simple_command   : cmd_prefix cmd_word cmd_suffix
-                 | cmd_prefix cmd_word
+simple_command   : cmd_prefix WORD cmd_suffix
+                 | cmd_prefix WORD
                  | cmd_prefix
-                 | cmd_name cmd_suffix
-                 | cmd_name
-                 ;
-cmd_name         : WORD                   /* Apply rule 7a */
-                 ;
-cmd_word         : WORD                   /* Apply rule 7b */
+                 | WORD cmd_suffix
+                 | WORD
                  ;
 cmd_prefix       :            io_redirect
                  | cmd_prefix io_redirect
@@ -61,11 +50,9 @@ cmd_suffix       :            io_redirect
                  |            WORD
                  | cmd_suffix WORD
                  ;
-io_redirect      : '<'       filename
-                 | '>'       filename
-                 | DGREAT    filename
-                 ;
-filename         : WORD                      /* Apply rule 2 */
+io_redirect      : '<'       WORD
+                 | '>'       WORD
+                 | DGREAT    WORD
                  ;
 linebreak        : NEWLINE
                  | /* empty */
