@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:31:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/26 16:15:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/26 21:38:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 typedef struct		s_io_redir
 {
 	t_tok_type		op;
-	char		*	filename;
+	char			*filename;
 }					t_io_redir;
 
 /*
