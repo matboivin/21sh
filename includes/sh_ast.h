@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 20:34:29 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/25 21:19:14 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/26 16:13:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef enum			e_node_type
 ** Abstract Syntax Tree (AST) node
 **
 ** type: The node type
-** parent: Pointer to the parent node
 ** left: Pointer to the left node
 ** right: Pointer to the right node
 ** expr: Pointer to the expression (one struct per expression)
@@ -42,7 +41,6 @@ typedef enum			e_node_type
 typedef struct			s_ast_node
 {
 	t_node_type			type;
-	struct s_ast_node	*parent;
 	struct s_ast_node	*left;
 	struct s_ast_node	*right;
 	void				*expr;

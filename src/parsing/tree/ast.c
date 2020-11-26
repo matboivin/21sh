@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:03:49 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/25 21:19:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/26 16:13:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 void			create_ast_node(t_ast_node *ast)
 {
 	ast->type = 0;
-	ast->parent = NULL;
 	ast->left = NULL;
 	ast->right = NULL;
 	ast->expr = NULL;
