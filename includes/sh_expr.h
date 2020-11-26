@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:31:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/25 21:56:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/26 16:15:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,6 @@
 # include "sh_parser.h"
 
 /*
-** Leaf node
-** filename : WORD
-*/
-
-typedef struct		s_filename
-{
-	char			*data;
-}					t_filename;
-
-/*
 ** io_redirect : '<'       filename
 **             | '>'       filename
 **             | DGREAT    filename
@@ -35,7 +25,7 @@ typedef struct		s_filename
 typedef struct		s_io_redir
 {
 	t_tok_type		op;
-	t_filename		filename;
+	char		*	filename;
 }					t_io_redir;
 
 /*
@@ -60,26 +50,6 @@ typedef struct		s_cmd_suffix
 }					t_cmd_suffix;
 
 /*
-** Leaf node
-** cmd_name : WORD
-*/
-
-typedef struct		s_cmd_name
-{
-	char			*data;
-}					t_cmd_name;
-
-/*
-** Leaf node
-** cmd_word : WORD
-*/
-
-typedef struct		s_cmd_word
-{
-	char			*data;
-}					t_cmd_word;
-
-/*
 ** simple_command : cmd_prefix cmd_word cmd_suffix
 **                | cmd_prefix cmd_word
 **                | cmd_prefix
@@ -90,8 +60,7 @@ typedef struct		s_cmd_word
 typedef struct		s_simple_cmd
 {
 	t_cmd_prefix	prefix;
-	t_cmd_word		cmd_word;
-	t_cmd_name		cmd_name;
+	char			*cmd;
 	t_cmd_suffix	suffix;
 }					t_simple_cmd;
 
@@ -117,29 +86,5 @@ typedef struct		s_and_or
 	t_tok_type		op;
 	struct s_and_or	*next;
 }					t_and_or;
-
-/*
-** list : list separator_op and_or
-**      |                   and_or
-*/
-
-typedef struct		s_list
-{
-	t_and_or		*and_or;
-	t_tok_type		sep_op;
-	struct s_list	*next;
-}					t_list;
-
-/*
-** command : list separator_op
-**         | list
-*/
-
-typedef struct		s_cmd
-{
-	t_list			*list;
-	t_tok_type		sep_op;
-	struct s_cmd	*next;
-}					t_cdm;
 
 #endif
