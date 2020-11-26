@@ -17,10 +17,10 @@ Le lexer gère les erreurs de syntaxe : `" foo`
 Le parser gère les erreurs de grammaire : `foo && && bar`
 
 Classe Node :
-- tableau de noeuds
 - type de noeud
 - noeud gauche
 - noeud droite
+- expression / data
 
 Objectif : générer la command table pour la partie exécution.  
 Penser aux fd pour les pipes et les redirections qui seront gérés dans la partie exécution.

@@ -54,6 +54,8 @@ dkms.conf
 # debug
 .gdb_history
 peda-session-ft_sh.txt
+ast.dot
+ast.ps
 
 ft_sh
 todo.txt

@@ -117,7 +117,14 @@ See 2.2 Quoting: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onl
 
 ### Parsing
 
-- The parser builds the AST.
+The parser:
+- checks for grammar errors
+- processes the tokens into an Abstract Syntax Tree (AST)
+
+## Execution
+
+- Eval all nodes
+- Execute: open fd, launch processes
 
 ## Built-in commands
 

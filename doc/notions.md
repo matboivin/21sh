@@ -107,6 +107,14 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 - [Grammars and Parsing](http://www.cs.cornell.edu/courses/cs2112/2015fa/lectures/lec_parsing/)
 - [Analyse syntaxique : l'AST](http://www.gaudry.be/langages-analyse-syntaxique-ast.html)
 - [The ANTLR Mega Tutorial](https://tomassetti.me/antlr-mega-tutorial/)
+- [DOT (graph description language)](https://en.wikipedia.org/wiki/DOT_(graph_description_language))
+
+```
+digraph graphname {
+    a -> b -> c;
+    b -> d;
+}
+```
 
 ### Misc.
 

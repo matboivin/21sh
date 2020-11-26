@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:53:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/25 21:11:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/26 21:29:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	destroy_shell(t_shctrl *ft_sh)
 	if (ft_sh->lexer)
 		free_lexer(&(ft_sh->lexer));
 	if (ft_sh->ast)
-		free_ast(&(ft_sh->ast));
+		free_ast(ft_sh->ast);
 }

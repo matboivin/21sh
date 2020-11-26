@@ -8,11 +8,10 @@ Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 
 ## TODO
 
-LEXER-PARSER-AST
+PARSER-AST
 
 Le plus gros du travail
 
-- Lexer : découpe la commande en tokens et checke les erreurs de syntaxe + procédure debug qui affiche les tokens
 - Le parser : checke les erreurs de grammaire et construit l'AST + procédure debug pour avoir l'arbre en .dot
 - Les fonctions nécessaires à l'AST
 
