@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/24 21:25:22 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:49:29 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct	s_token
 {
 	size_t		len;
 	t_tok_type	type;
-	char		*content;
+	char		*value;
 }				t_token;
 
 /*

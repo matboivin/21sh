@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:04:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/13 22:59:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:50:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_token	**dup_lexer(t_token **to_free, int max, size_t count)
 		while (to_free[i] && i < max)
 		{
 			result[i] = malloc_token(
-				to_free[i]->content, to_free[i]->len, to_free[i]->type);
+				to_free[i]->value, to_free[i]->len, to_free[i]->type);
 			i++;
 		}
 		delete_tokens(to_free, max);

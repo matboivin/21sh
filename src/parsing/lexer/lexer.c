@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/22 19:10:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:50:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void		print_lexer(t_lexer *lexer)
 		{
 			ft_printf(
 				"  %ld :\tlen: %ld\t|%s|\n",
-				i, lexer->tokens[i]->len, lexer->tokens[i]->content);
+				i, lexer->tokens[i]->len, lexer->tokens[i]->value);
 			i++;
 		}
 	}

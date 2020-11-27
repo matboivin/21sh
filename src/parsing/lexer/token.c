@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/14 20:15:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:50:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_token		create_token(const char *s, size_t p_len, t_tok_type p_type)
 
 	result.len = p_len;
 	result.type = p_type;
-	result.content = ft_strnew(p_len);
-	ft_strlcpy(result.content, s, (p_len + 1));
+	result.value = ft_strnew(p_len);
+	ft_strlcpy(result.value, s, (p_len + 1));
 	return (result);
 }
 
@@ -49,7 +49,7 @@ t_token		*malloc_token(const char *s, size_t p_len, t_tok_type p_type)
 
 void		destroy_token(t_token *to_destroy)
 {
-	ft_strdel(&to_destroy->content);
+	ft_strdel(&to_destroy->value);
 }
 
 void		free_token(t_token *to_free)
