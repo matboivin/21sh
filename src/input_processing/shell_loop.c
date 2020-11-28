@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:02:51 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/25 14:43:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/28 19:46:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			shell_loop(t_shctrl *ft_sh)
 {
 	while (!g_done)
 	{
-		get_command(ft_sh);
+		process_command(ft_sh);
 	}
 	free_all(ft_sh);
 #ifdef DEBUG
