@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/25 14:43:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/28 19:43:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,45 @@
 #include "sh_lexer.h"
 #include "sh_input_processing.h"
 
+static void	tokenize_input(t_shctrl *ft_sh)
+{
+	int		not_finished;
+	char	*user_input;
+
+	user_input = prompt(ft_sh, SHELL_PROMPT);
+	not_finished = tokenize(ft_sh->lexer, user_input);
+	ft_strdel(&user_input);
+	while (not_finished)
+	{
+		user_input = prompt(ft_sh, LINE_PROMPT);
+		not_finished = tokenize(ft_sh->lexer, user_input);
+		ft_strdel(&user_input);
+	}
+}
+
 /*
 ** This function gets the command input
 */
 
 int			get_command(t_shctrl *ft_sh)
 {
-	int		ret;
-	char	*user_input;
+// 	size_t	i;
 
-	user_input = prompt(ft_sh, SHELL_PROMPT);
+// #ifdef DEBUG
+// 	t_ast_node	*root;
+// 	root = ft_sh->ast;
+// #endif /* DEBUG */
+
+// 	i = 0;
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
-	ret = tokenize(ft_sh->lexer, user_input);
-	ft_strdel(&user_input);
-	while (ret)
-	{
-		user_input = prompt(ft_sh, LINE_PROMPT);
-		ret = tokenize(ft_sh->lexer, user_input);
-		ft_strdel(&user_input);
-	}
+	tokenize_input(ft_sh);
+// 	while (i < ft_sh->lexer->size)
+// 		parse(&(ft_sh->ast), ft_sh->lexer, i++);
+// 	print_ast(ft_sh->ast);
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
+	//print_ast(root);
 #endif /* DEBUG */
-	free_lexer(&(ft_sh->lexer));
+	destroy_shell(ft_sh);
 	return (g_status);
 }
