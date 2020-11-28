@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/26 21:21:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/28 20:19:56 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,50 @@
 ** This function creates a dot graph from a given Abstract Syntax Tree (AST)
 */
 
-static void		write_ast(int fd, t_ast_node *root)
+static void	write_leaf(int fd, t_ast_node *node)
 {
-	t_ast_node	*cursor;
-
-	cursor = root;
-	ft_dprintf(fd, "\n    \"%s\"", cursor->data);
-	while (cursor->right)
-	{
-		cursor = cursor->right;
-		ft_dprintf(fd, " -> \"%s\"", cursor->data);
-	}
-	ft_dprintf(fd, ";");
+	ft_dprintf(fd, "\n    \"%s\";", node->data);
 }
 
-void			print_ast(t_ast_node *root)
+static void	write_branch(int fd, t_ast_node *node)
 {
-	int			fd;
+	if (node->left)
+	{
+		ft_dprintf(
+			fd, "\n    \"%s\" -> \"%s\";", node->data, node->left->data);
+		write_branch(fd, node->left);
+	}
+	else
+		write_leaf(fd, node);
+	if (node->right)
+	{
+		ft_dprintf(
+			fd, "\n    \"%s\" -> \"%s\";", node->data, node->right->data);
+		write_branch(fd, node->right);
+	}
+	else
+		write_leaf(fd, node);
+}
+
+static void	write_ast(int fd, t_ast_node *root)
+{
+	ft_dprintf(fd, "digraph minishell_parsing {");
+	if (!root->left && !root->right)
+		write_leaf(fd, root);
+	else
+		write_branch(fd, root);
+	ft_dprintf(fd, "\n}");
+}
+
+void		print_ast(t_ast_node *root)
+{
+	int		fd;
 
 	if (!root)
 		return ;
 	fd = open(AST_DOT_FILE, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSIONS);
 	if (!fd)
 		exit(EXIT_FAILURE);
-	ft_dprintf(fd, "digraph minishell_parsing {");
 	write_ast(fd, root);
-	ft_dprintf(fd, "\n}");
 	close(fd);
 }
