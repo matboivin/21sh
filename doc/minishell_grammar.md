@@ -27,8 +27,9 @@ Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/online
    ------------------------------------------------------- */
 %start program
 %%
-program          : linebreak command linebreak
-                 | linebreak
+program          : command NEWLINE
+                 | NEWLINE
+                 | /* empty */
                  ;
 command          : pipe_sequence separator_op
                  | pipe_sequence
@@ -53,9 +54,6 @@ cmd_suffix       :            io_redirect
 io_redirect      : '<'       WORD
                  | '>'       WORD
                  | DGREAT    WORD
-                 ;
-linebreak        : NEWLINE
-                 | /* empty */
                  ;
 separator_op     : '&'
                  | ';'
