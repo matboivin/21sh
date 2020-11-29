@@ -39,9 +39,9 @@ pipe_sequence    :                   simple_command
                  ;
 simple_command   : redirect_list WORD redirect_list
                  | redirect_list WORD
-                 | WORD redirect_list
-                 | redirect_list                 
-                 | WORD
+                 |               WORD redirect_list
+                 | redirect_list
+                 |               WORD
                  ;
 redirect_list    :               io_file
                  | redirect_list io_file
@@ -51,3 +51,15 @@ io_file          : '<'       WORD
                  | DGREAT    WORD
                  ;
 ```
+
+command: en fait une liste de commandes donc à fix ensuite  
+
+simple_command:  
+
+| Grammar rule                     |                        | Example                    |
+| -------------------------------- | ---------------------- | -------------------------- |
+| redirect_list WORD redirect_list | < infile CMD > outfile | `< infile wc -c > outfile` |
+| redirect_list WORD               | < infile CMD           | `< infile wc -c`           |
+| WORD redirect_list               | CMD > outfile          | `ls > outfile`             |
+| redirect_list                    | > outfile              | `> outfile`                |
+| WORD                             | CMD                    | `ls`                       |
