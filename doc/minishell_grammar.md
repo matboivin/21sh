@@ -31,27 +31,22 @@ program          : command NEWLINE
                  | NEWLINE
                  | /* empty */
                  ;
-command          : pipe_sequence ';'
-                 | pipe_sequence
+command          :             pipe_sequence
+                 | command ';' pipe_sequence
                  ;
 pipe_sequence    :                   simple_command
                  | pipe_sequence '|' simple_command
                  ;
-simple_command   : cmd_prefix WORD cmd_suffix
-                 | cmd_prefix WORD
-                 | cmd_prefix
-                 | WORD cmd_suffix
+simple_command   : redirect_list WORD redirect_list
+                 | redirect_list WORD
+                 | WORD redirect_list
+                 | redirect_list                 
                  | WORD
                  ;
-cmd_prefix       :            io_redirect
-                 | cmd_prefix io_redirect
+redirect_list    :               io_file
+                 | redirect_list io_file
                  ;
-cmd_suffix       :            io_redirect
-                 | cmd_suffix io_redirect
-                 |            WORD
-                 | cmd_suffix WORD
-                 ;
-io_redirect      : '<'       WORD
+io_file          : '<'       WORD
                  | '>'       WORD
                  | DGREAT    WORD
                  ;
