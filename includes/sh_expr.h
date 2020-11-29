@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:31:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/26 21:38:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/29 20:30:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,51 +17,46 @@
 # include "sh_parser.h"
 
 /*
-** io_redirect : '<'       filename
-**             | '>'       filename
-**             | DGREAT    filename
+** One struct per expression (see the Grammar)
 */
 
-typedef struct		s_io_redir
+/*
+** io_file : '<'       filename
+**         | '>'       filename
+**         | DGREAT    filename
+*/
+
+typedef struct		s_io_file
 {
 	t_tok_type		op;
 	char			*filename;
-}					t_io_redir;
+}					t_io_file;
 
 /*
-** cmd_prefix : io_redirect
-**            | cmd_prefix io_redirect
+** redirect_list :               io_file
+**               | redirect_list io_file
 */
 
-typedef struct		s_cmd_prefix
+typedef struct		s_redirect_list
 {
-	t_io_redir		**io_redirect;
-}					t_cmd_prefix;
+	t_io_file		**io_files;
+}					t_redirect_list;
 
 /*
-** cmd_suffix : io_redirect
-**            | cmd_suffix io_redirect
-*/
-
-typedef struct		s_cmd_suffix
-{
-	t_io_redir		**io_redirect;
-	char			**words;
-}					t_cmd_suffix;
-
-/*
-** simple_command : cmd_prefix cmd_word cmd_suffix
-**                | cmd_prefix cmd_word
-**                | cmd_prefix
-**                | cmd_name cmd_suffix
-**                | cmd_name
+** simple_command : redirect_list WORD redirect_list
+**                | redirect_list WORD
+**                | redirect_list
+**                |               WORD redirect_list
+**                |               WORD
 */
 
 typedef struct		s_simple_cmd
 {
-	t_cmd_prefix	prefix;
-	char			*cmd;
-	t_cmd_suffix	suffix;
+	t_redirect_list	redir_list;
+	char			*input_file;
+	char			*output_file;
+	size_t			arg_count;
+	char			**cmd_args;
 }					t_simple_cmd;
 
 /*
@@ -71,20 +66,20 @@ typedef struct		s_simple_cmd
 
 typedef struct		s_pipe_seq
 {
+	size_t			seq_count;
 	t_simple_cmd	**simple_cmd;
 }					t_pipe_seq;
 
 /*
-** and_or :               pipe_sequence
-**        | and_or AND_IF pipe_sequence
-**        | and_or OR_IF  pipe_sequence
+** command :             pipe_sequence
+**         | command ';' pipe_sequence
 */
 
-typedef struct		s_and_or
+typedef struct		s_cmd
 {
-	t_pipe_seq		*pipe_seq;
-	t_tok_type		op;
-	struct s_and_or	*next;
-}					t_and_or;
+	size_t			capacity;
+	size_t			cmd_count;
+	t_pipe_seq		**pipe_seq;
+}					t_cmd;
 
 #endif
