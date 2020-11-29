@@ -15,8 +15,8 @@ Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/online
 
 
 
-%token  AND_IF    OR_IF    DSEMI
-/*      '&&'      '||'     ';;'    */
+%token  AND_IF    OR_IF
+/*      '&&'      '||'     */
 
 
 %token  DGREAT
@@ -31,7 +31,7 @@ program          : command NEWLINE
                  | NEWLINE
                  | /* empty */
                  ;
-command          : pipe_sequence separator_op
+command          : pipe_sequence ';'
                  | pipe_sequence
                  ;
 pipe_sequence    :                   simple_command
@@ -54,9 +54,6 @@ cmd_suffix       :            io_redirect
 io_redirect      : '<'       WORD
                  | '>'       WORD
                  | DGREAT    WORD
-                 ;
-separator_op     : '&'
-                 | ';'
                  ;
 ```
 
