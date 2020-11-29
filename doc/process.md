@@ -126,6 +126,42 @@ The parser:
 - Eval all nodes
 - Execute: open fd, launch processes
 
+### Redirections
+
+Keep the last io_file.
+
+For example, "test" is written to file2.
+
+```console
+cat "test" > file1 > file2
+cat "test" >> file1 >> file2
+```
+
+And the following prints file2.
+
+```console
+cat < file1 < file2
+```
+
+> When you use `>`, the file is opened in truncation mode so its contents are removed before the command attempts to read it.  
+When you use `>>`, the file is opened in append mode so the existing data is preserved.  [(Source)](https://superuser.com/questions/597244/why-does-redirecting-the-output-of-a-file-to-itself-produce-a-blank-file)
+
+That's why:
+
+```console
+cat "test" > file1 > file2
+```
+
+Produces an empty file1 and writes in file2.
+
+Also, if file1 has something written in it, and we run:
+
+```console
+> file1
+```
+
+file1 will be empty.
+
 ## Built-in commands
 
 ### env
