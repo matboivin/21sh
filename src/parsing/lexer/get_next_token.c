@@ -6,23 +6,25 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 20:16:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/25 21:40:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/29 19:19:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_str.h"
 #include "sh_lexer.h"
 
+/*
+** Bonus:
+** token  AND_IF    OR_IF
+**        '&&'      '||'
+*/
+
 static t_regex	g_regex_list[] =
 {
 	{ "&&", 2, TOKEN_AND_IF },
 	{ "||", 2, TOKEN_OR_IF },
 	{ ">>", 2, TOKEN_DGREAT },
-	{ ";;", 2, TOKEN_DSEMI },
-	{ "! ", 2, TOKEN_NEG },
 	{ "//", 1, TOKEN_BACKSLASH },
-	{ "&", 1, TOKEN_AND },
-	{ "=", 1, TOKEN_EQUAL },
 	{ "\n", 1, TOKEN_NEWLINE },
 	{ "|", 1, TOKEN_PIPE },
 	{ ">", 1, TOKEN_GREAT },
