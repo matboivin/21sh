@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/27 11:51:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/29 20:32:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,9 @@
 
 void			parse(t_ast_node **ast, t_lexer *lexer, size_t pos)
 {
-	t_ast_node	*cursor;
-	t_ast_node	*left;
-
-	if (*ast)
-	{
-		cursor = *ast;
-		while (cursor)
-		{
-			left = cursor;
-			cursor = cursor->right;
-		}
-		cursor = malloc_ast_node(
-			NODE_TYPE_WORD,
-			left,
-			NULL,
-			lexer->tokens[pos]->value);
-		left->right = cursor;
-	}
-	else
-	{
-		*ast = malloc_ast_node(
-			NODE_TYPE_WORD,
-			NULL,
-			NULL,
-			lexer->tokens[pos]->value);
-	}
+	*ast = malloc_ast_node(
+		NODE_TYPE_WORD,
+		NULL,
+		NULL,
+		lexer->tokens[pos]->value);
 }

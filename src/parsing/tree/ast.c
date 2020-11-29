@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:03:49 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/26 21:36:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/29 20:34:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,28 @@
 */
 
 t_ast_node		create_ast_node(
-	t_node_type p_type, t_ast_node *p_left, t_ast_node *p_right, char *p_data
+	t_node_type p_type, t_ast_node *p_left, t_ast_node *p_right, void *p_expr
 )
 {
 	t_ast_node	result;
 
+	(void)p_expr;
 	result.type = p_type;
 	result.left = p_left;
 	result.right = p_right;
-	result.data = ft_strdup(p_data);
+	//result.expr = ;
 	return (result);
 }
 
 t_ast_node		*malloc_ast_node(
-	t_node_type p_type, t_ast_node *p_left, t_ast_node *p_right, char *p_data)
+	t_node_type p_type, t_ast_node *p_left, t_ast_node *p_right, void *p_expr)
 {
 	t_ast_node	*result;
 
 	result = malloc(sizeof(t_ast_node));
 	if (!result)
 		return (NULL);
-	*result = create_ast_node(p_type, p_left, p_right, p_data);
+	*result = create_ast_node(p_type, p_left, p_right, p_expr);
 	return (result);
 }
 
@@ -54,7 +55,7 @@ void			free_ast(t_ast_node *to_free)
 	{
 		free_ast(to_free->left);
 		free_ast(to_free->right);
-		ft_strdel(&to_free->data);
+		free(to_free->expr);
 		free(to_free);
 		to_free = NULL;
 	}

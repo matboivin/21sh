@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/28 20:19:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/29 20:41:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,21 @@
 ** This function creates a dot graph from a given Abstract Syntax Tree (AST)
 */
 
+static char	*get_type_name(t_node_type n)
+{
+	char	*node_names[5];
+
+	node_names[NODE_TYPE_CMD] = "Command";
+	node_names[NODE_TYPE_WORD] = "Word";
+	node_names[NODE_TYPE_IO_FILE] = "IO File";
+	node_names[NODE_TYPE_PIPE_SEQ] = "Pipe sequence";
+	node_names[NODE_TYPE_SIMPLE_CMD] = "Simple Command";
+	return (node_names[n]);
+}
+
 static void	write_leaf(int fd, t_ast_node *node)
 {
-	ft_dprintf(fd, "\n    \"%s\";", node->data);
+	ft_dprintf(fd, "\n    \"%s\";", get_type_name(node->type));
 }
 
 static void	write_branch(int fd, t_ast_node *node)
@@ -32,7 +44,9 @@ static void	write_branch(int fd, t_ast_node *node)
 	if (node->left)
 	{
 		ft_dprintf(
-			fd, "\n    \"%s\" -> \"%s\";", node->data, node->left->data);
+			fd, "\n    \"%s\" -> \"%s\";",
+			get_type_name(node->type),
+			get_type_name(node->left->type));
 		write_branch(fd, node->left);
 	}
 	else
@@ -40,7 +54,9 @@ static void	write_branch(int fd, t_ast_node *node)
 	if (node->right)
 	{
 		ft_dprintf(
-			fd, "\n    \"%s\" -> \"%s\";", node->data, node->right->data);
+			fd, "\n    \"%s\" -> \"%s\";",
+			get_type_name(node->type),
+			get_type_name(node->right->type));
 		write_branch(fd, node->right);
 	}
 	else

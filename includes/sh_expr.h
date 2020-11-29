@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:31:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/29 20:30:23 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/29 20:31:25 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct		s_redirect_list
 
 typedef struct		s_simple_cmd
 {
-	t_redirect_list	redir_list;
+	t_redirect_list	*redir_list;
 	char			*input_file;
 	char			*output_file;
 	size_t			arg_count;
