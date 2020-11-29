@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:03:49 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/29 20:34:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/29 20:58:10 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_ast_node		create_ast_node(
 	result.type = p_type;
 	result.left = p_left;
 	result.right = p_right;
-	//result.expr = ;
 	return (result);
 }
 

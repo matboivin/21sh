@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:31:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/29 20:31:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/29 21:35:56 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct		s_simple_cmd
 typedef struct		s_pipe_seq
 {
 	size_t			seq_count;
-	t_simple_cmd	**simple_cmd;
+	t_simple_cmd	**simple_cmds;
 }					t_pipe_seq;
 
 /*
@@ -81,5 +81,14 @@ typedef struct		s_cmd
 	size_t			cmd_count;
 	t_pipe_seq		**pipe_seq;
 }					t_cmd;
+
+t_simple_cmd		*malloc_simple_command(void);
+void				free_simple_command(t_simple_cmd *to_free);
+
+t_pipe_seq			*malloc_pipe_sequence(size_t p_capacity);
+void				free_pipe_sequence(t_pipe_seq *to_free);
+
+t_cmd				*malloc_command(size_t p_capacity);
+void				free_command(t_cmd *to_free);
 
 #endif
