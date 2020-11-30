@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 20:53:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/29 21:35:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/30 18:02:29 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_pipe_seq	*malloc_pipe_sequence(size_t p_capacity)
 	result = malloc(sizeof(t_pipe_seq));
 	if (!result)
 		return (NULL);
-	result->seq_count = 0;
+	result->cmd_count = 0;
 	result->simple_cmds = malloc(p_capacity * sizeof(t_simple_cmd *));
 	return (result);
 }
@@ -34,7 +34,7 @@ void		free_pipe_sequence(t_pipe_seq *to_free)
 	i = 0;
 	if (to_free->simple_cmds)
 	{
-		while (i < to_free->seq_count)
+		while (i < to_free->cmd_count)
 			free_simple_command(to_free->simple_cmds[i++]);
 		free(to_free->simple_cmds);
 		to_free->simple_cmds = NULL;

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 20:53:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/29 21:34:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/30 18:02:56 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_simple_cmd		*malloc_simple_command(void)
 	result = malloc(sizeof(t_simple_cmd));
 	if (!result)
 		return (NULL);
-	result->redir_list = NULL;
 	result->input_file = NULL;
 	result->output_file = NULL;
 	result->arg_count = 0;

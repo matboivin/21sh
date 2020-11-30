@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:31:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/29 21:35:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/30 18:02:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 # include "sh_parser.h"
 
 /*
-** One struct per expression (see the Grammar)
+** One struct per expression
+** Refer to the Grammar
 */
 
 /*
 ** io_file : '<'       filename
 **         | '>'       filename
-**         | DGREAT    filename
+**         | '>>'      filename
 */
 
 typedef struct		s_io_file
@@ -52,10 +53,9 @@ typedef struct		s_redirect_list
 
 typedef struct		s_simple_cmd
 {
-	t_redirect_list	*redir_list;
+	size_t			arg_count;
 	char			*input_file;
 	char			*output_file;
-	size_t			arg_count;
 	char			**cmd_args;
 }					t_simple_cmd;
 
@@ -66,7 +66,7 @@ typedef struct		s_simple_cmd
 
 typedef struct		s_pipe_seq
 {
-	size_t			seq_count;
+	size_t			cmd_count;
 	t_simple_cmd	**simple_cmds;
 }					t_pipe_seq;
 
@@ -78,7 +78,7 @@ typedef struct		s_pipe_seq
 typedef struct		s_cmd
 {
 	size_t			capacity;
-	size_t			cmd_count;
+	size_t			seq_count;
 	t_pipe_seq		**pipe_seq;
 }					t_cmd;
 
