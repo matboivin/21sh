@@ -1,49 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_command.c                                   :+:      :+:    :+:   */
+/*   io_file.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/29 20:53:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/30 19:05:30 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/30 18:19:20 by mboivin           #+#    #+#             */
+/*   Updated: 2020/11/30 19:04:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft_str.h"
 #include "sh_expr.h"
 
 /*
-** Simple command
+** IO file
 **
-** malloc_simple_command()  :  Malloc function
-** free_simple_command()    :  Free function
+** create_io_file()  :  Creator
+** malloc_io_file()  :  Malloc function
+** free_io_file()    :  Free function
 */
 
-t_simple_cmd		*malloc_simple_command(void)
+void			create_io_file(
+	t_io_file *result, t_tok_type p_type, char *p_filename)
 {
-	t_simple_cmd	*result;
+	result->type = p_type;
+	result->filename = p_filename;
+}
 
-	result = malloc(sizeof(t_simple_cmd));
+t_io_file		*malloc_io_file(t_tok_type p_type, char *p_filename)
+{
+	t_io_file	*result;
+
+	result = malloc(sizeof(t_io_file));
 	if (!result)
 		return (NULL);
-	result->redir_list = NULL;
-	result->arg_count = 0;
-	result->cmd_args = NULL;
+	create_io_file(result, p_type, p_filename);
 	return (result);
 }
 
-void				free_simple_command(t_simple_cmd *to_free)
+void			free_io_file(t_io_file *to_free)
 {
 	if (!to_free)
 		return ;
-	free_redir_list(&(to_free->redir_list));
-	if (to_free->cmd_args)
-	{
-		ft_str_arr_del(to_free->cmd_args);
-		to_free->cmd_args = NULL;
-	}
 	free(to_free);
 	to_free = NULL;
 }

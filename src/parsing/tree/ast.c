@@ -6,12 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:03:49 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/29 20:58:10 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/11/30 18:59:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft_str.h"
 #include "sh_ast.h"
 
 /*
@@ -24,15 +23,14 @@
 */
 
 t_ast_node		create_ast_node(
-	t_node_type p_type, t_ast_node *p_left, t_ast_node *p_right, void *p_expr
-)
+	t_node_type p_type, t_ast_node *p_left, t_ast_node *p_right, void *p_expr)
 {
 	t_ast_node	result;
 
-	(void)p_expr;
 	result.type = p_type;
 	result.left = p_left;
 	result.right = p_right;
+	result.expr = p_expr;
 	return (result);
 }
 
@@ -48,13 +46,18 @@ t_ast_node		*malloc_ast_node(
 	return (result);
 }
 
+void			destroy_ast(void *to_destroy)
+{
+	(void)to_destroy;
+}
+
 void			free_ast(t_ast_node *to_free)
 {
 	if (to_free)
 	{
 		free_ast(to_free->left);
 		free_ast(to_free->right);
-		free(to_free->expr);
+		destroy_ast(to_free->expr);
 		free(to_free);
 		to_free = NULL;
 	}
