@@ -9,18 +9,17 @@ Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/online
 %token  WORD
 %token  NEWLINE
 
+%token  PIPE     LESS      GREAT     SEMI
+/*      '|'      '<'       '>'       ';'      */
+
 
 /* The following are the operators (see XBD Operator)
    containing more than one character. */
 
 
+%token  AND_IF    OR_IF    DGREAT
+/*      '&&'      '||'     '>>'     */
 
-%token  AND_IF    OR_IF
-/*      '&&'      '||'     */
-
-
-%token  DGREAT
-/*      '>>'    */
 
 /* -------------------------------------------------------
    The Grammar
@@ -31,11 +30,11 @@ program          : command NEWLINE
                  | NEWLINE
                  | /* empty */
                  ;
-command          :             pipe_sequence
-                 | command ';' pipe_sequence
+command          :              pipe_sequence
+                 | command SEMI pipe_sequence
                  ;
-pipe_sequence    :                   simple_command
-                 | pipe_sequence '|' simple_command
+pipe_sequence    :                    simple_command
+                 | pipe_sequence PIPE simple_command
                  ;
 simple_command   : redirect_list WORD redirect_list
                  | redirect_list WORD
@@ -46,8 +45,8 @@ simple_command   : redirect_list WORD redirect_list
 redirect_list    :               io_file
                  | redirect_list io_file
                  ;
-io_file          : '<'       WORD
-                 | '>'       WORD
+io_file          : LESS      WORD
+                 | GREAT     WORD
                  | DGREAT    WORD
                  ;
 ```
