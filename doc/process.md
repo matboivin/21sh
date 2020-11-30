@@ -133,8 +133,8 @@ Keep the last io_file.
 For example, "test" is written to file2.
 
 ```console
-cat "test" > file1 > file2
-cat "test" >> file1 >> file2
+echo "test" > file1 > file2
+echo "test" >> file1 >> file2
 ```
 
 And the following prints file2.
@@ -149,7 +149,7 @@ When you use `>>`, the file is opened in append mode so the existing data is pre
 That's why:
 
 ```console
-cat "test" > file1 > file2
+echo "test" > file1 > file2
 ```
 
 Produces an empty file1 and writes in file2.
