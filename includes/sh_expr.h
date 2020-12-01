@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:31:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/30 19:07:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 18:13:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SH_EXPR_H
 
 # include "sh_define.h"
-# include "sh_parser.h"
+# include "sh_lexer.h"
 
 /*
 ** One struct per expression

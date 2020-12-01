@@ -6,12 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 17:46:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 18:48:51 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include <stddef.h>
-#include "libft_printf.h"
 #include "sh_parser.h"
 
 /*
@@ -22,19 +22,54 @@
 ** pos: The position in the lexer
 */
 
-void			parse(t_ast_node **ast, t_lexer *lexer, size_t pos)
+bool		is_expected_type(t_tok_type current, t_tok_type expected)
 {
-	t_ast_node	*new_node;
+	return (current == expected);
+}
+
+
+t_io_file	*parse_io_file(t_lexer *lexer, size_t pos)
+{
+	t_tok_type	tok_type;
+	t_io_file	*result;
+
+	result = NULL;
+	if (
+		(is_expected_type(lexer->tokens[pos]->type, TOKEN_LESS))
+		|| (is_expected_type(lexer->tokens[pos]->type, TOKEN_GREAT))
+		|| (is_expected_type(lexer->tokens[pos]->type, TOKEN_DGREAT))
+		)
+	{
+		tok_type = lexer->tokens[pos]->type;
+		pos++;
+		if (is_expected_type(lexer->tokens[pos]->type, TOKEN_WORD))
+		{
+			result = malloc_io_file(tok_type, lexer->tokens[pos]->value);
+			pos++;
+			return (result);
+		}
+	}
+	return (NULL);
+}
+
+
+void			parse(t_ast_node **ast, t_lexer *lexer, size_t *pos)
+{
 	t_io_file	*new_expr;
 
-	(void)lexer;
-	(void)pos;
+	new_expr = NULL;
 	if (*ast)
 	{
-		new_expr = malloc_io_file(TOKEN_GREAT, "test");
-		new_node = malloc_ast_node(NODE_IO_FILE, new_expr);
-		append_node_left(ast, new_node);
+		new_expr = parse_io_file(lexer, *pos);
+		if (new_expr)
+		{
+			append_node_left(ast, malloc_ast_node(NODE_IO_FILE, new_expr));
+			*pos += 2;
+		}
 	}
 	else
+	{
 		create_tree_root(ast);
+		(*pos)++;
+	}
 }
