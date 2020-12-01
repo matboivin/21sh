@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/29 20:32:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 17:15:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@
 
 void			parse(t_ast_node **ast, t_lexer *lexer, size_t pos)
 {
-	*ast = malloc_ast_node(
-		NODE_TYPE_WORD,
-		NULL,
-		NULL,
-		lexer->tokens[pos]->value);
+	(void)lexer;
+	(void)pos;
+	if (!ast)
+		create_tree_root(ast);
 }

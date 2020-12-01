@@ -177,8 +177,9 @@ debug: re
 check_leaks: $(BIN_NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ft_sh
 
-export_tree:
+show_tree:
 	@dot -Tps ast.dot -o ast.ps
+	@xdg-open ast.ps
 
 # CLEAN #
 
@@ -193,4 +194,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all install re-install show debug export_tree check_leaks clean fclean re
+.PHONY: all install re-install show debug show_tree check_leaks clean fclean re

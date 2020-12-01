@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:03:49 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/30 18:59:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 17:14:46 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,21 @@
 /*
 ** Abstract Syntax Tree (AST)
 **
-** create_ast_node()  :  Constructor
-** malloc_ast_node()  :  Malloc function
-** destroy_ast()      :  Destructor
-** free_ast()         :  Free function
+** create_tree_root()  :  Malloc and construct root node
+** create_ast_node()   :  Constructor
+** malloc_ast_node()   :  Malloc function
+** destroy_ast()       :  Destructor
+** free_ast()          :  Free function
 */
+
+void			create_tree_root(t_ast_node **root)
+{
+	*root = malloc_ast_node(
+		NODE_TYPE_PROGRAM,
+		NULL,
+		NULL,
+		NULL);
+}
 
 t_ast_node		create_ast_node(
 	t_node_type p_type, t_ast_node *p_left, t_ast_node *p_right, void *p_expr)
