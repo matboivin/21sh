@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 17:26:45 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 17:39:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,14 @@ static void	get_command(t_shctrl *ft_sh)
 
 int			process_command(t_shctrl *ft_sh)
 {
-// 	size_t	i;
+	size_t	i;
 
-// #ifdef DEBUG
-// 	t_ast_node	*root;
-// 	root = ft_sh->ast;
-// #endif /* DEBUG */
-
-// 	i = 0;
+	i = 0;
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	get_command(ft_sh);
 	// while (i < ft_sh->lexer->size)
-	parse(&(ft_sh->ast), ft_sh->lexer, 0);
-	//parse(&(ft_sh->ast), ft_sh->lexer, 0);
+	parse(&(ft_sh->ast), ft_sh->lexer, i);
+	parse(&(ft_sh->ast), ft_sh->lexer, i);
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
 	print_ast(ft_sh->ast);
