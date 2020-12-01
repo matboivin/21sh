@@ -57,7 +57,9 @@ SRC_FILES	+=	add_token_to_lexer.c	\
 
 # PARSER #
 
-SRC_FILES	+=	parse.c
+SRC_FILES	+=	is_expected_type.c		\
+				parse.c					\
+				parse_io_file.c
 
 # AST #
 

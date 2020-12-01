@@ -6,11 +6,10 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 18:48:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 20:00:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include <stddef.h>
 #include "sh_parser.h"
 
@@ -21,37 +20,6 @@
 ** lexer: The lexer containing the tokens
 ** pos: The position in the lexer
 */
-
-bool		is_expected_type(t_tok_type current, t_tok_type expected)
-{
-	return (current == expected);
-}
-
-
-t_io_file	*parse_io_file(t_lexer *lexer, size_t pos)
-{
-	t_tok_type	tok_type;
-	t_io_file	*result;
-
-	result = NULL;
-	if (
-		(is_expected_type(lexer->tokens[pos]->type, TOKEN_LESS))
-		|| (is_expected_type(lexer->tokens[pos]->type, TOKEN_GREAT))
-		|| (is_expected_type(lexer->tokens[pos]->type, TOKEN_DGREAT))
-		)
-	{
-		tok_type = lexer->tokens[pos]->type;
-		pos++;
-		if (is_expected_type(lexer->tokens[pos]->type, TOKEN_WORD))
-		{
-			result = malloc_io_file(tok_type, lexer->tokens[pos]->value);
-			pos++;
-			return (result);
-		}
-	}
-	return (NULL);
-}
-
 
 void			parse(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {

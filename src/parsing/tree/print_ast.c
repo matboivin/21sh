@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 19:08:17 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 20:01:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ static void	write_branch(int fd, t_ast_node *node, int i)
 		ft_dprintf(
 			fd, "\n    \"%s%d\" -> \"%s%d\";",
 			get_type_name(node->type), i,
-			get_type_name(node->left->type), i + 1
-			);
+			get_type_name(node->left->type), i + 1);
 		write_branch(fd, node->left, i + 1);
 	}
 	if (node->right)
@@ -56,8 +55,7 @@ static void	write_branch(int fd, t_ast_node *node, int i)
 		ft_dprintf(
 			fd, "\n    \"%s%d\" -> \"%s%d\";",
 			get_type_name(node->type), i,
-			get_type_name(node->right->type), i+ 1
-			);
+			get_type_name(node->right->type), i + 1);
 		write_branch(fd, node->right, i + 1);
 	}
 }
