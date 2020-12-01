@@ -178,8 +178,8 @@ check_leaks: $(BIN_NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ft_sh
 
 show_tree:
-	@dot -Tps ast.dot -o ast.ps
-	@xdg-open ast.ps
+	@dot -Tsvg ast.dot -o ast.svg
+	@xdg-open ast.svg
 
 # CLEAN #
 

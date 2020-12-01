@@ -6,10 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 18:42:44 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 19:08:39 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft_str.h"
 #include "sh_utils.h"
 #include "sh_lexer.h"
@@ -53,6 +54,7 @@ int			process_command(t_shctrl *ft_sh)
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
 	print_ast(ft_sh->ast);
+	system("dot -Tsvg ast.dot -o ast.svg");
 #endif /* DEBUG */
 	destroy_shell(ft_sh);
 	return (g_status);
