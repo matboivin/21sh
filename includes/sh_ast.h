@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 20:34:29 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 17:35:01 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 17:47:30 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@
 
 typedef enum			e_node_type
 {
-	NODE_TYPE_PROGRAM = 0,
-	NODE_TYPE_CMD,
-	NODE_TYPE_IO_FILE,
-	NODE_TYPE_PIPE_SEQ,
-	NODE_TYPE_SIMPLE_CMD,
-	NODE_TYPE_WORD
+	NODE_PROGRAM = 0,
+	NODE_CMD,
+	NODE_IO_FILE,
+	NODE_PIPE_SEQ,
+	NODE_SIMPLE_CMD,
+	NODE_WORD
 }						t_node_type;
 
 /*
 ** Abstract Syntax Tree (AST) node
 **
 ** type: The node type
-** left: Pointer to the left node
+** left: Pointer to the left node (first node)
 ** right: Pointer to the right node
 ** expr: Pointer to the expression struct
 */
@@ -62,7 +62,7 @@ typedef struct			s_ast_node
 void					create_tree_root(t_ast_node **root);
 t_ast_node				create_ast_node(t_node_type p_type, void *p_expr);
 t_ast_node				*malloc_ast_node(t_node_type p_type, void *p_expr);
-void					destroy_ast(void *to_destroy);
+void					destroy_ast(t_ast_node *to_destroy);
 void					free_ast(t_ast_node **to_free);
 void					print_ast(t_ast_node *root);
 
