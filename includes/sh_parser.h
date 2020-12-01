@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:34:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/26 20:51:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 17:23:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "sh_define.h"
 # include "sh_lexer.h"
 # include "sh_ast.h"
+# include "sh_expr.h"
 
 /*
 ** Processes the tokens into an Abstract Syntax Tree (AST)

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/30 19:08:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 17:26:45 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ int			process_command(t_shctrl *ft_sh)
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	get_command(ft_sh);
 	// while (i < ft_sh->lexer->size)
+	parse(&(ft_sh->ast), ft_sh->lexer, 0);
 	//parse(&(ft_sh->ast), ft_sh->lexer, 0);
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
-	//print_ast(ft_sh->ast);
+	print_ast(ft_sh->ast);
 #endif /* DEBUG */
 	destroy_shell(ft_sh);
 	return (g_status);

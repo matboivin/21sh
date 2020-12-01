@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 17:15:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/01 17:34:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,17 @@
 
 void			parse(t_ast_node **ast, t_lexer *lexer, size_t pos)
 {
+	t_ast_node	*new_node;
+	t_io_file	*new_expr;
+
 	(void)lexer;
 	(void)pos;
-	if (!ast)
+	if (*ast)
+	{
+		new_expr = malloc_io_file(TOKEN_GREAT, "test");
+		new_node = malloc_ast_node(NODE_TYPE_IO_FILE, new_expr);
+		append_node_left(ast, new_node);
+	}
+	else
 		create_tree_root(ast);
 }
