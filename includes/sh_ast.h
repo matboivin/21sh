@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 20:34:29 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 17:47:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 16:57:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef enum			e_node_type
 ** type: The node type
 ** left: Pointer to the left node (first node)
 ** right: Pointer to the right node
-** expr: Pointer to the expression struct
+** data: The node data
 */
 
 typedef struct			s_ast_node
@@ -46,7 +46,7 @@ typedef struct			s_ast_node
 	t_node_type			type;
 	struct s_ast_node	*left;
 	struct s_ast_node	*right;
-	void				*expr;
+	char				*data;
 }						t_ast_node;
 
 /*
@@ -60,9 +60,9 @@ typedef struct			s_ast_node
 */
 
 void					create_tree_root(t_ast_node **root);
-t_ast_node				create_ast_node(t_node_type p_type, void *p_expr);
-t_ast_node				*malloc_ast_node(t_node_type p_type, void *p_expr);
-void					destroy_ast(t_ast_node *to_destroy);
+t_ast_node				create_ast_node(t_node_type p_type, char *p_data);
+t_ast_node				*malloc_ast_node(t_node_type p_type, char *p_data);
+void					destroy_ast(t_ast_node to_destroy);
 void					free_ast(t_ast_node **to_free);
 void					print_ast(t_ast_node *root);
 
