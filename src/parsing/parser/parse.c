@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 18:07:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 18:54:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ bool		parse(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
 	bool	ret_val;
 
-	ret_val = true;
+	ret_val = false;
+	if (!(*ast))
+		create_tree_root(ast);
 	if (*ast)
 	{
-		return (parse_word(ast, lexer, pos));
+		ret_val = parse_io_file(ast, lexer, pos);
+		if (ret_val)
+			return (ret_val);
+		ret_val = parse_word(ast, lexer, pos);
 	}
-	else
-		create_tree_root(ast);
 	return (ret_val);
 }
