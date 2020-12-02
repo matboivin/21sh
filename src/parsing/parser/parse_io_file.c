@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 19:04:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 19:51:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static bool		parse_redir_op(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 ** NODE_IO_FILE
 **      |
 **   "operator"
-**       \
-**     NODE_WORD
-**         |
-**     "filename"
+**      |
+**  NODE_WORD
+**      |
+**  "filename"
 **
 ** returns: true if the node creation succeeded
 **          false otherwise

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 20:34:29 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 17:30:35 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 19:40:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef enum			e_node_type
 {
 	NODE_PROGRAM = 0,
 	NODE_CMD,
+	NODE_CMD_SUFFIX,
 	NODE_IO_FILE,
 	NODE_PIPE_SEQ,
 	NODE_SIMPLE_CMD,

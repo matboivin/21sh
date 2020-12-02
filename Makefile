@@ -14,7 +14,6 @@ INC_FILES	=	ft_sh.h					\
 				sh_ctrl.h				\
 				sh_define.h				\
 				sh_env.h				\
-				sh_expr.h				\
 				sh_input_processing.h	\
 				sh_lexer.h				\
 				sh_parser.h				\
@@ -59,6 +58,7 @@ SRC_FILES	+=	add_token_to_lexer.c	\
 
 SRC_FILES	+=	is_expected_type.c		\
 				parse.c					\
+				parse_cmd_suffix.c		\
 				parse_io_file.c			\
 				parse_word.c
 
@@ -67,10 +67,7 @@ SRC_FILES	+=	is_expected_type.c		\
 SRC_FILES	+=	ast.c					\
 				append_node.c			\
 				command.c				\
-				io_file.c				\
-				pipe_sequence.c			\
 				print_ast.c				\
-				redirect_list.c			\
 				simple_command.c
 
 # SIGNAL HANDLING #

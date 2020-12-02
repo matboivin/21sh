@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 18:32:35 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 19:41:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@
 
 static char	*get_type_name(t_node_type n)
 {
-	char	*node_names[6];
+	char	*node_names[7];
 
 	node_names[NODE_PROGRAM] = "Program";
 	node_names[NODE_CMD] = "Command";
+	node_names[NODE_CMD_SUFFIX] = "Cmd suffix";
 	node_names[NODE_WORD] = "Word";
 	node_names[NODE_IO_FILE] = "IO File";
 	node_names[NODE_PIPE_SEQ] = "Pipe sequence";
