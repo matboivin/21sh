@@ -6,39 +6,43 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 20:01:15 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:11:22 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include <stddef.h>
 #include "sh_parser.h"
 
 /*
 ** This function parses an IO file
 **
-** returns: A new IO file struct
+** returns: A new IO file node
 **          NULL otherwise
 */
 
-t_io_file	*parse_io_file(t_lexer *lexer, size_t pos)
+t_ast_node		*parse_io_file(t_lexer *lexer, size_t *pos)
 {
-	t_tok_type	tok_type;
-	t_io_file	*result;
+	t_ast_node	*node;
+	t_ast_node	*child_node;
 
-	result = NULL;
+	node = NULL;
+	child_node = NULL;
 	if (
-		(is_expected_type(lexer->tokens[pos]->type, TOKEN_LESS))
-		|| (is_expected_type(lexer->tokens[pos]->type, TOKEN_GREAT))
-		|| (is_expected_type(lexer->tokens[pos]->type, TOKEN_DGREAT)))
+		(is_expected_type(lexer->tokens[*pos]->type, TOKEN_LESS))
+		|| (is_expected_type(lexer->tokens[*pos]->type, TOKEN_GREAT))
+		|| (is_expected_type(lexer->tokens[*pos]->type, TOKEN_DGREAT)))
 	{
-		tok_type = lexer->tokens[pos]->type;
-		pos++;
-		if (is_expected_type(lexer->tokens[pos]->type, TOKEN_WORD))
+		node = malloc_ast_node(NODE_IO_FILE, lexer->tokens[*pos]->value);
+		if (node)
 		{
-			result = malloc_io_file(tok_type, lexer->tokens[pos]->value);
-			pos++;
-			return (result);
+			(*pos)++;
+			child_node = parse_word(lexer, pos);
+			if (child_node)
+			{
+				append_node_right(&node, child_node);
+				return (node);
+			}
+			free_ast(&node);
 		}
 	}
 	return (NULL);

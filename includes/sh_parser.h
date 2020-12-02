@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:34:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 19:59:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:29:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include "sh_ast.h"
 # include "sh_expr.h"
 
+/*
+** Checks whether the token type is the one expected
+*/
+
 bool		is_expected_type(t_tok_type current, t_tok_type expected);
 
 /*
@@ -28,9 +32,15 @@ bool		is_expected_type(t_tok_type current, t_tok_type expected);
 void		parse(t_ast_node **ast, t_lexer *lexer, size_t *pos);
 
 /*
+** Parses a Word
+*/
+
+t_ast_node	*parse_word(t_lexer *lexer, size_t *pos);
+
+/*
 ** Parses an IO file
 */
 
-t_io_file	*parse_io_file(t_lexer *lexer, size_t pos);
+t_ast_node	*parse_io_file(t_lexer *lexer, size_t *pos);
 
 #endif

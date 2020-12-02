@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 17:10:53 by mboivin          ###   ########.fr       */
+/*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/02 17:11:31 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,22 @@
 #include "sh_parser.h"
 
 /*
-** This function processes the tokens into an Abstract Syntax Tree (AST)
+** This function parses a Word
 **
-** ast: The AST to complete
-** lexer: The lexer containing the tokens
-** pos: The position in the lexer
+** returns: A new Word node
+**          NULL otherwise
 */
 
-void			parse(t_ast_node **ast, t_lexer *lexer, size_t *pos)
+t_ast_node		*parse_word(t_lexer *lexer, size_t *pos)
 {
-	if (*ast)
+	t_ast_node	*result;
+
+	result = NULL;
+	if (is_expected_type(lexer->tokens[*pos]->type, TOKEN_WORD))
 	{
-		(*ast)->left = parse_word(lexer, pos);
-		if ((*ast)->left)
-			return ;
-		else
-			(*pos)++;
+		result = malloc_ast_node(NODE_WORD, lexer->tokens[*pos]->value);
+		(*pos)++;
+		return (result);
 	}
-	else
-	{
-		create_tree_root(ast);
-	}
+	return (NULL);
 }

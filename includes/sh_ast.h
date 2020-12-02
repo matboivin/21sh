@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 20:34:29 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 16:57:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:30:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,12 @@ typedef struct			s_ast_node
 ** create_tree_root()  :  Malloc and construct root node
 ** create_ast_node()  :  Constructor
 ** malloc_ast_node()  :  Malloc function
-** destroy_ast()      :  Destructor
 ** free_ast()         :  Free function
 */
 
 void					create_tree_root(t_ast_node **root);
 t_ast_node				create_ast_node(t_node_type p_type, char *p_data);
 t_ast_node				*malloc_ast_node(t_node_type p_type, char *p_data);
-void					destroy_ast(t_ast_node to_destroy);
 void					free_ast(t_ast_node **to_free);
 void					print_ast(t_ast_node *root);
 

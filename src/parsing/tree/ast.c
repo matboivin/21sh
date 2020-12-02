@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:03:49 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 16:58:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:29:51 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 ** create_tree_root()  :  Malloc and construct root node
 ** create_ast_node()   :  Constructor
 ** malloc_ast_node()   :  Malloc function
-** destroy_ast()       :  Destructor
 ** free_ast()          :  Free function
 */
 
@@ -54,19 +53,12 @@ t_ast_node		*malloc_ast_node(t_node_type p_type, char *p_data)
 	return (result);
 }
 
-void			destroy_ast(t_ast_node to_destroy)
-{
-	if (to_destroy->data)
-		ft_strdel(to_destroy->data);
-}
-
 void			free_ast(t_ast_node **to_free)
 {
 	if (*to_free && to_free)
 	{
 		free_ast(&(*to_free)->left);
 		free_ast(&(*to_free)->right);
-		destroy_ast(**to_free);
 		free(*to_free);
 		*to_free = NULL;
 	}
