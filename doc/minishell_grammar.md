@@ -36,14 +36,15 @@ command          :              pipe_sequence
 pipe_sequence    :                    simple_command
                  | pipe_sequence PIPE simple_command
                  ;
-simple_command   : redirect_list WORD redirect_list
-                 | redirect_list WORD
-                 |               WORD redirect_list
-                 | redirect_list
-                 |               WORD
+simple_command   : io_file WORD cmd_suffix
+                 | io_file WORD
+                 |         WORD cmd_suffix
+                 | io_file
+                 |         WORD
                  ;
-redirect_list    :               io_file
-                 | redirect_list io_file
+cmd_suffix       : WORD
+                 | WORD io_file
+                 |      io_file
                  ;
 io_file          : LESS      WORD
                  | GREAT     WORD
@@ -55,10 +56,10 @@ command: en fait une liste de commandes donc à fix ensuite
 
 simple_command:  
 
-| Grammar rule                     |                        | Example                    |
-| -------------------------------- | ---------------------- | -------------------------- |
-| redirect_list WORD redirect_list | < infile CMD > outfile | `< infile wc -c > outfile` |
-| redirect_list WORD               | < infile CMD           | `< infile wc -c`           |
-| WORD redirect_list               | CMD > outfile          | `ls > outfile`             |
-| redirect_list                    | > outfile              | `> outfile`                |
-| WORD                             | CMD                    | `ls`                       |
+| Grammar rule            |                        | Examples                   |
+| ----------------------- | ---------------------- | -------------------------- |
+| io_file WORD cmd_suffix | < infile CMD > outfile | `< infile wc -c > outfile` |
+| io_file WORD            | < infile CMD           | `< infile wc -c`           |
+| WORD cmd_suffix         | CMD > outfile          | `ls > outfile` or `ls -la` |
+| io_file                 | > outfile              | `> outfile`                |
+| WORD                    | CMD                    | `ls`                       |
