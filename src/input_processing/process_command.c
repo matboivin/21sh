@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 19:03:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 19:14:32 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int				process_command(t_shctrl *ft_sh)
 	{
 		ret_val = parse(&(ft_sh->ast), ft_sh->lexer, &i);
 	}
+	// TODO: Syntax fixing
 	if (i != ft_sh->lexer->size)
 	{
 		ft_dprintf(STDERR_FILENO, "Parsing error\n");
