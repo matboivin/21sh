@@ -6,10 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 19:08:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 18:28:41 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include <stdlib.h>
 #include "libft_str.h"
 #include "sh_utils.h"
@@ -40,16 +41,18 @@ static void	get_command(t_shctrl *ft_sh)
 ** This function processes the command input
 */
 
-int			process_command(t_shctrl *ft_sh)
+int				process_command(t_shctrl *ft_sh)
 {
-	size_t	i;
+	size_t		i;
+	bool		ret_val;
 
 	i = 0;
+	ret_val = true;
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	get_command(ft_sh);
-	while (i < ft_sh->lexer->size)
+	while ((i < ft_sh->lexer->size) && ret_val)
 	{
-		parse(&(ft_sh->ast), ft_sh->lexer, &i);
+		ret_val = parse(&(ft_sh->ast), ft_sh->lexer, &i);
 	}
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);

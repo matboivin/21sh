@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 17:41:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 18:29:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,25 @@
 ** Expected operators: LESS ('<'), GREAT ('>') or DGREAT ('>>')
 */
 
-static t_ast_node	*parse_redir_op(t_lexer *lexer, size_t *pos)
+static bool		parse_redir_op(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
-	t_ast_node		*result;
+	t_ast_node	*iofile_node;
 
-	result = NULL;
+	iofile_node = NULL;
 	if (
 		(is_expected_type(lexer->tokens[*pos]->type, TOKEN_LESS))
 		|| (is_expected_type(lexer->tokens[*pos]->type, TOKEN_GREAT))
 		|| (is_expected_type(lexer->tokens[*pos]->type, TOKEN_DGREAT)))
 	{
-		result = malloc_ast_node(NODE_IO_FILE, lexer->tokens[*pos]->value);
-		if (result)
+		iofile_node = malloc_ast_node(NODE_IO_FILE, lexer->tokens[*pos]->value);
+		if (iofile_node)
 		{
+			append_node_right(ast, iofile_node);
 			(*pos)++;
-			return (result);
+			return (true);
 		}
 	}
-	return (NULL);
+	return (false);
 }
 
 /*
@@ -54,27 +55,17 @@ static t_ast_node	*parse_redir_op(t_lexer *lexer, size_t *pos)
 **         |
 **     "filename"
 **
-** returns: A new IO file node
-**          NULL otherwise
+** returns: true if the node creation succeeded
+**          false otherwise
 */
 
-t_ast_node			*parse_io_file(t_lexer *lexer, size_t *pos)
+bool			parse_io_file(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
-	t_ast_node		*io_file_node;
-	t_ast_node		*word_node;
-
-	io_file_node = NULL;
-	word_node = NULL;
-	io_file_node = parse_redir_op(lexer, pos);
-	if (io_file_node)
+	if (parse_redir_op(ast, lexer, pos))
 	{
-		word_node = parse_word(lexer, pos);
-		if (word_node)
-		{
-			append_node_right(&io_file_node, word_node);
-			return (io_file_node);
-		}
-		free_ast(&io_file_node);
+		if (parse_word(ast, lexer, pos))
+			return (true);
+		free_ast(ast);
 	}
-	return (NULL);
+	return (false);
 }

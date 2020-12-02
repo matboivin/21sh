@@ -6,10 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 17:10:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 18:07:51 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include <stddef.h>
 #include "sh_parser.h"
 
@@ -21,18 +22,16 @@
 ** pos: The position in the lexer
 */
 
-void			parse(t_ast_node **ast, t_lexer *lexer, size_t *pos)
+bool		parse(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
+	bool	ret_val;
+
+	ret_val = true;
 	if (*ast)
 	{
-		(*ast)->left = parse_word(lexer, pos);
-		if ((*ast)->left)
-			return ;
-		else
-			(*pos)++;
+		return (parse_word(ast, lexer, pos));
 	}
 	else
-	{
 		create_tree_root(ast);
-	}
+	return (ret_val);
 }

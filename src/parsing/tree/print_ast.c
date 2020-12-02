@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 20:01:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 18:32:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ static char	*get_type_name(t_node_type n)
 
 static void	write_leaf(int fd, t_ast_node *node)
 {
-	ft_dprintf(fd, "\n    \"%s\";", get_type_name(node->type));
+	ft_dprintf(
+		fd, "\n    \"%s:\\n%s\";",
+		get_type_name(node->type),
+		node->data);
 }
 
 static void	write_branch(int fd, t_ast_node *node, int i)
@@ -45,17 +48,21 @@ static void	write_branch(int fd, t_ast_node *node, int i)
 	if (node->left)
 	{
 		ft_dprintf(
-			fd, "\n    \"%s%d\" -> \"%s%d\";",
+			fd, "\n    \"%s_%d:\\n%s\" -> \"%s_%d:\\n%s\";",
 			get_type_name(node->type), i,
-			get_type_name(node->left->type), i + 1);
+			node->data,
+			get_type_name(node->left->type), i + 1,
+			node->left->data);
 		write_branch(fd, node->left, i + 1);
 	}
 	if (node->right)
 	{
 		ft_dprintf(
-			fd, "\n    \"%s%d\" -> \"%s%d\";",
+			fd, "\n    \"%s_%d:\\n%s\" -> \"%s_%d:\\n%s\";",
 			get_type_name(node->type), i,
-			get_type_name(node->right->type), i + 1);
+			node->data,
+			get_type_name(node->right->type), i + 1,
+			node->right->data);
 		write_branch(fd, node->right, i + 1);
 	}
 }
