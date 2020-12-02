@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 17:11:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:33:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ t_ast_node		*parse_word(t_lexer *lexer, size_t *pos)
 	if (is_expected_type(lexer->tokens[*pos]->type, TOKEN_WORD))
 	{
 		result = malloc_ast_node(NODE_WORD, lexer->tokens[*pos]->value);
-		(*pos)++;
-		return (result);
+		if (result)
+		{
+			(*pos)++;
+			return (result);
+		}
 	}
 	return (NULL);
 }
