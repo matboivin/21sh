@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 19:52:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 20:02:15 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ bool	parse_cmd_suffix(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
 	if (parse_word(ast, lexer, pos))
 	{
-		if (!parse_io_file(ast, lexer, pos))
-			(*pos)--;
+		parse_io_file(ast, lexer, pos);
 		return (true);
 	}
 	return (parse_io_file(ast, lexer, pos));

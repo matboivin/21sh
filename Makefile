@@ -59,16 +59,17 @@ SRC_FILES	+=	add_token_to_lexer.c	\
 SRC_FILES	+=	is_expected_type.c		\
 				parse.c					\
 				parse_cmd_suffix.c		\
+				parse_command.c			\
 				parse_io_file.c			\
+				parse_pipe_sequence.c	\
+				parse_simple_cmd.c		\
 				parse_word.c
 
 # AST #
 
 SRC_FILES	+=	ast.c					\
 				append_node.c			\
-				command.c				\
-				print_ast.c				\
-				simple_command.c
+				print_ast.c
 
 # SIGNAL HANDLING #
 
