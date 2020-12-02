@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 17:34:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:41:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 #include "sh_parser.h"
 
 /*
-** This function parses an IO file
-**
-** returns: A new IO file node
-**          NULL otherwise
+** This function checks the redirection operator
+** Expected operators: LESS ('<'), GREAT ('>') or DGREAT ('>>')
 */
 
 static t_ast_node	*parse_redir_op(t_lexer *lexer, size_t *pos)
@@ -40,23 +38,43 @@ static t_ast_node	*parse_redir_op(t_lexer *lexer, size_t *pos)
 	return (NULL);
 }
 
+/*
+** This function parses an IO file
+**
+** Grammar rule:
+** io_file : '<'       WORD
+**         | '>'       WORD
+**         | '>>'      WORD
+**
+** NODE_IO_FILE
+**      |
+**   "operator"
+**       \
+**     NODE_WORD
+**         |
+**     "filename"
+**
+** returns: A new IO file node
+**          NULL otherwise
+*/
+
 t_ast_node			*parse_io_file(t_lexer *lexer, size_t *pos)
 {
-	t_ast_node		*node;
-	t_ast_node		*child_node;
+	t_ast_node		*io_file_node;
+	t_ast_node		*word_node;
 
-	node = NULL;
-	child_node = NULL;
-	node = parse_redir_op(lexer, pos);
-	if (node)
+	io_file_node = NULL;
+	word_node = NULL;
+	io_file_node = parse_redir_op(lexer, pos);
+	if (io_file_node)
 	{
-		child_node = parse_word(lexer, pos);
-		if (child_node)
+		word_node = parse_word(lexer, pos);
+		if (word_node)
 		{
-			append_node_right(&node, child_node);
-			return (node);
+			append_node_right(&io_file_node, word_node);
+			return (io_file_node);
 		}
-		free_ast(&node);
+		free_ast(&io_file_node);
 	}
 	return (NULL);
 }
