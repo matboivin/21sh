@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 18:28:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 18:58:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int				process_command(t_shctrl *ft_sh)
 	ret_val = true;
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	get_command(ft_sh);
+	create_tree_root(&(ft_sh->ast));
 	while ((i < ft_sh->lexer->size) && ret_val)
 	{
 		ret_val = parse(&(ft_sh->ast), ft_sh->lexer, &i);
