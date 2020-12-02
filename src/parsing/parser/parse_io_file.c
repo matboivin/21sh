@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 18:44:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 19:04:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ bool			parse_io_file(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 	{
 		if (parse_word(&(*ast)->right, lexer, pos))
 			return (true);
+		(*pos)--;
 		free_ast(ast);
 	}
 	return (false);

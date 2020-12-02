@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 18:58:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/02 19:03:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdlib.h>
 #include "libft_str.h"
+#include "libft_printf.h"
 #include "sh_utils.h"
 #include "sh_lexer.h"
 #include "sh_input_processing.h"
@@ -54,6 +55,11 @@ int				process_command(t_shctrl *ft_sh)
 	while ((i < ft_sh->lexer->size) && ret_val)
 	{
 		ret_val = parse(&(ft_sh->ast), ft_sh->lexer, &i);
+	}
+	if (i != ft_sh->lexer->size)
+	{
+		ft_dprintf(STDERR_FILENO, "Parsing error\n");
+		exit_ft_sh(EXIT_FAILURE, ft_sh);
 	}
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
