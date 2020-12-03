@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 17:33:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 18:19:50 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool			parse_cmd_suffix(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
 	t_ast_node	*suffix_node;
 
-	suffix_node = malloc_ast_node(NODE_CMD_SUFFIX, NULL);
+	suffix_node = malloc_ast_node(NODE_CMD_SUFFIX, "cmd_suffix");
 	if (parse_word(&suffix_node, lexer, pos))
 	{
 		if (*pos < lexer->size)

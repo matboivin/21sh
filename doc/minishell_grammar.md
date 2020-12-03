@@ -38,8 +38,8 @@ pipe_sequence    :                    simple_command
                  ;
 simple_command   : io_file WORD cmd_suffix
                  | io_file WORD
-                 |         WORD cmd_suffix
                  | io_file
+                 |         WORD cmd_suffix
                  |         WORD
                  ;
 cmd_suffix       : WORD

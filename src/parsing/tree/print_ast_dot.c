@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 17:43:32 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 18:27:10 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,49 +20,29 @@
 ** This function creates a dot graph from a given Abstract Syntax Tree (AST)
 */
 
-static char	*get_type_name(t_node_type n)
-{
-	char	*node_names[7];
-
-	node_names[NODE_PROGRAM] = "Program";
-	node_names[NODE_CMD] = "Command";
-	node_names[NODE_CMD_SUFFIX] = "Cmd suffix";
-	node_names[NODE_WORD] = "Word";
-	node_names[NODE_IO_FILE] = "IO File";
-	node_names[NODE_PIPE_SEQ] = "Pipe sequence";
-	node_names[NODE_SIMPLE_CMD] = "Simple Command";
-	return (node_names[n]);
-}
-
 static void	write_leaf(int fd, t_ast_node *node)
 {
 	ft_dprintf(
-		fd, "\n    \"%s:\\n%s\";",
-		get_type_name(node->type),
-		node->data);
+		fd, "\n    \"%s\";", node->data);
 }
 
-static void	write_branch(int fd, t_ast_node *node, int i)
+static void	write_branch(int fd, t_ast_node *node)
 {
 	if (node->left)
 	{
 		ft_dprintf(
-			fd, "\n    \"%s_%d:\\n%s\" -> \"%s_%d:\\n%s\";",
-			get_type_name(node->type), i,
+			fd, "\n    \"%s\" -> \"%s\";",
 			node->data,
-			get_type_name(node->left->type), i + 1,
 			node->left->data);
-		write_branch(fd, node->left, i + 1);
+		write_branch(fd, node->left);
 	}
 	if (node->right)
 	{
 		ft_dprintf(
-			fd, "\n    \"%s_%d:\\n%s\" -> \"%s_%d:\\n%s\";",
-			get_type_name(node->type), i,
+			fd, "\n    \"%s\" -> \"%s\";",
 			node->data,
-			get_type_name(node->right->type), i + 1,
 			node->right->data);
-		write_branch(fd, node->right, i + 1);
+		write_branch(fd, node->right);
 	}
 }
 
@@ -72,7 +52,7 @@ static void	write_ast(int fd, t_ast_node *root)
 	if (!root->left && !root->right)
 		write_leaf(fd, root);
 	else
-		write_branch(fd, root, 0);
+		write_branch(fd, root);
 	ft_dprintf(fd, "\n}");
 }
 

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 17:20:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 18:15:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,16 @@ bool			parse_io_file(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 	iofile_node = malloc_ast_node(NODE_IO_FILE, NULL);
 	if (parse_redir_op(&iofile_node, lexer, pos))
 	{
-		if (parse_word(&iofile_node, lexer, pos))
+		if (*pos < lexer->size)
 		{
-			append_node_left(ast, iofile_node);
-			return (true);
+			if (parse_word(&iofile_node, lexer, pos))
+			{
+				append_node_left(ast, iofile_node);
+				return (true);
+			}
 		}
 		(*pos)--;
-		free_ast(&iofile_node);
 	}
+	free_ast(&iofile_node);
 	return (false);
 }

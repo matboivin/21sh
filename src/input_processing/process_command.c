@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 17:30:10 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 18:16:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int				process_command(t_shctrl *ft_sh)
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	get_command(ft_sh);
 	create_tree_root(&(ft_sh->ast));
-	if (parse(&(ft_sh->ast), ft_sh->lexer) == FAIL_RET)
-		exit_ft_sh(EXIT_FAILURE, ft_sh);
+	parse(&(ft_sh->ast), ft_sh->lexer);
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
 	print_ast(ft_sh->ast);
