@@ -69,7 +69,9 @@ SRC_FILES	+=	is_expected_type.c		\
 
 SRC_FILES	+=	ast.c					\
 				append_node.c			\
-				print_ast.c
+				print_ast.c				\
+				print_ast_dot.c			\
+				print_ast_svg.c
 
 # SIGNAL HANDLING #
 

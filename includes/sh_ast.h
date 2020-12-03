@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 20:34:29 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 19:40:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 17:43:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,13 @@ void					create_tree_root(t_ast_node **root);
 t_ast_node				create_ast_node(t_node_type p_type, char *p_data);
 t_ast_node				*malloc_ast_node(t_node_type p_type, char *p_data);
 void					free_ast(t_ast_node **to_free);
+
+/*
+** Debug
+*/
+
+void					save_ast_dot(t_ast_node *root);
+void					save_ast_svg(void);
 void					print_ast(t_ast_node *root);
 
 /*
