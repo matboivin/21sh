@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 19:41:07 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 17:29:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	write_ast(int fd, t_ast_node *root)
 	ft_dprintf(fd, "\n}");
 }
 
-void		print_ast(t_ast_node *root)
+static void	save_ast_dot(t_ast_node *root)
 {
 	int		fd;
 
@@ -89,4 +89,15 @@ void		print_ast(t_ast_node *root)
 		exit(EXIT_FAILURE);
 	write_ast(fd, root);
 	close(fd);
+}
+
+static void	save_ast_svg(void)
+{
+	system("dot -Tsvg ast.dot -o ast.svg");
+}
+
+void		print_ast(t_ast_node *root)
+{
+	save_ast_dot(root);
+	save_ast_svg();
 }

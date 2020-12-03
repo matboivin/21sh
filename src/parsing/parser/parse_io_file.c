@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 17:01:42 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 17:20:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,14 @@
 
 static bool		parse_redir_op(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
-	t_ast_node	*iofile_node;
-
-	iofile_node = NULL;
 	if (
 		(is_expected_type(lexer->tokens[*pos]->type, TOKEN_LESS))
 		|| (is_expected_type(lexer->tokens[*pos]->type, TOKEN_GREAT))
 		|| (is_expected_type(lexer->tokens[*pos]->type, TOKEN_DGREAT)))
 	{
-		iofile_node = malloc_ast_node(NODE_IO_FILE, lexer->tokens[*pos]->value);
-		if (iofile_node)
-		{
-			append_node_right(ast, iofile_node);
-			(*pos)++;
-			return (true);
-		}
+		(*ast)->data = lexer->tokens[*pos]->value;
+		(*pos)++;
+		return (true);
 	}
 	return (false);
 }
@@ -61,12 +54,18 @@ static bool		parse_redir_op(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 
 bool			parse_io_file(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
-	if (parse_redir_op(ast, lexer, pos))
+	t_ast_node	*iofile_node;
+
+	iofile_node = malloc_ast_node(NODE_IO_FILE, NULL);
+	if (parse_redir_op(&iofile_node, lexer, pos))
 	{
-		if (parse_word(&(*ast)->right, lexer, pos))
+		if (parse_word(&iofile_node, lexer, pos))
+		{
+			append_node_left(ast, iofile_node);
 			return (true);
+		}
 		(*pos)--;
-		free_ast(ast);
+		free_ast(&iofile_node);
 	}
 	return (false);
 }

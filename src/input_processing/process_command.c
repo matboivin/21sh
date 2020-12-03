@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 17:00:10 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 17:30:10 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int				process_command(t_shctrl *ft_sh)
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
 	print_ast(ft_sh->ast);
-	system("dot -Tsvg ast.dot -o ast.svg");
 #endif /* DEBUG */
 	destroy_shell(ft_sh);
 	return (g_status);
