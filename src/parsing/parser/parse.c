@@ -6,12 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 19:51:14 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 17:00:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stddef.h>
+#include "libft_printf.h"
+#include "sh_utils.h"
 #include "sh_parser.h"
 
 /*
@@ -22,13 +24,22 @@
 ** pos: The position in the lexer
 */
 
-bool		parse(t_ast_node **ast, t_lexer *lexer, size_t *pos)
+int		parse(t_ast_node **ast, t_lexer *lexer)
 {
-	bool	parsed;
+	size_t	parsed_tokens;
+	bool	ret_val;
 
-	parsed = parse_io_file(ast, lexer, pos);
-	if (parsed)
-		return (parsed);
-	parsed = parse_word(ast, lexer, pos);
-	return (parsed);
+	parsed_tokens = 0;
+	ret_val = true;
+	while ((parsed_tokens < lexer->size) && ret_val)
+	{
+		ret_val = parse_io_file(ast, lexer, &parsed_tokens);
+	}
+	// TODO: Syntax fixing
+	if (parsed_tokens != lexer->size)
+	{
+		ft_dprintf(STDERR_FILENO, "Parsing error\n");
+		return (FAIL_RET);
+	}
+	return (0);
 }

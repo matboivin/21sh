@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:04:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 20:08:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 17:02:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@
 
 bool	parse_command(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
-	// TODO
+	(void)ast;
+	(void)lexer;
+	(void)pos;
+	return (false);
 }

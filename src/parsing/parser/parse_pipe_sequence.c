@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:04:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 20:07:58 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 17:02:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@
 
 bool	parse_pipe_sequence(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
-	// TODO
+	(void)ast;
+	(void)lexer;
+	(void)pos;
+	return (false);
 }

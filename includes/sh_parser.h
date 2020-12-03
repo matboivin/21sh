@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:34:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 20:06:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/03 16:59:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	is_expected_type(t_tok_type current, t_tok_type expected);
 ** Processes the tokens into an Abstract Syntax Tree (AST)
 */
 
-bool	parse(t_ast_node **ast, t_lexer *lexer, size_t *pos);
+int		parse(t_ast_node **ast, t_lexer *lexer);
 
 /*
 ** Parses a Word
