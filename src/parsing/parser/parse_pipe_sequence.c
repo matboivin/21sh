@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:04:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 18:48:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 19:35:47 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,21 @@
 bool	parse_pipe_sequence(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
 	t_ast_node	*pipe_node;
+	t_ast_node	*pipe2;
 
 	pipe_node = malloc_ast_node(NODE_PIPE_SEQ, "|");
-	if (parse_simple_cmd(&pipe_node, lexer, pos) && (*pos < lexer->size))
+	if (parse_simple_cmd(&pipe_node->left, lexer, pos) && (*pos < lexer->size))
 	{
 		append_node_right(ast, pipe_node);
 		if (is_expected_type(lexer->tokens[*pos]->type, TOKEN_PIPE))
+		{
 			(*pos)++;
+			pipe2 = malloc_ast_node(NODE_PIPE_SEQ, "|");
+			if (parse_simple_cmd(&pipe2->left, lexer, pos) && (*pos < lexer->size))
+				append_node_right(ast, pipe2);
+			else
+				free_ast(&pipe2);
+		}
 		return (true);
 	}
 	free_ast(&pipe_node);

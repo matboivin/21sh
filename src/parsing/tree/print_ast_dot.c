@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 18:27:10 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 19:40:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,23 @@ static void	write_leaf(int fd, t_ast_node *node)
 		fd, "\n    \"%s\";", node->data);
 }
 
-static void	write_branch(int fd, t_ast_node *node)
+static void	write_branch(int fd, t_ast_node *node, int i)
 {
 	if (node->left)
 	{
 		ft_dprintf(
-			fd, "\n    \"%s\" -> \"%s\";",
-			node->data,
-			node->left->data);
-		write_branch(fd, node->left);
+			fd, "\n    \"%s\\n%d\" -> \"%s\\n%d\";",
+			node->data, i,
+			node->left->data, i + 1);
+		write_branch(fd, node->left, i + 1);
 	}
 	if (node->right)
 	{
 		ft_dprintf(
-			fd, "\n    \"%s\" -> \"%s\";",
-			node->data,
-			node->right->data);
-		write_branch(fd, node->right);
+			fd, "\n    \"%s\\n%d\" -> \"%s\\n%d\";",
+			node->data, i,
+			node->right->data, i + 1);
+		write_branch(fd, node->right, i + 1);
 	}
 }
 
@@ -52,7 +52,7 @@ static void	write_ast(int fd, t_ast_node *root)
 	if (!root->left && !root->right)
 		write_leaf(fd, root);
 	else
-		write_branch(fd, root);
+		write_branch(fd, root, 0);
 	ft_dprintf(fd, "\n}");
 }
 
