@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:04:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 17:02:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:27:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 ** Grammar rule:
 ** command :              pipe_sequence
 **         | command SEMI pipe_sequence
+**
+**              NODE_CMD
+**              /      \
+**  NODE_PIPE_SEQ      NODE_CMD
+**                     /      \
+**         NODE_PIPE_SEQ      NODE_CMD
+**                            /      \
+**                          ...      ...
 **
 ** returns: true if the node creation succeeded
 **          false otherwise
