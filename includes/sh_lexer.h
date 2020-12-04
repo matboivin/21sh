@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 20:59:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 21:19:39 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct	s_token
 
 typedef struct	s_lexer
 {
+	size_t		pos;
 	size_t		size;
 	size_t		capacity;
 	t_token		**tokens;
@@ -131,7 +132,7 @@ int				handle_token(t_lexer *lexer, t_regex token, char **stack);
 void			handle_text(t_lexer *lexer, char **stack);
 void			handle_quotes(t_lexer *lexer, char **input);
 int				escape_char(char **input, char **stack);
-char			*eat(char *stack, char **c);
+char			*push_char(char *stack, char **c);
 
 /*
 ** Debug

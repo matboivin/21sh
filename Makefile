@@ -42,7 +42,6 @@ SRC_FILES	+=	process_input.c			\
 # LEXER #
 
 SRC_FILES	+=	add_token_to_lexer.c	\
-				eat.c					\
 				escape_char.c			\
 				get_token.c				\
 				handle_quote.c			\
@@ -51,6 +50,7 @@ SRC_FILES	+=	add_token_to_lexer.c	\
 				increase_lexer.c		\
 				lexer.c					\
 				lexer_is_full.c			\
+				push_char.c				\
 				token.c					\
 				tokenize.c
 

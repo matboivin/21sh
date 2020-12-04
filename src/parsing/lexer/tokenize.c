@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 20:58:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 21:19:30 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int			tokenize(t_lexer *lexer, char *input)
 		else if (token.type)
 			input += handle_token(lexer, token, &stack);
 		else
-			stack = eat(stack, &input);
+			stack = push_char(stack, &input);
 	}
 	if (stack)
 		handle_text(lexer, &stack);

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/27 11:50:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 21:18:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 void		create_lexer(t_lexer *lexer, size_t p_capacity)
 {
+	lexer->pos = 0;
 	lexer->size = DEFAULT_SIZE;
 	lexer->capacity = p_capacity;
 	lexer->tokens = ft_calloc((p_capacity + 1), sizeof(t_token *));
