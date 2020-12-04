@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:04:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 20:18:45 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:25:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@
 ** pipe_sequence :                    simple_command
 **               | pipe_sequence PIPE simple_command
 **
-**      NODE_PIPE_SEQ
-**            |
-**     NODE_SIMPLE_CMD
-**            |
-**           ...
+**              NODE_PIPE_SEQ
+**              /           \
+**  NODE_SIMPLE_CMD      NODE_PIPE_SEQ
+**                       /           \
+**           NODE_SIMPLE_CMD      NODE_PIPE_SEQ
+**                                /           \
+**                              ...           ...
 **
 ** returns: true if the node creation succeeded
 **          false otherwise
