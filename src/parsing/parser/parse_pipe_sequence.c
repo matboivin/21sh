@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:04:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 19:43:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:18:45 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,34 @@
 **          false otherwise
 */
 
-// TODO: loop
-
-bool	parse_pipe_sequence(t_ast_node **ast, t_lexer *lexer, size_t *pos)
+static bool		parse_one_sequence(
+	t_ast_node **node, t_lexer *lexer, size_t *pos)
 {
 	t_ast_node	*pipe_node;
-	t_ast_node	*pipe2;
 
 	pipe_node = malloc_ast_node(NODE_PIPE_SEQ, "|");
 	if (parse_simple_cmd(&pipe_node->left, lexer, pos))
 	{
-		append_node_right(ast, pipe_node);
+		append_node_right(node, pipe_node);
 		if ((*pos < lexer->size) && lexer->tokens[*pos]->type == TOKEN_PIPE)
-		{
 			(*pos)++;
-			pipe2 = malloc_ast_node(NODE_PIPE_SEQ, "|");
-			if (parse_simple_cmd(&pipe2->left, lexer, pos))
-				append_node_right(ast, pipe2);
-			else
-				free_ast(&pipe2);
-		}
 		return (true);
 	}
 	free_ast(&pipe_node);
+	return (false);
+}
+
+bool			parse_pipe_sequence(
+	t_ast_node **ast, t_lexer *lexer, size_t *pos)
+{
+	bool		parsed;
+
+	parsed = parse_one_sequence(ast, lexer, pos);
+	if (parsed)
+	{
+		while ((*pos < lexer->size) && parsed)
+			parsed = parse_one_sequence(ast, lexer, pos);
+		return (true);
+	}
 	return (false);
 }
