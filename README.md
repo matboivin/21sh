@@ -12,8 +12,9 @@ PARSER-AST
 
 Le plus gros du travail
 
-- Le parser : checke les erreurs de grammaire et construit l'AST + procédure debug pour avoir l'arbre en .dot
-- Les fonctions nécessaires à l'AST
+- `command` et `pipe_sequence`
+- fix dans le lexer : les chevrons qui se suivent
+- fonction pour évaluer les noeuds
 
 --------
 
