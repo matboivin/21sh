@@ -44,7 +44,7 @@ SRC_FILES	+=	process_input.c			\
 SRC_FILES	+=	add_token_to_lexer.c	\
 				eat.c					\
 				escape_char.c			\
-				get_next_token.c		\
+				get_token.c				\
 				handle_quote.c			\
 				handle_text.c			\
 				handle_token.c			\

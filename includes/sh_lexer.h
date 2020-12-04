@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/30 18:12:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:59:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void			add_token_to_lexer(
 ** Searches if input is a token
 */
 
-t_regex			get_next_token(char *input);
+t_regex			get_token(char *input);
 
 /*
 ** Splits the input string into tokens and handles syntax errors

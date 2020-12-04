@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_token.c                                   :+:      :+:    :+:   */
+/*   get_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 20:16:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/29 19:19:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:58:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_regex	g_regex_list[] =
 ** This function searches if input is a token
 */
 
-t_regex		get_next_token(char *input)
+t_regex		get_token(char *input)
 {
 	int		i;
 
