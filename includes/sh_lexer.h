@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 21:31:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 21:48:08 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void			handle_text(t_lexer *lexer, char **stack);
 void			handle_quotes(t_lexer *lexer, char **input);
 int				escape_char(char **input, char **stack);
 char			*push_char(char *stack, char **c);
+void			move_to_next_token(t_lexer *lexer);
 int				eat(t_lexer *lexer, t_tok_type expected);
 
 /*
