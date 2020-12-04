@@ -12,9 +12,14 @@ PARSER-AST
 
 Le plus gros du travail
 
-- `command` et `pipe_sequence`
-- fix dans le lexer : les chevrons qui se suivent
+- fix dans le lexer : les chevrons ou les pipes qui se suivent
 - fonction pour évaluer les noeuds
+
+--------
+
+SUBSYSTEMS
+
+- Expand variables
 
 --------
 
