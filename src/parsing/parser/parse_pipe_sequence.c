@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:04:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 20:25:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:30:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@
 **          false otherwise
 */
 
-static bool		parse_one_sequence(
-	t_ast_node **node, t_lexer *lexer, size_t *pos)
+static bool		get_simple_cmd(t_ast_node **node, t_lexer *lexer, size_t *pos)
 {
 	t_ast_node	*pipe_node;
 
@@ -54,11 +53,11 @@ bool			parse_pipe_sequence(
 {
 	bool		parsed;
 
-	parsed = parse_one_sequence(ast, lexer, pos);
+	parsed = get_simple_cmd(ast, lexer, pos);
 	if (parsed)
 	{
 		while ((*pos < lexer->size) && parsed)
-			parsed = parse_one_sequence(ast, lexer, pos);
+			parsed = get_simple_cmd(ast, lexer, pos);
 		return (true);
 	}
 	return (false);

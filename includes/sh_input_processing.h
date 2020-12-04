@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 15:21:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/28 19:46:42 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:48:51 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ char	*prompt(t_shctrl *ft_sh, const char *prompt);
 ** Gets the command input
 */
 
-int		process_command(t_shctrl *ft_sh);
+int		process_input(t_shctrl *ft_sh);
 
 #endif

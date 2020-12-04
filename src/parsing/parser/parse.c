@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 18:42:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:47:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,9 @@ int		parse(t_ast_node **ast, t_lexer *lexer)
 
 	parsed_tokens = 0;
 	ret_val = true;
+	create_tree_root(ast);
 	while ((parsed_tokens < lexer->size) && ret_val)
-	{
-		ret_val = parse_pipe_sequence(ast, lexer, &parsed_tokens);
-		//ret_val = parse_simple_cmd(ast, lexer, &parsed_tokens);
-		//ret_val = parse_cmd_suffix(ast, lexer, &parsed_tokens);
-		//ret_val = parse_io_file(ast, lexer, &parsed_tokens);
-	}
+		ret_val = parse_command(ast, lexer, &parsed_tokens);
 	// TODO: Syntax fixing
 	if (parsed_tokens != lexer->size)
 	{

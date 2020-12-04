@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_command.c                                  :+:      :+:    :+:   */
+/*   process_input.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 18:16:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 20:48:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,10 @@ static void	get_command(t_shctrl *ft_sh)
 ** This function processes the command input
 */
 
-int				process_command(t_shctrl *ft_sh)
+int				process_input(t_shctrl *ft_sh)
 {
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	get_command(ft_sh);
-	create_tree_root(&(ft_sh->ast));
 	parse(&(ft_sh->ast), ft_sh->lexer);
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
