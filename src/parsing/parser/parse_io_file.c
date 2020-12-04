@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 19:44:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 21:33:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 ** Expected operators: LESS ('<'), GREAT ('>') or DGREAT ('>>')
 */
 
-static bool		parse_redir_op(t_ast_node **ast, t_lexer *lexer, size_t *pos)
+static bool		parse_redir_op(t_ast_node **ast, t_lexer *lexer)
 {
 	if (
-		(lexer->tokens[*pos]->type == TOKEN_LESS)
-		|| (lexer->tokens[*pos]->type == TOKEN_GREAT)
-		|| (lexer->tokens[*pos]->type == TOKEN_DGREAT))
+		(lexer->tokens[lexer->pos]->type == TOKEN_LESS)
+		|| (lexer->tokens[lexer->pos]->type == TOKEN_GREAT)
+		|| (lexer->tokens[lexer->pos]->type == TOKEN_DGREAT))
 	{
-		(*ast)->data = lexer->tokens[*pos]->value;
-		(*pos)++;
+		(*ast)->data = lexer->tokens[lexer->pos]->value;
+		(lexer->pos)++;
 		return (true);
 	}
 	return (false);
@@ -52,22 +52,22 @@ static bool		parse_redir_op(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 **          false otherwise
 */
 
-bool			parse_io_file(t_ast_node **ast, t_lexer *lexer, size_t *pos)
+bool			parse_io_file(t_ast_node **ast, t_lexer *lexer)
 {
 	t_ast_node	*iofile_node;
 
 	iofile_node = malloc_ast_node(NODE_IO_FILE, NULL);
-	if (parse_redir_op(&iofile_node, lexer, pos))
+	if (parse_redir_op(&iofile_node, lexer))
 	{
-		if (*pos < lexer->size)
+		if (lexer->pos < lexer->size)
 		{
-			if (parse_word(&iofile_node, lexer, pos))
+			if (parse_word(&iofile_node, lexer))
 			{
 				append_node_left(ast, iofile_node);
 				return (true);
 			}
 		}
-		(*pos)--;
+		lexer->pos -= 1;
 	}
 	free_ast(&iofile_node);
 	return (false);

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 18:37:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 21:35:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,28 @@
 **          false otherwise
 */
 
-bool	parse_simple_cmd(t_ast_node **ast, t_lexer *lexer, size_t *pos)
+bool	parse_simple_cmd(t_ast_node **ast, t_lexer *lexer)
 {
 	t_ast_node	*simple_cmd_node;
 
 	simple_cmd_node = malloc_ast_node(NODE_SIMPLE_CMD, "simple_cmd");
-	if (parse_io_file(&simple_cmd_node, lexer, pos))
+	if (parse_io_file(&simple_cmd_node, lexer))
 	{
-		if (*pos < lexer->size)
+		if (lexer->pos < lexer->size)
 		{
-			if (parse_word(&(simple_cmd_node->right), lexer, pos))
+			if (parse_word(&(simple_cmd_node->right), lexer))
 			{
-				if (*pos < lexer->size)
-					parse_cmd_suffix(&(simple_cmd_node->right), lexer, pos);
+				if (lexer->pos < lexer->size)
+					parse_cmd_suffix(&(simple_cmd_node->right), lexer);
 			}
 		}
 		append_node_left(ast, simple_cmd_node);
 		return (true);
 	}
-	else if (parse_word(&simple_cmd_node, lexer, pos))
+	else if (parse_word(&simple_cmd_node, lexer))
 	{
-		if (*pos < lexer->size)
-			parse_cmd_suffix(&(simple_cmd_node->left), lexer, pos);
+		if (lexer->pos < lexer->size)
+			parse_cmd_suffix(&(simple_cmd_node->left), lexer);
 		append_node_left(ast, simple_cmd_node);
 		return (true);
 	}

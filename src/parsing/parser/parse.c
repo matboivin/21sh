@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 20:47:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 21:26:47 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,15 @@
 
 int		parse(t_ast_node **ast, t_lexer *lexer)
 {
-	size_t	parsed_tokens;
 	bool	ret_val;
 
-	parsed_tokens = 0;
 	ret_val = true;
 	create_tree_root(ast);
-	while ((parsed_tokens < lexer->size) && ret_val)
-		ret_val = parse_command(ast, lexer, &parsed_tokens);
-	// TODO: Syntax fixing
-	if (parsed_tokens != lexer->size)
+	while ((lexer->pos < lexer->size) && ret_val)
+		ret_val = parse_command(ast, lexer);
+	if (lexer->pos != lexer->size)
 	{
-		ft_dprintf(STDERR_FILENO, "Parsing error\n");
+		ft_dprintf(STDERR_FILENO, "parser: Grammar error\n");
 		return (FAIL_RET);
 	}
 	return (0);

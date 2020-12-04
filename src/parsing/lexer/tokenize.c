@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 21:19:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 21:21:10 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 /*
 ** This function splits the input string into tokens and handles syntax errors
 */
+
+// TODO: Syntax fixing
 
 int			tokenize(t_lexer *lexer, char *input)
 {

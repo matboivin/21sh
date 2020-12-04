@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:04:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 20:30:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 21:35:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,30 @@
 **          false otherwise
 */
 
-static bool		get_simple_cmd(t_ast_node **node, t_lexer *lexer, size_t *pos)
+static bool		get_simple_cmd(t_ast_node **node, t_lexer *lexer)
 {
 	t_ast_node	*pipe_node;
 
 	pipe_node = malloc_ast_node(NODE_PIPE_SEQ, "|");
-	if (parse_simple_cmd(&pipe_node->left, lexer, pos))
+	if (parse_simple_cmd(&pipe_node->left, lexer))
 	{
 		append_node_right(node, pipe_node);
-		if ((*pos < lexer->size) && lexer->tokens[*pos]->type == TOKEN_PIPE)
-			(*pos)++;
+		eat(lexer, TOKEN_PIPE);
 		return (true);
 	}
 	free_ast(&pipe_node);
 	return (false);
 }
 
-bool			parse_pipe_sequence(
-	t_ast_node **ast, t_lexer *lexer, size_t *pos)
+bool			parse_pipe_sequence(t_ast_node **ast, t_lexer *lexer)
 {
 	bool		parsed;
 
-	parsed = get_simple_cmd(ast, lexer, pos);
+	parsed = get_simple_cmd(ast, lexer);
 	if (parsed)
 	{
-		while ((*pos < lexer->size) && parsed)
-			parsed = get_simple_cmd(ast, lexer, pos);
+		while ((lexer->pos < lexer->size) && parsed)
+			parsed = get_simple_cmd(ast, lexer);
 		return (true);
 	}
 	return (false);
