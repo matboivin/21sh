@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 18:15:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 19:44:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 static bool		parse_redir_op(t_ast_node **ast, t_lexer *lexer, size_t *pos)
 {
 	if (
-		(is_expected_type(lexer->tokens[*pos]->type, TOKEN_LESS))
-		|| (is_expected_type(lexer->tokens[*pos]->type, TOKEN_GREAT))
-		|| (is_expected_type(lexer->tokens[*pos]->type, TOKEN_DGREAT)))
+		(lexer->tokens[*pos]->type == TOKEN_LESS)
+		|| (lexer->tokens[*pos]->type == TOKEN_GREAT)
+		|| (lexer->tokens[*pos]->type == TOKEN_DGREAT))
 	{
 		(*ast)->data = lexer->tokens[*pos]->value;
 		(*pos)++;

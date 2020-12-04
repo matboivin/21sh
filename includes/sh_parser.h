@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:34:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 16:59:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/04 19:43:34 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@
 # include "sh_define.h"
 # include "sh_lexer.h"
 # include "sh_ast.h"
-
-/*
-** Checks whether the token type is the one expected
-*/
-
-bool	is_expected_type(t_tok_type current, t_tok_type expected);
 
 /*
 ** Processes the tokens into an Abstract Syntax Tree (AST)

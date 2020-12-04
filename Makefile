@@ -56,8 +56,7 @@ SRC_FILES	+=	add_token_to_lexer.c	\
 
 # PARSER #
 
-SRC_FILES	+=	is_expected_type.c		\
-				parse.c					\
+SRC_FILES	+=	parse.c					\
 				parse_cmd_suffix.c		\
 				parse_command.c			\
 				parse_io_file.c			\
