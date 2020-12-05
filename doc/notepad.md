@@ -1,29 +1,28 @@
-### TODO
+### Notepad
 
-- Le lexer gère l'escaping et mange les caractères inutiles.  
+### Lexer, Parser, AST
+
+Le plus gros du travail.  
+Objectif : générer l'AST.
+
+- Le lexer gère l'escaping et ignore les caractères inutiles.  
 Stocker les tokens dans tableau dynamique (doubler taille si taille insuffisante) :
-  - O(log(n)) allocations alors que liste chaînée -> O(n) allocations.
+  - O(log(n)) allocations, alors que liste chaînée -> O(n) allocations.
   - Procédure debug : affiche les tokens
 - Le parser avec AST. Itérer sur les tokens pour construire l'arbre.
-  - Procédure debug : affiche l'arbre (format .dot ?)
-- Procédure pour exécuter les commandes en parcourant l'arbre. Le parcours d'arbre est séquentiel. Usage de `fork`, `dup2`, `execve`, `wait`, `waitpid`, etc. ...
-- Les fonctions built-in
+  - Procédure debug : affiche l'arbre (format .dot)
 
-### Lexer-Parser-AST
+Exemples de structure de noeud :
 
-Le plus gros du travail.
-
-Le lexer gère les erreurs de syntaxe : `" foo`  
-Le parser gère les erreurs de grammaire : `foo && && bar`
-
-Classe Node :
 - type de noeud
-- noeud gauche
-- noeud droite
-- expression / data
+- enfant gauche
+- enfant droite
+- data
 
-Objectif : générer la command table pour la partie exécution.  
-Penser aux fd pour les pipes et les redirections qui seront gérés dans la partie exécution.
+Ou :
+
+- type de noeud
+- expression
 
 ### Exécution
 
@@ -50,16 +49,14 @@ synchroniser les processus avec l'appel système wait
 
 ### Env
 
-PATH = où se trouvent tous les dossiers contenant des binaires dans le système
-
-set, expand, print
+`PATH` = où se trouvent tous les dossiers contenant des binaires dans le système
 
 ### Pipes
 
-pipe() prend en param fildes[2]
-- fildes[0] = côté où on lit READ_END
-- fildes[1] = côté où on écrit WRITE_END
+`pipe()` prend en param fildes[2]
+- fildes[0] = côté où on lit `READ_END`
+- fildes[1] = côté où on écrit `WRITE_END`
 
-dup2() prend 2 fd en param
+`dup2()` prend 2 fd en param
 
 fermer côté du pipe inutile afin d'éviter les broken pipes
