@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   display_prompt.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 18:19:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 21:09:03 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	handle_eof(t_shctrl *ft_sh)
 ** This function prompts the user for an input
 */
 
-char		*prompt(t_shctrl *ft_sh, const char *prompt)
+char		*display_prompt(t_shctrl *ft_sh, const char *prompt)
 {
 	char	*result;
 
