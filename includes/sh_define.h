@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 20:55:04 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 20:56:29 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "libft_define.h"
 
 # define SHELL_NAME "minishell"
-# define FT_PS1 "\033[34m┌─[\033[0mminishell\033[34m]\n└──╼\033[0m "
+# define FT_PS1 "minishell > "
+# define BONUS_PS1 "\033[34m┌─[\033[0mminishell\033[34m]\n└──╼\033[0m "
 # define FT_PS2 "> "
 # define DEFAULT_ARGC 1
 # define FAIL_RET -1
