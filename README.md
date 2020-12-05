@@ -13,7 +13,7 @@ PARSER-AST
 Le plus gros du travail
 
 - fix dans le lexer : les chevrons ou les pipes qui se suivent
-- fonction pour évaluer les noeuds
+- visitor + eval noeuds
 
 --------
 

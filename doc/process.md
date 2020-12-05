@@ -120,6 +120,8 @@ See 2.2 Quoting: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onl
 The parser:
 - checks for grammar errors
 - processes the tokens into an Abstract Syntax Tree (AST)
+- debug mode: save the AST to .dot and then to .svg
+- visitor to navigate the AST
 
 ## Execution
 
