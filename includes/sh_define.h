@@ -6,37 +6,37 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/29 19:18:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:25:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_DEFINE_H
 # define SH_DEFINE_H
-# include "libft_define.h"
 # include <signal.h>
+# include "libft_define.h"
 
 # define SHELL_NAME "ft_sh"
 # define SHELL_PROMPT "ft_sh > "
 # define LINE_PROMPT "> "
 # define DEFAULT_ARGC 1
-
 # define FAIL_RET -1
 
 /*
-** Parsing
+** Lexer
 */
 
 # define DEFAULT_CAPACITY 42
 # define MAX_TOKENS 15
 
+/*
+** Parsing
+*/
+
 # define COMMENT_START '#'
 # define BACKSLASH '\\'
 # define STRONG_QUOTE '\''
 # define WEAK_QUOTE '\"'
-# define ARGS_SEP ' '
 # define ENVKEY_SEP '='
-# define PATHS_SEP ':'
-# define DIRS_SEP "/"
 
 /*
 ** Execution, pipes and files

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/12 21:01:23 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:21:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft_str.h"
 #include "sh_env.h"
 
-char	**g_env;
+char		**g_env;
 
 /*
 ** This function loads the environment from envp

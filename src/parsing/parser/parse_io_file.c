@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 21:48:16 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:01:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static bool		parse_redir_op(t_ast_node **ast, t_lexer *lexer)
 		|| (lexer->tokens[lexer->pos]->type == TOKEN_DGREAT))
 	{
 		(*ast)->data = lexer->tokens[lexer->pos]->value;
-		move_to_next_token(lexer);
+		get_next_token(lexer);
 		return (true);
 	}
 	return (false);

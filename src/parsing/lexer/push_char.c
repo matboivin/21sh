@@ -6,14 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 19:58:00 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 21:19:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:03:50 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_str.h"
 
 /*
-** The lexer eats up the current character and adds it to the stack
+** The lexer adds the current character to the stack
 **
 ** stack: A pointer to the stack
 ** c: A pointer to the char to add

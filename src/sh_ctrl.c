@@ -6,12 +6,19 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:53:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/01 17:34:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:27:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "sh_ctrl.h"
+
+/*
+** Shell controller
+**
+** create_shell()   :  Constructor
+** destroy_shell()  :  Destructor
+*/
 
 void	create_shell(t_shctrl *ft_sh)
 {

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:51:19 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/12 21:01:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:22:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "sh_subsystems.h"
 
 /*
-** Register signal handlers
+** This function registers signal handlers
 */
 
 void	register_signal_handlers(void)

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 15:21:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 20:48:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:08:30 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "sh_ctrl.h"
 
 /*
-** Main loop
+** While the shell is not 'done', processes the user input
 */
 
 int		shell_loop(t_shctrl *ft_sh);

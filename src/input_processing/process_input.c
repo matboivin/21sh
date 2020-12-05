@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 20:48:42 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:21:16 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "sh_input_processing.h"
 
 /*
-** This function gets the command input and sends it to the lexer
+** This function gets the command input and splits it into tokens
 */
 
 static void	get_command(t_shctrl *ft_sh)
@@ -40,7 +40,7 @@ static void	get_command(t_shctrl *ft_sh)
 ** This function processes the command input
 */
 
-int				process_input(t_shctrl *ft_sh)
+int			process_input(t_shctrl *ft_sh)
 {
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	get_command(ft_sh);

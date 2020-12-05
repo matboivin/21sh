@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 21:48:08 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:04:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,19 +125,39 @@ t_regex			get_token(char *input);
 int				tokenize(t_lexer *lexer, char *input);
 
 /*
-** Token handlers and utils
+** Token handlers
 */
 
 int				handle_token(t_lexer *lexer, t_regex token, char **stack);
 void			handle_text(t_lexer *lexer, char **stack);
 void			handle_quotes(t_lexer *lexer, char **input);
+
+/*
+** Escapes a character following a backslash
+*/
+
 int				escape_char(char **input, char **stack);
+
+/*
+** Adds the current character to the stack
+*/
+
 char			*push_char(char *stack, char **c);
-void			move_to_next_token(t_lexer *lexer);
+
+/*
+** Gets next token
+*/
+
+void			get_next_token(t_lexer *lexer);
+
+/*
+** Eats the current token if its type is the one expected
+*/
+
 int				eat(t_lexer *lexer, t_tok_type expected);
 
 /*
-** Debug
+** Prints the lexer size, capacity and tokens
 */
 
 void			print_lexer(t_lexer *lexer);

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:02:51 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 20:48:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:10:03 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 #include "sh_utils.h"
 #include "sh_input_processing.h"
 
-int			shell_loop(t_shctrl *ft_sh)
+/*
+** While the shell is not 'done', processes the user input: a command
+**   Prompt the user for and input
+**   Parse the command
+**   Execute the command
+**   Return status
+*/
+
+int		shell_loop(t_shctrl *ft_sh)
 {
 	while (!g_done)
 		process_input(ft_sh);

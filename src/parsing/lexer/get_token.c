@@ -6,18 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 20:16:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 20:58:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 18:02:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_str.h"
 #include "sh_lexer.h"
-
-/*
-** Bonus:
-** token  AND_IF    OR_IF
-**        '&&'      '||'
-*/
 
 static t_regex	g_regex_list[] =
 {

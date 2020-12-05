@@ -45,13 +45,13 @@ SRC_FILES	+=	add_token_to_lexer.c	\
 				eat.c					\
 				escape_char.c			\
 				get_token.c				\
+				get_next_token.c		\
 				handle_quote.c			\
 				handle_text.c			\
 				handle_token.c			\
 				increase_lexer.c		\
 				lexer.c					\
 				lexer_is_full.c			\
-				move_to_next_token.c	\
 				push_char.c				\
 				token.c					\
 				tokenize.c

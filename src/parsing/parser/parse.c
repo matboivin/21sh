@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 21:26:47 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 17:57:56 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 **
 ** ast: The AST to complete
 ** lexer: The lexer containing the tokens
-** pos: The position in the lexer
+**
+** returns: 0
+**          -1 on error
 */
 
 int		parse(t_ast_node **ast, t_lexer *lexer)
