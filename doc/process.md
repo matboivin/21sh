@@ -65,6 +65,8 @@ Run an infinite loop that displays a prompt and wait for the user's input.
 
 Implement a `ft_readline()` function.
 
+> Bash expands and displays PS1 before reading the first line of a command, and expands and displays PS2 before reading the second and subsequent lines of a multi-line command. Bash expands and displays PS0 after it reads a command but before executing it. See Controlling the Prompt, for a complete list of prompt string escape sequences.  [(Source)](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#Bash-Variables)
+
 ### Register signal handling (basic way first)
 
 > When Bash is interactive, in the absence of any traps, it ignores SIGTERM (so that ‘kill 0’ does not kill an interactive shell), and SIGINT is caught and handled (so that the wait builtin is interruptible). When Bash receives a SIGINT, it breaks out of any executing loops. In all cases, Bash ignores SIGQUIT. If job control is in effect (see Job Control), Bash ignores SIGTTIN, SIGTTOU, and SIGTSTP. [(Source)](https://www.gnu.org/software/bash/manual/html_node/Signals.html)
@@ -134,6 +136,10 @@ digraph graphname {
     b -> d;
 }
 ```
+
+### Word Expansions
+
+
 
 ## Execution
 

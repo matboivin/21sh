@@ -10,10 +10,12 @@
 
 ### Understanding how it works
 
+- [Gnu.org: Interactive Shell Behavior](https://www.gnu.org/software/bash/manual/html_node/Interactive-Shell-Behavior.html)
+- [Gnu.org: Bash Variables](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#Bash-Variables)
 - [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
+- [Bash Startup Explained](https://zwischenzugs.com/2019/02/27/bash-startup-explained/)
 - [Wiki ubuntu-fr: Initiation au Shell](https://doc.ubuntu-fr.org/projets/ecole/scripting/initiation_au_shell)
 - [UNIX SHELL Quote Tutorial](https://www.grymoire.com/Unix/Quote.html)
-- [Bash Startup Explained](https://zwischenzugs.com/2019/02/27/bash-startup-explained/)
 - [Difference between ${} and $() in Bash](https://stackoverflow.com/questions/27472540/difference-between-and-in-bash/27472808)
 - [Shell search PATH – finding and running commands](http://teaching.idallen.com/cst8207/12f/notes/400_search_path.html)
 
