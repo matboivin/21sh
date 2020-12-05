@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 21:10:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 21:39:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void			add_token_to_lexer(
 	t_lexer *lexer, const char *s, size_t p_len, t_tok_type p_type);
 
 /*
-** Searches if input is a token
+** Searches if input character is a token
 */
 
 t_regex			get_token(char *input);
@@ -123,27 +123,27 @@ t_regex			get_token(char *input);
 ** Splits the input string into tokens and handles syntax errors
 */
 
-int				tokenize(t_lexer *lexer, char *input);
+int				tokenize(t_lexer *lexer);
 
 /*
 ** Token handlers
 */
 
-int				handle_token(t_lexer *lexer, t_regex token, char **stack);
+void			handle_token(t_lexer *lexer, t_regex token, char **stack);
 void			handle_text(t_lexer *lexer, char **stack);
-void			handle_quotes(t_lexer *lexer, char **input);
+void			handle_quotes(t_lexer *lexer);
 
 /*
 ** Escapes a character following a backslash
 */
 
-int				escape_char(char **input, char **stack);
+int				escape_char(t_lexer *lexer, char **stack);
 
 /*
 ** Adds the current character to the stack
 */
 
-char			*push_char(char *stack, char **c);
+char			*push_char(t_lexer *lexer, char *stack);
 
 /*
 ** Gets next token

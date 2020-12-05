@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 21:21:10 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 21:39:25 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,31 @@
 
 // TODO: Syntax fixing
 
-int			tokenize(t_lexer *lexer, char *input)
+int			tokenize(t_lexer *lexer)
 {
 	t_regex	token;
 	char	*stack;
 
 	stack = NULL;
-	while (input && *input)
+	lexer->pos = 0;
+	while (lexer->input[lexer->pos])
 	{
-		token = get_token(input);
-		if (*input == COMMENT_START)
+		token = get_token(lexer->input + lexer->pos);
+		if (lexer->input[lexer->pos] == COMMENT_START)
 			break ;
-		if (*input == BACKSLASH)
+		if (lexer->input[lexer->pos] == BACKSLASH)
 		{
-			if (escape_char(&input, &stack))
+			if (escape_char(lexer, &stack))
 				return (1);
 		}
-		else if ((*input == STRONG_QUOTE) || (*input == WEAK_QUOTE))
-			handle_quotes(lexer, &input);
+		else if (
+			(lexer->input[lexer->pos] == STRONG_QUOTE)
+			|| (lexer->input[lexer->pos] == WEAK_QUOTE))
+			handle_quotes(lexer);
 		else if (token.type)
-			input += handle_token(lexer, token, &stack);
+			handle_token(lexer, token, &stack);
 		else
-			stack = push_char(stack, &input);
+			stack = push_char(lexer, stack);
 	}
 	if (stack)
 		handle_text(lexer, &stack);

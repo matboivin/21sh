@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 19:50:04 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 21:19:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 21:24:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 ** This function escapes a character following a backslash
 */
 
-int		escape_char(char **input, char **stack)
+int		escape_char(t_lexer *lexer, char **stack)
 {
-	(*input)++;
-	if (**input)
+	lexer->pos++;
+	if (lexer->input[lexer->pos])
 	{
-		*stack = push_char(*stack, input);
+		*stack = push_char(lexer, *stack);
 		return (0);
 	}
 	return (1);

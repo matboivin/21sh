@@ -6,23 +6,24 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 19:58:00 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 18:03:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 21:26:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_str.h"
+#include "sh_lexer.h"
 
 /*
 ** The lexer adds the current character to the stack
 **
 ** stack: A pointer to the stack
-** c: A pointer to the char to add
+** lexer: The lexer
 **
 ** returns: The new stack
 **          NULL otherwise
 */
 
-char		*push_char(char *stack, char **c)
+char		*push_char(t_lexer *lexer, char *stack)
 {
 	char	*result;
 	size_t	len_stack;
@@ -40,7 +41,7 @@ char		*push_char(char *stack, char **c)
 		ft_strlcpy(result, stack, (len_stack + 1));
 		ft_strdel(&stack);
 	}
-	ft_strlcpy(result + len_stack, *c, 2);
-	(*c)++;
+	ft_strlcpy(result + len_stack, lexer->input + lexer->pos, 2);
+	lexer->pos++;
 	return (result);
 }

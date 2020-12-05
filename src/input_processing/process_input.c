@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 21:12:34 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 21:13:56 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static void	get_command(t_shctrl *ft_sh)
 
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	ft_sh->lexer->input = display_prompt(ft_sh, FT_PS1);
-	not_finished = tokenize(ft_sh->lexer, ft_sh->lexer->input);
+	not_finished = tokenize(ft_sh->lexer);
 	ft_strdel(&ft_sh->lexer->input);
 	while (not_finished)
 	{
 		ft_sh->lexer->input = display_prompt(ft_sh, FT_PS2);
-		not_finished = tokenize(ft_sh->lexer, ft_sh->lexer->input);
+		not_finished = tokenize(ft_sh->lexer);
 		ft_strdel(&ft_sh->lexer->input);
 	}
 }
