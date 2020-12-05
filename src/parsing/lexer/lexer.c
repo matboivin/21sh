@@ -6,12 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 21:18:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 21:11:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft_mem.h"
+#include "libft_str.h"
 #include "libft_printf.h"
 #include "sh_lexer.h"
 
@@ -29,6 +30,7 @@ void		create_lexer(t_lexer *lexer, size_t p_capacity)
 	lexer->pos = 0;
 	lexer->size = DEFAULT_SIZE;
 	lexer->capacity = p_capacity;
+	lexer->input = NULL;
 	lexer->tokens = ft_calloc((p_capacity + 1), sizeof(t_token *));
 }
 
@@ -45,6 +47,8 @@ t_lexer		*malloc_lexer(size_t p_capacity)
 
 void		destroy_lexer(t_lexer to_destroy)
 {
+	if (to_destroy.input)
+		ft_strdel(&(to_destroy.input));
 	if (to_destroy.tokens)
 		delete_tokens(to_destroy.tokens, to_destroy.size);
 }

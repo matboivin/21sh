@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 18:04:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/05 21:10:51 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct	s_lexer
 	size_t		pos;
 	size_t		size;
 	size_t		capacity;
+	char		*input;
 	t_token		**tokens;
 }				t_lexer;
 
