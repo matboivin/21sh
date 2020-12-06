@@ -139,6 +139,9 @@ digraph graphname {
 
 ### Word Expansions
 
+> The reason that using a variable is called substitution is that the shell literally replaces each reference to any variable with its value. This is done while evaluating the command-line, which means that the variable substitution is made before the command is actually executed.  [(Source)](https://en.wikibooks.org/wiki/Bourne_Shell_Scripting/Variable_Expansion)
+
+> As you can see, reference the value of a variable by preceding it with a $ sign. The shell takes this to mean that it should substitute the value of the variable when it comes across this.  [(Source)](https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux)
 
 
 ## Execution
