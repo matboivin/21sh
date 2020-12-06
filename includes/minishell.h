@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_ft_sh.c                                       :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/15 14:45:35 by mboivin          ###   ########.fr       */
+/*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/06 18:22:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft_printf.h"
-#include "sh_utils.h"
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-/*
-** This function frees the allocated memory and exits with the status passed as
-** parameter
-*/
+# include "sh_define.h"
+# include "sh_utils.h"
+# include "sh_env.h"
+# include "sh_subsystems.h"
+# include "sh_input_processing.h"
+# include "sh_lexer.h"
+# include "sh_ast.h"
+# include "sh_parser.h"
+# include "sh_ctrl.h"
+# include "sh_builtin.h"
 
-void	exit_ft_sh(int status, t_shctrl *ft_sh)
-{
-	free_all(ft_sh);
-#ifdef DEBUG
-	ft_printf(
-		"\n----------- DEBUG: STATUS -----------\nexited with: %d\n", g_status);
-#endif /* DEBUG */
-	exit(status);
-}
+#endif

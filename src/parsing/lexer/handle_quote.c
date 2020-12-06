@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:17:34 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 21:26:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:14:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	handle_quote_type(t_lexer *lexer, char quote_type)
 
 	stack = NULL;
 	stack = push_char(lexer, stack);
-	while (lexer->input && lexer->input[lexer->pos] != quote_type)
+	while (lexer->input[lexer->pos] && lexer->input[lexer->pos] != quote_type)
 	{
 		if (
 			(lexer->input[lexer->pos] == BACKSLASH)

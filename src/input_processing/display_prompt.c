@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 21:09:03 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:23:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 static void	handle_eof(t_shctrl *ft_sh)
 {
 	ft_putchar('\n');
-	exit_ft_sh(g_status, ft_sh);
+	exit_shell(g_status, ft_sh);
 }
 
 /*

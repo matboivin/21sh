@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/22 19:00:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:23:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include <string.h>
 #include "libft_printf.h"
+#include "sh_env.h"
 #include "sh_utils.h"
 
 /*
@@ -25,7 +26,7 @@ void	print_syntax_error(const char *token)
 	ft_dprintf(
 		STDERR_FILENO,
 		"%s: syntax error near unexpected token `%s'\n",
-		SHELL_NAME,
+		ft_getenv("SHELL"),
 		token);
 }
 
@@ -35,7 +36,7 @@ void	print_matching_error(char c)
 	ft_dprintf(
 		STDERR_FILENO,
 		"%s: unexpected EOF while looking for matching `%c'\n",
-		SHELL_NAME,
+		ft_getenv("SHELL"),
 		c);
 }
 
@@ -44,6 +45,6 @@ void	print_matching_error(char c)
 // 	char	*msg;
 
 // 	msg = (char *)strerror(errno);
-// 	ft_dprintf(STDERR_FILENO, "%s: %s: %s\n", SHELL_NAME, target, msg);
-// 	exit_ft_sh(EXIT_FAILURE, ft_sh);
+// 	ft_dprintf(STDERR_FILENO, "%s: %s: %s\n", ft_getenv("SHELL"), target, msg);
+// 	exit_shell(EXIT_FAILURE, ft_sh);
 // }

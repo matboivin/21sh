@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:39:16 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:05:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** Shell startup: loads environment, sets flags and registers signal handlers
 */
 
-void	start_shell(char **envp);
+void	start_shell(char **envp, char *argv0);
 
 /*
 ** Registers signal handlers

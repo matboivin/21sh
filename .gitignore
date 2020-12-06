@@ -53,9 +53,8 @@ dkms.conf
 
 # debug
 .gdb_history
-peda-session-ft_sh.txt
 ast.dot
 ast.svg
 
-ft_sh
+minishell
 todo.txt

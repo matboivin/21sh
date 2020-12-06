@@ -1,4 +1,4 @@
-BIN_NAME := ft_sh
+BIN_NAME := minishell
 
 SHELL = /bin/sh
 RM = /bin/rm
@@ -8,7 +8,7 @@ RM = /bin/rm
 
 # ********************************* INCLUDES ********************************* #
 
-INC_FILES	=	ft_sh.h					\
+INC_FILES	=	minishell.h				\
 				sh_ast.h				\
 				sh_builtin.h			\
 				sh_ctrl.h				\
@@ -26,7 +26,7 @@ SRC_FILES	=	main.c					\
 				sh_ctrl.c				\
 				print_error.c			\
 				print_usage.c			\
-				exit_ft_sh.c			\
+				exit_shell.c			\
 				free_all.c
 
 # BUILT-IN FUNCTIONS #
@@ -179,7 +179,7 @@ debug: re
 	@echo "DEBUG\t\tDebug build done"
 
 check_leaks: $(BIN_NAME)
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ft_sh
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./minishell
 
 show_tree:
 	@dot -Tsvg ast.dot -o ast.svg

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:33:44 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:38:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:05:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** Retrieves the environment from envp
 */
 
-void	load_environment(char **envp);
+void	load_environment(char **envp, char *argv0);
 
 /*
 ** Duplicates the environment
