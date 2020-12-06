@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:12:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:38:02 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,22 @@
 # include <signal.h>
 # include "libft_define.h"
 
-# define FT_PS1 "minishell > "
-# define BONUS_PS1 "\033[34m┌─[\033[0mminishell\033[34m]\n└──╼\033[0m "
+/*
+** PS1: environment variable which contains the value of the default prompt.
+** It changes the shell command prompt appearance and environment.
+*/
+
+# define OP_PROMPT "\033[34m┌─[\033[0m"
+# define END_PROMPT "\033[34m]\n└──╼\033[0m "
+
+/*
+** PS2: environment variable which contains the value the prompt used for a
+** command continuation interpretation. You see it when you write a long
+** command in many lines.
+*/
+
 # define FT_PS2 "> "
+
 # define DEFAULT_ARGC 1
 # define FAIL_RET -1
 

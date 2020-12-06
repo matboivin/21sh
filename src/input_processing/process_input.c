@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 21:13:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:39:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft_str.h"
 #include "sh_utils.h"
+#include "sh_env.h"
 #include "sh_parser.h"
 #include "sh_input_processing.h"
 
@@ -25,7 +26,7 @@ static void	get_command(t_shctrl *ft_sh)
 	int		not_finished;
 
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
-	ft_sh->lexer->input = display_prompt(ft_sh, FT_PS1);
+	ft_sh->lexer->input = display_prompt(ft_sh, ft_getenv("FT_PS1"));
 	not_finished = tokenize(ft_sh->lexer);
 	ft_strdel(&ft_sh->lexer->input);
 	while (not_finished)
