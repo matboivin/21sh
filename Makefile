@@ -81,7 +81,8 @@ SRC_FILES	+=	handle_fatal_error.c		\
 
 # SUBSYSTEMS #
 
-SRC_FILES	+=	ft_clearenv.c		\
+SRC_FILES	+=	create_prompt.c		\
+				ft_clearenv.c		\
 				ft_findenv.c		\
 				ft_getenv.c			\
 				ft_printenv.c		\

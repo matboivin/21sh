@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:11:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:54:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,40 @@ char		**g_env;
 
 static char	*get_shell_name(char *argv0)
 {
+	size_t	start;
 	size_t	len;
 
+	start = 0;
+	len = ft_strlen(argv0);
 	if (ft_strcmp(argv0, "./"))
+		start = 2;
+	len = ft_strlen(argv0) - start;
+	return (ft_substr(argv0, start, len));
+}
+
+void		set_shell_name(char *argv0)
+{
+	char	*shell_name;
+
+	shell_name = get_shell_name(argv0);
+	if (shell_name)
 	{
-		len = ft_strlen(argv0) - 2;
-		return (ft_substr(argv0, 2, len));
+		ft_setenv("SHELL", shell_name, true);
+		ft_strdel(&shell_name);
 	}
-	return (NULL);
+	else
+		ft_setenv("SHELL", DEFAULT_SHELL_NAME, true);
 }
 
 void		load_environment(char **envp, char *argv0)
 {
 	size_t	i;
 	size_t	count;
-	char	*shell_name;
 
 	count = ft_str_arr_len(envp);
 	g_env = ft_calloc((count + 1), sizeof(char *));
 	if (!g_env)
 		exit(EXIT_FAILURE);
-	shell_name = NULL;
 	i = 0;
 	while (i < count)
 	{
@@ -58,10 +71,5 @@ void		load_environment(char **envp, char *argv0)
 		}
 		i++;
 	}
-	shell_name = get_shell_name(argv0);
-	if (shell_name)
-	{
-		ft_setenv("SHELL", shell_name, true);
-		ft_strdel(&shell_name);
-	}
+	set_shell_name(argv0);
 }

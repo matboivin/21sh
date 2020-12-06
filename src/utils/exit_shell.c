@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:22:52 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:57:31 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** parameter
 */
 
-void	exit_shell(int status, t_shctrl *ft_sh)
+void	exit_shell(t_shctrl *ft_sh, int status)
 {
 	free_all(ft_sh);
 #ifdef DEBUG

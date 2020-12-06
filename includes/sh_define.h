@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:38:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:50:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SH_DEFINE_H
 # include <signal.h>
 # include "libft_define.h"
+
+# define DEFAULT_SHELL_NAME "minishell"
 
 /*
 ** PS1: environment variable which contains the value of the default prompt.

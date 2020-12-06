@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:33:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/06 18:52:31 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 void	start_shell(char **envp, char *argv0);
 
 /*
-** Creates shell prompt
+** Creates a custom shell prompt
 */
 
 void	create_prompt(void);
