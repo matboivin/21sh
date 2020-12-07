@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:54:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/07 15:47:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,18 @@ static char	*get_shell_name(char *argv0)
 void		set_shell_name(char *argv0)
 {
 	char	*shell_name;
+	char	*shell_value;
 
-	shell_name = get_shell_name(argv0);
-	if (shell_name)
+	shell_value = get_shell_name(argv0);
+	if (shell_value)
 	{
-		ft_setenv("SHELL", shell_name, true);
-		ft_strdel(&shell_name);
+		shell_name = ft_join_n_str(3, "SHELL_NAME", "=", shell_value);
+		if (shell_name )
+			ft_putenv(shell_name );
+		ft_strdel(&shell_value);
 	}
 	else
-		ft_setenv("SHELL", DEFAULT_SHELL_NAME, true);
+		ft_setenv("SHELL_NAME", DEFAULT_SHELL_NAME, true);
 }
 
 void		load_environment(char **envp, char *argv0)

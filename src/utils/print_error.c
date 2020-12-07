@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:57:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/07 15:46:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_syntax_error(const char *token)
 	ft_dprintf(
 		STDERR_FILENO,
 		"%s: syntax error near unexpected token `%s'\n",
-		ft_getenv("SHELL"),
+		ft_getenv("SHELL_NAME"),
 		token);
 }
 
@@ -36,7 +36,7 @@ void	print_matching_error(char c)
 	ft_dprintf(
 		STDERR_FILENO,
 		"%s: unexpected EOF while looking for matching `%c'\n",
-		ft_getenv("SHELL"),
+		ft_getenv("SHELL_NAME"),
 		c);
 }
 
@@ -45,6 +45,7 @@ void		exit_error(t_shctrl *ft_sh, char *target)
 	char	*msg;
 
 	msg = (char *)strerror(errno);
-	ft_dprintf(STDERR_FILENO, "%s: %s: %s\n", ft_getenv("SHELL"), target, msg);
+	ft_dprintf(
+		STDERR_FILENO, "%s: %s: %s\n", ft_getenv("SHELL_NAME"), target, msg);
 	exit_shell(ft_sh, EXIT_FAILURE);
 }
