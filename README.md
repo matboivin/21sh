@@ -19,7 +19,8 @@ Le plus gros du travail
 
 SUBSYSTEMS
 
-- Expand variables
+- Aliases
+- [Control-\](https://en.wikipedia.org/wiki/Control-%5C#:~:text=In%20computing%2C%20control%2D%5C%20is,key%20on%20a%20computer%20keyboard.)
 
 --------
 
