@@ -17,8 +17,8 @@ Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/online
    containing more than one character. */
 
 
-%token  AND_IF    OR_IF    DGREAT
-/*      '&&'      '||'     '>>'     */
+%token  DGREAT
+/*      '>>'     */
 
 
 /* -------------------------------------------------------
