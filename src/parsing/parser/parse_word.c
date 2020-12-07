@@ -6,12 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/07 17:13:29 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/07 18:55:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stddef.h>
+#include "libft_str.h"
+#include "libft_printf.h"
 #include "sh_subsystems.h"
 #include "sh_parser.h"
 
@@ -24,10 +26,16 @@
 
 bool			parse_word(t_ast_node **ast, t_lexer *lexer)
 {
+	char		*data;
 	t_ast_node	*word_node;
 
-	word_node = malloc_ast_node(NODE_WORD, lexer->tokens[lexer->pos]->value);
-	substitute_word(&(word_node->data));
+	data = substitute_word(lexer->tokens[lexer->pos]->value);
+	if (data)
+		word_node = malloc_ast_node(NODE_WORD, data);
+	else
+		word_node = malloc_ast_node(NODE_WORD, lexer->tokens[lexer->pos]->value);
+	ft_printf("%s\n", word_node->data);
+	ft_strdel(&data);
 	if (eat(lexer, TOKEN_WORD) && word_node)
 	{
 		append_node_left(ast, word_node);
