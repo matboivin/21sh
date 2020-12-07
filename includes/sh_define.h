@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/07 16:55:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/07 17:07:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # define BACKSLASH '\\'
 # define STRONG_QUOTE '\''
 # define WEAK_QUOTE '\"'
+# define DOLLAR_SIGN '$'
 # define ENVKEY_SEP '='
 
 /*

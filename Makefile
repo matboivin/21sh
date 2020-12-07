@@ -109,12 +109,14 @@ INC_DIR		=	includes
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 
-SUB_DIRS	=	builtin				\
-				input_processing	\
-				parsing/lexer		\
-				parsing/parser		\
-				parsing/tree		\
-				subsystems			\
+SUB_DIRS	=	builtin					\
+				input_processing		\
+				parsing/lexer			\
+				parsing/parser			\
+				parsing/tree			\
+				subsystems				\
+				subsystems/env_utils	\
+				subsystems/signals		\
 				utils
 
 SRC_SUBDIRS	=	$(addprefix $(SRC_DIR)/, $(SUB_DIRS))
