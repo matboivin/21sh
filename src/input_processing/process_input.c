@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:39:14 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/08 14:35:47 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int			process_input(t_shctrl *ft_sh)
 {
 	get_command(ft_sh);
 	parse(&(ft_sh->ast), ft_sh->lexer);
+	if (g_status == INCORRECT_USAGE)
+		exit_shell(ft_sh, g_status);
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
 	print_ast(ft_sh->ast);

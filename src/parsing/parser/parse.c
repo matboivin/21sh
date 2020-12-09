@@ -6,13 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 19:10:44 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/08 14:36:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include <stddef.h>
-#include "libft_printf.h"
 #include "sh_utils.h"
 #include "sh_parser.h"
 
@@ -26,7 +24,7 @@
 **          -1 on error
 */
 
-int		parse(t_ast_node **ast, t_lexer *lexer)
+void		parse(t_ast_node **ast, t_lexer *lexer)
 {
 	bool	ret_val;
 
@@ -36,9 +34,5 @@ int		parse(t_ast_node **ast, t_lexer *lexer)
 	while ((lexer->pos < lexer->size) && ret_val)
 		ret_val = parse_command(ast, lexer);
 	if (lexer->pos != lexer->size)
-	{
-		ft_dprintf(STDERR_FILENO, "parser: Grammar error\n");
-		return (FAIL_RET);
-	}
-	return (0);
+		print_syntax_error(lexer->tokens[lexer->pos]->value);
 }

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/07 15:47:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/08 19:35:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void		set_shell_name(char *argv0)
 	if (shell_value)
 	{
 		shell_name = ft_join_n_str(3, "SHELL_NAME", "=", shell_value);
-		if (shell_name )
-			ft_putenv(shell_name );
+		if (shell_name)
+			ft_putenv(shell_name);
 		ft_strdel(&shell_value);
 	}
 	else

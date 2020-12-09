@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 21:39:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/08 14:32:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 #include "sh_lexer.h"
 
 /*
-** This function splits the input string into tokens and handles syntax errors
+** This function splits the input string into tokens
 */
-
-// TODO: Syntax fixing
 
 int			tokenize(t_lexer *lexer)
 {
