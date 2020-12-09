@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/07 16:55:22 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/09 17:18:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@ typedef struct	s_lexer
 
 t_token			create_token(const char *s, size_t p_len, t_tok_type p_type);
 t_token			*malloc_token(const char *s, size_t p_len, t_tok_type p_type);
-void			destroy_token(t_token *to_destroy);
-void			free_token(t_token *to_free);
+void			free_token(t_token **to_free);
 void			delete_tokens(t_token **tokens, size_t size);
 
 /*

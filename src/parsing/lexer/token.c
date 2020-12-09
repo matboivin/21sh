@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/27 11:50:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/09 17:18:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,13 @@ t_token		*malloc_token(const char *s, size_t p_len, t_tok_type p_type)
 	return (result);
 }
 
-void		destroy_token(t_token *to_destroy)
-{
-	ft_strdel(&to_destroy->value);
-}
-
-void		free_token(t_token *to_free)
+void		free_token(t_token **to_free)
 {
 	if (to_free)
 	{
-		destroy_token(to_free);
-		free(to_free);
+		ft_strdel(&(*to_free)->value);
+		free(*to_free);
+		*to_free = NULL;
 	}
 }
 
@@ -69,7 +65,7 @@ void		delete_tokens(t_token **tokens, size_t size)
 	if (tokens && size)
 	{
 		while (tokens && tokens[i] && i < size)
-			free_token(tokens[i++]);
+			free_token(&tokens[i++]);
 	}
 	if (tokens)
 	{

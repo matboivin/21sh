@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/07 18:33:46 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/09 17:20:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	register_signal_handlers(void);
 void	handle_fatal_error(int sig);
 
 /*
-** Substitutes the variable name by its value
+** Substitutes the variable names by their values
 */
 
-char	*substitute_word(char *data);
+void	substitute_word(char **data);
 
 #endif
