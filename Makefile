@@ -91,6 +91,7 @@ SRC_FILES	+=	create_prompt.c		\
 				ft_unsetenv.c		\
 				dup_environment.c	\
 				load_environment.c	\
+				remove_quotes.c		\
 				start_shell.c		\
 				substitute_word.c
 

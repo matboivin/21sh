@@ -6,14 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 17:10:12 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/09 17:43:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/09 18:25:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "libft_ctype.h"
 #include "libft_str.h"
-#include "libft_printf.h"
 #include "sh_env.h"
 #include "sh_subsystems.h"
 
