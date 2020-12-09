@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/08 14:32:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/09 16:54:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 /*
 ** This function splits the input string into tokens
 */
+
+static int	is_quote(int c)
+{
+	return ((c == STRONG_QUOTE) || (c == WEAK_QUOTE));
+}
 
 int			tokenize(t_lexer *lexer)
 {
@@ -34,9 +39,7 @@ int			tokenize(t_lexer *lexer)
 			if (escape_char(lexer, &stack))
 				return (1);
 		}
-		else if (
-			(lexer->input[lexer->pos] == STRONG_QUOTE)
-			|| (lexer->input[lexer->pos] == WEAK_QUOTE))
+		else if (is_quote(lexer->input[lexer->pos]))
 			handle_quotes(lexer);
 		else if (token.type)
 			handle_token(lexer, token, &stack);
