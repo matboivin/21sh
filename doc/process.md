@@ -149,6 +149,20 @@ digraph graphname {
 - Eval all nodes
 - Execute: open fd, launch processes
 
+### Tree traversal / Visitor pattern
+
+In-Order (LNR) seems the most appropriate search.
+
+Go down one level to the recursive argument N. If N exists (is non-empty) execute the following three operations in this order:
+
+- (L)	Recursively traverse N's left subtree.
+- (N)	Process the current node N itself.
+- (R)	Recursively traverse N's right subtree.
+
+Return by going up one level and arriving at the parent node of N.
+
+Source: [Wiki: Tree Traversal](https://en.wikipedia.org/wiki/Tree_traversal)
+
 ### Pipes
 
 > If the parent wants to receive data from the child, it should close fd[1], and the child should close fd[0]. If the parent wants to send data to the child, it should close fd[0], and the child should close fd[1]. Since descriptors are shared between the parent and child, we should always be sure to close the end of pipe we aren't concerned with. On a technical note, the EOF will never be returned if the unnecessary ends of the pipe are not explicitly closed. [(Source)](https://tldp.org/LDP/lpg/node11.html)
