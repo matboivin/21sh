@@ -18,7 +18,8 @@ INC_FILES	=	minishell.h				\
 				sh_lexer.h				\
 				sh_parser.h				\
 				sh_subsystems.h			\
-				sh_utils.h
+				sh_utils.h				\
+				sh_visitor.h
 
 # ********************************* C FILES ********************************** #
 
@@ -74,25 +75,26 @@ SRC_FILES	+=	ast.c					\
 				print_ast_dot.c			\
 				print_ast_svg.c
 
-# SIGNAL HANDLING #
+# EXECUTION #
 
-SRC_FILES	+=	handle_fatal_error.c		\
-				register_signal_handlers.c
+SRC_FILES	+=	visitor.c
 
 # SUBSYSTEMS #
 
-SRC_FILES	+=	create_prompt.c		\
-				ft_clearenv.c		\
-				ft_findenv.c		\
-				ft_getenv.c			\
-				ft_printenv.c		\
-				ft_putenv.c			\
-				ft_setenv.c			\
-				ft_unsetenv.c		\
-				dup_environment.c	\
-				load_environment.c	\
-				remove_quotes.c		\
-				start_shell.c		\
+SRC_FILES	+=	create_prompt.c				\
+				ft_clearenv.c				\
+				ft_findenv.c				\
+				ft_getenv.c					\
+				ft_printenv.c				\
+				ft_putenv.c					\
+				ft_setenv.c					\
+				ft_unsetenv.c				\
+				dup_environment.c			\
+				handle_fatal_error.c		\
+				load_environment.c			\
+				register_signal_handlers.c	\
+				remove_quotes.c				\
+				start_shell.c				\
 				substitute_word.c
 
 # ********************************* OBJECTS ********************************** #
