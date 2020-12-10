@@ -61,7 +61,7 @@ bool			parse_io_file(t_ast_node **ast, t_lexer *lexer)
 	{
 		if (lexer->pos < lexer->size)
 		{
-			if (parse_word(&iofile_node, lexer))
+			if (parse_word(&(iofile_node->right), lexer))
 			{
 				append_node_left(ast, iofile_node);
 				return (true);
