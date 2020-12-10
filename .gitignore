@@ -56,5 +56,6 @@ dkms.conf
 ast.dot
 ast.svg
 
+*.swp
 minishell
 todo.txt

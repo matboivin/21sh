@@ -36,7 +36,7 @@ static bool		get_pipe_seq(t_ast_node **node, t_lexer *lexer)
 {
 	t_ast_node	*cmd_node;
 
-	cmd_node = malloc_ast_node(NODE_CMD, "command");
+	cmd_node = malloc_ast_node(NODE_CMD, NULL);
 	if (parse_pipe_sequence(&cmd_node->right, lexer))
 	{
 		append_node_right(node, cmd_node);

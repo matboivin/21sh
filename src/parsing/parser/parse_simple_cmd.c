@@ -43,7 +43,7 @@ bool	parse_simple_cmd(t_ast_node **ast, t_lexer *lexer)
 {
 	t_ast_node	*simple_cmd_node;
 
-	simple_cmd_node = malloc_ast_node(NODE_SIMPLE_CMD, "simple_cmd");
+	simple_cmd_node = malloc_ast_node(NODE_SIMPLE_CMD, NULL);
 	if (parse_io_file(&simple_cmd_node, lexer))
 	{
 		if (lexer->pos < lexer->size)

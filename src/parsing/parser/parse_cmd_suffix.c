@@ -39,7 +39,7 @@ bool			parse_cmd_suffix(t_ast_node **ast, t_lexer *lexer)
 {
 	t_ast_node	*suffix_node;
 
-	suffix_node = malloc_ast_node(NODE_CMD_SUFFIX, "cmd_suffix");
+	suffix_node = malloc_ast_node(NODE_CMD_SUFFIX, NULL);
 	if (parse_word(&suffix_node, lexer))
 	{
 		if (lexer->pos < lexer->size)
