@@ -112,6 +112,7 @@ SRC_DIR		=	src
 OBJ_DIR		=	obj
 
 SUB_DIRS	=	builtin					\
+				execution				\
 				input_processing		\
 				parsing/lexer			\
 				parsing/parser			\
