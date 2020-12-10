@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 18:58:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/03 17:47:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/10 18:52:46 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,3 @@ void			append_node_right(t_ast_node **node, t_ast_node *new_node)
 		*node = new_node;
 }
 
-/*
-** This function adds childs to the node passed as parameter
-*/
-
-void			add_node_childs(
-	t_ast_node **node, t_ast_node *p_left, t_ast_node *p_right)
-{
-	(*node)->left = p_left;
-	(*node)->right = p_right;
-}
