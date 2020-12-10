@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 19:40:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/10 18:59:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,28 @@ static void	write_branch(int fd, t_ast_node *node, int i)
 {
 	if (node->left)
 	{
-		ft_dprintf(
-			fd, "\n    \"%s\\n%d\" -> \"%s\\n%d\";",
-			node->data, i,
-			node->left->data, i + 1);
+		while (!node->data && node->left)
+			node = node->left;
+		ft_dprintf(fd, "\n    \"%s\\n%d\"", node->data, i);
+		while (!node->left->data && node->left->left)
+			node->left = node->left->left;
+		if (node->left->data)
+			ft_dprintf(fd, " -> \"%s\\n%d\";", node->left->data, i + 1);
+		else
+			ft_dprintf(fd, ";");
 		write_branch(fd, node->left, i + 1);
 	}
 	if (node->right)
 	{
-		ft_dprintf(
-			fd, "\n    \"%s\\n%d\" -> \"%s\\n%d\";",
-			node->data, i,
-			node->right->data, i + 1);
+		while (!node->data && node->right)
+			node = node->right;
+		ft_dprintf(fd, "\n    \"%s\\n%d\"", node->data, i);
+		while (!node->right->data && node->right->right)
+			node->right = node->right->right;
+		if (node->right->data)
+			ft_dprintf(fd, " -> \"%s\\n%d\";", node->right->data, i + 1);
+		else
+			ft_dprintf(fd, ";");
 		write_branch(fd, node->right, i + 1);
 	}
 }
