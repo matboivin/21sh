@@ -77,7 +77,9 @@ SRC_FILES	+=	ast.c					\
 
 # EXECUTION #
 
-SRC_FILES	+=	is_last_command.c			\
+SRC_FILES	+=	command.c					\
+				is_last_command.c			\
+				simple_command.c			\
 				visitor.c
 
 # SUBSYSTEMS #

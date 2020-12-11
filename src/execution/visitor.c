@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 16:37:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 17:03:03 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ void	traverse_tree(t_ast_node *node)
 	visit(node);
 	traverse_tree(node->right);
 }
-

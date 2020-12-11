@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 16:46:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 17:01:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,28 @@
 # include "sh_ast.h"
 
 /*
-** Command table
+** Simple command
 **
-** capacity: Maximum capacity of the table
+** argc: The number of arguments
+** cmd_args: The simple command name (cmd_args[0]) followed by arguments
+** input_file: filename (default: NULL)
+** output_file: filename (default: NULL)
+*/
+
+typedef struct	s_simplecmd
+{
+	size_t		argc;
+	char		**cmd_args;
+	char		*input_file;
+	char		*output_file;
+}				t_simplecmd;
+
+/*
+** Command
+**
+** capacity: Maximum capacity of the command
 ** cmd_count: The number of simple commands
-** simple_cmds: The simple commands
+** simple_cmds: The simple commands contained in the command
 */
 
 typedef struct	s_cmd
@@ -35,19 +52,28 @@ typedef struct	s_cmd
 /*
 ** Simple command
 **
-** argc: The number of arguments
-** cmd_args: The command name (cmd_args[0]) followed by arguments
-** input_file: filename (default: NULL)
-** output_file: filename (default: NULL)
+** malloc_simple_cmd()  :  Malloc function
+** free_simple_cmd()    :  Free function
+** print_simple_cmd()   :  Debug
 */
 
-typedef struct	s_simplecmd
-{
-	size_t		argc;
-	char		**cmd_args;
-	char		*input_file;
-	char		*output_file;
-}				t_simplecmd;
+t_simplecmd		*malloc_simple_cmd(void);
+void			free_simple_cmd(t_simplecmd *to_free);
+void			print_simple_cmd(t_simplecmd *simple_cmd);
+
+/*
+** Command
+**
+** malloc_cmd()   :  Malloc function
+** destroy_cmd()  :  Destructor
+** free_cmd()     :  Free function
+** print_cmd()    :  Debug
+*/
+
+t_cmd			*malloc_cmd(size_t p_capacity);
+void			destroy_cmd(t_cmd to_destroy);
+void			free_cmd(t_cmd **to_free);
+void			print_cmd(t_cmd *cmds);
 
 /*
 ** Visits an AST node
