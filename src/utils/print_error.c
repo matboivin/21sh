@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/07 15:46:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 16:02:53 by ouram            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** Syntax errors
 */
 
-void	print_syntax_error(const char *token)
+void		print_syntax_error(const char *token)
 {
 	g_status = INCORRECT_USAGE;
 	ft_dprintf(
@@ -30,7 +30,7 @@ void	print_syntax_error(const char *token)
 		token);
 }
 
-void	print_matching_error(char c)
+void		print_matching_error(char c)
 {
 	g_status = INCORRECT_USAGE;
 	ft_dprintf(
