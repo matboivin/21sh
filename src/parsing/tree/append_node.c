@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 18:58:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/10 18:52:46 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 15:08:29 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,3 @@ void			append_node_right(t_ast_node **node, t_ast_node *new_node)
 	else
 		*node = new_node;
 }
-
