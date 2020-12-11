@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 16:36:58 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 17:43:30 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			process_input(t_shctrl *ft_sh)
 	get_command(ft_sh);
 	parse(&(ft_sh->ast), ft_sh->lexer);
 	if (g_status == EXIT_SUCCESS)
-		traverse_tree(ft_sh->ast);
+		build_cmd_table(ft_sh);
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
 	print_ast(ft_sh->ast);

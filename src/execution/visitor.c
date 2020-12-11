@@ -6,30 +6,34 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 17:03:03 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 17:41:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_printf.h"
 #include "sh_execution.h"
 
+void	visit_simple_cmd(t_ast_node *node)
+{
+	(void)node;
+	//if (node->left->type == NODE_WORD)
+}
+
 /*
-** In-Order (LNR) search pseudo-code
-**
-** inorder(node)
-**    if (node == null)
-**        return
-**    inorder(node.left)
-**    visit(node)
-**    inorder(node.right)
+** This function visits an AST node
 */
 
 void	visit(t_ast_node *node)
 {
 	if (!node->data)
 		return ;
-	ft_printf("%s ", node->data);
+	if (node->type == NODE_SIMPLE_CMD)
+		visit_simple_cmd(node);
 }
+
+/*
+** This function traverses the AST following the in-order pattern
+*/
 
 void	traverse_tree(t_ast_node *node)
 {
