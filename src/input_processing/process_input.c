@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/10 14:34:34 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 15:40:14 by ouram            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "sh_utils.h"
 #include "sh_env.h"
 #include "sh_parser.h"
+#include "sh_visitor.h"
 #include "sh_input_processing.h"
 
 /*
@@ -45,6 +46,8 @@ int			process_input(t_shctrl *ft_sh)
 {
 	get_command(ft_sh);
 	parse(&(ft_sh->ast), ft_sh->lexer);
+	if (g_status == EXIT_SUCCESS)
+		traverse_tree(ft_sh->ast);
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
 	print_ast(ft_sh->ast);

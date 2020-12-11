@@ -6,7 +6,7 @@
 /*   By: mboivin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 15:35:37 by ouram            ###   ########.fr       */
+/*   Updated: 2020/12/11 15:41:55 by ouram            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ void	visit(t_ast_node *node)
 	ft_printf("node: %s\n", node->data);
 }
 
-void	in_order(t_ast_node	*node)
+void	traverse_tree(t_ast_node *node)
 {
 	if (!node)
 		return ;
-	if_order(node->left);
+	traverse_tree(node->left);
 	visit(node);
-	if_order(node->right);
+	traverse_tree(node->right);
 }
+
+
 
