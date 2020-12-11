@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:48:54 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:21:42 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 17:09:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@
 # include "sh_define.h"
 # include "sh_lexer.h"
 # include "sh_parser.h"
+# include "sh_command.h"
 
 /*
 ** Shell controller
 **
 ** lexer: Contains the tokens
 ** ast: Generated from parsing
+** cmds: Command tables
 */
 
 typedef struct	s_shctrl
 {
 	t_lexer		*lexer;
 	t_ast_node	*ast;
+	t_cmd		*cmds;
 }				t_shctrl;
 
 /*

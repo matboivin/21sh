@@ -11,6 +11,7 @@ RM = /bin/rm
 INC_FILES	=	minishell.h				\
 				sh_ast.h				\
 				sh_builtin.h			\
+				sh_command.h			\
 				sh_ctrl.h				\
 				sh_define.h				\
 				sh_env.h				\
@@ -78,6 +79,7 @@ SRC_FILES	+=	ast.c					\
 # EXECUTION #
 
 SRC_FILES	+=	command.c					\
+				build_cmd_table.c			\
 				is_last_command.c			\
 				simple_command.c			\
 				visitor.c

@@ -6,12 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:05 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 17:02:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 17:10:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_printf.h"
-#include "sh_execution.h"
+#include "sh_command.h"
 
 /*
 ** Command
