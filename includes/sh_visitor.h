@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 15:31:10 by ouram            ###   ########.fr       */
+/*   Updated: 2020/12/11 15:34:48 by ouram            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define SH_VISITOR_H
 
 # include "sh_ast.h"
+
+/*
+** This function visits an AST node
+*/
+
+void	visit(t_ast_node *node);
 
 /*
 ** This function traverses the AST following the in-order pattern
