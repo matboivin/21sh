@@ -8,6 +8,7 @@ Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 
 ## TODO
 
-- visitor + eval noeuds + exécution
+- visitors : simple command et pipe sequence ?
+- exécution : remplir la command table
 - [Control-\](https://en.wikipedia.org/wiki/Control-%5C)
 - intégration built-in
