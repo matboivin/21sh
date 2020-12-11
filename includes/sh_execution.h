@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 16:44:17 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 16:46:25 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SH_EXECUTION_H
 
 # include <stdbool.h>
+# include "sh_define.h"
 # include "sh_ast.h"
 
 /*
