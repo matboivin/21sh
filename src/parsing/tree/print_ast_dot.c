@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/10 18:59:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 13:45:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,38 +20,48 @@
 ** This function creates a dot graph from a given Abstract Syntax Tree (AST)
 */
 
-static void	write_leaf(int fd, t_ast_node *node)
+static char	*get_type_name(t_node_type n)
 {
-	ft_dprintf(
-		fd, "\n    \"%s\";", node->data);
+	char	*node_names[7];
+
+	node_names[NODE_PROGRAM] = "Program";
+	node_names[NODE_CMD] = "Command";
+	node_names[NODE_CMD_SUFFIX] = "Cmd suffix";
+	node_names[NODE_WORD] = "Word";
+	node_names[NODE_IO_FILE] = "IO File";
+	node_names[NODE_PIPE_SEQ] = "Pipe sequence";
+	node_names[NODE_SIMPLE_CMD] = "Simple Command";
+	return (node_names[n]);
+}
+
+static void	print_node(int fd, t_ast_node *node, int i)
+{
+	if (node->data)
+		ft_dprintf(fd, "\n    \"%s\\n%d\"", node->data, i);
+	else
+		ft_dprintf(fd, "\n    \"%s\\n%d\"", get_type_name(node->type), i);
+}
+
+static void	print_node_next(int fd, t_ast_node *node, int i)
+{
+	if (node->data)
+		ft_dprintf(fd, " -> \"%s\\n%d\";", node->data, i + 1);
+	else
+		ft_dprintf(fd, " -> \"%s\\n%d\";", get_type_name(node->type), i + 1);
 }
 
 static void	write_branch(int fd, t_ast_node *node, int i)
 {
 	if (node->left)
 	{
-		while (!node->data && node->left)
-			node = node->left;
-		ft_dprintf(fd, "\n    \"%s\\n%d\"", node->data, i);
-		while (!node->left->data && node->left->left)
-			node->left = node->left->left;
-		if (node->left->data)
-			ft_dprintf(fd, " -> \"%s\\n%d\";", node->left->data, i + 1);
-		else
-			ft_dprintf(fd, ";");
+		print_node(fd, node, i);
+		print_node_next(fd, node->left, i);
 		write_branch(fd, node->left, i + 1);
 	}
 	if (node->right)
 	{
-		while (!node->data && node->right)
-			node = node->right;
-		ft_dprintf(fd, "\n    \"%s\\n%d\"", node->data, i);
-		while (!node->right->data && node->right->right)
-			node->right = node->right->right;
-		if (node->right->data)
-			ft_dprintf(fd, " -> \"%s\\n%d\";", node->right->data, i + 1);
-		else
-			ft_dprintf(fd, ";");
+		print_node(fd, node, i);
+		print_node_next(fd, node->right, i);
 		write_branch(fd, node->right, i + 1);
 	}
 }
@@ -60,7 +70,7 @@ static void	write_ast(int fd, t_ast_node *root)
 {
 	ft_dprintf(fd, "digraph minishell_parsing {");
 	if (!root->left && !root->right)
-		write_leaf(fd, root);
+		ft_dprintf(fd, "\n    \"%s\";", root->data);
 	else
 		write_branch(fd, root, 0);
 	ft_dprintf(fd, "\n}");
