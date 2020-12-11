@@ -14,12 +14,12 @@ INC_FILES	=	minishell.h				\
 				sh_ctrl.h				\
 				sh_define.h				\
 				sh_env.h				\
+				sh_execution.h			\
 				sh_input_processing.h	\
 				sh_lexer.h				\
 				sh_parser.h				\
 				sh_subsystems.h			\
-				sh_utils.h				\
-				sh_visitor.h
+				sh_utils.h
 
 # ********************************* C FILES ********************************** #
 
@@ -77,7 +77,8 @@ SRC_FILES	+=	ast.c					\
 
 # EXECUTION #
 
-SRC_FILES	+=	visitor.c
+SRC_FILES	+=	is_last_command.c			\
+				visitor.c
 
 # SUBSYSTEMS #
 

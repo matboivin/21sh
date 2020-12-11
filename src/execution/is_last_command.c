@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_visitor.h                                       :+:      :+:    :+:   */
+/*   is_last_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 15:41:47 by ouram            ###   ########.fr       */
+/*   Created: 2020/12/11 16:33:55 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/11 16:35:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_VISITOR_H
-# define SH_VISITOR_H
-
-# include "sh_ast.h"
+#include <stdbool.h>
+#include "sh_execution.h"
 
 /*
-** This function visits an AST node
+** This function checks whether the current simple command is the last one
 */
 
-void	visit(t_ast_node *node);
-
-/*
-** This function traverses the AST following the in-order pattern
-*/
-
-void	traverse_tree(t_ast_node *node);
-
-#endif
+bool	is_last_command(size_t cmd_i, size_t cmd_count)
+{
+	return (cmd_i == (cmd_count - 1));
+}
