@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:22:28 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 15:31:34 by ouram            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "sh_lexer.h"
 # include "sh_ast.h"
 # include "sh_parser.h"
+# include "sh_visitor.h"
 # include "sh_ctrl.h"
 # include "sh_builtin.h"
 
