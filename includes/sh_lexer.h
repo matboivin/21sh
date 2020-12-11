@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/09 17:18:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/11 16:45:29 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,28 @@ typedef enum	e_tok_type
 	TOKEN_WORD
 }				t_tok_type;
 
+/*
+** Regex to find
+**
+** op: The meta-character
+** len: Length of the token
+** type: Type of the token
+*/
+
 typedef struct	s_regex
 {
 	const char	*op;
 	size_t		len;
 	t_tok_type	type;
 }				t_regex;
+
+/*
+** Token
+**
+** len: Length of the token
+** type: Type of the token
+** value: The data
+*/
 
 typedef struct	s_token
 {
@@ -52,6 +68,12 @@ typedef struct	s_token
 
 /*
 ** Lexer: lexical analyzer
+**
+** pos: Index of the current token
+** size: Size of the lexer
+** capacity: Maximum capacity of the lexer
+** input: The string input to tokenize
+** tokens: The resulting tokens
 */
 
 typedef struct	s_lexer
