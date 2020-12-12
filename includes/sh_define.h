@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/07 17:07:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/12 11:34:31 by ouram            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 */
 
 # define DEFAULT_CAPACITY 42
-# define MAX_TOKENS 13
+# define MAX_TOKENS 12
 
 /*
 ** Parsing

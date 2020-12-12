@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 16:45:29 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/12 11:34:22 by ouram            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 typedef enum	e_tok_type
 {
 	TOKEN_NOT_FOUND = 0,
-	TOKEN_BACKSLASH,
 	TOKEN_EAT,
 	TOKEN_DGREAT,
 	TOKEN_GREAT,

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 20:16:42 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/07 16:55:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/12 11:34:47 by ouram            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static t_regex	g_regex_list[] =
 {
 	{ ">>", 2, TOKEN_DGREAT },
-	{ "//", 1, TOKEN_BACKSLASH },
 	{ "\n", 1, TOKEN_NEWLINE },
 	{ "|", 1, TOKEN_PIPE },
 	{ ">", 1, TOKEN_GREAT },
