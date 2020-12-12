@@ -10,5 +10,4 @@ Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 
 - visitors : simple command et pipe sequence ?
 - exécution : remplir la command table
-- [Control-\](https://en.wikipedia.org/wiki/Control-%5C)
 - intégration built-in
