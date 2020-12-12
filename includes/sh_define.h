@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/12 11:34:31 by ouram            ###   ########.fr       */
+/*   Updated: 2020/12/12 12:33:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 ** command in many lines.
 */
 
-# define FT_PS2 "> "
+# define PS2 "> "
 
 # define DEFAULT_ARGC 1
 # define FAIL_RET -1
