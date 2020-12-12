@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 18:50:35 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/07 15:46:03 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/12 12:33:41 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		create_prompt(void)
 	char	*custom_prompt;
 
 	custom_prompt = ft_join_n_str(
-		5, "FT_PS1", "=", OP_PROMPT, ft_getenv("SHELL_NAME"), END_PROMPT);
+		5, "PS1", "=", OP_PROMPT, ft_getenv("SHELL_NAME"), END_PROMPT);
 	if (custom_prompt)
 		ft_putenv(custom_prompt);
 }
