@@ -42,9 +42,10 @@ simple_command   : io_file WORD cmd_suffix
                  |         WORD cmd_suffix
                  |         WORD
                  ;
-cmd_suffix       : WORD
-                 | WORD io_file
-                 |      io_file
+cmd_suffix       :            io_file
+                 | cmd_suffix io_file
+                 |            WORD
+                 | cmd_suffix WORD
                  ;
 io_file          : LESS      WORD
                  | GREAT     WORD

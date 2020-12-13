@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/04 21:33:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/13 16:01:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,16 @@
 ** This function parses a command suffix
 **
 ** Grammar rule:
-** cmd_suffix : WORD
-**            | WORD io_file
-**            |      io_file
+** cmd_suffix :            io_file
+**            | cmd_suffix io_file
+**            |            WORD
+**            | cmd_suffix WORD
 **
 ** NODE_CMD_SUFFIX         NODE_CMD_SUFFIX         NODE_CMD_SUFFIX
 **        |                 /        \                    |
 **    NODE_WORD       NODE_WORD   NODE_IO_FILE       NODE_IO_FILE
-**        |                                               |
-**      "args"                                        "operator"
-**                                                        |
-**                                                    NODE_WORD
-**                                                        |
-**                                                    "filename"
+**        |                |           |                  |
+**    NODE_WORD           ...         ...            NODE_IO_FILE
 **
 ** returns: true if the node creation succeeded
 **          false otherwise
@@ -39,11 +36,12 @@ bool			parse_cmd_suffix(t_ast_node **ast, t_lexer *lexer)
 {
 	t_ast_node	*suffix_node;
 
+	if (lexer->pos >= lexer->size)
+		return (false);
 	suffix_node = malloc_ast_node(NODE_CMD_SUFFIX, NULL);
 	if (parse_word(&suffix_node, lexer))
 	{
-		if (lexer->pos < lexer->size)
-			parse_io_file(&(suffix_node->right), lexer);
+		parse_io_file(&(suffix_node->right), lexer);
 		append_node_left(ast, suffix_node);
 		return (true);
 	}

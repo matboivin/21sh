@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 15:09:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/13 16:23:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,20 @@ static char	*get_type_name(t_node_type n)
 	return (node_names[n]);
 }
 
-static void	print_node(int fd, t_ast_node *node, int i)
+static void	print_node(int fd, t_ast_node *node)
 {
 	if (node->data)
-		ft_dprintf(fd, "\n    \"%s\\n%d\"", node->data, i);
+		ft_dprintf(fd, "\n    \"%s\\n%p\"", node->data, node);
 	else
-		ft_dprintf(fd, "\n    \"%s\\n%d\"", get_type_name(node->type), i);
+		ft_dprintf(fd, "\n    \"%s\\n%p\"", get_type_name(node->type), node);
 }
 
-static void	print_node_next(int fd, t_ast_node *node, int i)
+static void	print_node_next(int fd, t_ast_node *node)
 {
 	if (node->data)
-		ft_dprintf(fd, " -> \"%s\\n%d\";", node->data, i + 1);
+		ft_dprintf(fd, " -> \"%s\\n%p\";", node->data, node);
 	else
-		ft_dprintf(fd, " -> \"%s\\n%d\";", get_type_name(node->type), i + 1);
+		ft_dprintf(fd, " -> \"%s\\n%p\";", get_type_name(node->type), node);
 }
 
 static void	print_leaf(int fd, char side, int count)
@@ -56,23 +56,23 @@ static void	print_leaf(int fd, char side, int count)
 	ft_dprintf(fd, "\n    leaf_%c_%d [shape=plain];", side, count);
 }
 
-static void	write_branch(int fd, t_ast_node *node, int i)
+static void	write_branch(int fd, t_ast_node *node)
 {
 	static int	count = 0;
 
-	print_node(fd, node, i);
+	print_node(fd, node);
 	if (node->left)
 	{
-		print_node_next(fd, node->left, i);
-		write_branch(fd, node->left, i + 1);
+		print_node_next(fd, node->left);
+		write_branch(fd, node->left);
 	}
 	else if (!node->left && node->right)
 		print_leaf(fd, 'L', count++);
-	print_node(fd, node, i);
+	print_node(fd, node);
 	if (node->right)
 	{
-		print_node_next(fd, node->right, i);
-		write_branch(fd, node->right, i + 1);
+		print_node_next(fd, node->right);
+		write_branch(fd, node->right);
 	}
 	else if (!node->right && node->left)
 		print_leaf(fd, 'R', count++);
@@ -84,7 +84,7 @@ static void	write_ast(int fd, t_ast_node *root)
 	if (!root->left && !root->right)
 		ft_dprintf(fd, "\n    \"%s\";", root->data);
 	else
-		write_branch(fd, root, 0);
+		write_branch(fd, root);
 	ft_dprintf(fd, "\n}");
 }
 
