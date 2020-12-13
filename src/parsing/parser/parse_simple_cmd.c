@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/13 16:01:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/13 18:15:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ bool	parse_simple_cmd(t_ast_node **ast, t_lexer *lexer)
 	if (lexer->pos >= lexer->size)
 		return (false);
 	simple_cmd_node = malloc_ast_node(NODE_SIMPLE_CMD, NULL);
-	if (parse_io_file(&simple_cmd_node, lexer))
+	if (parse_io_file(&simple_cmd_node->left, lexer))
 	{
 		if (parse_word(&(simple_cmd_node->right), lexer))
 			parse_cmd_suffix(&(simple_cmd_node->right), lexer);
 		append_node_left(ast, simple_cmd_node);
 		return (true);
 	}
-	else if (parse_word(&simple_cmd_node, lexer))
+	else if (parse_word(&simple_cmd_node->left, lexer))
 	{
 		parse_cmd_suffix(&(simple_cmd_node->right), lexer);
 		append_node_left(ast, simple_cmd_node);
