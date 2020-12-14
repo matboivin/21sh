@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 16:12:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 18:39:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 void		create_lexer(t_lexer *lexer, size_t p_capacity)
 {
-	lexer->pos = 0;
+	lexer->pos = DEFAULT_VALUE;
 	lexer->size = DEFAULT_SIZE;
 	lexer->capacity = p_capacity;
 	lexer->input = NULL;

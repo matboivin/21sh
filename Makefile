@@ -80,9 +80,13 @@ SRC_FILES	+=	ast.c					\
 
 SRC_FILES	+=	build_cmd_table.c			\
 				command.c					\
+				create_pipe.c				\
 				exec_simple_cmd.c			\
+				execute.c					\
 				is_last_command.c			\
+				redirect_fd.c				\
 				simple_command.c			\
+				spawn_process.c				\
 				visitor.c
 
 # SUBSYSTEMS #

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 18:20:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 18:37:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,24 @@ void	build_cmd_table(t_ast_node *node);
 bool	is_last_command(size_t cmd_i, size_t cmd_count);
 
 /*
+** Executes all simple commands
+*/
+
+void	execute(t_cmd *cmd);
+
+/*
 ** Executes a simple command
 */
 
 void	exec_simple_cmd(t_simplecmd *simple_cmd);
+
+/*
+** Spawns a new process
+*/
+
+void	spawn_process(pid_t *pid);
+
+void	create_pipe(int *input_fd, int *output_fd);
+void	redirect_fd(int from, int to);
 
 #endif

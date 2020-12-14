@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:05 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 17:38:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 18:38:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_cmd		*malloc_cmd(size_t p_capacity)
 		return (NULL);
 	}
 	result->capacity = p_capacity;
-	result->cmd_count = 0;
+	result->cmd_count = DEFAULT_VALUE;
 	result->simple_cmds = malloc(p_capacity * sizeof(t_simplecmd *));
 	return (result);
 }
@@ -68,7 +68,7 @@ void		print_cmd(t_cmd *cmds)
 
 	if (!cmds)
 		return ;
-	if (cmds->cmd_count == 0)
+	if (cmds->cmd_count == DEFAULT_VALUE)
 	{
 		ft_printf("Command table is empty\n");
 		return ;

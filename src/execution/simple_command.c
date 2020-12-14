@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:13 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 16:16:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 18:38:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_simplecmd		*malloc_simple_cmd(void)
 		g_status = EXIT_FAILURE;
 		return (NULL);
 	}
-	result->argc = 0;
+	result->argc = DEFAULT_VALUE;
 	result->cmd_args = NULL;
 	result->input_file = NULL;
 	result->output_file = NULL;
