@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:57:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 16:11:45 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	print_matching_error(char c);
 void	free_all(t_shctrl *ft_sh);
 
 /*
-** Frees all the allocated memory and exits with the status passed as parameter
+** Frees all the allocated memory and exits
 */
 
-void	exit_shell(t_shctrl *ft_sh, int status);
+void	exit_shell(t_shctrl *ft_sh);
 
 void	exit_error(t_shctrl *ft_sh, char *target);
 

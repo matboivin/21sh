@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:51:19 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/12 17:31:24 by ouram            ###   ########.fr       */
+/*   Updated: 2020/12/14 16:14:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@
 
 void	register_signal_handlers(void)
 {
-	if (signal(SIGINT, handle_fatal_error) == SIG_ERR)
+	if (
+		(signal(SIGINT, handle_fatal_error) == SIG_ERR)
+		|| (signal(SIGQUIT, SIG_IGN) == SIG_ERR))
 	{
 		ft_clearenv();
-		exit(EXIT_FAILURE);
-	}
-	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
-	{
-		ft_clearenv();
-		exit(EXIT_FAILURE);
+		g_status = EXIT_FAILURE;
+		exit(g_status);
 	}
 }

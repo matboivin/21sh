@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:05 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 17:10:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 16:56:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,13 @@ t_cmd		*malloc_cmd(size_t p_capacity)
 
 	result = malloc(sizeof(t_cmd));
 	if (!result)
+	{
+		g_status = EXIT_FAILURE;
 		return (NULL);
+	}
 	result->capacity = p_capacity;
 	result->cmd_count = 0;
-	result->simple_cmds = malloc(p_capacity * sizeof(t_simplecmd *));
+	result->simple_cmds = NULL;
 	return (result);
 }
 

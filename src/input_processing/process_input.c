@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/12 13:36:46 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 16:12:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	get_command(t_shctrl *ft_sh)
 	int		not_finished;
 
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
+	if (!ft_sh->lexer)
+		exit_shell(ft_sh);
 	ft_sh->lexer->input = display_prompt(ft_sh, ft_getenv("PS1"));
 	not_finished = tokenize(ft_sh->lexer);
 	ft_strdel(&ft_sh->lexer->input);
@@ -46,8 +48,8 @@ int			process_input(t_shctrl *ft_sh)
 {
 	get_command(ft_sh);
 	parse(&(ft_sh->ast), ft_sh->lexer);
-	//if (g_status == EXIT_SUCCESS)
-	//	build_cmd_table(ft_sh);
+	if (g_status == EXIT_SUCCESS)
+		build_cmd_table(ft_sh);
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
 	print_ast(ft_sh->ast);

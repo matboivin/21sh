@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 21:11:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 16:12:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ t_lexer		*malloc_lexer(size_t p_capacity)
 
 	result = malloc(sizeof(t_lexer));
 	if (!result)
+	{
+		g_status = EXIT_FAILURE;
 		return (NULL);
+	}
 	create_lexer(result, p_capacity);
 	return (result);
 }
