@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 17:21:04 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 17:43:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 
 void	visit(t_ast_node *node)
 {
-	(void)node;
-	//if (node->type == NODE_CMD)
-	// TODO: Build a command table for each command
+	if (node->type == NODE_CMD)
+	{
+		build_cmd_table(node);
+		return ;
+	}
 }
 
 /*
