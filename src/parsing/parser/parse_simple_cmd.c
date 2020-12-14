@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/13 18:15:14 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 17:36:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **                |         cmd_name
 **
 **      NODE_SIMPLE_CMD                 NODE_SIMPLE_CMD
-**             |                               |
+**             /                               /
 **         "cmd_name"                      NODE_IO_FILE
 **
 **      NODE_SIMPLE_CMD                  NODE_SIMPLE_CMD
@@ -32,8 +32,10 @@
 ** NODE_IO_FILE   "cmd_name"        "cmd_name"      NODE_CMD_SUFFIX
 **
 **                        NODE_SIMPLE_CMD
-**                       /       |       \
-**             NODE_IO_FILE  "cmd_name"  NODE_CMD_SUFFIX
+**                         /           \
+**                 NODE_IO_FILE     "cmd_name"
+**                                       \
+**                                 NODE_CMD_SUFFIX
 **
 ** returns: true if the node creation succeeded
 **          false otherwise

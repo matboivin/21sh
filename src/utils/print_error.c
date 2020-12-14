@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 16:12:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 18:19:45 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,11 @@ void		print_matching_error(char c)
 		c);
 }
 
-void		exit_error(t_shctrl *ft_sh, char *target)
+void		print_error(char *target)
 {
 	char	*msg;
 
 	msg = (char *)strerror(errno);
 	ft_dprintf(
 		STDERR_FILENO, "%s: %s: %s\n", ft_getenv("SHELL_NAME"), target, msg);
-	exit_shell(ft_sh);
 }

@@ -78,8 +78,9 @@ SRC_FILES	+=	ast.c					\
 
 # EXECUTION #
 
-SRC_FILES	+=	command.c					\
-				build_cmd_table.c			\
+SRC_FILES	+=	build_cmd_table.c			\
+				command.c					\
+				exec_simple_cmd.c			\
 				is_last_command.c			\
 				simple_command.c			\
 				visitor.c

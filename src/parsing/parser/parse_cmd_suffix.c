@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/13 18:24:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 17:55:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 **            | cmd_suffix WORD
 **
 ** NODE_CMD_SUFFIX         NODE_CMD_SUFFIX         NODE_CMD_SUFFIX
-**        |                 /        \                    |
+**        /                 /        \                    \
 **    NODE_WORD       NODE_WORD   NODE_IO_FILE       NODE_IO_FILE
 **        |                |           |                  |
 **    NODE_WORD           ...         ...            NODE_IO_FILE
