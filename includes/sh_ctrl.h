@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:48:54 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/11 17:09:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/14 17:11:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct	s_shctrl
 {
 	t_lexer		*lexer;
 	t_ast_node	*ast;
-	t_cmd		*cmds;
 }				t_shctrl;
 
 /*
