@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:05 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 16:09:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 18:18:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ t_cmd		*malloc_cmd(size_t p_capacity)
 	}
 	result->capacity = p_capacity;
 	result->cmd_count = DEFAULT_VALUE;
-	//result->simple_cmds = malloc(p_capacity * sizeof(t_simplecmd *));
-	result->simple_cmds = NULL;
+	result->simple_cmds = malloc(p_capacity * sizeof(t_simplecmd *));
 	return (result);
 }
 
@@ -44,13 +43,13 @@ void		destroy_cmd(t_cmd to_destroy)
 	size_t	i;
 
 	i = 0;
-	if (to_destroy.simple_cmds)
+	if (to_destroy.cmd_count)
 	{
 		while (i < to_destroy.capacity)
 			free_simple_cmd(to_destroy.simple_cmds[i++]);
-		free(to_destroy.simple_cmds);
-		to_destroy.simple_cmds = NULL;
 	}
+	free(to_destroy.simple_cmds);
+	to_destroy.simple_cmds = NULL;
 }
 
 void		free_cmd(t_cmd **to_free)

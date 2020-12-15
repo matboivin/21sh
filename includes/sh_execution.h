@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 16:25:03 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 18:06:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ void	visit(t_shctrl *ft_sh, t_ast_node *node);
 */
 
 void	build_cmd_table(t_shctrl *ft_sh);
+
+/*
+** Adds a simple command to the command table
+*/
+
+void	add_simple_cmd(t_shctrl *ft_sh, t_ast_node *node);
 
 /*
 ** Checks whether the current simple command is the last one

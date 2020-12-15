@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 16:49:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 18:09:34 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,18 @@
 void	visit(t_shctrl *ft_sh, t_ast_node *node)
 {
 	if (node->type == NODE_CMD)
-	{
-		ft_printf("\n----------- TODO: Build command table\n");
 		build_cmd_table(ft_sh);
-		free_cmd(&(ft_sh->cmd)); // tmp test
-	}
-	if (node->type == NODE_PIPE_SEQ)
+	else if (node->type == NODE_PIPE_SEQ)
 	{
-		ft_printf("\n----------- TODO: Get all simple commands\n");
+		add_simple_cmd(ft_sh, node->left);
 		if (!node->right)
 		{
-			ft_printf("\n----------- TODO: Execute command\n");
-			return ;
+			//execute(ft_sh->cmd);
+			free_cmd(&(ft_sh->cmd));
 		}
 	}
-	if (node->data)
-		ft_printf("%s ", node->data);
+	// if (node->data)
+	// 	ft_printf("%s ", node->data);
 }
 
 /*

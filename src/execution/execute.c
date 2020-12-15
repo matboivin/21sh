@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 18:37:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 18:10:13 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static bool	is_child_process(pid_t pid)
 ** This function executes all simple commands
 */
 
+// TODO: redirs and pipes
+
 void		execute(t_cmd *cmd)
 {
 	size_t	i;
@@ -33,7 +35,6 @@ void		execute(t_cmd *cmd)
 	i = 0;
 	while (i < cmd->cmd_count)
 	{
-		/* Create child process */
 		spawn_process(&pid);
 		if (is_child_process(pid))
 			exec_simple_cmd(cmd->simple_cmds[i]);
