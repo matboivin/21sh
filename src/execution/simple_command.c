@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:13 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 15:42:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 22:01:15 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void			print_simple_cmd(t_simplecmd *simple_cmd)
 	if (!simple_cmd || !simple_cmd->cmd_args)
 		return ;
 	i = 0;
+	ft_printf("argc: %d\t", simple_cmd->argc);
 	while (i < simple_cmd->argc)
-		ft_printf(" %s", simple_cmd->cmd_args[i++]);
+		ft_printf("|%s| ", simple_cmd->cmd_args[i++]);
 }

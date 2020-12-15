@@ -6,12 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 18:09:34 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 21:47:13 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft_printf.h"
+#include "sh_utils.h"
 #include "sh_execution.h"
 
 /*
@@ -24,9 +25,13 @@ void	visit(t_shctrl *ft_sh, t_ast_node *node)
 		build_cmd_table(ft_sh);
 	else if (node->type == NODE_PIPE_SEQ)
 	{
-		add_simple_cmd(ft_sh, node->left);
+		if (!add_simple_cmd(ft_sh->cmd, node->left))
+			exit_shell(ft_sh);
 		if (!node->right)
 		{
+#ifdef DEBUG
+			print_cmd(ft_sh->cmd);
+#endif /* DEBUG */
 			//execute(ft_sh->cmd);
 			free_cmd(&(ft_sh->cmd));
 		}

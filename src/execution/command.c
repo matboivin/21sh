@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:05 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 18:18:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 22:09:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		destroy_cmd(t_cmd to_destroy)
 	i = 0;
 	if (to_destroy.cmd_count)
 	{
-		while (i < to_destroy.capacity)
+		while (i < to_destroy.cmd_count)
 			free_simple_cmd(to_destroy.simple_cmds[i++]);
 	}
 	free(to_destroy.simple_cmds);
@@ -62,23 +62,27 @@ void		free_cmd(t_cmd **to_free)
 	}
 }
 
-void		print_cmd(t_cmd *cmds)
+void		print_cmd(t_cmd *cmd)
 {
 	size_t	i;
 
-	if (!cmds)
+	if (!cmd)
 		return ;
-	if (cmds->cmd_count == DEFAULT_VALUE)
+	ft_printf("\n----------- DEBUG: COMMAND TABLE ---\n");
+	if (cmd->cmd_count == DEFAULT_VALUE)
 	{
 		ft_printf("Command table is empty\n");
 		return ;
 	}
+	ft_printf(
+			"commands: %ld\ncapacity: %ld\n",
+			cmd->cmd_count, cmd->capacity);
 	i = 0;
-	ft_printf("\nCommand table:\n");
-	while (i < cmds->cmd_count)
+	while (i < cmd->cmd_count)
 	{
-		ft_printf("[%ld]", i);
-		print_simple_cmd(cmds->simple_cmds[i++]);
+		ft_printf("  [%ld]\t", i);
+		print_simple_cmd(cmd->simple_cmds[i++]);
 		ft_printf("\n");
 	}
+	ft_printf("------------------------------------\n");
 }

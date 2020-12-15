@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 18:39:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 21:57:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		print_lexer(t_lexer *lexer)
 		while (i < lexer->size)
 		{
 			ft_printf(
-				"  %ld :\tlen: %ld\t|%s|\n",
+				"  [%ld]\tlen: %ld\t|%s|\n",
 				i, lexer->tokens[i]->len, lexer->tokens[i]->value);
 			i++;
 		}
