@@ -230,6 +230,34 @@ Also, if `file1` has something written in it, and we run the following, `file1` 
 > file1
 ```
 
+#### Redirecting Input
+
+```
+< WORD
+```
+
+O_RDONLY
+
+#### Redirecting Output
+
+> If the file does not exist, it shall be created; otherwise, it shall be truncated to be an empty file after being opened.  [(Source)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html#tag_18_07_04)
+
+```
+> WORD
+```
+
+O_WRONLY | O_CREAT | O_TRUNC
+
+#### Appending Redirected Output
+
+> Appended output redirection shall cause the file whose name results from the expansion of word to be opened for output on the designated file descriptor. The file is opened as if the open() function as defined in the System Interfaces volume of POSIX.1-2017 was called with the O_APPEND flag. If the file does not exist, it shall be created.  [(Source)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html#tag_18_07_04)
+
+```
+>> WORD
+```
+
+O_WRONLY | O_CREAT | O_APPEND
+
 ## Built-in commands
 
 ### env
