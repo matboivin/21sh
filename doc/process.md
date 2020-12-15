@@ -146,8 +146,14 @@ digraph graphname {
 
 ## Execution
 
-- Eval all nodes
-- Execute: open fd, launch processes
+- If node is a command
+  - Malloc command table
+- While node is a pipe sequence
+  - Add simple command to command table
+  - If right node is NULL
+    - Execute command table, free it and return
+  - Else
+    - node = node->right
 
 ### Tree traversal / Visitor pattern
 
