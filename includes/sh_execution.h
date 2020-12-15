@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:40:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 23:00:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ void	get_cmd_args(t_simplecmd *result, t_ast_node *node);
 bool	is_last_command(size_t i, size_t cmd_count);
 
 /*
+** Redirections
+*/
+
+void	get_files(t_simplecmd *result, t_ast_node *node);
+void	redirect_fd(int from, int to);
+
+/*
 ** Executes all simple commands
 */
 
@@ -78,8 +85,6 @@ void	exec_simple_cmd(t_shctrl *ft_sh, t_simplecmd *simple_cmd);
 */
 
 void	spawn_process(t_shctrl *ft_sh, pid_t *pid);
-
 void	create_pipe(t_shctrl *ft_sh, int *input_fd, int *output_fd);
-void	redirect_fd(int from, int to);
 
 #endif

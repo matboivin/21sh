@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:46:26 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:33:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 23:00:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_simplecmd	*get_simple_cmd(t_ast_node *node)
 		return (NULL);
 	get_cmd_arg_count(result, node);
 	get_cmd_args(result, node);
-	// TODO: fd
+	get_files(result, node);
 	return (result);
 }
 

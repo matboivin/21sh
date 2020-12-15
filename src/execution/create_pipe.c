@@ -6,13 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:30 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:41:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 22:53:50 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 #include <unistd.h>
 #include "sh_utils.h"
 #include "sh_execution.h"

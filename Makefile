@@ -87,6 +87,7 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				is_last_command.c			\
 				get_cmd_arg_count.c			\
 				get_cmd_args.c				\
+				get_files.c					\
 				redirect_fd.c				\
 				simple_command.c			\
 				spawn_process.c				\
@@ -128,6 +129,7 @@ OBJ_DIR		=	obj
 
 SUB_DIRS	=	builtin					\
 				execution				\
+				execution/command_table	\
 				input_processing		\
 				parsing/lexer			\
 				parsing/parser			\
