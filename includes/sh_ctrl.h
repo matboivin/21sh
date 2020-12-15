@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:48:54 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 17:11:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 16:10:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@
 **
 ** lexer: Contains the tokens
 ** ast: Generated from parsing
-** cmds: Command tables
+** cmds: Command table
 */
 
 typedef struct	s_shctrl
 {
 	t_lexer		*lexer;
 	t_ast_node	*ast;
+	t_cmd		*cmd;
 }				t_shctrl;
 
 /*

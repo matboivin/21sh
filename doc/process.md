@@ -151,15 +151,13 @@ digraph graphname {
 
 ### Tree traversal / Visitor pattern
 
-In-Order (LNR) seems the most appropriate search.
+Pre-order (NLR) seems the most appropriate search.
 
 Go down one level to the recursive argument N. If N exists (is non-empty) execute the following three operations in this order:
 
-- (L)	Recursively traverse N's left subtree.
 - (N)	Process the current node N itself.
+- (L)	Recursively traverse N's left subtree.
 - (R)	Recursively traverse N's right subtree.
-
-Return by going up one level and arriving at the parent node of N.
 
 Source: [Wiki: Tree Traversal](https://en.wikipedia.org/wiki/Tree_traversal)
 

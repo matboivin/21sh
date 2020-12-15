@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:53:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 17:21:28 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 16:10:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	create_shell(t_shctrl *ft_sh)
 {
 	ft_sh->lexer = NULL;
 	ft_sh->ast = NULL;
+	ft_sh->cmd = NULL;
 }
 
 void	destroy_shell(t_shctrl *ft_sh)
@@ -32,4 +33,6 @@ void	destroy_shell(t_shctrl *ft_sh)
 		free_lexer(&(ft_sh->lexer));
 	if (ft_sh->ast)
 		free_ast(&(ft_sh->ast));
+	if (ft_sh->cmd)
+		free_cmd(&(ft_sh->cmd));
 }

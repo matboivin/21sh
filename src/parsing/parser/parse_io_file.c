@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/13 18:13:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 16:46:56 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ bool			parse_io_file(t_ast_node **ast, t_lexer *lexer)
 	iofile_node = malloc_ast_node(NODE_IO_FILE, NULL);
 	if (parse_redir_op(&iofile_node, lexer))
 	{
-		if (parse_word(&(iofile_node->right), lexer))
+		if (parse_word(&(iofile_node->left), lexer))
 		{
 			append_node_right(ast, iofile_node);
 			return (true);
