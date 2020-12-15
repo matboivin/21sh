@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:30:46 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 22:42:16 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		execute(t_shctrl *ft_sh, t_cmd *cmd)
 	i = 0;
 	while (i < cmd->cmd_count)
 	{
-		spawn_process(&pid);
+		spawn_process(ft_sh, &pid);
 		if (is_child_process(pid))
 			exec_simple_cmd(ft_sh, cmd->simple_cmds[i]);
 		i++;

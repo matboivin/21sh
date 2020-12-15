@@ -6,12 +6,10 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:30:23 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 22:37:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft_printf.h"
 #include "sh_utils.h"
 #include "sh_execution.h"
 
@@ -36,8 +34,6 @@ void	visit(t_shctrl *ft_sh, t_ast_node *node)
 			free_cmd(&(ft_sh->cmd));
 		}
 	}
-	// if (node->data)
-	// 	ft_printf("%s ", node->data);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:30:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 22:40:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	get_cmd_args(t_simplecmd *result, t_ast_node *node);
 ** Checks whether the current simple command is the last one
 */
 
-bool	is_last_command(size_t cmd_i, size_t cmd_count);
+bool	is_last_command(size_t i, size_t cmd_count);
 
 /*
 ** Executes all simple commands
@@ -77,9 +77,9 @@ void	exec_simple_cmd(t_shctrl *ft_sh, t_simplecmd *simple_cmd);
 ** Spawns a new process
 */
 
-void	spawn_process(pid_t *pid);
+void	spawn_process(t_shctrl *ft_sh, pid_t *pid);
 
-void	create_pipe(int *input_fd, int *output_fd);
+void	create_pipe(t_shctrl *ft_sh, int *input_fd, int *output_fd);
 void	redirect_fd(int from, int to);
 
 #endif
