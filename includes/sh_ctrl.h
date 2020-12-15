@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:48:54 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 16:10:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 23:12:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 ** Shell controller
 **
 ** lexer: Contains the tokens
-** ast: Generated from parsing
-** cmds: Command table
+** ast: Abstract Syntax Tree generated from parsing
+** cmd: Command table
 */
 
 typedef struct	s_shctrl

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 18:19:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 23:15:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 void	print_usage(void);
 
 /*
-** Syntax errors
+** Error messages
 */
 
 void	print_syntax_error(const char *token);

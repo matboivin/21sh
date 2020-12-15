@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:34:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/08 14:35:01 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 23:15:04 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 void	parse(t_ast_node **ast, t_lexer *lexer);
 
 /*
-** Parses a Word
+** Parses a word
 */
 
 bool	parse_word(t_ast_node **ast, t_lexer *lexer);

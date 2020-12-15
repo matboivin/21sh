@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 17:09:32 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 15:42:10 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 23:12:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 **
 ** argc: The number of arguments
 ** cmd_args: The simple command name (cmd_args[0]) followed by arguments
-** in_fd: input file (default: -1)
-** out_fd: output file (default: -1)
+** in_fd: Input file (Default: -1)
+** out_fd: Output file (Default: -1)
 */
 
 typedef struct	s_simplecmd

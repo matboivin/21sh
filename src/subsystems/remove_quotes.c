@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 18:24:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/10 14:35:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 23:17:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "sh_subsystems.h"
 
 /*
-** This function removes the quotes of word tokens
+** This function removes from the beginning and end of word tokens
 */
 
 void		remove_quotes(char **data)
