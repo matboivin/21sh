@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:22:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 22:30:39 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ bool	is_last_command(size_t cmd_i, size_t cmd_count);
 ** Executes all simple commands
 */
 
-void	execute(t_cmd *cmd);
+void	execute(t_shctrl *ft_sh, t_cmd *cmd);
 
 /*
 ** Executes a simple command
 */
 
-void	exec_simple_cmd(t_simplecmd *simple_cmd);
+void	exec_simple_cmd(t_shctrl *ft_sh, t_simplecmd *simple_cmd);
 
 /*
 ** Spawns a new process

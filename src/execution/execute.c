@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 18:10:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 22:30:46 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static bool	is_child_process(pid_t pid)
 
 // TODO: redirs and pipes
 
-void		execute(t_cmd *cmd)
+void		execute(t_shctrl *ft_sh, t_cmd *cmd)
 {
 	size_t	i;
 	int		wstatus;
@@ -37,7 +37,7 @@ void		execute(t_cmd *cmd)
 	{
 		spawn_process(&pid);
 		if (is_child_process(pid))
-			exec_simple_cmd(cmd->simple_cmds[i]);
+			exec_simple_cmd(ft_sh, cmd->simple_cmds[i]);
 		i++;
 	}
 	waitpid(pid, &wstatus, DEFAULT_VALUE);

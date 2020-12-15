@@ -6,14 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:46:26 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:23:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 22:33:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include "libft_printf.h"
-#include "libft_str.h"
-#include "sh_utils.h"
+#include <stddef.h>
 #include "sh_execution.h"
 
 /*

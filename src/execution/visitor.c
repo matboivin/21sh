@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 21:47:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/15 22:30:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	visit(t_shctrl *ft_sh, t_ast_node *node)
 #ifdef DEBUG
 			print_cmd(ft_sh->cmd);
 #endif /* DEBUG */
-			//execute(ft_sh->cmd);
+			execute(ft_sh, ft_sh->cmd);
 			free_cmd(&(ft_sh->cmd));
 		}
 	}
