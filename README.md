@@ -12,5 +12,6 @@ Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 - pipes
 - PWD
 - $?
+- not executable, command not found, misuse of shell buit-in...
 - refacto
 - intégration built-in
