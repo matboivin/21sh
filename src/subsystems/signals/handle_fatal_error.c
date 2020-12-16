@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:52:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/12 12:27:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 17:03:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	handle_fatal_error(int sig)
 {
 	if (sig == SIGINT)
 	{
-		g_done = true;
+		g_interrupt = true;
 		g_status = FATAL_ERROR + sig;
 	}
 }

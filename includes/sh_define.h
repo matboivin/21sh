@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 15:55:16 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 17:12:34 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ extern volatile sig_atomic_t	g_status;
 */
 
 extern volatile sig_atomic_t	g_done;
+extern volatile sig_atomic_t	g_interrupt;
 
 /*
 ** Environment

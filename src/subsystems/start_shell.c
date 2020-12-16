@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 15:11:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:51:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 17:13:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 #include "sh_env.h"
 #include "sh_subsystems.h"
 
-volatile sig_atomic_t	g_done;
 volatile sig_atomic_t	g_status;
+volatile sig_atomic_t	g_done;
+volatile sig_atomic_t	g_interrupt;
 
 /*
 ** Shell startup
@@ -29,7 +30,8 @@ void	start_shell(char **envp, char *argv0)
 {
 	load_environment(envp, argv0);
 	create_prompt();
-	g_done = false;
 	g_status = EXIT_SUCCESS;
+	g_done = false;
+	g_interrupt = false;
 	register_signal_handlers();
 }
