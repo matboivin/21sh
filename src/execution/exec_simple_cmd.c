@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:16:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:32:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 17:58:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 void	exec_simple_cmd(t_shctrl *ft_sh, t_simplecmd *simple_cmd)
 {
+	if (simple_cmd->out_fd != -1)
+		redirect_fd(simple_cmd->out_fd, STDOUT_FILENO);
 	execve(
 		simple_cmd->cmd_args[CMD_NAME],
 		simple_cmd->cmd_args,
