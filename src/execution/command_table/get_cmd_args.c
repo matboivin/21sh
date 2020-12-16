@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:13:06 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:32:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:30:03 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,27 @@
 ** This function retrieves a simple command args
 */
 
-static void	fill_args(t_simplecmd *result, size_t i, t_ast_node *node)
+static void	fill_args(t_simplecmd *simple_cmd, size_t i, t_ast_node *node)
 {
 	if (!node || node->type != NODE_WORD)
 		return ;
-	if (i < result->argc)
-		result->cmd_args[i] = ft_strdup(node->data);
-	fill_args(result, i + 1, node->right);
+	if (i < simple_cmd->argc)
+		simple_cmd->cmd_args[i] = ft_strdup(node->data);
+	fill_args(simple_cmd, i + 1, node->right);
 }
 
-void		get_cmd_args(t_simplecmd *result, t_ast_node *node)
+void		get_cmd_args(t_simplecmd *simple_cmd, t_ast_node *node)
 {
 	size_t	i;
 
-	if (!result->argc)
+	if (!simple_cmd->argc)
 		return ;
 	i = 0;
-	result->cmd_args = malloc((result->argc + 1) * sizeof(char *));
-	if (!result->cmd_args)
+	simple_cmd->cmd_args = malloc((simple_cmd->argc + 1) * sizeof(char *));
+	if (!simple_cmd->cmd_args)
 		return ;
-	result->cmd_args[result->argc] = NULL;
-	fill_args(result, i, node->left);
+	simple_cmd->cmd_args[simple_cmd->argc] = NULL;
+	fill_args(simple_cmd, i, node->left);
 	if (node->right && (node->right->type == NODE_CMD_SUFFIX))
-		fill_args(result, i + 1, node->right->left);
+		fill_args(simple_cmd, i + 1, node->right->left);
 }

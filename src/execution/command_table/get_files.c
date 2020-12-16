@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:52:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 18:44:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:30:10 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,22 @@ static void	redir_append_output(int *fd, char *node_data)
 ** This function open files for redirections
 */
 
-static void	open_files(t_simplecmd *result, t_ast_node *node)
+static void	open_files(t_simplecmd *simple_cmd, t_ast_node *node)
 {
 	if (!node || node->type != NODE_IO_FILE)
 		return ;
 	if (!ft_strcmp(node->data, REDIR_INPUT))
-		redir_input(&(result->in_fd), node->left->data);
+		redir_input(&(simple_cmd->in_fd), node->left->data);
 	else if (!ft_strcmp(node->data, REDIR_OUTPUT))
-		redir_output(&(result->out_fd), node->left->data);
+		redir_output(&(simple_cmd->out_fd), node->left->data);
 	else if (!ft_strcmp(node->data, REDIR_APPEND_OUTPUT))
-		redir_append_output(&(result->out_fd), node->left->data);
-	open_files(result, node->right);
+		redir_append_output(&(simple_cmd->out_fd), node->left->data);
+	open_files(simple_cmd, node->right);
 }
 
-void		get_files(t_simplecmd *result, t_ast_node *node)
+void		get_files(t_simplecmd *simple_cmd, t_ast_node *node)
 {
-	open_files(result, node->left);
+	open_files(simple_cmd, node->left);
 	if (node->right && node->right->type == NODE_CMD_SUFFIX)
-		open_files(result, node->right->right);
+		open_files(simple_cmd, node->right->right);
 }

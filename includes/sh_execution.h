@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 18:40:44 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:31:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int		add_simple_cmd(t_cmd *cmd, t_ast_node *node);
 ** Counts a simple command arg
 */
 
-void	get_cmd_arg_count(t_simplecmd *result, t_ast_node *node);
+void	get_cmd_arg_count(t_simplecmd *simple_cmd, t_ast_node *node);
 
 /*
 ** Retrieves a simple command args
 */
 
-void	get_cmd_args(t_simplecmd *result, t_ast_node *node);
+void	get_cmd_args(t_simplecmd *simple_cmd, t_ast_node *node);
 
 /*
 ** Checks whether the current simple command is the last one
@@ -65,8 +65,14 @@ bool	is_last_command(size_t i, size_t cmd_count);
 ** Redirections
 */
 
-void	get_files(t_simplecmd *result, t_ast_node *node);
+void	get_files(t_simplecmd *simple_cmd, t_ast_node *node);
 void	redirect_fd(int from, int to);
+
+/*
+** Finds the command to run
+*/
+
+void	find_command(t_simplecmd *simple_cmd);
 
 /*
 ** Executes all simple commands

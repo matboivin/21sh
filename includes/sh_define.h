@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 17:12:34 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:34:52 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@
 # define WEAK_QUOTE '\"'
 # define DOLLAR_SIGN '$'
 # define ENVKEY_SEP '='
+# define PATHS_SEP ':'
+# define DIRS_SEP "/"
 
 /*
 ** Execution, pipes and files

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:13:06 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:58:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:29:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 ** This function counts a simple command arg
 */
 
-static void	count_args(t_simplecmd *result, t_ast_node *node)
+static void	count_args(t_simplecmd *simple_cmd, t_ast_node *node)
 {
 	if (!node || node->type != NODE_WORD)
 		return ;
-	result->argc++;
-	count_args(result, node->right);
+	simple_cmd->argc++;
+	count_args(simple_cmd, node->right);
 }
 
-void		get_cmd_arg_count(t_simplecmd *result, t_ast_node *node)
+void		get_cmd_arg_count(t_simplecmd *simple_cmd, t_ast_node *node)
 {
-	count_args(result, node->left);
+	count_args(simple_cmd, node->left);
 	if (node->right && node->right->type == NODE_CMD_SUFFIX)
-		count_args(result, node->right->left);
+		count_args(simple_cmd, node->right->left);
 }
