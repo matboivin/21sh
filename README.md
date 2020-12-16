@@ -8,6 +8,9 @@ Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 
 ## TODO
 
-- remplir la command table : ouvrir les fichiers, gérer les redirections, gérer les chemins absolus, chercher dans PATH
+- gérer les chemins absolus, chercher dans PATH
+- pipes
+- PWD
+- $?
 - refacto
 - intégration built-in
