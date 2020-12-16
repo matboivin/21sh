@@ -157,7 +157,7 @@ digraph graphname {
 
 ### Tree traversal / Visitor pattern
 
-Pre-order (NLR) seems the most appropriate search.
+Pre-order (NLR) seems the most appropriate search but I didn't apply it.
 
 Go down one level to the recursive argument N. If N exists (is non-empty) execute the following three operations in this order:
 
@@ -166,6 +166,9 @@ Go down one level to the recursive argument N. If N exists (is non-empty) execut
 - (R)	Recursively traverse N's right subtree.
 
 Source: [Wiki: Tree Traversal](https://en.wikipedia.org/wiki/Tree_traversal)
+
+For the minishell version of ft_sh, only the `command` and `pipe_sequence` nodes
+are traversed.
 
 ### Pipes
 

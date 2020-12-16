@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 20:00:07 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:06:25 by ouram            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	visit(t_shctrl *ft_sh, t_ast_node *node)
 }
 
 /*
-** This function traverses the AST following the pre-order pattern
+** This function traverses the AST to build the command table
 */
 
 void	traverse_tree(t_shctrl *ft_sh, t_ast_node *node)
