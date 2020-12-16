@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:37:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:00:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	traverse_tree(t_shctrl *ft_sh, t_ast_node *node)
 	if (!node)
 		return ;
 	visit(ft_sh, node);
-	traverse_tree(ft_sh, node->left);
+	if (node->type == NODE_CMD)
+		traverse_tree(ft_sh, node->left);
 	traverse_tree(ft_sh, node->right);
 }
