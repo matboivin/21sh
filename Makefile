@@ -88,7 +88,7 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				get_cmd_arg_count.c			\
 				get_cmd_args.c				\
 				get_files.c					\
-				redirect_fd.c				\
+				redirect_to_file.c			\
 				simple_command.c			\
 				spawn_process.c				\
 				visitor.c

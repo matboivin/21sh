@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 20:31:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/17 17:14:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ bool	is_last_command(size_t i, size_t cmd_count);
 */
 
 void	get_files(t_simplecmd *simple_cmd, t_ast_node *node);
-void	redirect_fd(int from, int to);
+void	redirect_to_file(int from, int to);
 
 /*
 ** Finds the command to run
