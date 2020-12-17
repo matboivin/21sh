@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_prompt.c                                   :+:      :+:    :+:   */
+/*   get_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 16:12:58 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/17 18:57:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include "libft_str.h"
 #include "libft_io.h"
+#include "libft_printf.h"
 #include "sh_utils.h"
+#include "sh_env.h"
 #include "sh_input_processing.h"
 
 /*
@@ -25,15 +29,34 @@ static void	handle_eof(t_shctrl *ft_sh)
 }
 
 /*
-** This function prompts the user for an input
+** This function prompts the user for a command
 */
 
-char		*display_prompt(t_shctrl *ft_sh, const char *prompt)
+static int	prompt_user(t_shctrl *ft_sh, char *prompt)
 {
-	char	*result;
+	int		ret_val;
 
-	result = ft_readline(prompt);
-	if (!result)
+	ret_val = 0;
+	ft_sh->lexer->input = ft_readline(prompt);
+	if (!ft_sh->lexer->input)
 		handle_eof(ft_sh);
-	return (result);
+	ret_val = tokenize(ft_sh->lexer);
+	ft_strdel(&ft_sh->lexer->input);
+	return (ret_val);
+}
+
+/*
+** This function gets the command input and splits it into tokens
+*/
+
+void		get_command(t_shctrl *ft_sh)
+{
+	int		not_finished;
+
+	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
+	if (!ft_sh->lexer)
+		exit_shell(ft_sh);
+	not_finished = prompt_user(ft_sh, ft_getenv("PS1"));
+	while (not_finished)
+		not_finished = prompt_user(ft_sh, "PS2");
 }

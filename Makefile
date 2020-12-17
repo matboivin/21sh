@@ -37,7 +37,7 @@ SRC_FILES	+=	ft_env.c
 
 # INPUT PROCESSING #
 
-SRC_FILES	+=	display_prompt.c		\
+SRC_FILES	+=	get_command.c			\
 				process_input.c			\
 				shell_loop.c
 

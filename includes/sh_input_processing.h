@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 15:21:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:21:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/17 18:25:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@
 int		shell_loop(t_shctrl *ft_sh);
 
 /*
-** Prompts the user for an input
+** Processes the command input
 */
 
-char	*display_prompt(t_shctrl *ft_sh, const char *prompt);
+void	process_input(t_shctrl *ft_sh);
 
 /*
-** Gets the command input
+** Gets the command input and splits it into tokens
 */
 
-int		process_input(t_shctrl *ft_sh);
+void	get_command(t_shctrl *ft_sh);
 
 #endif

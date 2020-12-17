@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:02:51 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 17:15:29 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/17 18:57:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,10 @@
 **   Return status
 */
 
-static void	run_loop(t_shctrl *ft_sh)
-{
-	while (!g_interrupt)
-		process_input(ft_sh);
-	g_interrupt = false;
-}
-
 int			shell_loop(t_shctrl *ft_sh)
 {
 	while (!g_done)
-		run_loop(ft_sh);
+		process_input(ft_sh);
 	free_all(ft_sh);
 #ifdef DEBUG
 	ft_printf(

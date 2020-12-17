@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 15:11:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 17:13:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/17 19:18:47 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 volatile sig_atomic_t	g_status;
 volatile sig_atomic_t	g_done;
-volatile sig_atomic_t	g_interrupt;
 
 /*
 ** Shell startup
@@ -32,6 +31,5 @@ void	start_shell(char **envp, char *argv0)
 	create_prompt();
 	g_status = EXIT_SUCCESS;
 	g_done = false;
-	g_interrupt = false;
 	register_signal_handlers();
 }

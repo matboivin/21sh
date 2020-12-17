@@ -6,14 +6,15 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:52:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 17:03:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/17 19:15:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <unistd.h>
 #include <signal.h>
-#include <stdbool.h>
+#include "libft_printf.h"
+#include "sh_env.h"
 #include "sh_subsystems.h"
 
 /*
@@ -27,7 +28,7 @@ void	handle_fatal_error(int sig)
 {
 	if (sig == SIGINT)
 	{
-		g_interrupt = true;
 		g_status = FATAL_ERROR + sig;
+		ft_printf("\n%s", ft_getenv("PS1"));
 	}
 }
