@@ -143,6 +143,7 @@ digraph graphname {
 
 > As you can see, reference the value of a variable by preceding it with a $ sign. The shell takes this to mean that it should substitute the value of the variable when it comes across this.  [(Source)](https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux)
 
+> `$?` holds the return value set by the previously executed command.  [(Source)](https://bash.cyberciti.biz/guide/Parameters_Set_by_the_Shell)
 
 ## Execution
 
