@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 20:20:15 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:11:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/17 16:07:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ int			process_input(t_shctrl *ft_sh)
 	print_lexer(ft_sh->lexer);
 	print_ast(ft_sh->ast);
 #endif /* DEBUG */
-	if (g_status == EXIT_SUCCESS)
-		traverse_tree(ft_sh, ft_sh->ast);
+	traverse_tree(ft_sh, ft_sh->ast);
 	destroy_shell(ft_sh);
 	return (g_status);
 }
