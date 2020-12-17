@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 17:10:12 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/17 15:58:46 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/17 17:11:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ static char	*get_var_value(char *var_name)
 	if (!ft_strcmp(var_name, "?"))
 		result = ft_itoa(g_status, result, DEC_BASE);
 	else
-		result = ft_getenv(var_name);
+	{
+		if (ft_findenv(var_name) != FAIL_RET)
+			result = ft_strdup(ft_getenv(var_name));
+	}
 	return (result);
 }
 
