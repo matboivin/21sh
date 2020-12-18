@@ -8,7 +8,7 @@
 # Architecture
 
 <p align="center">
-  <img src="doc/assets/bash-article-diagram.png" alt="bash diagram" />
+  <img src="assets/bash-article-diagram.png" alt="bash diagram" />
 </p>
 
 Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
@@ -317,4 +317,4 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 
 ## unset
 
-[unset(1p) [posix man page]](https://www.unix.com/man-page/posix/1p/unset/)
+- [unset posix man page](https://www.unix.com/man-page/posix/1p/unset/)
