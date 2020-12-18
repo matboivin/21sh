@@ -84,6 +84,7 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				create_pipe.c				\
 				exec_simple_cmd.c			\
 				execute.c					\
+				find_command.c				\
 				is_last_command.c			\
 				get_cmd_arg_count.c			\
 				get_cmd_args.c				\

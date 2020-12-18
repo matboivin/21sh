@@ -171,6 +171,19 @@ Source: [Wiki: Tree Traversal](https://en.wikipedia.org/wiki/Tree_traversal)
 For the minishell version of ft_sh, only the `command` and `pipe_sequence` nodes
 are traversed.
 
+### Finding commands
+
+> If the command name found by the shell at the beginning of the command line contains any slashes, the shell does not use PATH to find the executable file. If there are slashes, the shell executes that file pathname directly as a program and does not need to search for it:
+
+```console
+$ /bin/foo # executes the file /bin/foo; does not search PATH
+$ bar/foo  # executes the file foo in the sub-directory bar; does not search PATH
+$ ./foo    # executes the foo in the current directory; does not search PATH
+$ ../foo   # executes the foo in the parent directory; does not search PATH
+```
+
+Source: [Shell search PATH – finding and running commands](http://teaching.idallen.com/cst8207/12f/notes/400_search_path.html)
+
 ### Pipes
 
 > If the parent wants to receive data from the child, it should close fd[1], and the child should close fd[0]. If the parent wants to send data to the child, it should close fd[0], and the child should close fd[1]. Since descriptors are shared between the parent and child, we should always be sure to close the end of pipe we aren't concerned with. On a technical note, the EOF will never be returned if the unnecessary ends of the pipe are not explicitly closed. [(Source)](https://tldp.org/LDP/lpg/node11.html)

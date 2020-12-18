@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/17 17:14:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 18:23:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	redirect_to_file(int from, int to);
 ** Finds the command to run
 */
 
-void	find_command(t_simplecmd *simple_cmd);
+int		find_command(t_simplecmd *simple_cmd);
 
 /*
 ** Executes all simple commands

@@ -44,7 +44,7 @@
 - [How do pipes and FIFOs work on Linux?](https://imjching.com/writings/2018/10/09/how-do-pipes-and-fifos-work-on-linux/)
 - [6.2.2 Creating Pipes in C](https://tldp.org/LDP/lpg/node11.html)
 - [Closing pipe file descriptor in C](https://stackoverflow.com/questions/22032120/closing-pipe-file-descriptor-in-c)
-- [http://www.zeitoun.net/articles/communication-par-tuyau/start](http://www.zeitoun.net/articles/communication-par-tuyau/start)
+- [Communication par tuyau](http://www.zeitoun.net/articles/communication-par-tuyau/start)
 
 ### Parsing
 
