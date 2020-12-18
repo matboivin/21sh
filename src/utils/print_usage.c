@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:50:46 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 18:25:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 18:42:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 
 void	print_usage(void)
 {
-	ft_dprintf(STDERR_FILENO, "Usage: ./ft_sh\n");
+	ft_dprintf(STDERR_FILENO, "Usage: ./minishell\n");
 	exit(EXIT_SUCCESS);
 }
