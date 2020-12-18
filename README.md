@@ -8,9 +8,8 @@ Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 
 ## TODO
 
-- gérer les chemins absolus, chercher dans PATH
 - pipes
 - PWD
-- not executable, command not found, misuse of shell buit-in...
+- not executable, command not found, misuse of shell buit-in, checks supplémentaires (lstat, /dev/null...)
 - refacto
 - intégration built-in
