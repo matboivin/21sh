@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:52:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 19:45:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 22:43:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ static void	open_files(t_simplecmd *simple_cmd, t_ast_node *node)
 	if (!node || node->type != NODE_IO_FILE)
 		return ;
 	if (!ft_strcmp(node->data, REDIR_INPUT))
-		redir_input(&(simple_cmd->in_fd), node->left->data);
+		redir_input(&(simple_cmd->input_fd), node->left->data);
 	else if (!ft_strcmp(node->data, REDIR_OUTPUT))
-		redir_output(&(simple_cmd->out_fd), node->left->data);
+		redir_output(&(simple_cmd->output_fd), node->left->data);
 	else if (!ft_strcmp(node->data, REDIR_APPEND_OUTPUT))
-		redir_append_output(&(simple_cmd->out_fd), node->left->data);
+		redir_append_output(&(simple_cmd->output_fd), node->left->data);
 	open_files(simple_cmd, node->right);
 }
 

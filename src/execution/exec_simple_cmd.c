@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:16:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 20:55:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 22:43:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 
 void		exec_simple_cmd(t_shctrl *ft_sh, t_simplecmd *simple_cmd)
 {
-	if (simple_cmd->in_fd != NO_FILE)
-		redirect_to_file(simple_cmd->in_fd, STDIN_FILENO);
-	if (simple_cmd->out_fd != NO_FILE)
-		redirect_to_file(simple_cmd->out_fd, STDOUT_FILENO);
+	if (simple_cmd->input_fd != NO_FILE)
+		redirect_to_file(simple_cmd->input_fd, STDIN_FILENO);
+	if (simple_cmd->output_fd != NO_FILE)
+		redirect_to_file(simple_cmd->output_fd, STDOUT_FILENO);
 	execve(simple_cmd->cmd_path, simple_cmd->cmd_args, g_env);
 	exit_shell(ft_sh);
 }

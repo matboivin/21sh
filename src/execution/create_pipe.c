@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:30 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 19:45:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 22:42:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	create_pipe(t_shctrl *ft_sh, int *input_fd, int *output_fd)
 		g_status = EXIT_FAILURE;
 		exit_shell(ft_sh);
 	}
-	*output_fd = pfd[WRITE_END];
 	*input_fd = pfd[READ_END];
+	*output_fd = pfd[WRITE_END];
 }
