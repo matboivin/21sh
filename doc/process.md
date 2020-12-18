@@ -270,7 +270,7 @@ O_WRONLY | O_CREAT | O_TRUNC
 
 O_WRONLY | O_CREAT | O_APPEND
 
-### dup() /dup2()
+#### dup() /dup2()
 
 ```c
 int dup(int oldfd);
