@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:52:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 20:30:10 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 19:23:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 static void	redir_input(int *fd, char *node_data)
 {
-	if (*fd != -1)
+	if (*fd != NO_FILE)
 		close(*fd);
 	*fd = open(node_data, O_RDONLY);
 }
@@ -36,7 +36,7 @@ static void	redir_input(int *fd, char *node_data)
 
 static void	redir_output(int *fd, char *node_data)
 {
-	if (*fd != -1)
+	if (*fd != NO_FILE)
 		close(*fd);
 	*fd = open(node_data, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSIONS);
 }
@@ -48,7 +48,7 @@ static void	redir_output(int *fd, char *node_data)
 
 static void	redir_append_output(int *fd, char *node_data)
 {
-	if (*fd != -1)
+	if (*fd != NO_FILE)
 		close(*fd);
 	*fd = open(node_data, O_WRONLY | O_CREAT | O_APPEND, FILE_PERMISSIONS);
 }
