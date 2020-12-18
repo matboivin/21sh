@@ -3,31 +3,51 @@
 1. Read the command line
 2. Interpret the command
 3. Execute the command
-4. Return the result
-5. Collects the command return status
+4. Collects the command return status
 
-## Organisation
+# Architecture
 
-1. Parsing
+<p align="center">
+  <img src="doc/assets/bash-article-diagram.png" alt="bash diagram" />
+</p>
 
-- Reads the command line and stores it in an Abstract Syntax Tree (AST).
+Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
+
+Subdirectories are organized following more or less this architecture:
+
+1. Input Processing
+
+- Read the command line
+
+2. Parsing
+
+- Parses the command line and stores it in an Abstract Syntax Tree (AST).
 - Is composed of:
   - A lexer (Lexical Analyzer​): splits the command into tokens.
   - A parser: processes the tokens according to a grammar and builds the AST.
+  - An AST: stores the data.
 
-2. Execution
+3. Execution
 
 - Traverse the AST and execute commands.
 - Create pipes to communicate the output of one process to the input of the next one.
 - Handle redirections.
 
-3. ​Subsystems
+4. ​Subsystems
 
 - Environment Variables: set, expand and print environment variables.
-- Wildcards (bonus)
-- Subshells (not required for the minishell school project)
+- Word expansions, substitutions, aliases.
+- Wildcards (bonus).
+- Subshells (not required for the minishell school project).
+- Also added signal handling functions.
 
-## Steps
+5. Recoded built-in functions required by the school project.
+
+6. Utils (functions to display error messages and so forth).
+
+# Steps
+
+## Environment
 
 ### Get the environment
 
@@ -57,7 +77,7 @@ Functions to:
 
 [Gnu.org: Environment Access](https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html)
 
-### Shell prompt
+## Shell prompt
 
 Run an infinite loop that displays a prompt and wait for the user's input.
 
@@ -67,7 +87,7 @@ Implement a `ft_readline()` function.
 
 > Bash expands and displays PS1 before reading the first line of a command, and expands and displays PS2 before reading the second and subsequent lines of a multi-line command. Bash expands and displays PS0 after it reads a command but before executing it. See Controlling the Prompt, for a complete list of prompt string escape sequences.  [(Source)](https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#Bash-Variables)
 
-### Register signal handling (basic way first)
+## Signal handling
 
 > When Bash is interactive, in the absence of any traps, it ignores SIGTERM (so that ‘kill 0’ does not kill an interactive shell), and SIGINT is caught and handled (so that the wait builtin is interruptible). When Bash receives a SIGINT, it breaks out of any executing loops. In all cases, Bash ignores SIGQUIT. If job control is in effect (see Job Control), Bash ignores SIGTTIN, SIGTTOU, and SIGTSTP. [(Source)](https://www.gnu.org/software/bash/manual/html_node/Signals.html)
 
@@ -86,7 +106,7 @@ Resource: [Appendix E. Exit Codes With Special Meanings](https://tldp.org/LDP/ab
 * `SIG_IGN`: Ignores the signal. Usage: `signal(SIGINT, SIG_IGN)`.
 * `SIG_DFL`: Sets the default behaviour for the signal. This is useful when you want to reset the behaviour for a signal after having made some modifications. Usage: `signal(SIGINT, SIG_DFL)`.
 
-### Parsing
+## Parsing
 
 Steps:
 
@@ -118,7 +138,7 @@ Before you study regular expressions, it is important that you understand how to
 
 See 2.2 Quoting: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
 
-### Parsing
+### Parser
 
 The parser:
 
@@ -137,7 +157,7 @@ digraph graphname {
 }
 ```
 
-### Word Expansions
+## Word Expansions
 
 > The reason that using a variable is called substitution is that the shell literally replaces each reference to any variable with its value. This is done while evaluating the command-line, which means that the variable substitution is made before the command is actually executed.  [(Source)](https://en.wikibooks.org/wiki/Bourne_Shell_Scripting/Variable_Expansion)
 
@@ -171,7 +191,7 @@ Source: [Wiki: Tree Traversal](https://en.wikipedia.org/wiki/Tree_traversal)
 For the minishell version of ft_sh, only the `command` and `pipe_sequence` nodes
 are traversed.
 
-### Command Search and Execution
+### Command Search
 
 > If the command name found by the shell at the beginning of the command line contains any slashes, the shell does not use PATH to find the executable file. If there are slashes, the shell executes that file pathname directly as a program and does not need to search for it:
 
@@ -191,41 +211,6 @@ Source: [Shell search PATH – finding and running commands](http://teaching.ida
 `WEXITSTATUS(wstatus)` returns the exit status of the child. This macro should be employed only if `WIFEXITED` returned true.
 
 Source: [wait(2) — Linux manual page](https://man7.org/linux/man-pages/man2/wait.2.html)
-
-### Pipes
-
-> If the parent wants to receive data from the child, it should close fd[1], and the child should close fd[0]. If the parent wants to send data to the child, it should close fd[0], and the child should close fd[1]. Since descriptors are shared between the parent and child, we should always be sure to close the end of pipe we aren't concerned with. On a technical note, the EOF will never be returned if the unnecessary ends of the pipe are not explicitly closed. [(Source)](https://tldp.org/LDP/lpg/node11.html)
-
-```c
-int dup(int oldfd);
-```
-
-```
-oldfd ----------------+----------> resource
-                      |
-return_value ---------+
-```
-
-`oldfd` and the return value are both fd that point to the resource.
-
-```c
-int dup2(int oldfd, int newfd);
-```
-
-```
-oldfd ---  (dup2 cuts access   )       --+------------> resource
-                                         |
-newfd -----------------------------------+
-```
-
-`oldfd` is closed while `newfd` is the duplicate of `oldfd`.
-
-`dup2()` makes `newfd` be the copy of `oldfd`, closing `newfd` first if necessary, but note the following:
-
-- If `oldfd` is not a valid file descriptor, then the call fails, and `newfd` is not closed. 
-- If `oldfd` is a valid file descriptor, and `newfd` has the same value as `oldfd`, then `dup2()` does nothing, and returns`newfd`.
-
-Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/2318-c--programmation-systeme-execve-fork-et-pipe)
 
 ### Redirections
 
@@ -287,12 +272,49 @@ O_WRONLY | O_CREAT | O_TRUNC
 
 O_WRONLY | O_CREAT | O_APPEND
 
-## Built-in commands
+### dup() /dup2()
 
-### env
+```c
+int dup(int oldfd);
+```
+
+```
+oldfd ----------------+----------> resource
+                      |
+return_value ---------+
+```
+
+`oldfd` and the return value are both fd that point to the resource.
+
+```c
+int dup2(int oldfd, int newfd);
+```
+
+```
+oldfd ---  (dup2 cuts access   )       --+------------> resource
+                                         |
+newfd -----------------------------------+
+```
+
+`oldfd` is closed while `newfd` is the duplicate of `oldfd`.
+
+`dup2()` makes `newfd` be the copy of `oldfd`, closing `newfd` first if necessary, but note the following:
+
+- If `oldfd` is not a valid file descriptor, then the call fails, and `newfd` is not closed. 
+- If `oldfd` is a valid file descriptor, and `newfd` has the same value as `oldfd`, then `dup2()` does nothing, and returns`newfd`.
+
+Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/2318-c--programmation-systeme-execve-fork-et-pipe)
+
+### Pipes
+
+> If the parent wants to receive data from the child, it should close fd[1], and the child should close fd[0]. If the parent wants to send data to the child, it should close fd[0], and the child should close fd[1]. Since descriptors are shared between the parent and child, we should always be sure to close the end of pipe we aren't concerned with. On a technical note, the EOF will never be returned if the unnecessary ends of the pipe are not explicitly closed. [(Source)](https://tldp.org/LDP/lpg/node11.html)
+
+# Built-in commands
+
+## env
 
 > If no command name is specified following the environment specifications, the resulting environment is printed. This is like specifying the printenv program.  [(Source)](https://www.gnu.org/software/coreutils/manual/html_node/env-invocation.html)
 
-### unset
+## unset
 
 [unset(1p) [posix man page]](https://www.unix.com/man-page/posix/1p/unset/)
