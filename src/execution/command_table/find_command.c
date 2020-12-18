@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 18:25:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 19:04:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@
 #include "sh_env.h"
 #include "sh_execution.h"
 
-static bool	is_absolute_path(char *cmd_name)
+static bool	is_path(char *cmd_path)
 {
-	return (ft_strchr(cmd_name, '/') != NULL);
+	return (ft_strchr(cmd_path, '/') != NULL);
 }
 
-static bool	command_found(char **cmd_args, char *path_to_check)
+static bool	command_found(char **cmd_path, char *path_to_check)
 {
 	struct stat	statbuf;
 
 	if (lstat(path_to_check, &statbuf) == FAIL_RET)
 		return (false);
 	// TODO: Check permissions
-	cmd_args[CMD_NAME] = ft_strreplace(cmd_args[CMD_NAME], path_to_check);
+	*cmd_path = ft_strreplace(*cmd_path, path_to_check);
 	ft_strdel(&path_to_check);
 	return (true);
 }
 
-static void	get_command_path(char **cmd_args)
+static void	get_command_path(char **cmd_path)
 {
 	char	**path_list;
 	char	*path_to_check;
@@ -48,8 +48,8 @@ static void	get_command_path(char **cmd_args)
 	while (path_list[i])
 	{
 		path_to_check = ft_join_n_str(
-			3, path_list[i], DIRS_SEP, cmd_args[CMD_NAME]);
-		if (command_found(cmd_args, path_to_check))
+			3, path_list[i], DIRS_SEP, *cmd_path);
+		if (command_found(cmd_path, path_to_check))
 			break ;
 		i++;
 		ft_strdel(&path_to_check);
@@ -61,9 +61,9 @@ int			find_command(t_simplecmd *simple_cmd)
 {
 	if (!simple_cmd->argc)
 		return (0);
-	if (!is_absolute_path(simple_cmd->cmd_args[CMD_NAME]))
-		get_command_path(simple_cmd->cmd_args);
-	if (simple_cmd->cmd_args[CMD_NAME])
+	if (!is_path(simple_cmd->cmd_path))
+		get_command_path(&(simple_cmd->cmd_path));
+	if (simple_cmd->cmd_path)
 		return (0);
 	return (FAIL_RET);
 }

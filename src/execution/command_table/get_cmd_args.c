@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:13:06 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 20:30:03 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 19:06:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void		get_cmd_args(t_simplecmd *simple_cmd, t_ast_node *node)
 	fill_args(simple_cmd, i, node->left);
 	if (node->right && (node->right->type == NODE_CMD_SUFFIX))
 		fill_args(simple_cmd, i + 1, node->right->left);
+	simple_cmd->cmd_path = ft_strdup(simple_cmd->cmd_args[CMD_NAME]);
 }
