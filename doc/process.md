@@ -27,7 +27,7 @@ Subdirectories are organized following more or less this architecture:
   - A parser: processes the tokens according to a grammar and builds the AST.
   - An AST: stores the data.
 
-3.**Execution**
+3. **Execution**
 
 - Traverse the AST and execute commands.
 - Create pipes to communicate the output of one process to the input of the next one.
