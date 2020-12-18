@@ -6,13 +6,16 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/16 17:58:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 21:02:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <errno.h>
+#include <string.h>
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "libft_printf.h"
 #include "sh_execution.h"
 
 static bool	is_child_process(pid_t pid)
@@ -41,4 +44,6 @@ void		execute(t_shctrl *ft_sh, t_cmd *cmd)
 		i++;
 	}
 	waitpid(pid, &wstatus, DEFAULT_VALUE);
+	if (WIFEXITED(wstatus))
+		g_status = WEXITSTATUS(wstatus);
 }

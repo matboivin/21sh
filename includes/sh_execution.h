@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 18:23:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 19:43:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define SH_EXECUTION_H
 
 # include <stdbool.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <sys/wait.h>
+# include <unistd.h>
 # include "sh_define.h"
 # include "sh_ast.h"
 # include "sh_command.h"

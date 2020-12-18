@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:17:34 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:14:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 20:40:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	close_quote(t_lexer *lexer, char **stack)
 static void	raise_matching_error(char **stack, char quote_type)
 {
 	ft_strdel(stack);
-	print_matching_error(quote_type);
+	handle_matching_error(quote_type);
 }
 
 static void	handle_quote_type(t_lexer *lexer, char quote_type)

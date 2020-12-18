@@ -6,10 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:30 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 22:53:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 19:45:50 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <errno.h>
+#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "sh_utils.h"
@@ -21,7 +23,7 @@ void	create_pipe(t_shctrl *ft_sh, int *input_fd, int *output_fd)
 
 	if (pipe(pfd) == FAIL_RET)
 	{
-		print_error("pipe");
+		print_error("pipe", strerror(errno));
 		g_status = EXIT_FAILURE;
 		exit_shell(ft_sh);
 	}

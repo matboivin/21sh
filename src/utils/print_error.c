@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 18:19:45 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 20:40:15 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include "sh_utils.h"
 
 /*
-** Syntax errors
+** Print error messages
 */
 
-void		print_syntax_error(const char *token)
+void	handle_syntax_error(const char *token)
 {
 	g_status = INCORRECT_USAGE;
 	ft_dprintf(
@@ -30,7 +30,7 @@ void		print_syntax_error(const char *token)
 		token);
 }
 
-void		print_matching_error(char c)
+void	handle_matching_error(char c)
 {
 	g_status = INCORRECT_USAGE;
 	ft_dprintf(
@@ -40,11 +40,14 @@ void		print_matching_error(char c)
 		c);
 }
 
-void		print_error(char *target)
+void	handle_cmd_not_found(char *filename)
 {
-	char	*msg;
+	g_status = CMD_NO_FOUND;
+	print_error(filename, "command not found");
+}
 
-	msg = (char *)strerror(errno);
+void	print_error(char *target, const char *msg)
+{
 	ft_dprintf(
 		STDERR_FILENO, "%s: %s: %s\n", ft_getenv("SHELL_NAME"), target, msg);
 }

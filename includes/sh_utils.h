@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 23:15:58 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 20:40:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ void	print_usage(void);
 ** Error messages
 */
 
-void	print_syntax_error(const char *token);
-void	print_matching_error(char c);
-void	print_error(char *target);
+void	print_error(char *target, const char *msg);
+void	handle_syntax_error(const char *token);
+void	handle_matching_error(char c);
+void	handle_cmd_not_found(char *filename);
 
 /*
 ** Frees all the allocated memory

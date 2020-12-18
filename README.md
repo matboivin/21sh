@@ -10,6 +10,6 @@ Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 
 - pipes
 - PWD
-- not executable, command not found, misuse of shell buit-in, checks supplémentaires (lstat, /dev/null...)
+- not executable, misuse of shell buit-in, checks supplémentaires (lstat, /dev/null...)
 - refacto
 - intégration built-in

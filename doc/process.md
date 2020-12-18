@@ -171,7 +171,7 @@ Source: [Wiki: Tree Traversal](https://en.wikipedia.org/wiki/Tree_traversal)
 For the minishell version of ft_sh, only the `command` and `pipe_sequence` nodes
 are traversed.
 
-### Finding commands
+### Command Search and Execution
 
 > If the command name found by the shell at the beginning of the command line contains any slashes, the shell does not use PATH to find the executable file. If there are slashes, the shell executes that file pathname directly as a program and does not need to search for it:
 
@@ -183,6 +183,14 @@ $ ../foo   # executes the foo in the parent directory; does not search PATH
 ```
 
 Source: [Shell search PATH – finding and running commands](http://teaching.idallen.com/cst8207/12f/notes/400_search_path.html)
+
+### Process Completion Status
+
+`WIFEXITED(wstatus)` returns true if the child terminated normally, that is, by calling exit(3) or _exit(2), or by returning from main().
+
+`WEXITSTATUS(wstatus)` returns the exit status of the child. This macro should be employed only if `WIFEXITED` returned true.
+
+Source: [wait(2) — Linux manual page](https://man7.org/linux/man-pages/man2/wait.2.html)
 
 ### Pipes
 

@@ -6,13 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:52:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 19:23:23 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 19:45:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <fcntl.h>
 #include <unistd.h>
 #include "libft_printf.h"
 #include "sh_execution.h"

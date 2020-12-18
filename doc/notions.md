@@ -18,6 +18,7 @@
 - [UNIX SHELL Quote Tutorial](https://www.grymoire.com/Unix/Quote.html)
 - [Difference between ${} and $() in Bash](https://stackoverflow.com/questions/27472540/difference-between-and-in-bash/27472808)
 - [Shell search PATH – finding and running commands](http://teaching.idallen.com/cst8207/12f/notes/400_search_path.html)
+- [GNu.org: Command Search and Execution](https://www.gnu.org/software/bash/manual/html_node/Command-Search-and-Execution.html)
 
 ### Environment
 

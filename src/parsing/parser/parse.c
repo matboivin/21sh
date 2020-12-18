@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/09 18:39:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/18 20:41:04 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void		parse(t_ast_node **ast, t_lexer *lexer)
 	while ((lexer->pos < lexer->size) && ret_val)
 		ret_val = parse_command(ast, lexer);
 	if (lexer->pos != lexer->size)
-		print_syntax_error(lexer->tokens[lexer->pos]->value);
+		handle_syntax_error(lexer->tokens[lexer->pos]->value);
 }
