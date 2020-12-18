@@ -15,11 +15,11 @@ Image source: [The Bourne-Again Shell](https://www.aosabook.org/en/bash.html)
 
 Subdirectories are organized following more or less this architecture:
 
-1. Input Processing
+1. **Input Processing**
 
 - Read the command line
 
-2. Parsing
+2. **Parsing**
 
 - Parses the command line and stores it in an Abstract Syntax Tree (AST).
 - Is composed of:
@@ -27,13 +27,13 @@ Subdirectories are organized following more or less this architecture:
   - A parser: processes the tokens according to a grammar and builds the AST.
   - An AST: stores the data.
 
-3. Execution
+3.**Execution**
 
 - Traverse the AST and execute commands.
 - Create pipes to communicate the output of one process to the input of the next one.
 - Handle redirections.
 
-4. ​Subsystems
+4. **Subsystems**
 
 - Environment Variables: set, expand and print environment variables.
 - Word expansions, substitutions, aliases.
@@ -41,9 +41,9 @@ Subdirectories are organized following more or less this architecture:
 - Subshells (not required for the minishell school project).
 - Also added signal handling functions.
 
-5. Recoded built-in functions required by the school project.
+5. **Recoded built-in functions** required by the school project.
 
-6. Utils (functions to display error messages and so forth).
+6. **Utils** (functions to display error messages and so forth).
 
 # Steps
 
@@ -140,11 +140,9 @@ See 2.2 Quoting: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onl
 
 ### Parser
 
-The parser:
-
-- checks for grammar errors
-- processes the tokens into an Abstract Syntax Tree (AST)
-- visitor to navigate the AST
+- Check for grammar errors
+- Process the tokens into an Abstract Syntax Tree (AST)
+- Visitor to navigate the AST
 
 #### Debug mode
 
