@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 17:21:32 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 23:41:03 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ void		get_command(t_shctrl *ft_sh)
 		exit_shell(ft_sh);
 	not_finished = prompt_user(ft_sh, ft_getenv("PS1"));
 	while (not_finished)
-		not_finished = prompt_user(ft_sh, "PS2");
+		not_finished = prompt_user(ft_sh, PS2);
 }
