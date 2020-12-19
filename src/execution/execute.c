@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 20:58:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 21:28:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ static bool	is_child_process(pid_t pid)
 	return (pid == 0);
 }
 
-/*
-** This function executes all simple commands
-*/
-
 static void	restore_default_streams(t_streams backup)
 {
 	redirect_stream(backup.input, STDIN_FILENO);
@@ -36,6 +32,10 @@ static void	backup_streams(t_streams *backup, int *input)
 	backup->output = dup(STDOUT_FILENO);
 	*input = dup(backup->input);
 }
+
+/*
+** This function executes all simple commands
+*/
 
 void		execute(t_shctrl *ft_sh, t_cmd *cmd)
 {
