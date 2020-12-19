@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 22:18:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 23:04:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ void			execute(t_shctrl *ft_sh, t_cmd *cmd)
 {
 	pid_t		pid;
 	t_streams	backup;
-	t_streams	swap;
+	t_streams	pipe_redir;
 	int			wstatus;
 
-	backup_streams(&backup, &(swap.input));
+	backup_streams(&backup, &(pipe_redir.input));
 	while (cmd->curr_cmd < cmd->cmd_count)
 	{
-		redirect_stream(swap.input, STDIN_FILENO);
-		swap.output = dup(backup.output);
+		redirect_stream(pipe_redir.input, STDIN_FILENO);
+		pipe_redir.output = dup(backup.output);
 		if (!is_last_command(cmd))
-			create_pipe(ft_sh, &swap);
-		redirect_stream(swap.output, STDOUT_FILENO);
+			create_pipe(ft_sh, &pipe_redir);
+		redirect_stream(pipe_redir.output, STDOUT_FILENO);
 		spawn_process(ft_sh, &pid);
 		if (is_child_process(pid))
 			exec_simple_cmd(ft_sh, cmd->simple_cmds[cmd->curr_cmd]);
