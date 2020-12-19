@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 20:40:15 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 21:24:16 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ void	handle_cmd_not_found(char *filename)
 {
 	g_status = CMD_NO_FOUND;
 	print_error(filename, "command not found");
+}
+
+void	print_errno(char *target)
+{
+	print_error(target, strerror(errno));
 }
 
 void	print_error(char *target, const char *msg)

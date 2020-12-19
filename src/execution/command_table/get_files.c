@@ -6,15 +6,18 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:52:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 22:43:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 21:25:10 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <errno.h>
+#include <string.h>
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include "libft_printf.h"
+#include "libft_str.h"
+#include "sh_utils.h"
 #include "sh_execution.h"
 
 /*
@@ -27,6 +30,8 @@ static void	redir_input(int *fd, char *node_data)
 	if (*fd != NO_FILE)
 		close(*fd);
 	*fd = open(node_data, O_RDONLY);
+	if (*fd == FAIL_RET)
+		print_errno(node_data);
 }
 
 /*
@@ -39,6 +44,8 @@ static void	redir_output(int *fd, char *node_data)
 	if (*fd != NO_FILE)
 		close(*fd);
 	*fd = open(node_data, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSIONS);
+	if (*fd == FAIL_RET)
+		print_errno(node_data);
 }
 
 /*
@@ -51,6 +58,8 @@ static void	redir_append_output(int *fd, char *node_data)
 	if (*fd != NO_FILE)
 		close(*fd);
 	*fd = open(node_data, O_WRONLY | O_CREAT | O_APPEND, FILE_PERMISSIONS);
+	if (*fd == FAIL_RET)
+		print_errno(node_data);
 }
 
 /*
