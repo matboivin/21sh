@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 19:43:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 11:58:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ void	exec_simple_cmd(t_shctrl *ft_sh, t_simplecmd *simple_cmd);
 */
 
 void	spawn_process(t_shctrl *ft_sh, pid_t *pid);
-void	create_pipe(t_shctrl *ft_sh, int *input_fd, int *output_fd);
+void	create_pipe(t_shctrl *ft_sh, int pfd[2]);
 
 #endif

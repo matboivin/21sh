@@ -6,16 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 21:02:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 12:01:10 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
-#include <string.h>
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include "libft_printf.h"
 #include "sh_execution.h"
 
 static bool	is_child_process(pid_t pid)
@@ -31,13 +28,15 @@ static bool	is_child_process(pid_t pid)
 
 void		execute(t_shctrl *ft_sh, t_cmd *cmd)
 {
-	size_t	i;
-	int		wstatus;
 	pid_t	pid;
+	int		pfd[2];
+	int		wstatus;
+	size_t	i;
 
 	i = 0;
 	while (i < cmd->cmd_count)
 	{
+		create_pipe(ft_sh, pfd);
 		spawn_process(ft_sh, &pid);
 		if (is_child_process(pid))
 			exec_simple_cmd(ft_sh, cmd->simple_cmds[i]);
