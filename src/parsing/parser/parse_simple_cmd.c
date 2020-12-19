@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 17:36:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 22:21:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 **          false otherwise
 */
 
-bool	parse_simple_cmd(t_ast_node **ast, t_lexer *lexer)
+bool			parse_simple_cmd(t_ast_node **ast, t_lexer *lexer)
 {
 	t_ast_node	*simple_cmd_node;
 

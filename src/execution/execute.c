@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 21:28:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 22:18:31 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 #include <sys/wait.h>
 #include "sh_execution.h"
 
-static bool	is_child_process(pid_t pid)
+static bool		is_child_process(pid_t pid)
 {
 	return (pid == 0);
 }
 
-static void	restore_default_streams(t_streams backup)
+static void		restore_default_streams(t_streams backup)
 {
 	redirect_stream(backup.input, STDIN_FILENO);
 	redirect_stream(backup.output, STDIN_FILENO);
 }
 
-static void	backup_streams(t_streams *backup, int *input)
+static void		backup_streams(t_streams *backup, int *input)
 {
 	backup->input = dup(STDIN_FILENO);
 	backup->output = dup(STDOUT_FILENO);
@@ -37,7 +37,7 @@ static void	backup_streams(t_streams *backup, int *input)
 ** This function executes all simple commands
 */
 
-void		execute(t_shctrl *ft_sh, t_cmd *cmd)
+void			execute(t_shctrl *ft_sh, t_cmd *cmd)
 {
 	pid_t		pid;
 	t_streams	backup;
