@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 20:43:01 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 20:45:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 #include "sh_utils.h"
 #include "sh_execution.h"
 
-static bool	is_path(char *cmd_path)
+static bool		is_path(char *cmd_path)
 {
 	return (ft_strchr(cmd_path, '/') != NULL);
 }
 
-static bool	command_found(char **cmd_path, char *path_to_check)
+static bool		command_found(char **cmd_path, char *path_to_check)
 {
-	bool	ret_val;
+	bool		ret_val;
 	struct stat	statbuf;
 
 	ret_val = false;
@@ -40,11 +40,11 @@ static bool	command_found(char **cmd_path, char *path_to_check)
 	return (ret_val);
 }
 
-static void	get_command_path(char **cmd_path)
+static void		get_command_path(char **cmd_path)
 {
-	char	**path_list;
-	char	*path_to_check;
-	size_t	i;
+	char		**path_list;
+	char		*path_to_check;
+	size_t		i;
 
 	path_list = ft_split(ft_getenv("PATH"), PATHS_SEP);
 	// TODO: handle empty path
@@ -65,7 +65,7 @@ static void	get_command_path(char **cmd_path)
 
 // TODO: search in the list of builtins
 
-int			find_command(t_simplecmd *simple_cmd)
+int				find_command(t_simplecmd *simple_cmd)
 {
 	if (!simple_cmd->argc)
 		return (0);

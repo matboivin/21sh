@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:30 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 11:57:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 20:57:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@
 #include "sh_utils.h"
 #include "sh_execution.h"
 
-void	create_pipe(t_shctrl *ft_sh, int pfd[2])
+void	create_pipe(t_shctrl *ft_sh, t_streams *swap)
 {
+	int	pfd[2];
+
 	if (pipe(pfd) == FAIL_RET)
 	{
 		print_error("pipe", strerror(errno));
 		g_status = EXIT_FAILURE;
 		exit_shell(ft_sh);
 	}
+	swap->input = pfd[READ_END];
+	swap->output = pfd[WRITE_END];
 }

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 17:09:32 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 22:42:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/19 20:49:03 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_simplecmd
 ** Command
 **
 ** capacity: Maximum capacity of the command
+** curr_cmd: Index of the current command
 ** cmd_count: The number of simple commands
 ** simple_cmds: The simple commands contained in the command
 */
@@ -45,6 +46,7 @@ typedef struct	s_simplecmd
 typedef struct	s_cmd
 {
 	size_t		capacity;
+	size_t		curr_cmd;
 	size_t		cmd_count;
 	t_simplecmd	**simple_cmds;
 }				t_cmd;
