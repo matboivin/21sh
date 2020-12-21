@@ -7,6 +7,7 @@
 - [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
 - [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bash.html)
 - [Bash Hackers Wiki](https://wiki.bash-hackers.org/start)
+- [Gnu.org: Bourne Shell Builtins](https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html)
 
 ### Understanding how it works
 

@@ -84,12 +84,13 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				create_pipe.c				\
 				exec_simple_cmd.c			\
 				execute.c					\
-				find_command.c				\
 				is_last_command.c			\
 				get_cmd_arg_count.c			\
 				get_cmd_args.c				\
 				get_files.c					\
 				redirect_stream.c			\
+				search_builtin.c			\
+				search_command.c			\
 				simple_command.c			\
 				spawn_process.c				\
 				visitor.c
@@ -128,16 +129,17 @@ INC_DIR		=	includes
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 
-SUB_DIRS	=	builtin					\
-				execution				\
-				execution/command_table	\
-				input_processing		\
-				parsing/lexer			\
-				parsing/parser			\
-				parsing/tree			\
-				subsystems				\
-				subsystems/env_utils	\
-				subsystems/signals		\
+SUB_DIRS	=	builtin						\
+				execution					\
+				execution/command_table		\
+				execution/command_search	\
+				input_processing			\
+				parsing/lexer				\
+				parsing/parser				\
+				parsing/tree				\
+				subsystems					\
+				subsystems/env_utils		\
+				subsystems/signals			\
 				utils
 
 SRC_SUBDIRS	=	$(addprefix $(SRC_DIR)/, $(SUB_DIRS))

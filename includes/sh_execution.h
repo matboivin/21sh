@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 20:59:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/21 21:25:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,16 @@ void			get_files(t_simplecmd *simple_cmd, t_ast_node *node);
 void			redirect_stream(int from, int to);
 
 /*
-** Finds the command to run
+** Searches the command to run
 */
 
-int				find_command(t_simplecmd *simple_cmd);
+int				search_command(t_simplecmd *simple_cmd);
+
+/*
+** Searches the command in the list of builtins
+*/
+
+void			search_builtin(t_simplecmd *simple_cmd);
 
 /*
 ** Executes all simple commands

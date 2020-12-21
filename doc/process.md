@@ -41,7 +41,7 @@ Subdirectories are organized following more or less this architecture:
 - Subshells (not required for the minishell school project).
 - Also added signal handling functions.
 
-5. **Recoded built-in functions** required by the school project.
+5. **Recoded builtin functions** required by the school project.
 
 6. **Utils** (functions to display error messages and so forth).
 
@@ -309,7 +309,9 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 
 - [Pipe | Redirection < > Precedence](https://stackoverflow.com/questions/12942042/pipe-redirection-precedence
 )
-# Built-in commands
+# Builtin commands
+
+- [Gnu.org: Bourne Shell Builtins](https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html)
 
 ## env
 

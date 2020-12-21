@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 17:09:32 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 20:49:03 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/21 21:22:22 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_COMMAND_H
 # define SH_COMMAND_H
 
+# include <stdbool.h>
 # include "sh_define.h"
 
 /*
@@ -28,6 +29,7 @@
 typedef struct	s_simplecmd
 {
 	size_t		argc;
+	bool		is_builtin;
 	char		*cmd_path;
 	char		**cmd_args;
 	int			input_fd;
