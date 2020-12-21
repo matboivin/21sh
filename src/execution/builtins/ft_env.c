@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_builtin.h                                       :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 20:53:13 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 18:23:25 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/08 20:50:53 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/21 21:39:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_BUILTIN_H
-# define SH_BUILTIN_H
-
-# include "sh_define.h"
+#include <string.h>
+#include "sh_env.h"
+#include "sh_builtins.h"
 
 /*
-** Builtin env() with no options and no arguments
+** builtin env with no options and no arguments
+**
+** If no command name is specified following the environment specifications,
+** the resulting environment is printed. This is like specifying the printenv
+** program.
 */
 
-void	ft_env(void);
-
-#endif
+void	ft_env(void)
+{
+	ft_printenv();
+}

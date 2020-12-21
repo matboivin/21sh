@@ -10,7 +10,7 @@ RM = /bin/rm
 
 INC_FILES	=	minishell.h				\
 				sh_ast.h				\
-				sh_builtin.h			\
+				sh_builtins.h			\
 				sh_command.h			\
 				sh_ctrl.h				\
 				sh_define.h				\
@@ -129,8 +129,8 @@ INC_DIR		=	includes
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 
-SUB_DIRS	=	builtin						\
-				execution					\
+SUB_DIRS	=	execution					\
+				execution/builtins			\
 				execution/command_table		\
 				execution/command_search	\
 				input_processing			\
