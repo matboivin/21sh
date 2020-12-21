@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:16:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 23:29:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/21 23:32:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,21 @@
 ** This function executes a simple command
 */
 
-void	exec_simple_cmd(t_shctrl *ft_sh, t_simplecmd *simple_cmd)
+static void	invoke_builtin(t_simplecmd *simple_cmd)
+{
+	// tmp debug
+	ft_printf("Executing builtin %s\n\n", simple_cmd->cmd_args[CMD_NAME]);
+	(*simple_cmd->builtin_func)(simple_cmd->argc, simple_cmd->cmd_args);
+}
+
+void		exec_simple_cmd(t_shctrl *ft_sh, t_simplecmd *simple_cmd)
 {
 	redirect_stream(simple_cmd->input_fd, STDIN_FILENO);
 	redirect_stream(simple_cmd->output_fd, STDOUT_FILENO);
 	if (simple_cmd->cmd_path)
 	{
 		if (simple_cmd->builtin_func)
-		{
-			ft_printf("Executing builtin %s\n\n", simple_cmd->cmd_args[CMD_NAME]); // debug
-			(*simple_cmd->builtin_func)(simple_cmd->argc, simple_cmd->cmd_args);
-		}
+			invoke_builtin(simple_cmd);
 		else
 			execve(simple_cmd->cmd_path, simple_cmd->cmd_args, g_env);
 	}
