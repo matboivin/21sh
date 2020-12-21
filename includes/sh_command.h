@@ -6,20 +6,28 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 17:09:32 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 21:22:22 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/21 23:04:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_COMMAND_H
 # define SH_COMMAND_H
 
-# include <stdbool.h>
 # include "sh_define.h"
+
+typedef	void	(*t_builtin)(int argc, char **argv);
+
+typedef struct	s_builtin_list
+{
+	char		*name;
+	t_builtin	func;
+}				t_builtin_list;
 
 /*
 ** Simple command
 **
 ** argc: The number of arguments
+** builtin_func: Pointer to a shell builtin (Default: NULL)
 ** cmd_path: The path to the file being executed
 ** cmd_args: The filename (cmd_args[0]) followed by command-line arguments
 ** input_fd: Input file (Default: -1)
@@ -29,7 +37,7 @@
 typedef struct	s_simplecmd
 {
 	size_t		argc;
-	bool		is_builtin;
+	t_builtin	builtin_func;
 	char		*cmd_path;
 	char		**cmd_args;
 	int			input_fd;

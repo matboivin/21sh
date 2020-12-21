@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 21:25:01 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/21 23:03:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,12 @@ int				search_command(t_simplecmd *simple_cmd);
 void			search_builtin(t_simplecmd *simple_cmd);
 
 /*
+** Checks whether the command path contains any slashes
+*/
+
+bool			contain_slash(char *cmd_path);
+
+/*
 ** Executes all simple commands
 */
 
@@ -101,6 +107,8 @@ void			execute(t_shctrl *ft_sh, t_cmd *cmd);
 */
 
 void			exec_simple_cmd(t_shctrl *ft_sh, t_simplecmd *simple_cmd);
+
+void			invoke_builtin(int argc, char **cmd_args);
 
 /*
 ** Spawns a new process

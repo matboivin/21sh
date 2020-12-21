@@ -81,6 +81,7 @@ SRC_FILES	+=	ast.c					\
 SRC_FILES	+=	add_simple_cmd.c			\
 				build_cmd_table.c			\
 				command.c					\
+				contain_slash.c				\
 				create_pipe.c				\
 				exec_simple_cmd.c			\
 				execute.c					\

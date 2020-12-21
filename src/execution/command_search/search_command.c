@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 21:30:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/21 23:12:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 #include "sh_env.h"
 #include "sh_utils.h"
 #include "sh_execution.h"
-
-static bool		contain_slash(char *cmd_path)
-{
-	return (ft_strchr(cmd_path, '/') != NULL);
-}
 
 static bool		command_found(char **cmd_path, char *path_to_check)
 {
@@ -72,7 +67,7 @@ int				search_command(t_simplecmd *simple_cmd)
 	if (!simple_cmd->argc)
 		return (0);
 	search_builtin(simple_cmd);
-	if (!simple_cmd->is_builtin && !contain_slash(simple_cmd->cmd_path))
+	if (!simple_cmd->builtin_func && !contain_slash(simple_cmd->cmd_path))
 		search_executable(&(simple_cmd->cmd_path));
 	if (simple_cmd->cmd_path)
 		return (0);

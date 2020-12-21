@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_builtins.h                                      :+:      :+:    :+:   */
+/*   contain_slash.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 20:53:13 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 23:19:15 by mboivin          ###   ########.fr       */
+/*   Created: 2020/12/21 21:44:18 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/21 23:17:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_BUILTINS_H
-# define SH_BUILTINS_H
-
-# include "sh_define.h"
+#include <stdbool.h>
+#include "libft_str.h"
+#include "sh_execution.h"
 
 /*
-** Builtin env() with no options and no arguments
+** This function checks whether the command path contains any slashes
 */
 
-void	ft_env(int argc, char **argv);
-
-#endif
+bool	contain_slash(char *cmd_path)
+{
+	return (ft_strchr(cmd_path, '/') != NULL);
+}

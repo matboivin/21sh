@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:13 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 21:22:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/21 23:04:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_simplecmd		*malloc_simple_cmd(void)
 		return (NULL);
 	}
 	result->argc = DEFAULT_VALUE;
-	result->is_builtin = false;
+	result->builtin_func = NULL;
 	result->cmd_path = NULL;
 	result->cmd_args = NULL;
 	result->input_fd = NO_FILE;
