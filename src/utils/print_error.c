@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 21:24:16 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/21 23:48:29 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ void	handle_cmd_not_found(char *filename)
 void	print_errno(char *target)
 {
 	print_error(target, strerror(errno));
+}
+
+void	print_builtin_error(char *cmd_name, char *target)
+{
+	ft_dprintf(
+		STDERR_FILENO,
+		"%s: %s: %s: %s\n",
+		ft_getenv("SHELL_NAME"), cmd_name, target, strerror(errno));
 }
 
 void	print_error(char *target, const char *msg)

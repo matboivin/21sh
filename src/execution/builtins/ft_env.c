@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:50:53 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 23:26:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/21 23:35:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "sh_builtins.h"
 
 /*
-** builtin env with no options and no arguments
+** Recoded builtin env() with no options and no arguments
 **
 ** If no command name is specified following the environment specifications,
 ** the resulting environment is printed. This is like specifying the printenv
