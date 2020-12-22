@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:06:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 01:27:02 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 /*
 ** Recoded builtin unset() without any options
 */
-
-// TODO: add identifier to error message
 
 void		ft_unset(int argc, char **argv)
 {

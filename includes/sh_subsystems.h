@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:16:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 01:26:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	substitute_word(char **data);
 void	remove_quotes(char **data);
 
 /*
-** Checks an environment variable name format: letters and underscores
+** Checks an environment variable name format:
+** underscores, digits, and ASCII letters, and that begin with a non-digit
 */
 
 size_t	check_var_name(char *s);
