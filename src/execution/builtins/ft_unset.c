@@ -6,12 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:27:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 01:34:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include "libft_printf.h"
+#include <stdlib.h>
+#include "libft_ctype.h"
 #include "sh_utils.h"
 #include "sh_env.h"
 #include "sh_subsystems.h"
@@ -30,7 +30,7 @@ void		ft_unset(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!check_var_name(argv[i]))
+		if (ft_isdigit(argv[i][0]))
 		{
 			g_status = EXIT_FAILURE;
 			print_builtin_error(

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:43:04 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:25:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 01:31:45 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t		check_var_name(char *s)
 
 	i = 0;
 	if (ft_isdigit(s[i]))
-		return (i);
+		return (1);
 	while ((ft_isalnum(s[i])) || (s[i] == '_'))
 		i++;
 	return (i);
