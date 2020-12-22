@@ -1,18 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ast_dot.c                                    :+:      :+:    :+:   */
+/*   write_ast_dot.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/13 16:23:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:05:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "libft_printf.h"
 #include "sh_ast.h"
 
@@ -78,7 +75,7 @@ static void	write_branch(int fd, t_ast_node *node)
 		print_leaf(fd, 'R', count++);
 }
 
-static void	write_ast(int fd, t_ast_node *root)
+void		write_ast_dot(int fd, t_ast_node *root)
 {
 	ft_dprintf(fd, "digraph minishell_parsing {");
 	if (!root->left && !root->right)
@@ -86,17 +83,4 @@ static void	write_ast(int fd, t_ast_node *root)
 	else
 		write_branch(fd, root);
 	ft_dprintf(fd, "\n}");
-}
-
-void		save_ast_dot(t_ast_node *root)
-{
-	int		fd;
-
-	if (!root)
-		return ;
-	fd = open(AST_DOT_FILE, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSIONS);
-	if (!fd)
-		exit(EXIT_FAILURE);
-	write_ast(fd, root);
-	close(fd);
 }

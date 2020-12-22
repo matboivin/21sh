@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 14:44:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:28:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft_ctype.h"
 #include "sh_utils.h"
 #include "sh_env.h"
-#include "sh_subsystems.h"
 #include "sh_builtins.h"
 
 /*
@@ -33,8 +32,8 @@ void		ft_unset(int argc, char **argv)
 		if (ft_isdigit(argv[i][0]))
 		{
 			g_status = EXIT_FAILURE;
-			print_builtin_error(
-				argv[CMD_NAME], argv[FIRST_PARAM], "not a valid identifier");
+			print_error(
+				3, argv[CMD_NAME], argv[FIRST_PARAM], "not a valid identifier");
 			return ;
 		}
 		else

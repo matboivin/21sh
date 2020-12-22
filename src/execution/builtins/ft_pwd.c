@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 00:55:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:26:29 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void		ft_pwd(int argc, char **argv)
 	if (argc != DEFAULT_ARGC)
 	{
 		g_status = INCORRECT_USAGE;
-		print_error(argv[CMD_NAME], "no option must be specified");
+		print_error(2, argv[CMD_NAME], "no option must be specified");
 	}
 	else
 	{
 		path = getcwd(buf, PATH_MAX);
 		if (!path)
-			print_error(argv[CMD_NAME], strerror(errno));
+			print_errno(argv[CMD_NAME]);
 		else
 			ft_printf("%s\n", path);
 	}

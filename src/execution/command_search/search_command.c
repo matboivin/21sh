@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 23:12:42 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:48:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include "libft_str.h"
+#include "libft_printf.h"
 #include "sh_env.h"
 #include "sh_utils.h"
 #include "sh_execution.h"

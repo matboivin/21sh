@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 18:39:35 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:54:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 /*
 ** This function splits the input string into tokens
 */
+
+// TODO: Norm (25 lines)
 
 static int	is_quote(int c)
 {
@@ -40,7 +42,10 @@ int			tokenize(t_lexer *lexer)
 				return (1);
 		}
 		else if (is_quote(lexer->input[lexer->pos]))
-			handle_quotes(lexer);
+		{
+			if (handle_quotes(lexer) == FAIL_RET)
+				return (FAIL_RET);
+		}
 		else if (token.type)
 			handle_token(lexer, token, &stack);
 		else

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 20:34:29 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 23:11:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:04:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ void					free_ast(t_ast_node **to_free);
 ** Debug
 */
 
-void					save_ast_dot(t_ast_node *root);
-void					save_ast_svg(void);
 void					print_ast(t_ast_node *root);
+void					save_ast_svg(void);
+void					save_ast_dot(t_ast_node *root);
+void					write_ast_dot(int fd, t_ast_node *root);
 
 /*
 ** Adds a leaf node to the left of the tree

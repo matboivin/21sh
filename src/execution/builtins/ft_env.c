@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:50:53 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 00:06:32 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:25:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_env(int argc, char **argv)
 	if (argc != DEFAULT_ARGC)
 	{
 		g_status = INCORRECT_USAGE;
-		print_error(argv[CMD_NAME], "no option must be specified");
+		print_error(2, argv[CMD_NAME], "no option must be specified");
 	}
 	else
 		ft_printenv();

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:17:34 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/18 20:40:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:43:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 #include "sh_utils.h"
 #include "sh_lexer.h"
 
-static void	close_quote(t_lexer *lexer, char **stack)
+static int	close_quote(t_lexer *lexer, char **stack)
 {
 	*stack = push_char(lexer, *stack);
 	handle_text(lexer, stack);
+	return (0);
 }
 
-static void	raise_matching_error(char **stack, char quote_type)
+static int	raise_matching_error(char **stack, char quote_type)
 {
 	ft_strdel(stack);
 	handle_matching_error(quote_type);
+	return (FAIL_RET);
 }
 
-static void	handle_quote_type(t_lexer *lexer, char quote_type)
+static int	handle_quote_type(t_lexer *lexer, char quote_type)
 {
 	char	*stack;
 
@@ -42,15 +44,14 @@ static void	handle_quote_type(t_lexer *lexer, char quote_type)
 			stack = push_char(lexer, stack);
 	}
 	if (lexer->input[lexer->pos] == quote_type)
-		close_quote(lexer, &stack);
+		return (close_quote(lexer, &stack));
 	else
-		raise_matching_error(&stack, quote_type);
+		return (raise_matching_error(&stack, quote_type));
 }
 
-void		handle_quotes(t_lexer *lexer)
+int			handle_quotes(t_lexer *lexer)
 {
 	if (lexer->input[lexer->pos] == STRONG_QUOTE)
-		handle_quote_type(lexer, STRONG_QUOTE);
-	else if (lexer->input[lexer->pos] == WEAK_QUOTE)
-		handle_quote_type(lexer, WEAK_QUOTE);
+		return (handle_quote_type(lexer, STRONG_QUOTE));
+	return (handle_quote_type(lexer, WEAK_QUOTE));
 }

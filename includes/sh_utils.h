@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 00:13:01 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:16:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ void	print_usage(void);
 ** Error messages
 */
 
-void	print_error(char *target, const char *msg);
+void	print_error(int count, ...);
 void	print_errno(char *target);
 void	handle_syntax_error(const char *token);
 void	handle_matching_error(char c);
-void	print_builtin_error(char *cmd_name, char *target, const char *msg);
 void	handle_cmd_not_found(char *filename);
 
 /*

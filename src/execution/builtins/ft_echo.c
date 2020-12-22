@@ -6,12 +6,10 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:55:17 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 14:44:01 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 17:56:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include "libft_str.h"
 #include "libft_printf.h"
 #include "sh_builtins.h"
 

@@ -6,16 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 14:44:09 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:25:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include <string.h>
 #include <limits.h>
-#include <unistd.h>
 #include "libft_printf.h"
-#include "libft_str.h"
 #include "sh_env.h"
 #include "sh_utils.h"
 #include "sh_builtins.h"
@@ -35,7 +33,7 @@ void		ft_cd(int argc, char **argv)
 	if (argc > 2)
 	{
 		g_status = EXIT_FAILURE;
-		print_error(argv[CMD_NAME], "too many arguments");
+		print_error(2, argv[CMD_NAME], "too many arguments");
 		return ;
 	}
 	if (argc == DEFAULT_ARGC)
@@ -47,7 +45,7 @@ void		ft_cd(int argc, char **argv)
 	}
 	if (new_dir == FAIL_RET)
 	{
-		print_builtin_error(argv[CMD_NAME], argv[1], strerror(errno));
+		print_error(3, argv[CMD_NAME], argv[1], strerror(errno));
 		return ;
 	}
 	ft_setenv("OLDPWD", oldpwd_value, true);

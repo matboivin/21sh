@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 14:43:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 17:43:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,12 @@
 */
 
 # define FATAL_ERROR 128
+
+/*
+** Exit status out of range
+*/
+
+# define MAX_EXIT_VALUE 255
 
 /*
 ** Exit status

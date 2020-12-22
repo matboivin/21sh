@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:34:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 23:15:04 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:34:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** Processes the tokens into an Abstract Syntax Tree (AST)
 */
 
-void	parse(t_ast_node **ast, t_lexer *lexer);
+int		parse(t_ast_node **ast, t_lexer *lexer);
 
 /*
 ** Parses a word

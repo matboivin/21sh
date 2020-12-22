@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/12 11:34:22 by ouram            ###   ########.fr       */
+/*   Updated: 2020/12/22 18:37:31 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int				tokenize(t_lexer *lexer);
 
 void			handle_token(t_lexer *lexer, t_regex token, char **stack);
 void			handle_text(t_lexer *lexer, char **stack);
-void			handle_quotes(t_lexer *lexer);
+int				handle_quotes(t_lexer *lexer);
 
 /*
 ** Escapes a character following a backslash

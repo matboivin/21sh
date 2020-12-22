@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:16:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 18:43:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft_io.h"
 #include "sh_utils.h"
 #include "sh_env.h"
+#include "sh_parser.h"
 #include "sh_input_processing.h"
 
 /*
@@ -48,14 +49,17 @@ static int	prompt_user(t_shctrl *ft_sh, char *prompt)
 ** This function gets the command input and splits it into tokens
 */
 
-void		get_command(t_shctrl *ft_sh)
+int			get_command(t_shctrl *ft_sh)
 {
-	int		not_finished;
+	int		ret_val;
 
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	if (!ft_sh->lexer)
 		exit_shell(ft_sh);
-	not_finished = prompt_user(ft_sh, PS1);
-	while (not_finished)
-		not_finished = prompt_user(ft_sh, PS2);
+	ret_val = prompt_user(ft_sh, PS1);
+	while (ret_val == 1)
+		ret_val = prompt_user(ft_sh, PS2);
+	if (ret_val == EXIT_SUCCESS)
+		ret_val = parse(&(ft_sh->ast), ft_sh->lexer);
+	return (ret_val);
 }

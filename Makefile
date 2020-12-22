@@ -78,8 +78,9 @@ SRC_FILES	+=	parse.c					\
 SRC_FILES	+=	ast.c					\
 				append_node.c			\
 				print_ast.c				\
-				print_ast_dot.c			\
-				print_ast_svg.c
+				save_ast_dot.c			\
+				save_ast_svg.c			\
+				write_ast_dot.c
 
 # EXECUTION #
 

@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh_input_processing.h                              :+:      :+:    :+:   */
+/*   save_ast_svg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 15:21:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:40:45 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/22 18:02:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_INPUT_PROCESSING_H
-# define SH_INPUT_PROCESSING_H
-
-# include "sh_define.h"
-# include "sh_ctrl.h"
+#include <stdlib.h>
+#include "sh_ast.h"
 
 /*
-** While the shell is not 'done', processes the user input
+** This function saves it to a SVG file
 */
 
-int		shell_loop(t_shctrl *ft_sh);
-
-/*
-** Processes the command input
-*/
-
-void	process_input(t_shctrl *ft_sh);
-
-/*
-** Gets the command input and splits it into tokens
-*/
-
-int		get_command(t_shctrl *ft_sh);
-
-#endif
+void	save_ast_svg(void)
+{
+	system("dot -Tsvg ast.dot -o ast.svg");
+}
