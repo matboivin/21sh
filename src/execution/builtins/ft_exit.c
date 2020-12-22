@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:20:29 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 14:44:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	ft_exit(int argc, char **argv)
 	ft_printf("exit\n");
 	if (argc > DEFAULT_ARGC)
 	{
-		if (!ft_isnumeric(argv[1]))
+		if (!ft_isnumeric(argv[FIRST_PARAM]))
 		{
 			g_status = INCORRECT_USAGE;
 			print_builtin_error(
-				argv[CMD_NAME], argv[1], "numeric argument required");
+				argv[CMD_NAME], argv[FIRST_PARAM], "numeric argument required");
 		}
 		else if (argc > 2)
 		{
@@ -40,6 +40,6 @@ void	ft_exit(int argc, char **argv)
 			print_error(argv[CMD_NAME], "too many arguments");
 		}
 		else
-			g_status = ft_atoi(argv[1]);
+			g_status = ft_atoi(argv[FIRST_PARAM]);
 	}
 }

@@ -6,40 +6,43 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:55:17 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 00:57:52 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 14:44:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "libft_str.h"
-#include "libft_io.h"
+#include "libft_printf.h"
 #include "sh_builtins.h"
 
 /*
 ** Recoded builtin echo() with option ’-n’
 */
 
+static void	handle_newline_opt(char *arg, bool *newline, int *i)
+{
+	if (!ft_strcmp(arg, "-n"))
+	{
+		*newline = false;
+		(*i)++;
+	}
+}
+
 void		ft_echo(int argc, char **argv)
 {
 	bool	newline;
 	int		i;
 
-	i = 1;
+	i = FIRST_PARAM;
 	newline = true;
 	if (argc > DEFAULT_ARGC)
+		handle_newline_opt(argv[FIRST_PARAM], &newline, &i);
+	if (i < argc)
 	{
-		if (!ft_strcmp(argv[1], "-n"))
-		{
-			newline = false;
-			i++;
-		}
-	}
-	while (i < argc)
-	{
-		ft_putstr(argv[i]);
-		i++;
-		ft_putchar(' ');
+		ft_printf("%s", argv[i++]);
+		while (i < argc)
+			ft_printf(" %s", argv[i++]);
 	}
 	if (newline)
-		ft_putchar('\n');
+		ft_printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:07:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 14:44:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void		ft_cd(int argc, char **argv)
 		new_dir = chdir(ft_getenv("HOME"));
 	else
 	{
-		ft_printf("%s\n", argv[1]);
-		new_dir = chdir(argv[1]);
+		ft_printf("%s\n", argv[FIRST_PARAM]);
+		new_dir = chdir(argv[FIRST_PARAM]);
 	}
 	if (new_dir == FAIL_RET)
 	{

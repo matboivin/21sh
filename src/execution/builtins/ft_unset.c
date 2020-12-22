@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:34:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 14:44:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void		ft_unset(int argc, char **argv)
 
 	if (argc == DEFAULT_ARGC)
 		return ;
-	i = 1;
+	i = FIRST_PARAM;
 	while (i < argc)
 	{
 		if (ft_isdigit(argv[i][0]))
 		{
 			g_status = EXIT_FAILURE;
 			print_builtin_error(
-				argv[CMD_NAME], argv[1], "not a valid identifier");
+				argv[CMD_NAME], argv[FIRST_PARAM], "not a valid identifier");
 			return ;
 		}
 		else
