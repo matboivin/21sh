@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 23:54:32 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 00:23:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@
 ** Execution, pipes and files
 */
 
-# define BUILTINS_COUNT 2
+# define BUILTINS_COUNT 7
 # define REDIR_INPUT "<"
 # define REDIR_OUTPUT ">"
 # define REDIR_APPEND_OUTPUT ">>"

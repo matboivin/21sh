@@ -6,11 +6,10 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:50:53 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 23:35:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 00:06:32 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "sh_env.h"
 #include "sh_utils.h"
 #include "sh_builtins.h"

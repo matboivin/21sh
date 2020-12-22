@@ -6,21 +6,15 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 17:10:12 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/17 17:11:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 00:56:34 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_ctype.h"
 #include "libft_conv.h"
 #include "libft_printf.h"
 #include "libft_str.h"
 #include "sh_env.h"
 #include "sh_subsystems.h"
-
-static int	check_name_format(int c)
-{
-	return (ft_isalnum(c) || c == '_');
-}
 
 static char	*get_var_name(char *data, size_t *i)
 {
@@ -32,10 +26,7 @@ static char	*get_var_name(char *data, size_t *i)
 	if (data[*i + key_len] == '?')
 		key_len++;
 	else
-	{
-		while (data[*i + key_len] && check_name_format(data[*i + key_len]))
-			key_len++;
-	}
+		key_len = check_var_name(data + *i);
 	if (key_len)
 	{
 		key = ft_substr(data, *i, key_len);

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 23:54:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 00:56:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 static t_builtin_list	g_builtin_list[] =
 {
 	{ "cd", &ft_cd },
-	// { "echo", &ft_echo },
-	{ "env", &ft_env }
-	// { "exit", &ft_exit },
-	// { "export", &ft_export },
-	// { "pwd", &ft_pwd },
-	// { "unset", &ft_unset }
+	{ "echo", &ft_echo },
+	{ "env", &ft_env },
+	{ "exit", &ft_exit },
+	{ "export", &ft_export },
+	{ "pwd", &ft_pwd },
+	{ "unset", &ft_unset }
 };
 
 static void	get_builtin(t_simplecmd *simple_cmd, char *cmd_name)
