@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 17:43:01 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 21:11:31 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define FIRST_PARAM 1
 # define DEFAULT_VALUE 0
 # define FAIL_RET -1
+# define MAX_STATES 256
 
 /*
 ** Lexer

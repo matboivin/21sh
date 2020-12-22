@@ -6,10 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:55:17 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 17:56:09 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 20:49:41 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft_io.h"
 #include "libft_printf.h"
 #include "sh_builtins.h"
 
@@ -35,12 +36,12 @@ void		ft_echo(int argc, char **argv)
 	newline = true;
 	if (argc > DEFAULT_ARGC)
 		handle_newline_opt(argv[FIRST_PARAM], &newline, &i);
-	if (i < argc)
+	while (i < argc)
 	{
 		ft_printf("%s", argv[i++]);
-		while (i < argc)
-			ft_printf(" %s", argv[i++]);
+		if (i + 1 < argc)
+			ft_putchar(' ');
 	}
 	if (newline)
-		ft_printf("\n");
+		ft_putchar('\n');
 }

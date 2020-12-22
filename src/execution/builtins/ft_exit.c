@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 20:00:09 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 21:12:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 **    is that of the last command executed.
 **
 ** n: An integer in the range 0 - 255
-** Out of range exit values can result in unexpected exit codes. An exit value
-** greater than 255 returns an exit code modulo 256.
+** Out of range exit values can result in unexpected exit codes.
+** An exit value greater than 255 (MAX_EXIT_VALUE) returns an exit code modulo
+** 256 (MAX_STATES).
 */
 
 static int	check_args(int argc, char *cmd_name, char *n)
@@ -50,8 +51,10 @@ static void	get_exit_status(char *str_repr)
 	int		n;
 
 	n = ft_atoi(str_repr);
-	if (!ft_n_range(n, 0, MAX_EXIT_VALUE))
-		g_status = n % 256;
+	if (n > MAX_EXIT_VALUE)
+		g_status = n % MAX_STATES;
+	else if (n < 0)
+		g_status = n % MAX_STATES + MAX_STATES;
 	else
 		g_status = n;
 }
