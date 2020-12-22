@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 23:41:03 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 01:16:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		get_command(t_shctrl *ft_sh)
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	if (!ft_sh->lexer)
 		exit_shell(ft_sh);
-	not_finished = prompt_user(ft_sh, ft_getenv("PS1"));
+	not_finished = prompt_user(ft_sh, PS1);
 	while (not_finished)
 		not_finished = prompt_user(ft_sh, PS2);
 }

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 00:12:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 01:18:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	handle_syntax_error(const char *token)
 	ft_dprintf(
 		STDERR_FILENO,
 		"%s: syntax error near unexpected token `%s'\n",
-		ft_getenv("SHELL_NAME"),
+		SHELL_NAME,
 		token);
 }
 
@@ -36,7 +36,7 @@ void	handle_matching_error(char c)
 	ft_dprintf(
 		STDERR_FILENO,
 		"%s: unexpected EOF while looking for matching `%c'\n",
-		ft_getenv("SHELL_NAME"),
+		SHELL_NAME,
 		c);
 }
 
@@ -56,11 +56,11 @@ void	print_builtin_error(char *cmd_name, char *target, const char *msg)
 	ft_dprintf(
 		STDERR_FILENO,
 		"%s: %s: %s: %s\n",
-		ft_getenv("SHELL_NAME"), cmd_name, target, msg);
+		SHELL_NAME, cmd_name, target, msg);
 }
 
 void	print_error(char *target, const char *msg)
 {
 	ft_dprintf(
-		STDERR_FILENO, "%s: %s: %s\n", ft_getenv("SHELL_NAME"), target, msg);
+		STDERR_FILENO, "%s: %s: %s\n", SHELL_NAME, target, msg);
 }
