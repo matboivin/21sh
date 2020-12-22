@@ -25,7 +25,6 @@ INC_FILES	=	minishell.h				\
 # ********************************* C FILES ********************************** #
 
 SRC_FILES	=	main.c					\
-				sh_ctrl.c				\
 				print_error.c			\
 				print_usage.c			\
 				exit_shell.c			\
@@ -117,6 +116,7 @@ SRC_FILES	+=	check_var_name.c			\
 				load_environment.c			\
 				register_signal_handlers.c	\
 				remove_quotes.c				\
+				sh_ctrl.c					\
 				start_shell.c				\
 				substitute_word.c
 
@@ -147,6 +147,7 @@ SUB_DIRS	=	execution					\
 				subsystems					\
 				subsystems/env_utils		\
 				subsystems/signals			\
+				subsystems/substitution		\
 				utils
 
 SRC_SUBDIRS	=	$(addprefix $(SRC_DIR)/, $(SUB_DIRS))
