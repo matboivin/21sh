@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:11:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 01:20:29 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 /*
 ** Recoded builtin exit() without any options
 */
+
+// TODO: exit shell
 
 void	ft_exit(int argc, char **argv)
 {
@@ -40,5 +42,4 @@ void	ft_exit(int argc, char **argv)
 		else
 			g_status = ft_atoi(argv[1]);
 	}
-	exit(g_status);
 }

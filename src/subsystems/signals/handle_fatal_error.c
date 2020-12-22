@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:52:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/17 19:15:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 01:19:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	handle_fatal_error(int sig)
 	if (sig == SIGINT)
 	{
 		g_status = FATAL_ERROR + sig;
-		ft_printf("\n%s", ft_getenv("PS1"));
+		ft_printf("\n%s", PS1);
 	}
 }
