@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:25:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/22 20:00:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 ** n: An integer in the range 0 - 255
 ** Out of range exit values can result in unexpected exit codes. An exit value
 ** greater than 255 returns an exit code modulo 256.
-** For example, exit 3809 gives an exit code of 225 (3809 % 256 = 225).
 */
 
 static int	check_args(int argc, char *cmd_name, char *n)
@@ -51,9 +50,7 @@ static void	get_exit_status(char *str_repr)
 	int		n;
 
 	n = ft_atoi(str_repr);
-	if (n < 0)
-		g_status = MAX_EXIT_VALUE;
-	else if (n > MAX_EXIT_VALUE)
+	if (!ft_n_range(n, 0, MAX_EXIT_VALUE))
 		g_status = n % 256;
 	else
 		g_status = n;
