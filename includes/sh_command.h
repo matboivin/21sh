@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 17:09:32 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 23:04:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/23 15:58:51 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "sh_define.h"
 
-typedef	void	(*t_builtin)(int argc, char **argv);
+typedef	int		(*t_builtin)(int argc, char **argv);
 
 typedef struct	s_builtin_list
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*   cd_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:25:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/23 15:27:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,18 @@
 
 /*
 ** Recoded builtin cd() with only a relative or absolute path
+**
+** cd [dir]
+**     Change the current directory to DIR. The default DIR is the value of the
+**     HOME shell variable.
+**
+** returns: 0 if the directory is changed
+**          non-zero otherwise
 */
 
 // TODO: fix
 
-void		ft_cd(int argc, char **argv)
+int			cd_builtin(int argc, char **argv)
 {
 	char	*oldpwd_value;
 	int		new_dir;
@@ -34,7 +41,7 @@ void		ft_cd(int argc, char **argv)
 	{
 		g_status = EXIT_FAILURE;
 		print_error(2, argv[CMD_NAME], "too many arguments");
-		return ;
+		return (EXIT_FAILURE);
 	}
 	if (argc == DEFAULT_ARGC)
 		new_dir = chdir(ft_getenv("HOME"));
@@ -46,8 +53,9 @@ void		ft_cd(int argc, char **argv)
 	if (new_dir == FAIL_RET)
 	{
 		print_error(3, argv[CMD_NAME], argv[1], strerror(errno));
-		return ;
+		return (EXIT_FAILURE);
 	}
 	ft_setenv("OLDPWD", oldpwd_value, true);
 	ft_setenv("PWD", getcwd(NULL, 0), true);
+	return (0);
 }

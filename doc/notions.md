@@ -27,6 +27,11 @@
 - [Gnu.org: Environment Access](https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html)
 - [Bash - La variable d'environnement PATH](https://www.commentcamarche.net/faq/3585-bash-la-variable-d-environnement-path)
 
+### Exit codes
+- [3.7.5 Exit Status](https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html)
+- [Gnu.org: timeout: Run a command with a time limit](https://www.gnu.org/software/coreutils/manual/html_node/timeout-invocation.html)
+- [How do I get the list of exit codes (and/or return codes) and meaning for a command/utility?](https://unix.stackexchange.com/questions/110348/how-do-i-get-the-list-of-exit-codes-and-or-return-codes-and-meaning-for-a-comm)
+
 ### Signals
 
 - [Signaux](https://sites.uclouvain.be/SystInfo/notes/Theorie/html/Fichiers/fichiers-signaux.html)

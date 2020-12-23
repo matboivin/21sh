@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   echo_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:55:17 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 20:49:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/23 15:57:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
 #include "libft_printf.h"
 #include "sh_builtins.h"
 
 /*
 ** Recoded builtin echo() with option ’-n’
+**
+** echo [-n] [arg ...]
+**     Display the ARGs, separated by a single space character and followed by a
+**     newline, on the standard output.
+**
+** Options:
+**  -n    do not append a newline
+**
+** returns: success
+**          non-zero if a write error occurs
 */
 
 static void	handle_newline_opt(char *arg, bool *newline, int *i)
@@ -27,21 +36,26 @@ static void	handle_newline_opt(char *arg, bool *newline, int *i)
 	}
 }
 
-void		ft_echo(int argc, char **argv)
+int			echo_builtin(int argc, char **argv)
 {
-	bool	newline;
 	int		i;
+	int		write_ret;
+	bool	newline;
 
 	i = FIRST_PARAM;
+	write_ret = 0;
 	newline = true;
 	if (argc > DEFAULT_ARGC)
 		handle_newline_opt(argv[FIRST_PARAM], &newline, &i);
-	while (i < argc)
+	while ((i < argc) && (write_ret != FAIL_RET))
 	{
-		ft_printf("%s", argv[i++]);
+		write_ret = ft_printf("%s", argv[i++]);
 		if (i + 1 < argc)
-			ft_putchar(' ');
+			write_ret = ft_printf(" ");
 	}
-	if (newline)
-		ft_putchar('\n');
+	if (newline && (write_ret != FAIL_RET))
+		write_ret = ft_printf("\n");
+	if (write_ret == FAIL_RET)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*   export_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:28:42 by mboivin          ###   ########.fr       */
+/*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/23 15:58:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft_ctype.h"
-#include "sh_utils.h"
-#include "sh_env.h"
 #include "sh_builtins.h"
 
 /*
-** Recoded builtin unset() without any options
+** Recoded builtin export() without any options
+**
+** export [name[=value] ...]
+**    Marks each NAME for automatic export to the environment of subsequently
+**    executed commands.
+**    If VALUE is supplied, assign VALUE before exporting.
+**
+** returns: success
+**          non-zero if invalid option is given or NAME is invalid
 */
 
-void		ft_unset(int argc, char **argv)
+int		export_builtin(int argc, char **argv)
 {
-	int		i;
-
-	if (argc == DEFAULT_ARGC)
-		return ;
-	i = FIRST_PARAM;
-	while (i < argc)
-	{
-		if (ft_isdigit(argv[i][0]))
-		{
-			g_status = EXIT_FAILURE;
-			print_error(
-				3, argv[CMD_NAME], argv[FIRST_PARAM], "not a valid identifier");
-			return ;
-		}
-		else
-			ft_unsetenv(argv[i]);
-		i++;
-	}
+	(void)argc;
+	(void)argv;
+	return (EXIT_SUCCESS);
 }

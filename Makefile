@@ -32,13 +32,13 @@ SRC_FILES	=	main.c					\
 
 # BUILT-IN FUNCTIONS #
 
-SRC_FILES	+=	ft_cd.c					\
-				ft_echo.c				\
-				ft_env.c				\
-				ft_exit.c				\
-				ft_export.c				\
-				ft_pwd.c				\
-				ft_unset.c
+SRC_FILES	+=	cd_builtin.c			\
+				echo_builtin.c			\
+				env_builtin.c			\
+				exit_builtin.c			\
+				export_builtin.c		\
+				pwd_builtin.c			\
+				unset_builtin.c
 
 # INPUT PROCESSING #
 

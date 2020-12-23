@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   exit_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 21:12:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/23 15:43:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 ** Recoded builtin exit() without any options
 **
 ** exit [n]
-**    Exits the shell with a status of n.  If n is omitted, the exit status
-**    is that of the last command executed.
+**     Exits the shell with a status of n (an integer in the range (0, 255)).
+**     If n is omitted, the exit status is that of the last command executed.
 **
-** n: An integer in the range 0 - 255
 ** Out of range exit values can result in unexpected exit codes.
 ** An exit value greater than 255 (MAX_EXIT_VALUE) returns an exit code modulo
 ** 256 (MAX_STATES).
@@ -61,7 +60,7 @@ static void	get_exit_status(char *str_repr)
 
 // TODO: exit shell
 
-void		ft_exit(int argc, char **argv)
+int			exit_builtin(int argc, char **argv)
 {
 	ft_printf("exit\n");
 	if (argc > DEFAULT_ARGC)
@@ -69,4 +68,5 @@ void		ft_exit(int argc, char **argv)
 		if (!check_args(argc, argv[CMD_NAME], argv[FIRST_PARAM]))
 			get_exit_status(argv[FIRST_PARAM]);
 	}
+	return (g_status);
 }
