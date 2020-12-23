@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 23:04:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/23 19:01:41 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "sh_utils.h"
 #include "sh_execution.h"
 
 static bool		is_child_process(pid_t pid)
@@ -45,7 +46,7 @@ void			execute(t_shctrl *ft_sh, t_cmd *cmd)
 	int			wstatus;
 
 	backup_streams(&backup, &(pipe_redir.input));
-	while (cmd->curr_cmd < cmd->cmd_count)
+	while (cmd->curr_cmd < cmd->cmd_count && !g_done)
 	{
 		redirect_stream(pipe_redir.input, STDIN_FILENO);
 		pipe_redir.output = dup(backup.output);
@@ -61,4 +62,6 @@ void			execute(t_shctrl *ft_sh, t_cmd *cmd)
 	waitpid(pid, &wstatus, DEFAULT_VALUE);
 	if (WIFEXITED(wstatus))
 		g_status = WEXITSTATUS(wstatus);
+	if (g_done)
+		exit_shell(ft_sh);
 }

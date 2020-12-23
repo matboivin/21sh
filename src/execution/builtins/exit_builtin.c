@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:43:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/23 18:53:02 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft_num.h"
 #include "libft_printf.h"
 #include "sh_utils.h"
+#include "sh_subsystems.h"
 #include "sh_builtins.h"
 
 /*
@@ -58,8 +59,6 @@ static void	get_exit_status(char *str_repr)
 		g_status = n;
 }
 
-// TODO: exit shell
-
 int			exit_builtin(int argc, char **argv)
 {
 	ft_printf("exit\n");
@@ -68,5 +67,6 @@ int			exit_builtin(int argc, char **argv)
 		if (!check_args(argc, argv[CMD_NAME], argv[FIRST_PARAM]))
 			get_exit_status(argv[FIRST_PARAM]);
 	}
-	return (g_status);
+	jump_to_top_level();
+	return (0);
 }

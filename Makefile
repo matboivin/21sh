@@ -114,12 +114,14 @@ SRC_FILES	+=	check_var_name.c			\
 				ft_unsetenv.c				\
 				dup_environment.c			\
 				handle_fatal_error.c		\
+				jump_to_top_level.c			\
 				load_environment.c			\
 				register_signal_handlers.c	\
 				remove_quotes.c				\
 				sh_ctrl.c					\
 				start_shell.c				\
-				substitute_word.c
+				substitute_word.c			\
+				top_level_cleanup.c
 
 # ********************************* OBJECTS ********************************** #
 

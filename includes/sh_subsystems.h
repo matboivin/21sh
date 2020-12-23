@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:26:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/23 18:52:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,19 @@ void	register_signal_handlers(void);
 */
 
 void	handle_fatal_error(int sig);
+
+/*
+** Exits the program
+*/
+
+void	jump_to_top_level(void);
+
+/*
+** Signals cleanup should be performed when we run jump_to_top_level() from a
+** builtin command context
+*/
+
+void	top_level_cleanup(int sig);
 
 /*
 ** Substitutes the variable names by their values

@@ -6,11 +6,10 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:16:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 17:57:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/23 19:22:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
 #include "sh_utils.h"
 #include "sh_execution.h"
 
@@ -20,7 +19,6 @@
 
 static void	invoke_builtin(t_simplecmd *simple_cmd)
 {
-	// ft_printf("Executing builtin %s\n", simple_cmd->cmd_args[CMD_NAME]);
 	(*simple_cmd->builtin_func)(simple_cmd->argc, simple_cmd->cmd_args);
 }
 
