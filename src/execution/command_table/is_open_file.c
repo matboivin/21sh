@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirect_stream.c                                  :+:      :+:    :+:   */
+/*   is_open_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 18:28:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/24 17:54:14 by mboivin          ###   ########.fr       */
+/*   Created: 2020/12/24 17:47:20 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/24 17:52:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdbool.h>
 #include "sh_execution.h"
 
-void	redirect_stream(int from, int to)
+/*
+** This function checks whether a file was opened
+*/
+
+bool	is_open_file(int fd)
 {
-	if ((!is_open_file(from)) || (!is_open_file(to)))
-		return ;
-	dup2(from, to);
-	close(from);
+	return (fd != NO_FILE);
 }

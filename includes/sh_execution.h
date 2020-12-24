@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 23:31:42 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/24 17:52:50 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ void			get_cmd_args(t_simplecmd *simple_cmd, t_ast_node *node);
 */
 
 bool			is_last_command(t_cmd *cmd);
+
+/*
+** Checks whether a file was opened
+*/
+
+bool			is_open_file(int fd);
 
 /*
 ** Redirections

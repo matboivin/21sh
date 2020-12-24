@@ -92,6 +92,7 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				exec_simple_cmd.c			\
 				execute.c					\
 				is_last_command.c			\
+				is_open_file.c				\
 				get_cmd_arg_count.c			\
 				get_cmd_args.c				\
 				get_files.c					\
