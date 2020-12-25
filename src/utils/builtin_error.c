@@ -1,50 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hanle_error_msg.c                                  :+:      :+:    :+:   */
+/*   builtin_error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/25 18:55:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/25 22:11:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft_printf.h"
 #include "sh_utils.h"
 
 /*
-** Print error messages
+** Print error messages for builtins
 */
 
-void		handle_syntax_error(const char *token)
+int		handle_arg_err(char *cmd_name)
 {
-	g_status = INCORRECT_USAGE;
-	ft_dprintf(
-		STDERR_FILENO,
-		"%s: syntax error near unexpected token `%s'\n",
-		SHELL_NAME,
-		token);
+	g_status = EXIT_FAILURE;
+	print_error(2, cmd_name, "too many arguments");
+	return (EXIT_FAILURE);
 }
 
-void		handle_matching_error(char c)
-{
-	g_status = INCORRECT_USAGE;
-	ft_dprintf(
-		STDERR_FILENO,
-		"%s: unexpected EOF while looking for matching `%c'\n",
-		SHELL_NAME,
-		c);
-}
-
-void		handle_cmd_not_found(char *filename)
-{
-	g_status = CMD_NO_FOUND;
-	print_error(2, filename, "command not found");
-}
-
-int			handle_invalid_id(char *cmd_name, char *var_name)
+int		handle_invalid_id(char *cmd_name, char *var_name)
 {
 	g_status = EXIT_FAILURE;
 	print_error(3, cmd_name, var_name, "not a valid identifier");

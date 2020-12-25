@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:24:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/25 21:54:39 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,12 @@ int			pwd_builtin(int argc, char **argv)
 	char	buf[PATH_MAX];
 
 	path = NULL;
-	if (argc != DEFAULT_ARGC)
+	path = getcwd(buf, PATH_MAX);
+	if (!path)
 	{
-		g_status = INCORRECT_USAGE;
-		print_error(2, argv[CMD_NAME], "no option must be specified");
+		print_errno(argv[CMD_NAME]);
 		return (EXIT_FAILURE);
 	}
-	else
-	{
-		path = getcwd(buf, PATH_MAX);
-		if (!path)
-		{
-			print_errno(argv[CMD_NAME]);
-			return (EXIT_FAILURE);
-		}
-		else
-			ft_printf("%s\n", path);
-	}
+	ft_printf("%s\n", path);
 	return (0);
 }

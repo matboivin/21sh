@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:27:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/25 22:00:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,7 @@ int			cd_builtin(int argc, char **argv)
 
 	oldpwd_value = getcwd(NULL, PATH_MAX);
 	if (argc > 2)
-	{
-		g_status = EXIT_FAILURE;
-		print_error(2, argv[CMD_NAME], "too many arguments");
-		return (EXIT_FAILURE);
-	}
+		return (handle_arg_err(argv[CMD_NAME]));
 	if (argc == DEFAULT_ARGC)
 		new_dir = chdir(ft_getenv("HOME"));
 	else

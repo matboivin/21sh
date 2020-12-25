@@ -8,79 +8,74 @@ RM = /bin/rm
 
 # ********************************* INCLUDES ********************************* #
 
-INC_FILES	=	minishell.h				\
-				sh_ast.h				\
-				sh_builtins.h			\
-				sh_command.h			\
-				sh_ctrl.h				\
-				sh_define.h				\
-				sh_env.h				\
-				sh_execution.h			\
-				sh_input_processing.h	\
-				sh_lexer.h				\
-				sh_parser.h				\
-				sh_subsystems.h			\
+INC_FILES	=	minishell.h					\
+				sh_ast.h					\
+				sh_builtins.h				\
+				sh_command.h				\
+				sh_ctrl.h					\
+				sh_define.h					\
+				sh_env.h					\
+				sh_execution.h				\
+				sh_input_processing.h		\
+				sh_lexer.h					\
+				sh_parser.h					\
+				sh_subsystems.h				\
 				sh_utils.h
 
 # ********************************* C FILES ********************************** #
 
-SRC_FILES	=	main.c					\
-				hanle_error_msg.c		\
-				print_error.c			\
-				print_usage.c			\
-				exit_shell.c			\
-				free_all.c
+SRC_FILES	=	main.c
 
 # BUILT-IN FUNCTIONS #
 
-SRC_FILES	+=	cd_builtin.c			\
-				echo_builtin.c			\
-				env_builtin.c			\
-				exit_builtin.c			\
-				export_builtin.c		\
-				pwd_builtin.c			\
+SRC_FILES	+=	cd_builtin.c				\
+				echo_builtin.c				\
+				env_builtin.c				\
+				exit_builtin.c				\
+				export_builtin.c			\
+				pwd_builtin.c				\
 				unset_builtin.c
 
 # INPUT PROCESSING #
 
-SRC_FILES	+=	get_command.c			\
-				process_input.c			\
+SRC_FILES	+=	get_command.c				\
+				process_input.c				\
 				shell_loop.c
 
 # LEXER #
 
-SRC_FILES	+=	add_token_to_lexer.c	\
-				eat.c					\
-				escape_char.c			\
-				get_token.c				\
-				get_next_token.c		\
-				handle_quote.c			\
-				handle_text.c			\
-				handle_token.c			\
-				increase_lexer.c		\
-				lexer.c					\
-				lexer_is_full.c			\
-				push_char.c				\
-				token.c					\
+SRC_FILES	+=	add_token_to_lexer.c		\
+				eat.c						\
+				escape_char.c				\
+				get_token.c					\
+				get_next_token.c			\
+				handle_quote.c				\
+				handle_text.c				\
+				handle_token.c				\
+				increase_lexer.c			\
+				lexer.c						\
+				lexer_is_full.c				\
+				push_char.c					\
+				token.c						\
 				tokenize.c
 
 # PARSER #
 
-SRC_FILES	+=	parse.c					\
-				parse_cmd_suffix.c		\
-				parse_command.c			\
-				parse_io_file.c			\
-				parse_pipe_sequence.c	\
-				parse_simple_cmd.c		\
+SRC_FILES	+=	parse.c						\
+				parse_cmd_suffix.c			\
+				parse_command.c				\
+				parse_io_file.c				\
+				parse_pipe_sequence.c		\
+				parse_simple_cmd.c			\
 				parse_word.c
 
 # AST #
 
-SRC_FILES	+=	ast.c					\
-				append_node.c			\
-				print_ast.c				\
-				save_ast_dot.c			\
-				save_ast_svg.c			\
+SRC_FILES	+=	ast.c						\
+				append_node.c				\
+				print_ast.c					\
+				save_ast_dot.c				\
+				save_ast_svg.c				\
 				write_ast_dot.c
 
 # EXECUTION #
@@ -124,6 +119,14 @@ SRC_FILES	+=	check_var_name.c			\
 				start_shell.c				\
 				substitute_word.c			\
 				top_level_cleanup.c
+
+# UTILS #
+
+SRC_FILES	+=	builtin_error.c				\
+				print_error.c				\
+				print_usage.c				\
+				exit_shell.c				\
+				free_all.c
 
 # ********************************* OBJECTS ********************************** #
 

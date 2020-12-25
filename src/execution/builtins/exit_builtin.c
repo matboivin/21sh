@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 18:53:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/25 22:10:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,11 @@
 
 /*
 ** Recoded builtin exit() without any options
-**
-** exit [n]
-**     Exits the shell with a status of n (an integer in the range (0, 255)).
-**     If n is omitted, the exit status is that of the last command executed.
-**
-** Out of range exit values can result in unexpected exit codes.
-** An exit value greater than 255 (MAX_EXIT_VALUE) returns an exit code modulo
-** 256 (MAX_STATES).
+*/
+
+/*
+** This function checks if the parameter is numeric (the exit value) and if
+** there is no more than one parameter
 */
 
 static int	check_args(int argc, char *cmd_name, char *n)
@@ -38,13 +35,20 @@ static int	check_args(int argc, char *cmd_name, char *n)
 		return (1);
 	}
 	if (argc > 2)
-	{
-		g_status = EXIT_FAILURE;
-		print_error(2, cmd_name, "too many arguments");
-		return (1);
-	}
+		return (handle_arg_err(cmd_name));
 	return (0);
 }
+
+/*
+** Exit value is an integer in the range (0, 255)
+** 255 = MAX_EXIT_VALUE
+** 256 = MAX_STATES
+**
+** A value greater than 255 returns:
+**   exit code % 256
+** A negative value (lesser than 0) returns:
+**   exit code % 256 + 256 (so it becomes positive)
+*/
 
 static void	get_exit_status(char *str_repr)
 {
@@ -58,6 +62,12 @@ static void	get_exit_status(char *str_repr)
 	else
 		g_status = n;
 }
+
+/*
+** exit [n]
+**     Exits the shell with a status of n (an integer in the range (0, 255)).
+**     If n is omitted, the exit status is that of the last command executed.
+*/
 
 int			exit_builtin(int argc, char **argv)
 {

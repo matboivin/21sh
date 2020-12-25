@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:50:53 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:58:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/25 22:00:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ int		env_builtin(int argc, char **argv)
 	int	write_ret;
 
 	if (argc != DEFAULT_ARGC)
-	{
-		g_status = INCORRECT_USAGE;
-		print_error(2, argv[CMD_NAME], "no option must be specified");
-		return (TIMEOUT_FAIL);
-	}
+		return (handle_arg_err(argv[CMD_NAME]));
 	write_ret = ft_printenv();
 	if (write_ret == FAIL_RET)
 		return (EXIT_FAILURE);
