@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:31:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/25 18:55:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,7 @@ int		unset_builtin(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_isdigit(argv[i][0]))
-		{
-			g_status = EXIT_FAILURE;
-			print_error(
-				3, argv[CMD_NAME], argv[FIRST_PARAM], "not a valid identifier");
-			return (EXIT_FAILURE);
-		}
+			return (handle_invalid_id(argv[CMD_NAME], argv[i]));
 		else
 			ft_unsetenv(argv[i]);
 		i++;

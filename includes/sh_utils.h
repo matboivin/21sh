@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:16:44 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/25 18:55:02 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	print_errno(char *target);
 void	handle_syntax_error(const char *token);
 void	handle_matching_error(char c);
 void	handle_cmd_not_found(char *filename);
+int		handle_invalid_id(char *cmd_name, char *var_name);
 
 /*
 ** Frees all the allocated memory

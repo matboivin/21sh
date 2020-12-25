@@ -25,6 +25,7 @@ INC_FILES	=	minishell.h				\
 # ********************************* C FILES ********************************** #
 
 SRC_FILES	=	main.c					\
+				hanle_error_msg.c		\
 				print_error.c			\
 				print_usage.c			\
 				exit_shell.c			\

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/24 18:49:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/25 18:56:41 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,12 +171,7 @@ int			export_builtin(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_isdigit(argv[i][0]))
-		{
-			g_status = EXIT_FAILURE;
-			print_error(
-				3, argv[CMD_NAME], argv[FIRST_PARAM], "not a valid identifier");
-			return (EXIT_FAILURE);
-		}
+			return (handle_invalid_id(argv[CMD_NAME], argv[i]));
 		else
 			export_variable(argv[i]);
 		i++;
