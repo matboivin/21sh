@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/25 23:41:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 00:38:02 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@
 // {
 // 	int		i;
 
-// 	if (argc == DEFAULT_ARGC)
+// 	if (argc == NO_ARGS)
 // 		return (display_export());
 // 	i = FIRST_PARAM;
 // 	while (i < argc)

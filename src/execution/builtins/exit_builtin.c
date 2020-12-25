@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/25 22:10:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 00:38:02 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	get_exit_status(char *str_repr)
 int			exit_builtin(int argc, char **argv)
 {
 	ft_printf("exit\n");
-	if (argc > DEFAULT_ARGC)
+	if (argc > NO_ARGS)
 	{
 		if (!check_args(argc, argv[CMD_NAME], argv[FIRST_PARAM]))
 			get_exit_status(argv[FIRST_PARAM]);

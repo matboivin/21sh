@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:55:34 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 00:37:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 # define PS2 "> "
 
-# define DEFAULT_ARGC 1
+# define NO_ARGS 1
 # define FIRST_PARAM 1
 # define DEFAULT_VALUE 0
 # define FAIL_RET -1

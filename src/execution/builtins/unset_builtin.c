@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/25 18:55:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 00:38:02 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		unset_builtin(int argc, char **argv)
 {
 	int	i;
 
-	if (argc == DEFAULT_ARGC)
+	if (argc == NO_ARGS)
 		return (EXIT_SUCCESS);
 	i = FIRST_PARAM;
 	while (i < argc)

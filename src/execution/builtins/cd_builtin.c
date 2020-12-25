@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 00:29:34 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 00:38:02 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	update_pwd(char *cmd_name)
 
 static int	change_dir(int argc, char *dir)
 {
-	if (argc == DEFAULT_ARGC)
+	if (argc == NO_ARGS)
 		return (chdir(ft_getenv("HOME")));
 	return (chdir(dir));
 }

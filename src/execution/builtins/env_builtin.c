@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:50:53 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/25 23:33:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 00:38:02 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		env_builtin(int argc, char **argv)
 {
 	int	write_ret;
 
-	if (argc != DEFAULT_ARGC)
+	if (argc != NO_ARGS)
 		return (handle_arg_err(argv[CMD_NAME]));
 	write_ret = ft_printenv();
 	if (write_ret == FAIL_RET)
