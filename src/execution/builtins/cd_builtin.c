@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/25 22:00:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 00:29:34 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include <string.h>
 #include <limits.h>
+#include <unistd.h>
 #include "libft_printf.h"
 #include "sh_env.h"
 #include "sh_utils.h"
@@ -29,29 +30,44 @@
 **          non-zero otherwise
 */
 
-// TODO: fix
+static int	update_oldpwd(void)
+{
+	if (ft_setenv("OLDPWD", ft_getenv("PWD"), true) != FAIL_RET)
+		return (0);
+	return (FAIL_RET);
+}
+
+static int	update_pwd(char *cmd_name)
+{
+	char	cwd[PATH_MAX];
+
+	if (update_oldpwd() != FAIL_RET)
+	{
+		if (getcwd(cwd, PATH_MAX) && (ft_setenv("PWD", cwd, true) != FAIL_RET))
+			return (0);
+	}
+	print_errno(cmd_name);
+	return (EXIT_FAILURE);
+}
+
+static int	change_dir(int argc, char *dir)
+{
+	if (argc == DEFAULT_ARGC)
+		return (chdir(ft_getenv("HOME")));
+	return (chdir(dir));
+}
 
 int			cd_builtin(int argc, char **argv)
 {
-	char	*oldpwd_value;
 	int		new_dir;
 
-	oldpwd_value = getcwd(NULL, PATH_MAX);
 	if (argc > 2)
 		return (handle_arg_err(argv[CMD_NAME]));
-	if (argc == DEFAULT_ARGC)
-		new_dir = chdir(ft_getenv("HOME"));
-	else
-	{
-		ft_printf("%s\n", argv[FIRST_PARAM]);
-		new_dir = chdir(argv[FIRST_PARAM]);
-	}
+	new_dir = change_dir(argc, argv[1]);
 	if (new_dir == FAIL_RET)
 	{
 		print_error(3, argv[CMD_NAME], argv[1], strerror(errno));
 		return (EXIT_FAILURE);
 	}
-	ft_setenv("OLDPWD", oldpwd_value, true);
-	ft_setenv("PWD", getcwd(NULL, 0), true);
-	return (0);
+	return (update_pwd(argv[CMD_NAME]));
 }

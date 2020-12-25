@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/25 21:54:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 00:06:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,14 @@
 
 int			pwd_builtin(int argc, char **argv)
 {
-	char	*path;
-	char	buf[PATH_MAX];
+	char	cwd[PATH_MAX];
 
-	path = NULL;
-	path = getcwd(buf, PATH_MAX);
-	if (!path)
+	(void)argc;
+	if (!getcwd(cwd, PATH_MAX))
 	{
 		print_errno(argv[CMD_NAME]);
 		return (EXIT_FAILURE);
 	}
-	ft_printf("%s\n", path);
+	ft_printf("%s\n", cwd);
 	return (0);
 }
