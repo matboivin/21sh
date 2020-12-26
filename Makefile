@@ -104,6 +104,7 @@ SRC_FILES	+=	add_simple_cmd.c			\
 # SUBSYSTEMS #
 
 SRC_FILES	+=	check_var_name.c			\
+				create_prompt.c				\
 				ft_clearenv.c				\
 				ft_findenv.c				\
 				ft_getenv.c					\

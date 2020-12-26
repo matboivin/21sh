@@ -2,8 +2,8 @@
 
 ## TODO
 
-- fix builtins: export, exit
-- PWD
+- fix builtins: export
+- PATH vide -> remplacer par cwd
 - not executable, misuse of shell buit-in, checks supplémentaires (lstat, /dev/null...)
 - fix broken pipes
-- refacto : norme
+- Norme : tokenize(), debug mode

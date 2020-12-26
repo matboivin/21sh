@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:43:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 03:08:32 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft_io.h"
 #include "sh_utils.h"
 #include "sh_env.h"
+#include "sh_subsystems.h"
 #include "sh_parser.h"
 #include "sh_input_processing.h"
 
@@ -37,7 +38,13 @@ static int	prompt_user(t_shctrl *ft_sh, char *prompt)
 	int		ret_val;
 
 	ret_val = 0;
-	ft_sh->lexer->input = ft_readline(prompt);
+	if (prompt)
+	{
+		ft_sh->lexer->input = ft_readline(prompt);
+		ft_strdel(&prompt);
+	}
+	else
+		ft_sh->lexer->input = ft_readline(PS1);
 	if (!ft_sh->lexer->input)
 		handle_eof(ft_sh);
 	ret_val = tokenize(ft_sh->lexer);
@@ -56,7 +63,7 @@ int			get_command(t_shctrl *ft_sh)
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	if (!ft_sh->lexer)
 		exit_shell(ft_sh);
-	ret_val = prompt_user(ft_sh, PS1);
+	ret_val = prompt_user(ft_sh, create_prompt());
 	while (ret_val == 1)
 		ret_val = prompt_user(ft_sh, PS2);
 	if (ret_val == EXIT_SUCCESS)

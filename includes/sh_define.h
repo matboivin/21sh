@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 00:37:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 03:00:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
 ** PS1: environment variable which contains the value of the default prompt.
 ** It changes the shell command prompt appearance and environment.
 */
-
 # define PS1 "\033[34m┌─[\033[0mminishell\033[34m]\n└──╼\033[0m "
+# define PS1_OP "\033[34m┌─[\033[0mminishell\033[34m]─[\033[0m"
+# define PS1_END "\033[34m]\n└──╼\033[0m "
 
 /*
 ** PS2: environment variable which contains the value the prompt used for a

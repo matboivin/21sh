@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_fatal_error.c                               :+:      :+:    :+:   */
+/*   create_prompt.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 17:52:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 03:08:12 by mboivin          ###   ########.fr       */
+/*   Created: 2020/12/26 03:01:19 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/26 03:04:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include "libft_printf.h"
+#include <stdlib.h>
+#include "libft_str.h"
 #include "sh_env.h"
 #include "sh_subsystems.h"
 
 /*
-** This function handles fatal errors
-**
-** The return value of a command is its exit status, or 128 + N if the command
-** is terminated by signal N
+** This function constructs a custom prompt
 */
 
-void		handle_fatal_error(int sig)
+char		*create_prompt(void)
 {
 	char	*shell_prompt;
 
-	shell_prompt = NULL;
-	if (sig == SIGINT)
-	{
-		g_status = FATAL_ERROR + sig;
-		shell_prompt = create_prompt();
-		if (shell_prompt)
-			ft_printf("\n%s", shell_prompt);
-		else
-			ft_printf("\n%s", PS1);
-	}
+	if (!ft_getenv("PWD"))
+		return (NULL);
+	shell_prompt = ft_join_n_str(3, PS1_OP, ft_getenv("PWD"), PS1_END);
+	if (!shell_prompt)
+		return (NULL);
+	return (shell_prompt);
 }

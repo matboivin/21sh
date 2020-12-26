@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 18:52:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 03:04:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	start_shell(char **envp);
 ** Creates a custom shell prompt
 */
 
-void	create_prompt(void);
+char	*create_prompt(void);
 
 /*
 ** Registers signal handlers
