@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_simple_cmd.c                                  :+:      :+:    :+:   */
+/*   is_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 18:16:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 01:38:51 by mboivin          ###   ########.fr       */
+/*   Created: 2020/12/26 01:35:35 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/26 01:35:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh_utils.h"
+#include <stdbool.h>
 #include "sh_execution.h"
 
 /*
-** This function executes a simple command
+** This function checks whether the current simple command is a shell builtin
 */
 
-void		exec_simple_cmd(t_simplecmd *simple_cmd)
+bool	is_builtin(t_simplecmd *simple_cmd)
 {
-	redirect_stream(simple_cmd->input_fd, STDIN_FILENO);
-	redirect_stream(simple_cmd->output_fd, STDOUT_FILENO);
-	if (simple_cmd->cmd_path)
-	{
-		if (is_builtin(simple_cmd))
-			invoke_builtin(simple_cmd);
-		else
-			execve(simple_cmd->cmd_path, simple_cmd->cmd_args, g_env);
-	}
+	return (simple_cmd->builtin_func);
 }

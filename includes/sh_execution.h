@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/24 17:52:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 01:57:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,6 @@ void			get_cmd_arg_count(t_simplecmd *simple_cmd, t_ast_node *node);
 void			get_cmd_args(t_simplecmd *simple_cmd, t_ast_node *node);
 
 /*
-** Checks whether the current simple command is the last one
-*/
-
-bool			is_last_command(t_cmd *cmd);
-
-/*
 ** Checks whether a file was opened
 */
 
@@ -103,6 +97,18 @@ void			search_builtin(t_simplecmd *simple_cmd);
 bool			contain_slash(char *cmd_path);
 
 /*
+** Checks whether the current simple command is the last one
+*/
+
+bool			is_last_command(t_cmd *cmd);
+
+/*
+** Checks whether the current simple command is a shell builtin
+*/
+
+bool			is_builtin(t_simplecmd *simple_cmd);
+
+/*
 ** Executes all simple commands
 */
 
@@ -112,13 +118,20 @@ void			execute(t_shctrl *ft_sh, t_cmd *cmd);
 ** Executes a simple command
 */
 
-void			exec_simple_cmd(t_shctrl *ft_sh, t_simplecmd *simple_cmd);
+void			exec_simple_cmd(t_simplecmd *simple_cmd);
+
+/*
+** Invokes a shell builtin
+*/
+
+void			invoke_builtin(t_simplecmd *simple_cmd);
 
 /*
 ** Spawns a new process
 */
 
-void			spawn_process(t_shctrl *ft_sh, pid_t *pid);
+void			spawn_process(
+	t_shctrl *ft_sh, t_cmd *cmd, pid_t *pid, t_streams *pipe_redir);
 void			create_pipe(t_shctrl *ft_sh, t_streams *swap);
 
 #endif

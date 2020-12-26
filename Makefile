@@ -87,6 +87,8 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				create_pipe.c				\
 				exec_simple_cmd.c			\
 				execute.c					\
+				invoke_builtin.c			\
+				is_builtin.c				\
 				is_last_command.c			\
 				is_open_file.c				\
 				get_cmd_arg_count.c			\
