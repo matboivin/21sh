@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:56:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:22:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 13:42:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int			ft_putenv(char *s)
 	g_env = dup_environment(count + 1);
 	if (!g_env)
 		return (FAIL_RET);
-	g_env[count] = s;
+	g_env[count] = ft_strreplace(g_env[count], s);
 	return (0);
 }

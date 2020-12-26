@@ -85,6 +85,7 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				command.c					\
 				contain_slash.c				\
 				create_pipe.c				\
+				exec_pipe_seq.c				\
 				exec_simple_cmd.c			\
 				execute.c					\
 				invoke_builtin.c			\
@@ -114,14 +115,12 @@ SRC_FILES	+=	check_var_name.c			\
 				ft_unsetenv.c				\
 				dup_environment.c			\
 				handle_fatal_error.c		\
-				jump_to_top_level.c			\
 				load_environment.c			\
 				register_signal_handlers.c	\
 				remove_quotes.c				\
 				sh_ctrl.c					\
 				start_shell.c				\
-				substitute_word.c			\
-				top_level_cleanup.c
+				substitute_word.c
 
 # UTILS #
 

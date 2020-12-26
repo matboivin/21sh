@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 02:22:46 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 12:49:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,12 @@ bool			is_builtin(t_simplecmd *simple_cmd);
 void			execute(t_shctrl *ft_sh, t_cmd *cmd);
 
 /*
+** This function executes a pipe sequence
+*/
+
+void			exec_pipe_seq(t_shctrl *ft_sh, t_cmd *cmd);
+
+/*
 ** Executes a simple command
 */
 
@@ -130,8 +136,7 @@ void			invoke_builtin(t_simplecmd *simple_cmd);
 ** Spawns a new process to execute a simple command
 */
 
-void			spawn_process(
-	t_shctrl *ft_sh, t_cmd *cmd, pid_t *pid, t_streams *pipe_redir);
+void			spawn_process(t_shctrl *ft_sh, pid_t *pid);
 void			create_pipe(t_shctrl *ft_sh, t_streams *swap);
 
 #endif

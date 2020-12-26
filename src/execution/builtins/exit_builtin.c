@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 00:38:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 12:37:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft_num.h"
 #include "libft_printf.h"
 #include "sh_utils.h"
-#include "sh_subsystems.h"
 #include "sh_builtins.h"
 
 /*
@@ -68,6 +67,11 @@ static void	get_exit_status(char *str_repr)
 **     Exits the shell with a status of n (an integer in the range (0, 255)).
 **     If n is omitted, the exit status is that of the last command executed.
 */
+
+static void	jump_to_top_level(void)
+{
+	g_done = true;
+}
 
 int			exit_builtin(int argc, char **argv)
 {

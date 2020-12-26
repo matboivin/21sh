@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:14:01 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/06 18:17:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 13:24:10 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,20 @@
 **          -1 on error
 */
 
-int		ft_setenv(char *key, char *new_value, bool replace)
+static int	check_arg_fmt(char *key, char *new_value)
 {
-	int	to_set;
-
 	if (
 		!g_env || !key || !new_value || !ft_strcmp(key, EMPTY_STR)
 		|| ft_strchr(key, ENVKEY_SEP) || ft_strchr(new_value, ENVKEY_SEP))
+		return (0);
+	return (1);
+}
+
+int			ft_setenv(char *key, char *new_value, bool replace)
+{
+	int		to_set;
+
+	if (!check_arg_fmt(key, new_value))
 		return (FAIL_RET);
 	to_set = ft_findenv(key);
 	if ((to_set != FAIL_RET) && replace)

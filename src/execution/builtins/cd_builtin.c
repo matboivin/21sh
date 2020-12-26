@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 02:16:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 13:41:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,27 @@
 /*
 ** Recoded builtin cd() with only a relative or absolute path
 */
+
+static int	set_old_pwd(void)
+{
+	char	buf[PATH_MAX];
+	char	*oldpwd;
+	char	*new_var;
+	int		ret;
+
+	oldpwd = NULL;
+	new_var = NULL;
+	oldpwd = ft_getenv("PWD");
+	if (!oldpwd)
+		oldpwd = getcwd(buf, PATH_MAX);
+	if (ft_findenv("OLDPWD") != FAIL_RET)
+		return (ft_setenv("OLDPWD", oldpwd, true));
+	new_var = ft_join_n_str(3, "OLDPWD", "=", oldpwd);
+	if (new_var)
+		ret = ft_putenv(new_var);
+	ft_strdel(&new_var);
+	return (ret);
+}
 
 /*
 ** This function updates the current working directory if the chdir succeeds
@@ -46,13 +67,7 @@ static int	set_working_dir(void)
 
 static int	change_to_directory(char *cmd_name, char *dir)
 {
-	char	buf[PATH_MAX];
-	char	*oldpwd;
-
-	oldpwd = ft_getenv("PWD");
-	if (!oldpwd)
-		oldpwd = getcwd(buf, PATH_MAX);
-	if (ft_setenv("OLDPWD", oldpwd, true) != FAIL_RET)
+	if (set_old_pwd() != FAIL_RET)
 	{
 		if (chdir(dir) == FAIL_RET)
 		{
@@ -96,13 +111,16 @@ static int	go_back(char *cmd_name)
 	char	*dir_name;
 	int		ret_val;
 
+	dir_name = NULL;
 	ret_val = EXIT_FAILURE;
-	dir_name = ft_strdup(ft_getenv("OLDPWD"));
-	if (!dir_name)
+	if (!ft_getenv("OLDPWD"))
 	{
 		print_error(2, cmd_name, "OLDPWD not set");
 		return (ret_val);
 	}
+	dir_name = ft_strdup(ft_getenv("OLDPWD"));
+	if (!dir_name)
+		return (ret_val);
 	ret_val = change_to_directory(cmd_name, dir_name);
 	if (!ret_val)
 		ft_printf("%s\n", dir_name);
