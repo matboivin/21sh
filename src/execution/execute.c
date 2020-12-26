@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 01:58:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 02:45:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ void			execute(t_shctrl *ft_sh, t_cmd *cmd)
 	backup_streams(&backup, &(pipe_redir.input));
 	while (cmd->curr_cmd < cmd->cmd_count)
 	{
+		if (is_last_command(cmd) && is_builtin(cmd->simple_cmds[cmd->curr_cmd]))
+		{
+			exec_builtin(cmd->simple_cmds[cmd->curr_cmd]);
+			restore_default_streams(backup);
+			return ;
+		}
 		redirect_stream(pipe_redir.input, STDIN_FILENO);
 		pipe_redir.output = dup(backup.output);
-		if (is_last_command(cmd) && is_builtin(cmd->simple_cmds[cmd->curr_cmd]))
-			exec_builtin(cmd->simple_cmds[cmd->curr_cmd]);
-		else
-			spawn_process(ft_sh, cmd, &pid, &pipe_redir);
+		spawn_process(ft_sh, cmd, &pid, &pipe_redir);
 		cmd->curr_cmd++;
 	}
 	restore_default_streams(backup);
