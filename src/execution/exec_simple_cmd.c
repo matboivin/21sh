@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:16:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 01:38:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 02:23:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** This function executes a simple command
 */
 
-void		exec_simple_cmd(t_simplecmd *simple_cmd)
+void	exec_simple_cmd(t_simplecmd *simple_cmd)
 {
 	redirect_stream(simple_cmd->input_fd, STDIN_FILENO);
 	redirect_stream(simple_cmd->output_fd, STDOUT_FILENO);

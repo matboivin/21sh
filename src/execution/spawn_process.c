@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:25:22 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 01:59:29 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 02:22:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,20 @@
 #include "sh_utils.h"
 #include "sh_execution.h"
 
-static bool		is_child_process(pid_t pid)
+/*
+** This function checks whether a process is a child process
+*/
+
+static bool	is_child_process(pid_t pid)
 {
 	return (pid == 0);
 }
 
 /*
-** This function spawns a new process
+** This function spawns a new process to execute a simple command
 */
 
-void			spawn_process(
+void		spawn_process(
 	t_shctrl *ft_sh, t_cmd *cmd, pid_t *pid, t_streams *pipe_redir)
 {
 	if (!is_last_command(cmd))

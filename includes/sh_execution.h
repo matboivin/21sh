@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 01:57:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/26 02:22:46 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void			exec_simple_cmd(t_simplecmd *simple_cmd);
 void			invoke_builtin(t_simplecmd *simple_cmd);
 
 /*
-** Spawns a new process
+** Spawns a new process to execute a simple command
 */
 
 void			spawn_process(
