@@ -2,7 +2,7 @@
 
 ## TODO
 
-- fix builtins: export, cd
+- fix builtins: export, exit
 - PWD
 - not executable, misuse of shell buit-in, checks supplémentaires (lstat, /dev/null...)
 - fix broken pipes
