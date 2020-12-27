@@ -148,10 +148,10 @@ INC_DIR		=	includes
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 
-SUB_DIRS	=	execution					\
-				execution/builtins			\
-				execution/command_table		\
+SUB_DIRS	=	builtins					\
+				execution					\
 				execution/command_search	\
+				execution/command_table		\
 				input_processing			\
 				parsing/lexer				\
 				parsing/parser				\
