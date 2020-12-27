@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:16:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:13:09 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 19:09:51 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 static void	invoke_builtin(t_simplecmd *simple_cmd)
 {
-	(*simple_cmd->builtin_func)(simple_cmd->argc, simple_cmd->cmd_args);
+	g_status = (*simple_cmd->builtin_func)(simple_cmd->argc, simple_cmd->cmd_args);
 }
 
 /*
