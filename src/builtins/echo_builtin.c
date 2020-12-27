@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:55:17 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 00:38:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 20:57:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ int			echo_builtin(int argc, char **argv)
 		handle_newline_opt(argv[FIRST_PARAM], &newline, &i);
 	while ((i < argc) && (write_ret != FAIL_RET))
 	{
-		write_ret = ft_printf("%s", argv[i++]);
+		write_ret = ft_printf("%s", argv[i]);
 		if (i + 1 < argc)
 			write_ret = ft_printf(" ");
+		i++;
 	}
 	if (newline && (write_ret != FAIL_RET))
 		write_ret = ft_printf("\n");

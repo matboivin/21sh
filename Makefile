@@ -180,7 +180,7 @@ CPPFLAGS	=	$(foreach path, $(INC_PATHS), -I$(path))
 LDFLAGS		=	-L$(LIB_DIR)
 LDLIBS		=	$(foreach lib, $(LIBS), -l$(lib))
 
-DEBUG_CFLAGS = -g -D DEBUG
+DEBUG_CFLAGS = -D DEBUG
 
 # ********************************** RULES *********************************** #
 
@@ -220,7 +220,7 @@ show:
 
 # Debug build for gdb debugging #
 
-#debug: CFLAGS += $(DEBUG_CFLAGS)
+debug: CFLAGS += $(DEBUG_CFLAGS)
 debug: re
 	@echo "DEBUG\t\tDebug build done"
 
