@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:33:44 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:49:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 17:41:25 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,11 @@ void	ft_clearenv(void);
 */
 
 int		ft_printenv(void);
+
+/*
+** Sets the current working directory value
+*/
+
+int		set_working_dir(void);
 
 #endif

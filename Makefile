@@ -106,6 +106,16 @@ SRC_FILES	+=	add_simple_cmd.c			\
 
 SRC_FILES	+=	check_var_name.c			\
 				create_prompt.c				\
+				handle_fatal_error.c		\
+				register_signal_handlers.c	\
+				remove_quotes.c				\
+				sh_ctrl.c					\
+				start_shell.c				\
+				substitute_word.c
+
+# ENV HANDLING #
+
+SRC_FILES	+=	dup_environment.c			\
 				ft_clearenv.c				\
 				ft_findenv.c				\
 				ft_getenv.c					\
@@ -113,14 +123,8 @@ SRC_FILES	+=	check_var_name.c			\
 				ft_putenv.c					\
 				ft_setenv.c					\
 				ft_unsetenv.c				\
-				dup_environment.c			\
-				handle_fatal_error.c		\
 				load_environment.c			\
-				register_signal_handlers.c	\
-				remove_quotes.c				\
-				sh_ctrl.c					\
-				start_shell.c				\
-				substitute_word.c
+				set_working_dir.c
 
 # UTILS #
 
