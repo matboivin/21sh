@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 13:41:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 17:13:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	set_old_pwd(void)
 		oldpwd = getcwd(buf, PATH_MAX);
 	if (ft_findenv("OLDPWD") != FAIL_RET)
 		return (ft_setenv("OLDPWD", oldpwd, true));
-	new_var = ft_join_n_str(3, "OLDPWD", "=", oldpwd);
+	new_var = ft_join_n_str(2, "OLDPWD=", oldpwd);
 	if (new_var)
 		ret = ft_putenv(new_var);
 	ft_strdel(&new_var);
@@ -91,14 +91,21 @@ static int	change_to_directory(char *cmd_name, char *dir)
 static int	go_to_home(char *cmd_name)
 {
 	char	*dir_name;
+	int		ret_val;
 
-	dir_name = ft_getenv("HOME");
-	if (!dir_name)
+	dir_name = NULL;
+	ret_val = EXIT_FAILURE;
+	if (!ft_getenv("HOME"))
 	{
 		print_error(2, cmd_name, "HOME not set");
-		return (EXIT_FAILURE);
+		return (ret_val);
 	}
-	return (change_to_directory(cmd_name, dir_name));
+	dir_name = ft_strdup(ft_getenv("HOME"));
+	if (!dir_name)
+		return (ret_val);
+	ret_val = change_to_directory(cmd_name, dir_name);
+	ft_strdel(&dir_name);
+	return (ret_val);
 }
 
 /*
