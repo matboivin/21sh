@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 12:48:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/11 15:22:22 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 16:02:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char		**dup_environment(size_t count)
 {
 	char	**result;
 	size_t	i;
+	size_t	key;
 
 	if (!g_env)
 		return (NULL);
@@ -35,13 +36,15 @@ char		**dup_environment(size_t count)
 	if (!result)
 		return (NULL);
 	i = 0;
-	while (g_env && g_env[i] && i < count)
+	key = 0;
+	while (i < count)
 	{
 		if (ft_strcmp(g_env[i], EMPTY_STR))
 		{
-			result[i] = ft_strdup(g_env[i]);
-			if (!result[i])
+			result[key] = ft_strdup(g_env[i]);
+			if (!result[key])
 				return (NULL);
+			key++;
 		}
 		i++;
 	}
