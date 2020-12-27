@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:11:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 18:59:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ static void	visit(t_shctrl *ft_sh, t_ast_node *node)
 		build_cmd_table(ft_sh);
 	else if (node->type == NODE_PIPE_SEQ)
 	{
-		if (!add_simple_cmd(ft_sh->cmd, node->left))
-			exit_shell(ft_sh);
+		add_simple_cmd(ft_sh->cmd, node->left);
 		if (!node->right)
 		{
 #ifdef DEBUG

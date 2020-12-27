@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:19:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 19:00:13 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			build_cmd_table(t_shctrl *ft_sh);
 ** Adds a simple command to the command table
 */
 
-int				add_simple_cmd(t_cmd *cmd, t_ast_node *node);
+void			add_simple_cmd(t_cmd *cmd, t_ast_node *node);
 
 /*
 ** Counts a simple command arg

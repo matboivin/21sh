@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:46:35 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 18:57:41 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include "libft_str.h"
-#include "libft_printf.h"
 #include "sh_env.h"
 #include "sh_utils.h"
 #include "sh_execution.h"
@@ -48,7 +47,6 @@ static char		*get_path_value(void)
 			set_working_dir();
 		result = ft_getenv("PWD");
 	}
-	ft_printf("path: %s\n", result);
 	return (result);
 }
 
@@ -91,7 +89,7 @@ int				search_command(t_simplecmd *simple_cmd)
 	search_builtin(simple_cmd);
 	if (!simple_cmd->builtin_func && !contain_slash(simple_cmd->cmd_path))
 		ret = search_executable(&(simple_cmd->cmd_path));
-	if (simple_cmd->cmd_path && !ret)
+	if (simple_cmd->cmd_path && ret != FAIL_RET)
 		return (0);
 	return (FAIL_RET);
 }
