@@ -88,9 +88,7 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				exec_pipe_seq.c				\
 				exec_simple_cmd.c			\
 				execute.c					\
-				invoke_builtin.c			\
 				is_builtin.c				\
-				is_last_command.c			\
 				is_open_file.c				\
 				get_cmd_arg_count.c			\
 				get_cmd_args.c				\
@@ -100,7 +98,7 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				search_command.c			\
 				simple_command.c			\
 				spawn_process.c				\
-				visitor.c
+				traverse_tree.c
 
 # SUBSYSTEMS #
 

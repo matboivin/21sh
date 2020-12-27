@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visitor.c                                          :+:      :+:    :+:   */
+/*   traverse_tree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/24 18:05:23 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 18:11:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** This function visits an AST node
 */
 
-void	visit(t_shctrl *ft_sh, t_ast_node *node)
+static void	visit(t_shctrl *ft_sh, t_ast_node *node)
 {
 	if (node->type == NODE_CMD)
 		build_cmd_table(ft_sh);
@@ -40,7 +40,7 @@ void	visit(t_shctrl *ft_sh, t_ast_node *node)
 ** This function traverses the AST to build the command table
 */
 
-void	traverse_tree(t_shctrl *ft_sh, t_ast_node *node)
+void		traverse_tree(t_shctrl *ft_sh, t_ast_node *node)
 {
 	if (!node)
 		return ;

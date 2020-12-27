@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 03:00:28 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 18:16:56 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,6 @@
 */
 
 # define INCORRECT_USAGE 2
-
-/*
-** Command itself failed (timeout disabled)
-*/
-
-# define TIMEOUT_FAIL 125
 
 /*
 ** Command invoked cannot execute

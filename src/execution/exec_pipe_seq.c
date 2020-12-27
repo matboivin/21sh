@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 12:50:44 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 18:14:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ static void		backup_streams(t_streams *backup, int *input)
 	backup->input = dup(STDIN_FILENO);
 	backup->output = dup(STDOUT_FILENO);
 	*input = dup(backup->input);
+}
+
+/*
+** This function checks whether the current simple command is the last one
+*/
+
+static bool		is_last_command(t_cmd *cmd)
+{
+	return (cmd->curr_cmd == (cmd->cmd_count - 1));
 }
 
 /*

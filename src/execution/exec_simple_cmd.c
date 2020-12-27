@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:16:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 12:49:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 18:13:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,19 @@
 #include "sh_execution.h"
 
 /*
+** This function invokes a shell builtin
+*/
+
+static void	invoke_builtin(t_simplecmd *simple_cmd)
+{
+	(*simple_cmd->builtin_func)(simple_cmd->argc, simple_cmd->cmd_args);
+}
+
+/*
 ** This function executes a simple command
 */
 
-void	exec_simple_cmd(t_simplecmd *simple_cmd)
+void		exec_simple_cmd(t_simplecmd *simple_cmd)
 {
 	redirect_stream(simple_cmd->input_fd, STDIN_FILENO);
 	redirect_stream(simple_cmd->output_fd, STDOUT_FILENO);

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 12:49:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 18:19:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,6 @@ typedef struct	s_streams
 */
 
 void			traverse_tree(t_shctrl *ft_sh, t_ast_node *node);
-
-/*
-** Visits an AST node
-*/
-
-void			visit(t_shctrl *ft_sh, t_ast_node *node);
 
 /*
 ** Builds a command table for each command node
@@ -72,10 +66,15 @@ void			get_cmd_args(t_simplecmd *simple_cmd, t_ast_node *node);
 bool			is_open_file(int fd);
 
 /*
-** Redirections
+** Opens files for redirections
 */
 
 void			get_files(t_simplecmd *simple_cmd, t_ast_node *node);
+
+/*
+** Redirects stream and closes from parameter
+*/
+
 void			redirect_stream(int from, int to);
 
 /*
@@ -95,12 +94,6 @@ void			search_builtin(t_simplecmd *simple_cmd);
 */
 
 bool			contain_slash(char *cmd_path);
-
-/*
-** Checks whether the current simple command is the last one
-*/
-
-bool			is_last_command(t_cmd *cmd);
 
 /*
 ** Checks whether the current simple command is a shell builtin
@@ -127,16 +120,15 @@ void			exec_pipe_seq(t_shctrl *ft_sh, t_cmd *cmd);
 void			exec_simple_cmd(t_simplecmd *simple_cmd);
 
 /*
-** Invokes a shell builtin
-*/
-
-void			invoke_builtin(t_simplecmd *simple_cmd);
-
-/*
 ** Spawns a new process to execute a simple command
 */
 
 void			spawn_process(t_shctrl *ft_sh, pid_t *pid);
+
+/*
+** Creates a pipe object
+*/
+
 void			create_pipe(t_shctrl *ft_sh, t_streams *swap);
 
 #endif
