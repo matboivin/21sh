@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:48:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 18:46:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,45 @@ static bool		command_found(char **cmd_path, char *path_to_check)
 	return (ret_val);
 }
 
-static void		search_executable(char **cmd_path)
+static char		*get_path_value(void)
+{
+	char		*result;
+
+	result = NULL;
+	result = ft_getenv("PATH");
+	if (!ft_getenv("PATH"))
+	{
+		if (!ft_getenv("PWD"))
+			set_working_dir();
+		result = ft_getenv("PWD");
+	}
+	ft_printf("path: %s\n", result);
+	return (result);
+}
+
+static int		search_executable(char **cmd_path)
 {
 	char		**path_list;
 	char		*path_to_check;
 	size_t		i;
 
-	path_list = ft_split(ft_getenv("PATH"), PATHS_SEP);
-	// TODO: handle empty path
 	i = 0;
+	path_list = ft_split(get_path_value(), PATHS_SEP);
+	if (!path_list)
+		return (FAIL_RET);
 	while (path_list[i])
 	{
 		path_to_check = ft_join_n_str(3, path_list[i], DIRS_SEP, *cmd_path);
 		if (command_found(cmd_path, path_to_check))
 		{
 			ft_str_arr_del(path_list);
-			return ;
+			return (0);
 		}
 		i++;
 	}
 	ft_str_arr_del(path_list);
 	handle_cmd_not_found(*cmd_path);
+	return (FAIL_RET);
 }
 
 /*
@@ -65,12 +83,15 @@ static void		search_executable(char **cmd_path)
 
 int				search_command(t_simplecmd *simple_cmd)
 {
+	int			ret;
+
+	ret = 0;
 	if (!simple_cmd->argc)
 		return (0);
 	search_builtin(simple_cmd);
 	if (!simple_cmd->builtin_func && !contain_slash(simple_cmd->cmd_path))
-		search_executable(&(simple_cmd->cmd_path));
-	if (simple_cmd->cmd_path)
+		ret = search_executable(&(simple_cmd->cmd_path));
+	if (simple_cmd->cmd_path && !ret)
 		return (0);
 	return (FAIL_RET);
 }

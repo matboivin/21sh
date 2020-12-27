@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:27:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 18:49:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,6 @@ int			cd_builtin(int argc, char **argv)
 			ft_printf("%s\n", ft_getenv("PWD"));
 	}
 	else
-		ret_val = change_to_directory(argv[CMD_NAME], argv[FIRST_PARAM]);
+		ret_val = set_directory(argv[CMD_NAME], argv[FIRST_PARAM]);
 	return (ret_val);
 }
