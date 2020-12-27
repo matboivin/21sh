@@ -218,7 +218,7 @@ show:
 
 # Debug build for gdb debugging #
 
-debug: CFLAGS += $(DEBUG_CFLAGS)
+#debug: CFLAGS += $(DEBUG_CFLAGS)
 debug: re
 	@echo "DEBUG\t\tDebug build done"
 
