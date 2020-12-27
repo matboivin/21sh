@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:04:58 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 18:27:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,18 @@ static int	set_old_pwd(void)
 
 static int	set_directory(char *cmd_name, char *dir)
 {
-	if (set_old_pwd() != FAIL_RET)
+	if (set_old_pwd() == FAIL_RET)
 	{
-		if (chdir(dir) == FAIL_RET)
-		{
-			print_error(3, cmd_name, dir, strerror(errno));
-			return (EXIT_FAILURE);
-		}
-		else
-		{
-			if (set_working_dir() != FAIL_RET)
-				return (0);
-		}
+		print_errno(cmd_name);
+		return (EXIT_FAILURE);
 	}
-	print_errno(cmd_name);
-	return (EXIT_FAILURE);
+	if (chdir(dir) == FAIL_RET)
+	{
+		print_error(3, cmd_name, dir, strerror(errno));
+		return (EXIT_FAILURE);
+	}
+	set_working_dir();
+	return (0);
 }
 
 /*
