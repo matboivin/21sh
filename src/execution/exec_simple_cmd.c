@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:16:43 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 19:09:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 19:11:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 ** This function invokes a shell builtin
 */
 
-static void	invoke_builtin(t_simplecmd *simple_cmd)
+static void	invoke_builtin(t_simplecmd *builtin)
 {
-	g_status = (*simple_cmd->builtin_func)(simple_cmd->argc, simple_cmd->cmd_args);
+	g_status = (*builtin->builtin_func)(builtin->argc, builtin->cmd_args);
 }
 
 /*
