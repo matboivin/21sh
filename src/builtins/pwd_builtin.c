@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 00:06:14 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 22:49:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 **
 ** pwd
 **     Print the name of the current working directory.
-**     If no option is specified, -P is assumed (print the physical directory,
-**     without any symbolic links)
 **
 ** returns: 0
 **          non-zero if an invalid option is given or the current directory
@@ -34,7 +32,15 @@ int			pwd_builtin(int argc, char **argv)
 {
 	char	cwd[PATH_MAX];
 
-	(void)argc;
+	if (argc != NO_ARGS)
+	{
+		if (argv[FIRST_PARAM][0] == '-')
+		{
+			handle_invalid_opt(argv[CMD_NAME], argv[FIRST_PARAM]);
+			print_builtin_usage("pwd", "pwd");
+			return (EXIT_FAILURE);
+		}
+	}
 	if (!getcwd(cwd, PATH_MAX))
 	{
 		print_errno(argv[CMD_NAME]);

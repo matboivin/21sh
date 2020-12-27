@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 00:38:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 22:45:10 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ int		unset_builtin(int argc, char **argv)
 	{
 		if (ft_isdigit(argv[i][0]))
 			return (handle_invalid_id(argv[CMD_NAME], argv[i]));
+		if (argv[i][0] == '-')
+		{
+			handle_invalid_opt(argv[CMD_NAME], argv[i]);
+			print_builtin_usage("unset", "unset [name ...]");
+			return (EXIT_FAILURE);
+		}
 		else
 			ft_unsetenv(argv[i]);
 		i++;

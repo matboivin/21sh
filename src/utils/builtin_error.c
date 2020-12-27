@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:08:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 22:51:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,27 @@ int		handle_invalid_id(char *cmd_name, char *var_name)
 	return (EXIT_FAILURE);
 }
 
+int		handle_invalid_opt(char *cmd_name, char *opt)
+{
+	g_status = INCORRECT_USAGE;
+	ft_dprintf(
+		STDERR_FILENO,
+		"%s: %s: %.2s: invalid option\n",
+		SHELL_NAME, cmd_name, opt);
+	return (EXIT_FAILURE);
+}
+
 int		handle_env_not_set(char *cmd_name, char *var_name)
 {
 	g_status = INCORRECT_USAGE;
 	ft_dprintf(
 		STDERR_FILENO, "%s: %s: %s not set\n", SHELL_NAME, cmd_name, var_name);
 	return (EXIT_FAILURE);
+}
+
+void	print_builtin_usage(char *cmd_name, char *msg)
+{
+	if (!cmd_name || !msg)
+		return ;
+	ft_dprintf(STDERR_FILENO, "%s: usage: %s\n", cmd_name, msg);
 }

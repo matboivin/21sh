@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 17:49:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/27 22:41:46 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void	handle_cmd_not_found(char *filename);
 
 int		handle_arg_err(char *cmd_name);
 int		handle_invalid_id(char *cmd_name, char *var_name);
+int		handle_invalid_opt(char *cmd_name, char *opt);
 int		handle_env_not_set(char *cmd_name, char *var_name);
+void	print_builtin_usage(char *cmd_name, char *msg);
 
 /*
 ** Frees all the allocated memory
