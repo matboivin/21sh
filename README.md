@@ -2,8 +2,9 @@
 
 ## TODO
 
-- env -i
-- not executable, checks supplémentaires (lstat, /dev/null...)
+- not executable
 - fix broken pipes, redir
 - lexer: quotes, tokenize
-- Norme : debug mode
+- env -i
+- Checks supplémentaires
+- Norme, retirer debug mode

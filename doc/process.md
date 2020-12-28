@@ -122,10 +122,11 @@ Steps:
 - Pass the command line to the lexer
 - Tokenize the input
   - Process input char by char
-  - Backtracking
 - Pass the tokens to the parser
 
 See 2.3 Token Recognition: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
+
+Will require improvments: states, backtracking, ...
 
 #### Quoting/escaping meta-characters
 
