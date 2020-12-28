@@ -220,8 +220,6 @@ $(BIN_NAME): $(OBJ_DIR) $(OBJ) $(INC)
 show:
 	@echo "VPATH: $(VPATH)"
 
-# Debug build for gdb debugging #
-
 debug: CFLAGS += $(DEBUG_CFLAGS)
 debug: re
 	@echo "DEBUG\t\tDebug build done"
