@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 14:59:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 16:49:22 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static int	print_env_var(char **sorted_env)
 {
 	size_t	i;
 	int		ret;
+	char	**s;
 
 	i = 0;
 	ret = EXIT_SUCCESS;
@@ -84,7 +85,12 @@ static int	print_env_var(char **sorted_env)
 		{
 			if ((ft_strncmp(sorted_env[i], "_=", 2))
 				&& (ft_strchr(sorted_env[i], ENVKEY_SEP)))
-				ret = ft_printf("declare -x %s\n", sorted_env[i]);
+			{
+				s = ft_split(sorted_env[i], ENVKEY_SEP);
+				ret = ft_printf(
+					"declare -x %s=\"%s\"\n", s[ENV_KEY], s[ENV_VAL]);
+				ft_str_arr_del(s);
+			}
 			i++;
 		}
 		return (ret);

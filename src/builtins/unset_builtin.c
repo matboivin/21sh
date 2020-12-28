@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 16:23:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 17:03:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,11 @@ static int	unset_export(char *var)
 		{
 			count = ft_str_arr_len(g_env);
 			g_env = dup_environment(count, true);
-			if (g_env)
-				return (0);
+			if (!g_env)
+				return (FAIL_RET);
 		}
 	}
-	print_errno("unset");
-	return (FAIL_RET);
+	return (0);
 }
 
 /*
@@ -92,10 +91,11 @@ int			unset_builtin(int argc, char **argv)
 	{
 		if (!is_valid_identifier(argv[i]))
 			ret = handle_invalid_id(argv[CMD_NAME], argv[i]);
-		else if (ft_strchr(argv[i], ENVKEY_SEP))
-			ft_unsetenv(argv[i]);
 		else
-			unset_export(argv[i]);
+		{
+			if (ft_unsetenv(argv[i]) == FAIL_RET)
+				unset_export(argv[i]);
+		}
 		i++;
 	}
 	return (ret);

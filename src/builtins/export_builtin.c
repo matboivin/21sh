@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 15:29:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 16:52:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static int	set_var_value(char *key_value, size_t sep, size_t len)
 			g_env[ret] = ft_strreplace(g_env[ret], key_value);
 	}
 	ft_strdel(&key);
-	print_errno("export");
 	return (ret);
 }
 
