@@ -6,11 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:15:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 23:20:31 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft_conv.h"
 #include "libft_mem.h"
 #include "libft_str.h"
 #include "sh_env.h"
@@ -22,6 +23,25 @@ char		**g_env;
 **
 ** envp: The environment represented as an array of strings
 */
+
+static void	increment_count(void)
+{
+	char	*new_val;
+	char	*str_repr;
+	int		count;
+
+	new_val = NULL;
+	str_repr = NULL;
+	count = 0;
+	str_repr = ft_getenv("SHLVL");
+	if (str_repr)
+	{
+		count = ft_atoi(str_repr) + 1;
+		new_val = ft_itoa(count, new_val, DEC_BASE);
+		ft_setenv("SHLVL", new_val, true);
+		ft_strdel(&new_val);
+	}
+}
 
 void		load_environment(char **envp)
 {
@@ -43,4 +63,5 @@ void		load_environment(char **envp)
 		}
 		i++;
 	}
+	increment_count();
 }

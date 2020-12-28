@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 15:11:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 21:54:10 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 23:10:16 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ void	start_shell(char **envp)
 {
 	if (!(*envp))
 	{
-		// SHELL, SHLVL, USER
+		g_env = ft_calloc(DEFAULT_ENV, sizeof(char *));
+		if (!g_env)
+			return ;
+		set_working_dir();
+		ft_putenv(DEFAULT_SHLVL);
+		ft_putenv(DEFAULT_SHELL);
 	}
 	else
 		load_environment(envp);

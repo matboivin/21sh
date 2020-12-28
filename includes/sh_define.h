@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 21:53:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 23:12:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@
 # define DEFAULT_VALUE 0
 # define FAIL_RET -1
 # define MAX_STATES 256
+# define DEFAULT_ENV 4
+# define DEFAULT_SHLVL "SHLVL=1"
+# define DEFAULT_SHELL "SHELL=/bin/bash"
 
 /*
 ** Lexer
