@@ -6,152 +6,100 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 23:15:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 01:12:47 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <string.h>
+#include "libft_num.h"
+#include "libft_printf.h"
+#include "sh_utils.h"
+#include "sh_env.h"
 #include "sh_builtins.h"
 
 /*
 ** Recoded builtin export() without any options
 */
 
-int		valid_key(char *key)
-{
-	int	i;
+// static int		env_size(t_env *env)
+// {
+// 	int i;
 
-	i = 0;
-	if (!key)
-		return (0);
-	if (!ft_isalpha(key[0]) && key[0] != '_')
-	{
-		ft_putstr("key must begin by a letter or _\n");
-		return (0);
-	}
-	while (key[++i])
-	{
-		if (!ft_isalpha(key[i]) && !ft_isdigit(key[i]) && key[i] != '_')
-		{
-			ft_putstr("variable must contain only letters, digits or _\n");
-			return (0);
-		}
-	}
-	return (1);
-}
+// 	i = 0;
+// 	while (env)
+// 	{
+// 		i++;
+// 		env = env->next;
+// 	}
+// 	return (i);
+// }
 
-static int		env_size(t_env *env)
-{
-	int i;
+// static t_env	*get_by_id(t_env *env, int n)
+// {
+// 	int i;
 
-	i = 0;
-	while (env)
-	{
-		i++;
-		env = env->next;
-	}
-	return (i);
-}
+// 	i = -1;
+// 	while (++i < n)
+// 		env = env->next;
+// 	return (env);
+// }
 
-static t_env	*get_by_id(t_env *env, int n)
-{
-	int i;
+// static void	sort_by_ascii(t_env *env, int *t, int size)
+// {
+// 	int	i;
+// 	int	tmp;
+// 	int	is_sorted;
 
-	i = -1;
-	while (++i < n)
-		env = env->next;
-	return (env);
-}
+// 	i = -1;
+// 	is_sorted = 0;
+// 	while (++i < size)
+// 		t[i] = i;
+// 	while (is_sorted == 0)
+// 	{
+// 		is_sorted = 1;
+// 		i = -1;
+// 		while (++i < size - 1)
+// 		{
+// 			if (ft_strcmp(get_by_id(env, t[i])->key, get_by_id(env, t[i + 1])->key) > 0)
+// 			{
+// 				tmp = t[i];
+// 				t[i] = t[i + 1];
+// 				t[i + 1] = tmp;
+// 				is_sorted = 0;
+// 			}
+// 		}
+// 	}
+// }
 
-static void	sort_by_ascii(t_env *env, int *t, int size)
-{
-	int	i;
-	int	tmp;
-	int	is_sorted;
+// int			display_export()
+// {
+// 	t_env	*current;
+// 	int		t[env_size(g_env)];
+// 	int		size;
+// 	int		i;
 
-	i = -1;
-	is_sorted = 0;
-	while (++i < size)
-		t[i] = i;
-	while (is_sorted == 0)
-	{
-		is_sorted = 1;
-		i = -1;
-		while (++i < size - 1)
-		{
-			if (ft_strcmp(get_by_id(env, t[i])->key, get_by_id(env, t[i + 1])->key) > 0)
-			{
-				tmp = t[i];
-				t[i] = t[i + 1];
-				t[i + 1] = tmp;
-				is_sorted = 0;
-			}
-		}
-	}
-}
-
-int			display_export()
-{
-	t_env	*current;
-	int		t[env_size(g_env)];
-	int		size;
-	int		i;
-
-	size = env_size(g_env);
-	i = -1;
-	sort_by_ascii(g_env, t, env_size(g_env));
-	while (++i < size)
-	{
-		current = get_by_id(g_env, t[i]);
-		if (ft_strcmp(current->key, "_") == 0)
-			continue ;
-		ft_putstr("declare -x ");
-		ft_putstr(current->key);
-		if (current->value)
-		{
-			ft_putstr("=\"");
-			ft_putstr(current->value);
-			ft_putstr("\"");
-		}
-		ft_putstr("\n");
-		current = current->next;
-	}
-	return (1);
-}
-
-int			export_variable(char *variable)
-{
-	char	**split_variable;
-	t_env	*new_env;
-	t_env	*current;
-
-	split_variable = ft_split(variable, '=');
-	current = g_env;
-	if (split_variable != NULL && valid_key(split_variable[0]))
-	{
-		while (current != NULL)
-		{
-			if (!ft_strcmp(current->key, split_variable[0]))
-			{
-				if (current->value != NULL && split_variable[1] != NULL)
-					free(current->value);
-				current->value = split_variable[1] || ft_endwith_char(variable, '=') ? split_variable[1] : current->value; // vaut null si il n'y a pas de = et vaut value sinon
-				return (1);
-			}
-			current = current->next;
-		}
-		new_env = ft_calloc(1, sizeof(t_env));
-		current = g_env;
-		while (current->next != NULL)
-			current = current->next;
-		new_env->key = split_variable[0];
-		new_env->value = split_variable[1];
-		new_env->next = NULL;
-		current->next = new_env;
-		return (1);
-	}
-	return (0);
-}
+// 	size = env_size(g_env);
+// 	i = -1;
+// 	sort_by_ascii(g_env, t, env_size(g_env));
+// 	while (++i < size)
+// 	{
+// 		current = get_by_id(g_env, t[i]);
+// 		if (ft_strcmp(current->key, "_") == 0)
+// 			continue ;
+// 		ft_putstr("declare -x ");
+// 		ft_putstr(current->key);
+// 		if (current->value)
+// 		{
+// 			ft_putstr("=\"");
+// 			ft_putstr(current->value);
+// 			ft_putstr("\"");
+// 		}
+// 		ft_putstr("\n");
+// 		current = current->next;
+// 	}
+// 	return (1);
+// }
 
 /*
 ** export [name[=value] ...]
@@ -159,16 +107,57 @@ int			export_variable(char *variable)
 **    executed commands.
 **    If VALUE is supplied, assign VALUE before exporting.
 **
+** If the name of a variable is followed by =word, then the value of that
+** variable shall be set to word.
+**
 ** returns: success
 **          non-zero if invalid option is given or NAME is invalid
 */
+
+static void	export_variable(char *key_value)
+{
+	size_t	len;
+	size_t	sep;
+	char	*equal_sign;
+	char	*key;
+	char	*value;
+	int		to_set;
+
+	key = NULL;
+	value = NULL;
+	equal_sign = NULL;
+	equal_sign = ft_strchr(key_value, ENVKEY_SEP);
+	if (!equal_sign)
+		return ;
+	sep = equal_sign - key_value;
+	len = ft_strlen(key_value) - sep;
+	if (len > 0)
+	{
+		key = ft_substr(key_value, 0, sep);
+		to_set = ft_findenv(key);
+		if (to_set != FAIL_RET)
+		{
+			if (len > 1)
+			{
+				value = ft_substr(key_value, (sep + 1), len);
+				ft_setenv(key, value, true);
+			}
+			else
+				g_env[to_set] = ft_strreplace(g_env[to_set], key_value);
+			ft_strdel(&value);
+		}
+		else
+			ft_putenv(key_value);
+		ft_strdel(&key);
+	}
+}
 
 int			export_builtin(int argc, char **argv)
 {
 	int		i;
 
-	if (argc == NO_ARGS)
-		return (display_export());
+	// if (argc == NO_ARGS)
+	// 	return (display_export());
 	i = FIRST_PARAM;
 	if (argv[FIRST_PARAM][0] == '-')
 	{
