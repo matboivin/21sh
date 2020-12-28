@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 19:00:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 22:16:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,12 @@ void			search_builtin(t_simplecmd *simple_cmd);
 */
 
 bool			contain_slash(char *cmd_path);
+
+/*
+** Retrieves the command filename
+*/
+
+size_t			get_cmd_filename(char *cmd_name);
 
 /*
 ** Checks whether the current simple command is a shell builtin

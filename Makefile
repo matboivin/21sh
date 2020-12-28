@@ -93,6 +93,7 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				is_open_file.c				\
 				get_cmd_arg_count.c			\
 				get_cmd_args.c				\
+				get_cmd_filename.c			\
 				get_files.c					\
 				redirect_stream.c			\
 				search_builtin.c			\

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:06:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 22:17:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@ void		search_builtin(t_simplecmd *simple_cmd)
 	len = 0;
 	if (contain_slash(simple_cmd->cmd_path))
 	{
-		len = ft_strlen(simple_cmd->cmd_path);
-		while (simple_cmd->cmd_path[len - 1] != '/')
-			len--;
+		len = get_cmd_filename(simple_cmd->cmd_path);
 		get_builtin(simple_cmd, simple_cmd->cmd_path + len);
 	}
 	else
