@@ -113,7 +113,8 @@ SRC_FILES	+=	check_var_name.c			\
 
 # ENV HANDLING #
 
-SRC_FILES	+=	dup_environment.c			\
+SRC_FILES	+=	declare_export.c			\
+				dup_environment.c			\
 				ft_clearenv.c				\
 				ft_findenv.c				\
 				ft_getenv.c					\

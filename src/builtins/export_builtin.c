@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 03:25:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 14:44:13 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,32 @@ static int	display_export(void)
 	char	**sorted_env;
 	int		ret;
 
+	ret = 0;
 	sorted_env = NULL;
 	sorted_env = sort_export_list();
-	if (!sorted_env)
-		return (EXIT_FAILURE);
-	i = 0;
-	ret = 0;
-	while (sorted_env[i] && (ret != FAIL_RET))
+	if (sorted_env)
 	{
-		if (ft_strncmp(sorted_env[i], "_=", 2))
-			ret = ft_printf("declare -x %s\n", sorted_env[i]);
-		i++;
-	}
-	ft_str_arr_del(sorted_env);
-	if (ret == FAIL_RET)
-	{
-		print_errno("ft_printf");
-		return (EXIT_FAILURE);
+		i = 0;
+		while (sorted_env[i] && (ret != FAIL_RET))
+		{
+			if ((ft_strncmp(sorted_env[i], "_=", 2))
+				&& (ft_strchr(sorted_env[i], ENVKEY_SEP)))
+				ret = ft_printf("declare -x %s\n", sorted_env[i]);
+			i++;
+		}
+		i = 0;
+		while (sorted_env[i] && (ret != FAIL_RET))
+		{
+			if (!ft_strchr(sorted_env[i], ENVKEY_SEP))
+				ret = ft_printf("declare -x %s\n", sorted_env[i]);
+			i++;
+		}
+		ft_str_arr_del(sorted_env);
+		if (ret == FAIL_RET)
+		{
+			print_errno("ft_printf");
+			return (EXIT_FAILURE);
+		}
 	}
 	return (EXIT_SUCCESS);
 }
@@ -85,7 +94,7 @@ static int	display_export(void)
 ** variable shall be set to word.
 */
 
-static int	assign_var(char *key_value, size_t sep, size_t len)
+static int	set_var_value(char *key_value, size_t sep, size_t len)
 {
 	char	*key;
 	char	*value;
@@ -109,7 +118,7 @@ static int	assign_var(char *key_value, size_t sep, size_t len)
 	return (ret);
 }
 
-static void	export_variable(char *key_value)
+static void	handle_variable(char *key_value)
 {
 	char	*equal_sign;
 	size_t	sep;
@@ -119,12 +128,15 @@ static void	export_variable(char *key_value)
 	equal_sign = NULL;
 	equal_sign = ft_strchr(key_value, ENVKEY_SEP);
 	if (!equal_sign)
+	{
+		declare_export(key_value);
 		return ;
+	}
 	sep = equal_sign - key_value;
 	len = ft_strlen(key_value) - sep;
 	if (len < 1)
 		return ;
-	ret = assign_var(key_value, sep, len);
+	ret = set_var_value(key_value, sep, len);
 	if (ret == FAIL_RET)
 		ft_putenv(key_value);
 }
@@ -155,10 +167,10 @@ int			export_builtin(int argc, char **argv)
 	}
 	while (i < argc)
 	{
-		if (ft_isdigit(argv[i][0]))
+		if ((!ft_isalpha(argv[i][0])) || (argv[i][0] == ENVKEY_SEP))
 			ret = handle_invalid_id(argv[CMD_NAME], argv[i]);
-		else if (ft_strchr(argv[i], ENVKEY_SEP))
-			export_variable(argv[i]);
+		else
+			handle_variable(argv[i]);
 		i++;
 	}
 	return (ret);

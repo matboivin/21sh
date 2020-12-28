@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:33:44 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 03:08:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 14:34:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,11 @@ int		ft_printenv(void);
 */
 
 int		set_working_dir(void);
+
+/*
+** Marks names for export via the environment
+*/
+
+int		declare_export(char *s);
 
 #endif

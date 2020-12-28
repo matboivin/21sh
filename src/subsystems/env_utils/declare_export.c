@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printenv.c                                      :+:      :+:    :+:   */
+/*   declare_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 20:44:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 14:39:05 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/08 19:56:56 by mboivin           #+#    #+#             */
+/*   Updated: 2020/12/28 14:34:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include <string.h>
-#include "libft_printf.h"
+#include "libft_str.h"
 #include "sh_env.h"
 
 /*
-** This function prints name and value pairs for all environment variables
+** This function marks names for export via the environment
+**
+** returns: 0 on success
+**          -1 on error
 */
 
-int			ft_printenv(void)
+int			declare_export(char *s)
 {
-	size_t	i;
-	int		ret;
+	size_t	count;
 
+	if (!s)
+		return (FAIL_RET);
+	count = ft_str_arr_len(g_env);
+	g_env = dup_environment((count + 1), true);
 	if (!g_env)
-		return (EXIT_FAILURE);
-	i = 0;
-	ret = 0;
-	while (g_env[i] && (ret != FAIL_RET))
-	{
-		if (ft_strchr(g_env[i], ENVKEY_SEP))
-			ret = ft_printf("%s\n", g_env[i]);
-		i++;
-	}
-	if (ret == FAIL_RET)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+		return (FAIL_RET);
+	g_env[count] = ft_strdup(s);
+	if (!g_env[count])
+		return (FAIL_RET);
+	return (0);
 }
