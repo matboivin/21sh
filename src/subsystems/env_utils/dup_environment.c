@@ -6,10 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 12:48:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 16:44:34 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 03:08:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include <string.h>
 #include "libft_mem.h"
 #include "libft_str.h"
@@ -19,12 +20,13 @@
 ** This function duplicates the environment
 **
 ** count: The size of the new environment
+** replace: If true, delete the current environment
 **
 ** returns: The new environment
 **          NULL otherwise
 */
 
-char		**dup_environment(size_t count)
+char		**dup_environment(size_t count, bool replace)
 {
 	char	**result;
 	size_t	i;
@@ -48,6 +50,7 @@ char		**dup_environment(size_t count)
 		}
 		i++;
 	}
-	ft_clearenv();
+	if (replace)
+		ft_clearenv();
 	return (result);
 }

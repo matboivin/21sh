@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:33:44 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 17:41:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 03:08:25 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	load_environment(char **envp);
 ** Duplicates the environment
 */
 
-char	**dup_environment(size_t count);
+char	**dup_environment(size_t count, bool replace);
 
 /*
 ** Searches for the environment variable which name is key

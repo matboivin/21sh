@@ -6,13 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 02:45:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 03:25:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <string.h>
-#include "libft_num.h"
 #include "libft_printf.h"
 #include "sh_utils.h"
 #include "sh_env.h"
@@ -30,17 +29,49 @@
 **   Mark names for export to subsequent commands via the environment
 */
 
+static char	**sort_export_list(void)
+{
+	char	**result;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	result = dup_environment(ft_str_arr_len(g_env), false);
+	if (!result)
+		return (NULL);
+	while (result[i])
+	{
+		j = 0;
+		while (result[j])
+		{
+			if (ft_strcmp(result[i], result[j]) < 0)
+				ft_strswap(&(result[j]), &(result[i]));
+			j++;
+		}
+		i++;
+	}
+	return (result);
+}
+
 static int	display_export(void)
 {
 	size_t	i;
+	char	**sorted_env;
 	int		ret;
 
-	if (!g_env)
+	sorted_env = NULL;
+	sorted_env = sort_export_list();
+	if (!sorted_env)
 		return (EXIT_FAILURE);
 	i = 0;
 	ret = 0;
-	while (g_env[i] && (ret != FAIL_RET))
-		ret = ft_printf("declare -x %s\n", g_env[i++]);
+	while (sorted_env[i] && (ret != FAIL_RET))
+	{
+		if (ft_strncmp(sorted_env[i], "_=", 2))
+			ret = ft_printf("declare -x %s\n", sorted_env[i]);
+		i++;
+	}
+	ft_str_arr_del(sorted_env);
 	if (ret == FAIL_RET)
 	{
 		print_errno("ft_printf");
@@ -97,7 +128,6 @@ static void	export_variable(char *key_value)
 	if (ret == FAIL_RET)
 		ft_putenv(key_value);
 }
-
 
 /*
 ** export [name[=value] ...]

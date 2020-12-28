@@ -6,10 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:56:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 17:13:58 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 03:09:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include <string.h>
 #include "libft_str.h"
 #include "sh_env.h"
@@ -30,7 +31,7 @@ int			ft_putenv(char *s)
 	if (!s || !ft_strchr(s, ENVKEY_SEP))
 		return (FAIL_RET);
 	count = ft_str_arr_len(g_env);
-	g_env = dup_environment(count + 1);
+	g_env = dup_environment((count + 1), true);
 	if (!g_env)
 		return (FAIL_RET);
 	g_env[count] = ft_strdup(s);
