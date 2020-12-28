@@ -106,6 +106,8 @@ Resource: [Appendix E. Exit Codes With Special Meanings](https://tldp.org/LDP/ab
 * `SIG_IGN`: Ignores the signal. Usage: `signal(SIGINT, SIG_IGN)`.
 * `SIG_DFL`: Sets the default behaviour for the signal. This is useful when you want to reset the behaviour for a signal after having made some modifications. Usage: `signal(SIGINT, SIG_DFL)`.
 
+Notes: To complete the mandatory part without the bonuses, we should be able to use `sigaction` but the latter is not an authorized function. Some cases can't be handled in a clean way.
+
 ## Parsing
 
 Steps:
