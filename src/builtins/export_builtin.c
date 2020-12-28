@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 01:21:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 01:39:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,42 +114,48 @@
 **          non-zero if invalid option is given or NAME is invalid
 */
 
-static void	export_variable(char *key_value)
+static int	assign_var(char *key_value, size_t sep, size_t len)
 {
-	size_t	len;
-	size_t	sep;
-	char	*equal_sign;
 	char	*key;
 	char	*value;
-	int		to_set;
+	int		ret;
 
-	key = NULL;
+	key = ft_substr(key_value, 0, sep);
 	value = NULL;
+	ret = ft_findenv(key);
+	if (ret != FAIL_RET)
+	{
+		if (len > 1)
+		{
+			value = ft_substr(key_value, (sep + 1), len);
+			ret = ft_setenv(key, value, true);
+			ft_strdel(&value);
+		}
+		else
+			g_env[ret] = ft_strreplace(g_env[ret], key_value);
+	}
+	ft_strdel(&key);
+	return (ret);
+}
+
+static void	export_variable(char *key_value)
+{
+	char	*equal_sign;
+	size_t	sep;
+	size_t	len;
+	int		ret;
+
 	equal_sign = NULL;
 	equal_sign = ft_strchr(key_value, ENVKEY_SEP);
 	if (!equal_sign)
 		return ;
 	sep = equal_sign - key_value;
 	len = ft_strlen(key_value) - sep;
-	if (len > 0)
-	{
-		key = ft_substr(key_value, 0, sep);
-		to_set = ft_findenv(key);
-		if (to_set != FAIL_RET)
-		{
-			if (len > 1)
-			{
-				value = ft_substr(key_value, (sep + 1), len);
-				ft_setenv(key, value, true);
-			}
-			else
-				g_env[to_set] = ft_strreplace(g_env[to_set], key_value);
-			ft_strdel(&value);
-		}
-		else
-			ft_putenv(key_value);
-		ft_strdel(&key);
-	}
+	if (len < 1)
+		return ;
+	ret = assign_var(key_value, sep, len);
+	if (ret == FAIL_RET)
+		ft_putenv(key_value);
 }
 
 int			export_builtin(int argc, char **argv)
@@ -171,7 +177,7 @@ int			export_builtin(int argc, char **argv)
 	{
 		if (ft_isdigit(argv[i][0]))
 			ret = handle_invalid_id(argv[CMD_NAME], argv[i]);
-		else
+		else if (ft_strchr(argv[i], ENVKEY_SEP))
 			export_variable(argv[i]);
 		i++;
 	}

@@ -3,7 +3,8 @@
 ## TODO
 
 - env -i
-- fix builtins: export
+- fix builtins: export sans args
 - not executable, checks supplémentaires (lstat, /dev/null...)
-- fix broken pipes
-- Norme : tokenize(), debug mode
+- fix broken pipes, redir
+- lexer: quotes, tokenize
+- Norme : debug mode
