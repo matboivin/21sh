@@ -58,5 +58,5 @@ ast.svg
 
 *.swp
 minishell
-todo.txt
+test/
 test.txt
