@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 16:49:22 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 17:17:13 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	print_marked_var(char **sorted_env)
 	{
 		while (sorted_env[i] && (ret != FAIL_RET))
 		{
-			if (!ft_strchr(sorted_env[i], ENVKEY_SEP))
+			if (!ft_strchr(sorted_env[i], ENV_VAR_SEP))
 				ret = ft_printf("declare -x %s\n", sorted_env[i]);
 			i++;
 		}
@@ -84,9 +84,9 @@ static int	print_env_var(char **sorted_env)
 		while (sorted_env[i] && (ret != FAIL_RET))
 		{
 			if ((ft_strncmp(sorted_env[i], "_=", 2))
-				&& (ft_strchr(sorted_env[i], ENVKEY_SEP)))
+				&& (ft_strchr(sorted_env[i], ENV_VAR_SEP)))
 			{
-				s = ft_split(sorted_env[i], ENVKEY_SEP);
+				s = ft_split(sorted_env[i], ENV_VAR_SEP);
 				ret = ft_printf(
 					"declare -x %s=\"%s\"\n", s[ENV_KEY], s[ENV_VAL]);
 				ft_str_arr_del(s);

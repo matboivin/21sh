@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:44:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 14:39:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 17:19:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			ft_printenv(void)
 	ret = 0;
 	while (g_env[i] && (ret != FAIL_RET))
 	{
-		if (ft_strchr(g_env[i], ENVKEY_SEP))
+		if (ft_strchr(g_env[i], ENV_VAR_SEP))
 			ret = ft_printf("%s\n", g_env[i]);
 		i++;
 	}

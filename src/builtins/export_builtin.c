@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 16:52:01 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 17:17:13 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	handle_variable(char *key_value)
 	int		ret;
 
 	equal_sign = NULL;
-	equal_sign = ft_strchr(key_value, ENVKEY_SEP);
+	equal_sign = ft_strchr(key_value, ENV_VAR_SEP);
 	if (!equal_sign)
 	{
 		declare_export(key_value);
