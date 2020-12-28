@@ -29,6 +29,7 @@ SRC_FILES	=	main.c
 # BUILT-IN FUNCTIONS #
 
 SRC_FILES	+=	cd_builtin.c				\
+				display_export.c			\
 				echo_builtin.c				\
 				env_builtin.c				\
 				exit_builtin.c				\
@@ -113,8 +114,7 @@ SRC_FILES	+=	check_var_name.c			\
 
 # ENV HANDLING #
 
-SRC_FILES	+=	declare_export.c			\
-				dup_environment.c			\
+SRC_FILES	+=	dup_environment.c			\
 				ft_clearenv.c				\
 				ft_findenv.c				\
 				ft_getenv.c					\

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 14:44:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 14:48:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,71 +22,23 @@
 */
 
 /*
-** If no names are given, or if the -p option is supplied, a list of names of
-** all exported variables is printed.
-**
-** declare -x
-**   Mark names for export to subsequent commands via the environment
+** This function marks names for export via the environment
 */
 
-static char	**sort_export_list(void)
+static int	declare_export(char *var)
 {
-	char	**result;
-	size_t	i;
-	size_t	j;
+	size_t	count;
 
-	i = 0;
-	result = dup_environment(ft_str_arr_len(g_env), false);
-	if (!result)
-		return (NULL);
-	while (result[i])
-	{
-		j = 0;
-		while (result[j])
-		{
-			if (ft_strcmp(result[i], result[j]) < 0)
-				ft_strswap(&(result[j]), &(result[i]));
-			j++;
-		}
-		i++;
-	}
-	return (result);
-}
-
-static int	display_export(void)
-{
-	size_t	i;
-	char	**sorted_env;
-	int		ret;
-
-	ret = 0;
-	sorted_env = NULL;
-	sorted_env = sort_export_list();
-	if (sorted_env)
-	{
-		i = 0;
-		while (sorted_env[i] && (ret != FAIL_RET))
-		{
-			if ((ft_strncmp(sorted_env[i], "_=", 2))
-				&& (ft_strchr(sorted_env[i], ENVKEY_SEP)))
-				ret = ft_printf("declare -x %s\n", sorted_env[i]);
-			i++;
-		}
-		i = 0;
-		while (sorted_env[i] && (ret != FAIL_RET))
-		{
-			if (!ft_strchr(sorted_env[i], ENVKEY_SEP))
-				ret = ft_printf("declare -x %s\n", sorted_env[i]);
-			i++;
-		}
-		ft_str_arr_del(sorted_env);
-		if (ret == FAIL_RET)
-		{
-			print_errno("ft_printf");
-			return (EXIT_FAILURE);
-		}
-	}
-	return (EXIT_SUCCESS);
+	if (!var)
+		return (FAIL_RET);
+	count = ft_str_arr_len(g_env);
+	g_env = dup_environment((count + 1), true);
+	if (!g_env)
+		return (FAIL_RET);
+	g_env[count] = ft_strdup(var);
+	if (!g_env[count])
+		return (FAIL_RET);
+	return (0);
 }
 
 /*

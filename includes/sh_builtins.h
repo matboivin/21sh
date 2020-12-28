@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:53:13 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/25 23:45:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 14:51:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ int		exit_builtin(int argc, char **argv);
 */
 
 int		export_builtin(int argc, char **argv);
+
+/*
+** Displays all exported variables
+*/
+
+int		display_export(void);
 
 /*
 ** Recoded builtin pwd() without any options
