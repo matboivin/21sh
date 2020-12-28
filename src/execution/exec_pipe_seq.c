@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:14:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 00:58:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void			exec_pipe_seq(t_shctrl *ft_sh, t_cmd *cmd)
 	t_streams	pipe_redir;
 	int			wstatus;
 
+	pid = -1;
+	wstatus = -1;
 	backup_streams(&backup, &(pipe_redir.input));
 	while (cmd->curr_cmd < cmd->cmd_count)
 	{
