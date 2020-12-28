@@ -122,6 +122,7 @@ SRC_FILES	+=	dup_environment.c			\
 				ft_putenv.c					\
 				ft_setenv.c					\
 				ft_unsetenv.c				\
+				is_valid_identifier.c		\
 				load_environment.c			\
 				set_working_dir.c
 

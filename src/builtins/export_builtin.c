@@ -6,13 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 14:48:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 15:29:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <string.h>
-#include "libft_printf.h"
+#include "libft_str.h"
 #include "sh_utils.h"
 #include "sh_env.h"
 #include "sh_builtins.h"
@@ -37,7 +37,10 @@ static int	declare_export(char *var)
 		return (FAIL_RET);
 	g_env[count] = ft_strdup(var);
 	if (!g_env[count])
+	{
+		print_errno("export");
 		return (FAIL_RET);
+	}
 	return (0);
 }
 
@@ -67,6 +70,7 @@ static int	set_var_value(char *key_value, size_t sep, size_t len)
 			g_env[ret] = ft_strreplace(g_env[ret], key_value);
 	}
 	ft_strdel(&key);
+	print_errno("export");
 	return (ret);
 }
 
@@ -119,7 +123,7 @@ int			export_builtin(int argc, char **argv)
 	}
 	while (i < argc)
 	{
-		if ((!ft_isalpha(argv[i][0])) || (argv[i][0] == ENVKEY_SEP))
+		if (!is_valid_identifier(argv[i]))
 			ret = handle_invalid_id(argv[CMD_NAME], argv[i]);
 		else
 			handle_variable(argv[i]);
