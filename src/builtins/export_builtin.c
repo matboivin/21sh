@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 17:17:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 22:49:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int			export_builtin(int argc, char **argv)
 	if (argv[FIRST_PARAM][0] == '-')
 	{
 		handle_invalid_opt(argv[CMD_NAME], argv[FIRST_PARAM]);
-		print_builtin_usage("export", "export [name[=value]");
+		print_builtin_usage("export", "export [name[=value] ...]");
 		return (EXIT_FAILURE);
 	}
 	while (i < argc)
