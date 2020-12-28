@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:57:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 01:20:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@
 
 static bool		command_found(char **cmd_path, char *path_to_check)
 {
-	bool		ret_val;
+	bool		ret;
 	struct stat	statbuf;
 
-	ret_val = false;
+	ret = false;
 	// TODO: Check permissions
 	if (lstat(path_to_check, &statbuf) != FAIL_RET)
 	{
-		ret_val = true;
+		ret = true;
 		*cmd_path = ft_strreplace(*cmd_path, path_to_check);
 	}
 	ft_strdel(&path_to_check);
-	return (ret_val);
+	return (ret);
 }
 
 static char		*get_path_value(void)

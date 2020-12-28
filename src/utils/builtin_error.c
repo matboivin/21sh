@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 22:51:07 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 01:20:08 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int		handle_arg_err(char *cmd_name)
 int		handle_invalid_id(char *cmd_name, char *var_name)
 {
 	g_status = EXIT_FAILURE;
-	print_error(3, cmd_name, var_name, "not a valid identifier");
+	ft_dprintf(
+		STDERR_FILENO,
+		"%s: %s: `%s': not a valid identifier\n",
+		SHELL_NAME, cmd_name, var_name);
 	return (EXIT_FAILURE);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 03:08:32 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 01:20:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static void	handle_eof(t_shctrl *ft_sh)
 
 static int	prompt_user(t_shctrl *ft_sh, char *prompt)
 {
-	int		ret_val;
+	int		ret;
 
-	ret_val = 0;
+	ret = 0;
 	if (prompt)
 	{
 		ft_sh->lexer->input = ft_readline(prompt);
@@ -47,9 +47,9 @@ static int	prompt_user(t_shctrl *ft_sh, char *prompt)
 		ft_sh->lexer->input = ft_readline(PS1);
 	if (!ft_sh->lexer->input)
 		handle_eof(ft_sh);
-	ret_val = tokenize(ft_sh->lexer);
+	ret = tokenize(ft_sh->lexer);
 	ft_strdel(&ft_sh->lexer->input);
-	return (ret_val);
+	return (ret);
 }
 
 /*
@@ -58,15 +58,15 @@ static int	prompt_user(t_shctrl *ft_sh, char *prompt)
 
 int			get_command(t_shctrl *ft_sh)
 {
-	int		ret_val;
+	int		ret;
 
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	if (!ft_sh->lexer)
 		exit_shell(ft_sh);
-	ret_val = prompt_user(ft_sh, create_prompt());
-	while (ret_val == 1)
-		ret_val = prompt_user(ft_sh, PS2);
-	if (ret_val == EXIT_SUCCESS)
-		ret_val = parse(&(ft_sh->ast), ft_sh->lexer);
-	return (ret_val);
+	ret = prompt_user(ft_sh, create_prompt());
+	while (ret == 1)
+		ret = prompt_user(ft_sh, PS2);
+	if (ret == EXIT_SUCCESS)
+		ret = parse(&(ft_sh->ast), ft_sh->lexer);
+	return (ret);
 }

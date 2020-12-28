@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:44:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:59:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 01:20:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@
 int			ft_printenv(void)
 {
 	size_t	i;
-	int		ret_val;
+	int		ret;
 
 	if (!g_env)
 		return (EXIT_FAILURE);
 	i = 0;
-	ret_val = 0;
-	while (g_env[i] && (ret_val != FAIL_RET))
-		ret_val = ft_printf("%s\n", g_env[i++]);
-	if (ret_val == FAIL_RET)
+	ret = 0;
+	while (g_env[i] && (ret != FAIL_RET))
+		ret = ft_printf("%s\n", g_env[i++]);
+	if (ret == FAIL_RET)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

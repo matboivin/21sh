@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 23:02:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 01:21:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@
 
 int		unset_builtin(int argc, char **argv)
 {
+	int	ret;
 	int	i;
 
+	ret = EXIT_SUCCESS;
 	if (argc == NO_ARGS)
 		return (EXIT_SUCCESS);
 	i = FIRST_PARAM;
@@ -42,10 +44,10 @@ int		unset_builtin(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_isdigit(argv[i][0]))
-			return (handle_invalid_id(argv[CMD_NAME], argv[i]));
+			ret = handle_invalid_id(argv[CMD_NAME], argv[i]);
 		else
 			ft_unsetenv(argv[i]);
 		i++;
 	}
-	return (EXIT_SUCCESS);
+	return (ret);
 }

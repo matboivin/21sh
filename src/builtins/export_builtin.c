@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 01:12:47 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 01:21:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,12 @@ static void	export_variable(char *key_value)
 
 int			export_builtin(int argc, char **argv)
 {
+	int		ret;
 	int		i;
 
 	// if (argc == NO_ARGS)
 	// 	return (display_export());
+	ret = EXIT_SUCCESS;
 	i = FIRST_PARAM;
 	if (argv[FIRST_PARAM][0] == '-')
 	{
@@ -168,10 +170,10 @@ int			export_builtin(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_isdigit(argv[i][0]))
-			return (handle_invalid_id(argv[CMD_NAME], argv[i]));
+			ret = handle_invalid_id(argv[CMD_NAME], argv[i]);
 		else
 			export_variable(argv[i]);
 		i++;
 	}
-	return (EXIT_SUCCESS);
+	return (ret);
 }

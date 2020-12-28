@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:49:07 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 01:20:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,21 @@ static int	set_directory(char *cmd_name, char *dir)
 static int	change_to_directory(char *cmd_name, char *dir_name)
 {
 	char	*path;
-	int		ret_val;
+	int		ret;
 
 	path = NULL;
-	ret_val = EXIT_FAILURE;
+	ret = EXIT_FAILURE;
 	if (!ft_getenv(dir_name))
 	{
 		handle_env_not_set(cmd_name, dir_name);
-		return (ret_val);
+		return (ret);
 	}
 	path = ft_strdup(ft_getenv(dir_name));
 	if (!path)
-		return (ret_val);
-	ret_val = set_directory(cmd_name, path);
+		return (ret);
+	ret = set_directory(cmd_name, path);
 	ft_strdel(&path);
-	return (ret_val);
+	return (ret);
 }
 
 /*
@@ -102,20 +102,20 @@ static int	change_to_directory(char *cmd_name, char *dir_name)
 
 int			cd_builtin(int argc, char **argv)
 {
-	int		ret_val;
+	int		ret;
 
-	ret_val = 0;
+	ret = 0;
 	if (argc > 2)
 		return (handle_arg_err(argv[CMD_NAME]));
 	if (argc == NO_ARGS)
-		ret_val = change_to_directory(argv[CMD_NAME], "HOME");
+		ret = change_to_directory(argv[CMD_NAME], "HOME");
 	else if (!ft_strcmp(argv[FIRST_PARAM], "-"))
 	{
-		ret_val = change_to_directory(argv[CMD_NAME], "OLDPWD");
-		if (!ret_val)
+		ret = change_to_directory(argv[CMD_NAME], "OLDPWD");
+		if (!ret)
 			ft_printf("%s\n", ft_getenv("PWD"));
 	}
 	else
-		ret_val = set_directory(argv[CMD_NAME], argv[FIRST_PARAM]);
-	return (ret_val);
+		ret = set_directory(argv[CMD_NAME], argv[FIRST_PARAM]);
+	return (ret);
 }
