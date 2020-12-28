@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 01:39:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/28 02:45:39 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,96 +22,36 @@
 ** Recoded builtin export() without any options
 */
 
-// static int		env_size(t_env *env)
-// {
-// 	int i;
+/*
+** If no names are given, or if the -p option is supplied, a list of names of
+** all exported variables is printed.
+**
+** declare -x
+**   Mark names for export to subsequent commands via the environment
+*/
 
-// 	i = 0;
-// 	while (env)
-// 	{
-// 		i++;
-// 		env = env->next;
-// 	}
-// 	return (i);
-// }
+static int	display_export(void)
+{
+	size_t	i;
+	int		ret;
 
-// static t_env	*get_by_id(t_env *env, int n)
-// {
-// 	int i;
-
-// 	i = -1;
-// 	while (++i < n)
-// 		env = env->next;
-// 	return (env);
-// }
-
-// static void	sort_by_ascii(t_env *env, int *t, int size)
-// {
-// 	int	i;
-// 	int	tmp;
-// 	int	is_sorted;
-
-// 	i = -1;
-// 	is_sorted = 0;
-// 	while (++i < size)
-// 		t[i] = i;
-// 	while (is_sorted == 0)
-// 	{
-// 		is_sorted = 1;
-// 		i = -1;
-// 		while (++i < size - 1)
-// 		{
-// 			if (ft_strcmp(get_by_id(env, t[i])->key, get_by_id(env, t[i + 1])->key) > 0)
-// 			{
-// 				tmp = t[i];
-// 				t[i] = t[i + 1];
-// 				t[i + 1] = tmp;
-// 				is_sorted = 0;
-// 			}
-// 		}
-// 	}
-// }
-
-// int			display_export()
-// {
-// 	t_env	*current;
-// 	int		t[env_size(g_env)];
-// 	int		size;
-// 	int		i;
-
-// 	size = env_size(g_env);
-// 	i = -1;
-// 	sort_by_ascii(g_env, t, env_size(g_env));
-// 	while (++i < size)
-// 	{
-// 		current = get_by_id(g_env, t[i]);
-// 		if (ft_strcmp(current->key, "_") == 0)
-// 			continue ;
-// 		ft_putstr("declare -x ");
-// 		ft_putstr(current->key);
-// 		if (current->value)
-// 		{
-// 			ft_putstr("=\"");
-// 			ft_putstr(current->value);
-// 			ft_putstr("\"");
-// 		}
-// 		ft_putstr("\n");
-// 		current = current->next;
-// 	}
-// 	return (1);
-// }
+	if (!g_env)
+		return (EXIT_FAILURE);
+	i = 0;
+	ret = 0;
+	while (g_env[i] && (ret != FAIL_RET))
+		ret = ft_printf("declare -x %s\n", g_env[i++]);
+	if (ret == FAIL_RET)
+	{
+		print_errno("ft_printf");
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
 
 /*
-** export [name[=value] ...]
-**    Marks each NAME for automatic export to the environment of subsequently
-**    executed commands.
-**    If VALUE is supplied, assign VALUE before exporting.
-**
 ** If the name of a variable is followed by =word, then the value of that
 ** variable shall be set to word.
-**
-** returns: success
-**          non-zero if invalid option is given or NAME is invalid
 */
 
 static int	assign_var(char *key_value, size_t sep, size_t len)
@@ -158,13 +98,23 @@ static void	export_variable(char *key_value)
 		ft_putenv(key_value);
 }
 
+
+/*
+** export [name[=value] ...]
+**    Marks each NAME for automatic export to the environment of subsequently
+**    executed commands.
+**
+** returns: success
+**          non-zero if invalid option is given or NAME is invalid
+*/
+
 int			export_builtin(int argc, char **argv)
 {
 	int		ret;
 	int		i;
 
-	// if (argc == NO_ARGS)
-	// 	return (display_export());
+	if (argc == NO_ARGS)
+		return (display_export());
 	ret = EXIT_SUCCESS;
 	i = FIRST_PARAM;
 	if (argv[FIRST_PARAM][0] == '-')
