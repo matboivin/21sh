@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 17:17:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:19:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,24 @@ static char	**sort_export_list(void)
 	return (result);
 }
 
-static int	print_marked_var(char **sorted_env)
+static int	print_key_value(char *sorted_env)
+{
+	int		ret;
+	char	**s;
+
+	ret = EXIT_SUCCESS;
+	s = ft_split(sorted_env, ENV_VAR_SEP);
+	if (!(*s))
+		return (FAIL_RET);
+	if (s[ENV_KEY] && s[ENV_VAL])
+		ret = ft_printf("declare -x %s=\"%s\"\n", s[ENV_KEY], s[ENV_VAL]);
+	else if (s[ENV_KEY])
+		ret = ft_printf("declare -x %s=\n", s[ENV_KEY]);
+	ft_str_arr_del(s);
+	return (ret);
+}
+
+static int	print_env_var(char **sorted_env)
 {
 	size_t	i;
 	int		ret;
@@ -64,33 +81,8 @@ static int	print_marked_var(char **sorted_env)
 		{
 			if (!ft_strchr(sorted_env[i], ENV_VAR_SEP))
 				ret = ft_printf("declare -x %s\n", sorted_env[i]);
-			i++;
-		}
-		return (ret);
-	}
-	return (FAIL_RET);
-}
-
-static int	print_env_var(char **sorted_env)
-{
-	size_t	i;
-	int		ret;
-	char	**s;
-
-	i = 0;
-	ret = EXIT_SUCCESS;
-	if (sorted_env && sorted_env[i])
-	{
-		while (sorted_env[i] && (ret != FAIL_RET))
-		{
-			if ((ft_strncmp(sorted_env[i], "_=", 2))
-				&& (ft_strchr(sorted_env[i], ENV_VAR_SEP)))
-			{
-				s = ft_split(sorted_env[i], ENV_VAR_SEP);
-				ret = ft_printf(
-					"declare -x %s=\"%s\"\n", s[ENV_KEY], s[ENV_VAL]);
-				ft_str_arr_del(s);
-			}
+			else if (ft_strncmp(sorted_env[i], "_=", 2))
+				ret = print_key_value(sorted_env[i]);
 			i++;
 		}
 		return (ret);
@@ -108,8 +100,6 @@ int			display_export(void)
 	if (sorted_env)
 	{
 		ret = print_env_var(sorted_env);
-		if (ret != FAIL_RET)
-			ret = print_marked_var(sorted_env);
 		ft_str_arr_del(sorted_env);
 		if (ret == FAIL_RET)
 		{

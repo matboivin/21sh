@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_var_name.c                                   :+:      :+:    :+:   */
+/*   get_var_len.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:43:04 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:31:45 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:34:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 /*
 ** This function checks an environment variable name format:
 ** underscores, digits, and ASCII letters, and that begin with a non-digit
+** and returns its length
 */
 
-size_t		check_var_name(char *s)
+size_t		get_var_len(char *s)
 {
 	size_t	i;
 

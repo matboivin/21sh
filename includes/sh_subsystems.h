@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 12:38:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:34:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ void	remove_quotes(char **data);
 /*
 ** Checks an environment variable name format:
 ** underscores, digits, and ASCII letters, and that begin with a non-digit
+** and returns its length
 */
 
-size_t	check_var_name(char *s);
+size_t	get_var_len(char *s);
 
 #endif

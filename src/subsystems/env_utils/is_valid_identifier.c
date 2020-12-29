@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 15:08:34 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 18:01:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:30:30 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include "sh_env.h"
 
 /*
-** This function checks whether an environment variable name begins by a letter
-** or by an underscore, and not by an equal sign
+** This function checks an environment variable name format:
+** underscores, digits, and ASCII letters, and that begin with a non-digit
 */
 
 int		is_valid_identifier(char *s)
@@ -28,7 +28,7 @@ int		is_valid_identifier(char *s)
 		return (0);
 	while (s[i])
 	{
-		if ((!ft_isalpha(s[i])) || (s[i] != '_'))
+		if ((!ft_isalnum(s[i])) && (s[i] != '_') && (s[i] != ENV_VAR_SEP))
 			return (0);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 17:10:12 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 01:32:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:32:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*get_var_name(char *data, size_t *i)
 	if (data[*i + key_len] == '?')
 		key_len++;
 	else
-		key_len = check_var_name(data + *i);
+		key_len = get_var_len(data + *i);
 	if (key_len)
 	{
 		key = ft_substr(data, *i, key_len);

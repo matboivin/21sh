@@ -104,8 +104,8 @@ SRC_FILES	+=	add_simple_cmd.c			\
 
 # SUBSYSTEMS #
 
-SRC_FILES	+=	check_var_name.c			\
-				create_prompt.c				\
+SRC_FILES	+=	create_prompt.c				\
+				get_var_len.c				\
 				handle_fatal_error.c		\
 				register_signal_handlers.c	\
 				remove_quotes.c				\
