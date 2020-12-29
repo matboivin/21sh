@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 22:49:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:45:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,21 @@ static int	declare_export(char *var)
 {
 	size_t	count;
 
+	count = 0;
 	if (!var)
 		return (FAIL_RET);
-	count = ft_str_arr_len(g_env);
-	g_env = dup_environment((count + 1), true);
-	if (!g_env)
-		return (FAIL_RET);
-	g_env[count] = ft_strdup(var);
-	if (!g_env[count])
+	if (!ft_findenv(var))
 	{
-		print_errno("export");
-		return (FAIL_RET);
+		count = ft_str_arr_len(g_env);
+		g_env = dup_environment((count + 1), true);
+		if (!g_env)
+			return (FAIL_RET);
+		g_env[count] = ft_strdup(var);
+		if (!g_env[count])
+		{
+			print_errno("export");
+			return (FAIL_RET);
+		}
 	}
 	return (0);
 }

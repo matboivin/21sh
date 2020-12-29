@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:08:57 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 17:19:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 21:08:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int		ft_findenv(char *key)
 	i = 0;
 	while (g_env && g_env[i])
 	{
+		if (!ft_strchr(key, ENV_VAR_SEP))
+		{
+			if (!ft_strncmp(g_env[i], key, ft_strlen(key)))
+				return (i);
+		}
 		if (ft_strcmp(g_env[i], key) == ENV_VAR_SEP)
 			return (i);
 		i++;

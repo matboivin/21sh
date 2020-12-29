@@ -177,6 +177,8 @@ digraph graphname {
   - Else
     - node = node->right
 
+- [Gnu.org: Command Execution Environment](https://www.gnu.org/software/bash/manual/html_node/Command-Execution-Environment.html)
+
 ### Tree traversal / Visitor pattern
 
 Pre-order (NLR) seems the most appropriate search but I didn't apply it.
@@ -316,6 +318,9 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 
 - [Pipe | Redirection < > Precedence](https://stackoverflow.com/questions/12942042/pipe-redirection-precedence
 )
+
+> The output of each command in the pipeline is connected via a pipe to the input of the next command. That is, each command reads the previous command’s output. This connection is performed before any redirections specified by the command.  [(Source)](https://www.gnu.org/software/bash/manual/html_node/Pipelines.html#Pipelines)
+
 # Builtin commands
 
 - [Gnu.org: Bourne Shell Builtins](https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html)

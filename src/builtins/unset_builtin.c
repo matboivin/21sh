@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 17:03:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:55:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,6 @@
 ** This function unsets names marked for export
 */
 
-static int	find_export(char *key)
-{
-	int	i;
-
-	if (!g_env || !key)
-		return (FAIL_RET);
-	i = 0;
-	while (g_env && g_env[i])
-	{
-		if (!ft_strcmp(g_env[i], key))
-			return (i);
-		i++;
-	}
-	return (FAIL_RET);
-}
-
 static int	unset_export(char *var)
 {
 	size_t	count;
@@ -49,7 +33,7 @@ static int	unset_export(char *var)
 	to_set = 0;
 	if (!var)
 		return (FAIL_RET);
-	to_set = find_export(var);
+	to_set = ft_findenv(var);
 	if (to_set != FAIL_RET)
 	{
 		g_env[to_set] = ft_strreplace(g_env[to_set], EMPTY_STR);
@@ -89,7 +73,7 @@ int			unset_builtin(int argc, char **argv)
 	}
 	while (i < argc)
 	{
-		if (!is_valid_identifier(argv[i]))
+		if ((!is_valid_identifier(argv[i])) || ft_strchr(argv[i], ENV_VAR_SEP))
 			ret = handle_invalid_id(argv[CMD_NAME], argv[i]);
 		else
 		{

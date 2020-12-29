@@ -61,6 +61,8 @@
 - [Grammars and Parsing](http://www.cs.cornell.edu/courses/cs2112/2015fa/lectures/lec_parsing/)
 - [Lexing, Parsing & Evaluation](http://www-igm.univ-mlv.fr/~forax/ens/java-avance/cours/pdf/old/Generation%20de%20code%201.pdf)
 - [Lecture 4: Implementing Lexers and Parsers](http://www.cse.chalmers.se/edu/year/2015/course/DAT150/lectures/proglang-04.html)
+- [Precedence of the shell logical operators &&, ||](https://unix.stackexchange.com/questions/88850/precedence-of-the-shell-logical-operators)
+- [Pipe | Redirection < > Precedence](https://stackoverflow.com/questions/12942042/pipe-redirection-precedence)
 
 ### AST
 
