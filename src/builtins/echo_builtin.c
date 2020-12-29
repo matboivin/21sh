@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:55:17 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 20:57:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 17:37:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,55 @@
 **          non-zero if a write error occurs
 */
 
-static void	handle_newline_opt(char *arg, bool *newline, int *i)
+static int	handle_newline_opt(char *arg, int *i, bool *newline)
 {
-	if (!ft_strcmp(arg, "-n"))
+	size_t	j;
+
+	j = 0;
+	if (arg[j] == '-')
+		j++;
+	else
+		return (0);
+	while (arg[j] && arg[j] == 'n')
+		j++;
+	if (arg[j] && arg[j] != 'n')
+		return (0);
+	*newline = false;
+	(*i)++;
+	return (1);
+}
+
+static int	dislay_args(int argc, char *arg, int *i)
+{
+	int		ret;
+
+	ret = ft_printf("%s", arg);
+	(*i)++;
+	if (ret != FAIL_RET)
 	{
-		*newline = false;
-		(*i)++;
+		if (*i < argc)
+			ret = ft_printf(" ");
 	}
+	return (ret);
 }
 
 int			echo_builtin(int argc, char **argv)
 {
 	int		i;
+	int		ret;
 	int		write_ret;
 	bool	newline;
 
 	i = FIRST_PARAM;
+	ret = 1;
 	write_ret = 0;
 	newline = true;
 	if (argc > NO_ARGS)
-		handle_newline_opt(argv[FIRST_PARAM], &newline, &i);
-	while ((i < argc) && (write_ret != FAIL_RET))
 	{
-		write_ret = ft_printf("%s", argv[i]);
-		if (i + 1 < argc)
-			write_ret = ft_printf(" ");
-		i++;
+		while (i < argc && ret)
+			ret = handle_newline_opt(argv[i], &i, &newline);
+		while ((i < argc) && (write_ret != FAIL_RET))
+			write_ret = dislay_args(argc, argv[i], &i);
 	}
 	if (newline && (write_ret != FAIL_RET))
 		write_ret = ft_printf("\n");
