@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:14:01 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 17:19:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 21:51:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 static int	check_arg_fmt(char *key, char *new_value)
 {
 	if (
-		!g_env || !key || !new_value || !ft_strcmp(key, EMPTY_STR)
-		|| ft_strchr(key, ENV_VAR_SEP) || ft_strchr(new_value, ENV_VAR_SEP))
+		!g_env || !key || !new_value
+		|| !ft_strcmp(key, EMPTY_STR) || ft_strchr(key, ENV_VAR_SEP))
 		return (0);
 	return (1);
 }

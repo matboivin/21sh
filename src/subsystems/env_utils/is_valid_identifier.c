@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 15:08:34 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 18:30:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 22:50:03 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int		is_valid_identifier(char *s)
 	int	i;
 
 	i = 0;
-	if (s[i] == ENV_VAR_SEP)
+	if ((s[i] == ENV_VAR_SEP) || (ft_isdigit(s[i])))
 		return (0);
-	while (s[i])
+	while (s[i] && (s[i] != ENV_VAR_SEP))
 	{
-		if ((!ft_isalnum(s[i])) && (s[i] != '_') && (s[i] != ENV_VAR_SEP))
+		if ((!ft_isalnum(s[i])) && (s[i] != '_'))
 			return (0);
 		i++;
 	}

@@ -50,7 +50,7 @@ SRC_FILES	+=	add_token_to_lexer.c		\
 				escape_char.c				\
 				get_token.c					\
 				get_next_token.c			\
-				handle_quote.c				\
+				handle_quotes.c				\
 				handle_text.c				\
 				handle_token.c				\
 				increase_lexer.c			\

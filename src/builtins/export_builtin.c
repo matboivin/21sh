@@ -6,12 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 18:45:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 22:44:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <string.h>
+#include "libft_printf.h"
 #include "libft_str.h"
 #include "sh_utils.h"
 #include "sh_env.h"
@@ -32,7 +33,7 @@ static int	declare_export(char *var)
 	count = 0;
 	if (!var)
 		return (FAIL_RET);
-	if (!ft_findenv(var))
+	if (ft_findenv(var) == FAIL_RET)
 	{
 		count = ft_str_arr_len(g_env);
 		g_env = dup_environment((count + 1), true);
@@ -64,7 +65,7 @@ static int	set_var_value(char *key_value, size_t sep, size_t len)
 	ret = ft_findenv(key);
 	if (ret != FAIL_RET)
 	{
-		if (len > 1)
+		if (len > 0)
 		{
 			value = ft_substr(key_value, (sep + 1), len);
 			ret = ft_setenv(key, value, true);
@@ -92,9 +93,7 @@ static void	handle_variable(char *key_value)
 		return ;
 	}
 	sep = equal_sign - key_value;
-	len = ft_strlen(key_value) - sep;
-	if (len < 1)
-		return ;
+	len = ft_strlen(key_value) - sep - 1;
 	ret = set_var_value(key_value, sep, len);
 	if (ret == FAIL_RET)
 		ft_putenv(key_value);

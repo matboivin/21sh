@@ -75,6 +75,7 @@
 - [Linux Directory Structure Explained for Beginners](https://linuxhandbook.com/linux-directory-structure/#-dev-device-files)
 - [Forward Slash Definition](http://www.linfo.org/forward_slash.html)
 - [Wiki: DOT (graph description language)](https://en.wikipedia.org/wiki/DOT_(graph_description_language))
+- [Wiki: Trie](https://en.wikipedia.org/wiki/Trie)
 
 ## Tutorials
 

@@ -6,18 +6,17 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:54:28 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 22:59:39 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft_str.h"
 #include "sh_lexer.h"
 
 /*
 ** This function splits the input string into tokens
 */
-
-// TODO: Norm (25 lines)
 
 static int	is_quote(int c)
 {
@@ -28,30 +27,27 @@ int			tokenize(t_lexer *lexer)
 {
 	t_regex	token;
 	char	*stack;
+	int		ret;
 
 	stack = NULL;
+	ret = EXIT_SUCCESS;
 	lexer->pos = DEFAULT_VALUE;
-	while (lexer->input[lexer->pos])
+	while (lexer->input[lexer->pos] && !ret)
 	{
 		token = get_token(lexer->input + lexer->pos);
 		if (lexer->input[lexer->pos] == COMMENT_START)
 			break ;
 		if (lexer->input[lexer->pos] == BACKSLASH)
-		{
-			if (escape_char(lexer, &stack))
-				return (1);
-		}
+			ret = escape_char(lexer, &stack);
 		else if (is_quote(lexer->input[lexer->pos]))
-		{
-			if (handle_quotes(lexer) == FAIL_RET)
-				return (FAIL_RET);
-		}
+			ret = handle_quotes(lexer);
 		else if (token.type)
 			handle_token(lexer, token, &stack);
 		else
 			stack = push_char(lexer, stack);
 	}
-	if (stack)
+	if (stack && !ret)
 		handle_text(lexer, &stack);
-	return (EXIT_SUCCESS);
+	ft_strdel(&stack);
+	return (ret);
 }

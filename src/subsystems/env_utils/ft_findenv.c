@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:08:57 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 21:08:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 21:59:50 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,29 @@
 **          -1 otherwise
 */
 
-int		ft_findenv(char *key)
+int			get_env_len(char *env)
 {
-	int	i;
+	int		i;
 
+	i = 0;
+	while (env[i] && env[i] != ENV_VAR_SEP)
+		i++;
+	return (i);
+}
+
+int			ft_findenv(char *key)
+{
+	int		i;
+	int		len;
+
+	i = 0;
+	len = 0;
 	if (!g_env || !key)
 		return (FAIL_RET);
-	i = 0;
 	while (g_env && g_env[i])
 	{
-		if (!ft_strchr(key, ENV_VAR_SEP))
-		{
-			if (!ft_strncmp(g_env[i], key, ft_strlen(key)))
-				return (i);
-		}
-		if (ft_strcmp(g_env[i], key) == ENV_VAR_SEP)
+		len = get_env_len(g_env[i]);
+		if (!ft_strncmp(g_env[i], key, len))
 			return (i);
 		i++;
 	}

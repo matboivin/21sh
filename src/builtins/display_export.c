@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 18:19:35 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/29 22:34:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,19 @@ static char	**sort_export_list(void)
 static int	print_key_value(char *sorted_env)
 {
 	int		ret;
-	char	**s;
+	size_t	i;
+	size_t	len;
+	char	*value;
 
-	ret = EXIT_SUCCESS;
-	s = ft_split(sorted_env, ENV_VAR_SEP);
-	if (!(*s))
+	value = NULL;
+	if (!sorted_env)
 		return (FAIL_RET);
-	if (s[ENV_KEY] && s[ENV_VAL])
-		ret = ft_printf("declare -x %s=\"%s\"\n", s[ENV_KEY], s[ENV_VAL]);
-	else if (s[ENV_KEY])
-		ret = ft_printf("declare -x %s=\n", s[ENV_KEY]);
-	ft_str_arr_del(s);
+	ret = EXIT_SUCCESS;
+	i = get_env_len(sorted_env);
+	len = ft_strlen(sorted_env) - i;
+	value = ft_substr(sorted_env, (i + 1), len);
+	ret = ft_printf("declare -x %.*s=\"%s\"\n", i, sorted_env, value);
+	ft_strdel(&value);
 	return (ret);
 }
 
