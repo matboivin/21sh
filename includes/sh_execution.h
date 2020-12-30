@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 18:32:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 20:41:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ bool			is_open_file(int fd);
 ** Opens files for redirections
 */
 
-void			get_files(t_simplecmd *simple_cmd, t_ast_node *node);
+int				get_files(t_simplecmd *simple_cmd, t_ast_node *node);
 
 /*
 ** Redirects stream and closes from parameter

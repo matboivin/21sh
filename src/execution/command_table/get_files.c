@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:52:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 13:00:32 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 20:47:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 **   <  :  O_RDONLY
 */
 
-static void	redir_input(int *fd, char *node_data)
+static int	redir_input(int *fd, char *node_data)
 {
 	if (is_open_file(*fd))
 		close(*fd);
@@ -34,7 +34,9 @@ static void	redir_input(int *fd, char *node_data)
 	{
 		print_errno(node_data);
 		g_status = EXIT_FAILURE;
+		return (FAIL_RET);
 	}
+	return (0);
 }
 
 /*
@@ -42,7 +44,7 @@ static void	redir_input(int *fd, char *node_data)
 **   >  :  O_WRONLY | O_CREAT | O_TRUNC
 */
 
-static void	redir_output(int *fd, char *node_data)
+static int	redir_output(int *fd, char *node_data)
 {
 	if (is_open_file(*fd))
 		close(*fd);
@@ -51,7 +53,9 @@ static void	redir_output(int *fd, char *node_data)
 	{
 		print_errno(node_data);
 		g_status = EXIT_FAILURE;
+		return (FAIL_RET);
 	}
+	return (0);
 }
 
 /*
@@ -59,7 +63,7 @@ static void	redir_output(int *fd, char *node_data)
 **   >> :  O_WRONLY | O_CREAT | O_APPEND
 */
 
-static void	redir_append_output(int *fd, char *node_data)
+static int	redir_append_output(int *fd, char *node_data)
 {
 	if (is_open_file(*fd))
 		close(*fd);
@@ -68,29 +72,40 @@ static void	redir_append_output(int *fd, char *node_data)
 	{
 		print_errno(node_data);
 		g_status = EXIT_FAILURE;
+		return (FAIL_RET);
 	}
+	return (0);
 }
 
 /*
 ** This function open files for redirections
 */
 
-static void	open_files(t_simplecmd *simple_cmd, t_ast_node *node)
+static int	open_files(t_simplecmd *simple_cmd, t_ast_node *node)
 {
+	int		ret;
+
+	ret = 0;
 	if (!node || node->type != NODE_IO_FILE)
-		return ;
+		return (0);
 	if (!ft_strcmp(node->data, REDIR_INPUT))
-		redir_input(&(simple_cmd->input_fd), node->left->data);
+		ret = redir_input(&(simple_cmd->input_fd), node->left->data);
 	else if (!ft_strcmp(node->data, REDIR_OUTPUT))
-		redir_output(&(simple_cmd->output_fd), node->left->data);
+		ret = redir_output(&(simple_cmd->output_fd), node->left->data);
 	else if (!ft_strcmp(node->data, REDIR_APPEND_OUTPUT))
-		redir_append_output(&(simple_cmd->output_fd), node->left->data);
-	open_files(simple_cmd, node->right);
+		ret = redir_append_output(&(simple_cmd->output_fd), node->left->data);
+	if (ret == FAIL_RET)
+		return (FAIL_RET);
+	return (open_files(simple_cmd, node->right));
 }
 
-void		get_files(t_simplecmd *simple_cmd, t_ast_node *node)
+int			get_files(t_simplecmd *simple_cmd, t_ast_node *node)
 {
+	int		ret;
+
+	ret = 0;
 	open_files(simple_cmd, node->left);
 	if (node->right && node->right->type == NODE_CMD_SUFFIX)
-		open_files(simple_cmd, node->right->right);
+		ret = open_files(simple_cmd, node->right->right);
+	return (ret);
 }

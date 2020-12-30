@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:46:26 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 22:20:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 20:52:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@
 static void			check_char_devices(int argc, char **argv)
 {
 	int				i;
+	size_t			len;
 
 	i = FIRST_PARAM;
+	len = 0;
 	if (argc == NO_ARGS)
+		return ;
+	len = get_cmd_filename(argv[CMD_NAME]);
+	if (ft_strcmp(argv[CMD_NAME] + len, "cat"))
 		return ;
 	while (i < argc)
 	{
@@ -38,21 +43,23 @@ static void			check_char_devices(int argc, char **argv)
 static t_simplecmd	*get_simple_cmd(t_ast_node *node)
 {
 	t_simplecmd		*result;
-	size_t			len;
+	int				ret;
 
-	len = 0;
+	ret = 0;
 	result = malloc_simple_cmd();
 	if (!result)
 		return (NULL);
 	get_cmd_arg_count(result, node);
 	get_cmd_args(result, node);
-	get_files(result, node);
-	if (search_command(result) != FAIL_RET)
+	ret = get_files(result, node);
+	if (ret != FAIL_RET)
 	{
-		len = get_cmd_filename(result->cmd_args[CMD_NAME]);
-		if (!ft_strcmp(result->cmd_args[CMD_NAME] + len, "cat"))
+		ret = search_command(result);
+		if (ret != FAIL_RET)
+		{
 			check_char_devices(result->argc, result->cmd_args);
-		return (result);
+			return (result);
+		}
 	}
 	free_simple_cmd(result);
 	return (NULL);
