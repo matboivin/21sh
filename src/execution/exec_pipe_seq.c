@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 00:58:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 22:07:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,6 @@
 #include <sys/wait.h>
 #include "sh_utils.h"
 #include "sh_execution.h"
-
-static void		restore_default_streams(t_streams backup)
-{
-	redirect_stream(backup.input, STDIN_FILENO);
-	redirect_stream(backup.output, STDIN_FILENO);
-}
-
-static void		backup_streams(t_streams *backup, int *input)
-{
-	backup->input = dup(STDIN_FILENO);
-	backup->output = dup(STDOUT_FILENO);
-	*input = dup(backup->input);
-}
 
 /*
 ** This function checks whether the current simple command is the last one
@@ -59,14 +46,15 @@ void			exec_pipe_seq(t_shctrl *ft_sh, t_cmd *cmd)
 
 	pid = -1;
 	wstatus = -1;
-	backup_streams(&backup, &(pipe_redir.input));
+	backup_streams(&backup);
+	pipe_redir.in = dup(backup.in);
 	while (cmd->curr_cmd < cmd->cmd_count)
 	{
-		redirect_stream(pipe_redir.input, STDIN_FILENO);
-		pipe_redir.output = dup(backup.output);
+		redirect_stream(pipe_redir.in, STDIN_FILENO);
+		pipe_redir.out = dup(backup.out);
 		if (!is_last_command(cmd))
 			create_pipe(ft_sh, &pipe_redir);
-		redirect_stream(pipe_redir.output, STDOUT_FILENO);
+		redirect_stream(pipe_redir.out, STDOUT_FILENO);
 		spawn_process(ft_sh, &pid);
 		if (is_child_process(pid))
 		{

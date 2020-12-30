@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 20:41:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 22:19:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 typedef struct	s_streams
 {
-	int			input;
-	int			output;
+	int			in;
+	int			out;
 }				t_streams;
 
 /*
@@ -72,10 +72,12 @@ bool			is_open_file(int fd);
 int				get_files(t_simplecmd *simple_cmd, t_ast_node *node);
 
 /*
-** Redirects stream and closes from parameter
+** Redirections
 */
 
 void			redirect_stream(int from, int to);
+void			restore_default_streams(t_streams backup);
+void			backup_streams(t_streams *backup);
 
 /*
 ** Searches the command to run
@@ -106,7 +108,6 @@ size_t			get_cmd_filename(char *cmd_name);
 */
 
 bool			is_builtin(t_simplecmd *simple_cmd);
-bool			is_sh_builtin(t_simplecmd *simple_cmd);
 
 /*
 ** Executes all simple commands

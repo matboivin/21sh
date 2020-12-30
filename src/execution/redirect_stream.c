@@ -6,12 +6,24 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/24 17:54:14 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 22:05:41 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "sh_execution.h"
+
+void	restore_default_streams(t_streams backup)
+{
+	redirect_stream(backup.in, STDIN_FILENO);
+	redirect_stream(backup.out, STDIN_FILENO);
+}
+
+void	backup_streams(t_streams *backup)
+{
+	backup->in = dup(STDIN_FILENO);
+	backup->out = dup(STDOUT_FILENO);
+}
 
 void	redirect_stream(int from, int to)
 {
