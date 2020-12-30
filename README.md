@@ -2,10 +2,10 @@
 
 ## TODO
 
-- not executable
-- fix broken pipes, redir
-- lexer: quotes
 - déplacer substitution dans subshell
+- not executable
+- lexer: quotes
 - escaped dollar
+- fix broken pipes
 - Checks supplémentaires
 - Norme, retirer debug mode
