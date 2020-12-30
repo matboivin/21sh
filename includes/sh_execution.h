@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 22:16:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 18:32:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,11 @@ bool			contain_slash(char *cmd_path);
 size_t			get_cmd_filename(char *cmd_name);
 
 /*
-** Checks whether the current simple command is a shell builtin
+** Check whether the current simple command is a shell builtin
 */
 
 bool			is_builtin(t_simplecmd *simple_cmd);
+bool			is_sh_builtin(t_simplecmd *simple_cmd);
 
 /*
 ** Executes all simple commands
@@ -124,6 +125,12 @@ void			exec_pipe_seq(t_shctrl *ft_sh, t_cmd *cmd);
 */
 
 void			exec_simple_cmd(t_simplecmd *simple_cmd);
+
+/*
+** Invokes a shell builtin
+*/
+
+void			invoke_builtin(t_simplecmd *builtin);
 
 /*
 ** Spawns a new process to execute a simple command

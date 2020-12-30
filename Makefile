@@ -87,7 +87,6 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				contain_slash.c				\
 				create_pipe.c				\
 				exec_pipe_seq.c				\
-				exec_simple_cmd.c			\
 				execute.c					\
 				is_builtin.c				\
 				is_open_file.c				\

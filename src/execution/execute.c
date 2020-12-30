@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 12:51:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 18:32:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,44 @@
 #include "sh_execution.h"
 
 /*
+** This function invokes a shell builtin
+*/
+
+void	invoke_builtin(t_simplecmd *builtin)
+{
+	redirect_stream(builtin->input_fd, STDIN_FILENO);
+	redirect_stream(builtin->output_fd, STDOUT_FILENO);
+	if (builtin->cmd_path)
+		g_status = (*builtin->builtin_func)(builtin->argc, builtin->cmd_args);
+}
+
+/*
+** This function executes a simple command
+*/
+
+void	exec_simple_cmd(t_simplecmd *simple_cmd)
+{
+	if (is_builtin(simple_cmd))
+		invoke_builtin(simple_cmd);
+	else
+	{
+		redirect_stream(simple_cmd->input_fd, STDIN_FILENO);
+		redirect_stream(simple_cmd->output_fd, STDOUT_FILENO);
+		if (simple_cmd->cmd_path)
+			execve(simple_cmd->cmd_path, simple_cmd->cmd_args, g_env);
+	}
+}
+
+/*
 ** This function executes all simple commands
+** When a simple command other than a builtin is to be executed, it is invoked
+** in a child process
 */
 
 void	execute(t_shctrl *ft_sh, t_cmd *cmd)
 {
-	if (cmd->cmd_count == 1 && is_builtin(cmd->simple_cmds[cmd->curr_cmd]))
-		exec_simple_cmd(cmd->simple_cmds[cmd->curr_cmd]);
+	if (cmd->cmd_count == 1 && is_sh_builtin(cmd->simple_cmds[cmd->curr_cmd]))
+		invoke_builtin(cmd->simple_cmds[cmd->curr_cmd]);
 	else
 		exec_pipe_seq(ft_sh, cmd);
 }

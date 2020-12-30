@@ -177,6 +177,8 @@ digraph graphname {
   - Else
     - node = node->right
 
+> When a simple command other than a builtin or shell function is to be executed, it is invoked in a separate execution environment
+
 - [Gnu.org: Command Execution Environment](https://www.gnu.org/software/bash/manual/html_node/Command-Execution-Environment.html)
 
 ### Tree traversal / Visitor pattern
@@ -323,6 +325,17 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 
 # Builtin commands
 
+From 42 subject:
+
+It must implement the builtins like in bash:
+- echo with option ’-n’
+- cd with only a relative or absolute path
+- pwd without any options
+- export without any options
+- unset without any options
+- env without any options and any arguments
+- exit without any options
+
 - [Gnu.org: Bourne Shell Builtins](https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html)
 
 ## env
@@ -332,3 +345,24 @@ Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/23
 ## unset
 
 - [unset posix man page](https://www.unix.com/man-page/posix/1p/unset/)
+
+## Subshell or not?
+
+> When a simple command other than a builtin or shell function is to be executed, it is invoked in a separate execution environment  [(Source)](https://www.gnu.org/software/bash/manual/html_node/Command-Execution-Environment.html)
+
+- [Why is echo a shell built in command?](https://unix.stackexchange.com/questions/1355/why-is-echo-a-shell-built-in-command)
+- [Gnu.org: Bourne Shell Builtins](https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html)
+- [Gnu.org: Bash Builtin Commands](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html)
+
+### Bourne Shell Builtins
+
+- cd
+- export
+- env
+- exit
+- pwd
+- unset
+
+### Bash Builtin Commands
+
+- echo
