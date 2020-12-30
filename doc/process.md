@@ -1,9 +1,17 @@
 # Process
 
-1. Read the command line
-2. Interpret the command
-3. Execute the command
-4. Collects the command return status
+# Table of Contents
+1. [Architecture](#architecture)
+2. [Steps](#steps)
+  1. [Environment](#environment)
+  2. [Input processing](#input-processing)
+  3. [Signal handling](#signal-handling)
+  4. [Parsing](#parsing)
+  5. [Build command table](#build-command-table)
+  6. [Command Search](#command-Search)
+  7. [Execution](#execution)
+  8. [Process Completion Status](#process-completion-Status)
+  9. [Builtin commands](#builtin-commands)
 
 # Architecture
 
@@ -47,6 +55,11 @@ Subdirectories are organized following more or less this architecture:
 
 # Steps
 
+1. Read the command line
+2. Interpret the command
+3. Execute the command
+4. Collects the command return status
+
 ## Environment
 
 ### Get the environment
@@ -77,7 +90,7 @@ Functions to:
 
 [Gnu.org: Environment Access](https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html)
 
-## Shell prompt
+## Input processing
 
 Run an infinite loop that displays a prompt and wait for the user's input.
 
@@ -158,13 +171,33 @@ digraph graphname {
 }
 ```
 
-## Word Expansions
+## Build command table
 
-> The reason that using a variable is called substitution is that the shell literally replaces each reference to any variable with its value. This is done while evaluating the command-line, which means that the variable substitution is made before the command is actually executed.  [(Source)](https://en.wikibooks.org/wiki/Bourne_Shell_Scripting/Variable_Expansion)
+Pre-order (NLR) seems the most appropriate search but I didn't apply it.
 
-> As you can see, reference the value of a variable by preceding it with a $ sign. The shell takes this to mean that it should substitute the value of the variable when it comes across this.  [(Source)](https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux)
+Go down one level to the recursive argument N. If N exists (is non-empty) execute the following three operations in this order:
 
-> `$?` holds the return value set by the previously executed command.  [(Source)](https://bash.cyberciti.biz/guide/Parameters_Set_by_the_Shell)
+- (N)	Process the current node N itself.
+- (L)	Recursively traverse N's left subtree.
+- (R)	Recursively traverse N's right subtree.
+
+Source: [Wiki: Tree Traversal](https://en.wikipedia.org/wiki/Tree_traversal)
+
+For the minishell version of ft_sh, only the `command` and `pipe_sequence` nodes
+are traversed.
+
+## Command Search
+
+> If the command name found by the shell at the beginning of the command line contains any slashes, the shell does not use PATH to find the executable file. If there are slashes, the shell executes that file pathname directly as a program and does not need to search for it:
+
+```console
+$ /bin/foo # executes the file /bin/foo; does not search PATH
+$ bar/foo  # executes the file foo in the sub-directory bar; does not search PATH
+$ ./foo    # executes the foo in the current directory; does not search PATH
+$ ../foo   # executes the foo in the parent directory; does not search PATH
+```
+
+Source: [Shell search PATH – finding and running commands](http://teaching.idallen.com/cst8207/12f/notes/400_search_path.html)
 
 ## Execution
 
@@ -181,41 +214,22 @@ digraph graphname {
 
 - [Gnu.org: Command Execution Environment](https://www.gnu.org/software/bash/manual/html_node/Command-Execution-Environment.html)
 
-### Tree traversal / Visitor pattern
+### Word Expansions
 
-Pre-order (NLR) seems the most appropriate search but I didn't apply it.
+> The reason that using a variable is called substitution is that the shell literally replaces each reference to any variable with its value. This is done while evaluating the command-line, which means that the variable substitution is made before the command is actually executed.  [(Source)](https://en.wikibooks.org/wiki/Bourne_Shell_Scripting/Variable_Expansion)
 
-Go down one level to the recursive argument N. If N exists (is non-empty) execute the following three operations in this order:
+> As you can see, reference the value of a variable by preceding it with a $ sign. The shell takes this to mean that it should substitute the value of the variable when it comes across this.  [(Source)](https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux)
 
-- (N)	Process the current node N itself.
-- (L)	Recursively traverse N's left subtree.
-- (R)	Recursively traverse N's right subtree.
+> `$?` holds the return value set by the previously executed command.  [(Source)](https://bash.cyberciti.biz/guide/Parameters_Set_by_the_Shell)
 
-Source: [Wiki: Tree Traversal](https://en.wikipedia.org/wiki/Tree_traversal)
+### Pipes
 
-For the minishell version of ft_sh, only the `command` and `pipe_sequence` nodes
-are traversed.
+> The output of each command in the pipeline is connected via a pipe to the input of the next command. That is, each command reads the previous command’s output. This connection is performed before any redirections specified by the command.  [(Source)](https://www.gnu.org/software/bash/manual/html_node/Pipelines.html#Pipelines)
 
-### Command Search
+> If the parent wants to receive data from the child, it should close fd[1], and the child should close fd[0]. If the parent wants to send data to the child, it should close fd[0], and the child should close fd[1]. Since descriptors are shared between the parent and child, we should always be sure to close the end of pipe we aren't concerned with. On a technical note, the EOF will never be returned if the unnecessary ends of the pipe are not explicitly closed. [(Source)](https://tldp.org/LDP/lpg/node11.html)
 
-> If the command name found by the shell at the beginning of the command line contains any slashes, the shell does not use PATH to find the executable file. If there are slashes, the shell executes that file pathname directly as a program and does not need to search for it:
-
-```console
-$ /bin/foo # executes the file /bin/foo; does not search PATH
-$ bar/foo  # executes the file foo in the sub-directory bar; does not search PATH
-$ ./foo    # executes the foo in the current directory; does not search PATH
-$ ../foo   # executes the foo in the parent directory; does not search PATH
-```
-
-Source: [Shell search PATH – finding and running commands](http://teaching.idallen.com/cst8207/12f/notes/400_search_path.html)
-
-### Process Completion Status
-
-`WIFEXITED(wstatus)` returns true if the child terminated normally, that is, by calling exit(3) or _exit(2), or by returning from main().
-
-`WEXITSTATUS(wstatus)` returns the exit status of the child. This macro should be employed only if `WIFEXITED` returned true.
-
-Source: [wait(2) — Linux manual page](https://man7.org/linux/man-pages/man2/wait.2.html)
+- [Pipe | Redirection < > Precedence](https://stackoverflow.com/questions/12942042/pipe-redirection-precedence
+)
 
 ### Redirections
 
@@ -310,20 +324,19 @@ newfd -----------------------------------+
 
 Source: [Programmation systeme: execve(), fork() et pipe()](https://n-pn.fr/t/2318-c--programmation-systeme-execve-fork-et-pipe)
 
-#### Character device drivers
+### Character device drivers
 
 - [ The Linux Kernel: Character device drivers](https://linux-kernel-labs.github.io/refs/heads/master/labs/device_drivers.html)
 
-### Pipes
+## Process Completion Status
 
-> If the parent wants to receive data from the child, it should close fd[1], and the child should close fd[0]. If the parent wants to send data to the child, it should close fd[0], and the child should close fd[1]. Since descriptors are shared between the parent and child, we should always be sure to close the end of pipe we aren't concerned with. On a technical note, the EOF will never be returned if the unnecessary ends of the pipe are not explicitly closed. [(Source)](https://tldp.org/LDP/lpg/node11.html)
+`WIFEXITED(wstatus)` returns true if the child terminated normally, that is, by calling exit(3) or _exit(2), or by returning from main().
 
-- [Pipe | Redirection < > Precedence](https://stackoverflow.com/questions/12942042/pipe-redirection-precedence
-)
+`WEXITSTATUS(wstatus)` returns the exit status of the child. This macro should be employed only if `WIFEXITED` returned true.
 
-> The output of each command in the pipeline is connected via a pipe to the input of the next command. That is, each command reads the previous command’s output. This connection is performed before any redirections specified by the command.  [(Source)](https://www.gnu.org/software/bash/manual/html_node/Pipelines.html#Pipelines)
+Source: [wait(2) — Linux manual page](https://man7.org/linux/man-pages/man2/wait.2.html)
 
-# Builtin commands
+## Builtin commands
 
 From 42 subject:
 
@@ -338,15 +351,15 @@ It must implement the builtins like in bash:
 
 - [Gnu.org: Bourne Shell Builtins](https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html)
 
-## env
+### env
 
 > If no command name is specified following the environment specifications, the resulting environment is printed. This is like specifying the printenv program.  [(Source)](https://www.gnu.org/software/coreutils/manual/html_node/env-invocation.html)
 
-## unset
+### unset
 
 - [unset posix man page](https://www.unix.com/man-page/posix/1p/unset/)
 
-## Subshell or not?
+### Subshell or not?
 
 > When a simple command other than a builtin or shell function is to be executed, it is invoked in a separate execution environment  [(Source)](https://www.gnu.org/software/bash/manual/html_node/Command-Execution-Environment.html)
 
