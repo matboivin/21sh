@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:16:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 22:19:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 23:43:56 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,10 @@ int				get_files(t_simplecmd *simple_cmd, t_ast_node *node);
 ** Redirections
 */
 
+void			handle_redirection(t_simplecmd *simple_cmd, t_streams *backup);
 void			redirect_stream(int from, int to);
 void			restore_default_streams(t_streams backup);
-void			backup_streams(t_streams *backup);
+void			dup_streams(t_streams *backup);
 
 /*
 ** Searches the command to run
@@ -138,11 +139,5 @@ void			invoke_builtin(t_simplecmd *builtin);
 */
 
 void			spawn_process(t_shctrl *ft_sh, pid_t *pid);
-
-/*
-** Creates a pipe object
-*/
-
-void			create_pipe(t_shctrl *ft_sh, t_streams *swap);
 
 #endif

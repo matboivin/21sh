@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 22:26:52 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 23:46:34 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,32 @@
 ** This function invokes a shell builtin
 */
 
-void	invoke_builtin(t_simplecmd *builtin)
+void			invoke_builtin(t_simplecmd *builtin)
 {
-	t_streams	backup;
-
-	backup_streams(&backup);
-	redirect_stream(builtin->input_fd, STDIN_FILENO);
-	redirect_stream(builtin->output_fd, STDOUT_FILENO);
 	if (builtin->cmd_path)
 		g_status = (*builtin->builtin_func)(builtin->argc, builtin->cmd_args);
-	restore_default_streams(backup);
 }
 
 /*
 ** This function executes a simple command
 */
 
-void	exec_simple_cmd(t_simplecmd *simple_cmd)
+void			exec_simple_cmd(t_simplecmd *simple_cmd)
 {
-	if (is_builtin(simple_cmd))
-		invoke_builtin(simple_cmd);
-	else
+	t_streams	backup;
+
+	handle_redirection(simple_cmd, &backup);
+	if (simple_cmd->cmd_path)
 	{
-		redirect_stream(simple_cmd->input_fd, STDIN_FILENO);
-		redirect_stream(simple_cmd->output_fd, STDOUT_FILENO);
-		if (simple_cmd->cmd_path)
+		if (is_builtin(simple_cmd))
+			invoke_builtin(simple_cmd);
+		else
+		{
 			execve(simple_cmd->cmd_path, simple_cmd->cmd_args, g_env);
-		print_errno(simple_cmd->cmd_args[CMD_NAME]);
+			print_errno(simple_cmd->cmd_args[CMD_NAME]);
+		}
 	}
+	restore_default_streams(backup);
 }
 
 /*
@@ -55,12 +53,12 @@ void	exec_simple_cmd(t_simplecmd *simple_cmd)
 ** in a child process
 */
 
-void	execute(t_shctrl *ft_sh, t_cmd *cmd)
+void			execute(t_shctrl *ft_sh, t_cmd *cmd)
 {
 	if (cmd->cmd_count == DEFAULT_VALUE)
 		return ;
 	if (cmd->cmd_count == 1 && is_builtin(cmd->simple_cmds[cmd->curr_cmd]))
-		invoke_builtin(cmd->simple_cmds[cmd->curr_cmd]);
+		exec_simple_cmd(cmd->simple_cmds[cmd->curr_cmd]);
 	else
 		exec_pipe_seq(ft_sh, cmd);
 }
