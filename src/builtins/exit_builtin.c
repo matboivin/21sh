@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 12:37:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 18:37:16 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,5 @@ int			exit_builtin(int argc, char **argv)
 			get_exit_status(argv[FIRST_PARAM]);
 	}
 	jump_to_top_level();
-	return (0);
+	return (g_status);
 }
