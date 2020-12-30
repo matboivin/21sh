@@ -3,15 +3,15 @@
 # Table of Contents
 1. [Architecture](#architecture)
 2. [Steps](#steps)
-  1. [Environment](#environment)
-  2. [Input processing](#input-processing)
-  3. [Signal handling](#signal-handling)
-  4. [Parsing](#parsing)
-  5. [Build command table](#build-command-table)
-  6. [Command Search](#command-Search)
-  7. [Execution](#execution)
-  8. [Process Completion Status](#process-completion-Status)
-  9. [Builtin commands](#builtin-commands)
+    1. [Environment](#environment)
+    2. [Input processing](#input-processing)
+    3. [Signal handling](#signal-handling)
+    4. [Parsing](#parsing)
+    5. [Build command table](#build-command-table)
+    6. [Command Search](#command-search)
+    7. [Execution](#execution)
+    8. [Process Completion Status](#process-completion-status)
+    9. [Builtin commands](#builtin-commands)
 
 # Architecture
 
