@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 20:12:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 20:56:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	exec_simple_cmd(t_simplecmd *simple_cmd)
 
 void	execute(t_shctrl *ft_sh, t_cmd *cmd)
 {
+	if (cmd->cmd_count == DEFAULT_VALUE)
+		return ;
 	if (cmd->cmd_count == 1 && is_sh_builtin(cmd->simple_cmds[cmd->curr_cmd]))
 		invoke_builtin(cmd->simple_cmds[cmd->curr_cmd]);
 	else
