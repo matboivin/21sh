@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 22:05:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 22:27:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	restore_default_streams(t_streams backup)
 {
 	redirect_stream(backup.in, STDIN_FILENO);
-	redirect_stream(backup.out, STDIN_FILENO);
+	redirect_stream(backup.out, STDOUT_FILENO);
 }
 
 void	backup_streams(t_streams *backup)

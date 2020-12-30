@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 22:19:42 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 22:26:52 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,14 @@
 
 void	invoke_builtin(t_simplecmd *builtin)
 {
-	int	backup_in;
-	int	backup_out;
+	t_streams	backup;
 
-	backup_in = dup(STDIN_FILENO);
-	backup_out = dup(STDOUT_FILENO);
+	backup_streams(&backup);
 	redirect_stream(builtin->input_fd, STDIN_FILENO);
 	redirect_stream(builtin->output_fd, STDOUT_FILENO);
 	if (builtin->cmd_path)
 		g_status = (*builtin->builtin_func)(builtin->argc, builtin->cmd_args);
-	dup2(backup_in, STDIN_FILENO);
-	dup2(backup_out, STDOUT_FILENO);
+	restore_default_streams(backup);
 }
 
 /*
