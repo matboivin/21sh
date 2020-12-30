@@ -3,7 +3,7 @@
 ## TODO
 
 - lexer: quotes
-- escaped dollar, echo$PWD
+- escaped dollar
 - fix broken pipes
 - Checks supplémentaires
 - Norme, retirer debug mode
