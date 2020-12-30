@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 01:20:14 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 21:36:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ int		handle_invalid_id(char *cmd_name, char *var_name);
 int		handle_invalid_opt(char *cmd_name, char *opt);
 int		handle_env_not_set(char *cmd_name, char *var_name);
 void	print_builtin_usage(char *cmd_name, char *msg);
+
+/*
+** Checks whether a file is a directory
+*/
+
+int		is_directory(char *pathname);
 
 /*
 ** Frees all the allocated memory

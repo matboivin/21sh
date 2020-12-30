@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 12:59:10 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 21:36:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ void		handle_cmd_not_found(char *filename)
 void		print_errno(char *target)
 {
 	g_status = EXIT_FAILURE;
+#ifdef DEBUG
+	ft_printf("errno %d %s\n", errno, strerror(errno));
+#endif /* DEBUG */
+	if (errno == EACCES)
+	{
+		if (is_directory(target))
+			errno = EISDIR;
+	}
 	print_error(2, target, strerror(errno));
 }
 
