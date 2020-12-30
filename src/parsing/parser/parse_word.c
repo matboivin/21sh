@@ -6,13 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/13 18:08:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 19:08:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "libft_str.h"
-#include "sh_subsystems.h"
 #include "sh_parser.h"
 
 /*
@@ -28,8 +27,6 @@ bool			parse_word(t_ast_node **ast, t_lexer *lexer)
 
 	if (lexer->pos >= lexer->size)
 		return (false);
-	substitute_word(&(lexer->tokens[lexer->pos]->value));
-	remove_quotes(&(lexer->tokens[lexer->pos]->value));
 	word_node = malloc_ast_node(NODE_WORD, lexer->tokens[lexer->pos]->value);
 	if (eat(lexer, TOKEN_WORD) && word_node)
 	{
