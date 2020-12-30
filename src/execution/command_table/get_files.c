@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:52:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 20:47:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 20:58:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,8 @@ int			get_files(t_simplecmd *simple_cmd, t_ast_node *node)
 {
 	int		ret;
 
-	ret = 0;
-	open_files(simple_cmd, node->left);
-	if (node->right && node->right->type == NODE_CMD_SUFFIX)
+	ret = open_files(simple_cmd, node->left);
+	if (!ret && node->right && (node->right->type == NODE_CMD_SUFFIX))
 		ret = open_files(simple_cmd, node->right->right);
 	return (ret);
 }

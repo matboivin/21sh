@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 01:20:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 21:04:45 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int				search_command(t_simplecmd *simple_cmd)
 
 	ret = 0;
 	if (!simple_cmd->argc)
-		return (0);
+		return (FAIL_RET);
 	search_builtin(simple_cmd);
 	if (!simple_cmd->builtin_func && !contain_slash(simple_cmd->cmd_path))
 		ret = search_executable(&(simple_cmd->cmd_path));

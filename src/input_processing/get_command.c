@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 21:51:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 21:00:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,13 @@ int			get_command(t_shctrl *ft_sh)
 	ret = prompt_user(ft_sh, create_prompt());
 	while (ret == 1)
 		ret = prompt_user(ft_sh, PS2);
+#ifdef DEBUG
+	print_lexer(ft_sh->lexer);
+#endif /* DEBUG */
 	if (ret == EXIT_SUCCESS)
 		ret = parse(&(ft_sh->ast), ft_sh->lexer);
+#ifdef DEBUG
+	print_ast(ft_sh->ast);
+#endif /* DEBUG */
 	return (ret);
 }
