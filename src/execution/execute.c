@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 18:32:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2020/12/30 20:12:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	exec_simple_cmd(t_simplecmd *simple_cmd)
 		redirect_stream(simple_cmd->output_fd, STDOUT_FILENO);
 		if (simple_cmd->cmd_path)
 			execve(simple_cmd->cmd_path, simple_cmd->cmd_args, g_env);
+		print_errno(simple_cmd->cmd_args[CMD_NAME]);
 	}
 }
 
