@@ -2,7 +2,6 @@
 
 ## TODO
 
-- not executable, permissions
 - lexer: quotes
 - escaped dollar, echo$PWD
 - fix broken pipes
