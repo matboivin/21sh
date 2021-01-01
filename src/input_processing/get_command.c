@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 21:00:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 18:21:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,15 @@ static int	prompt_user(t_shctrl *ft_sh, char *prompt)
 
 	ret = 0;
 	if (prompt)
-	{
 		ft_sh->lexer->input = ft_readline(prompt);
-		ft_strdel(&prompt);
-	}
 	else
 		ft_sh->lexer->input = ft_readline(PS1);
+	if (ft_strcmp(prompt, PS2))
+		ft_strdel(&prompt);
 	if (!ft_sh->lexer->input)
 		handle_eof(ft_sh);
 	ret = tokenize(ft_sh->lexer);
-	ft_strdel(&ft_sh->lexer->input);
+	ft_strdel(&(ft_sh->lexer->input));
 	return (ret);
 }
 

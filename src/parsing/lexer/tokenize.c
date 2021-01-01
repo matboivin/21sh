@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 22:59:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 18:19:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 
 /*
 ** This function splits the input string into tokens
+**
+** returns: 0 on success
+**          1 if the input is not finished
+**          -1 on error
 */
 
 static int	is_quote(int c)
@@ -49,5 +53,7 @@ int			tokenize(t_lexer *lexer)
 	if (stack && !ret)
 		handle_text(lexer, &stack);
 	ft_strdel(&stack);
+	if (token.type == TOKEN_PIPE)
+		return (lexer->pos == ft_strlen(lexer->input));
 	return (ret);
 }
