@@ -104,6 +104,7 @@ SRC_FILES	+=	add_simple_cmd.c			\
 # SUBSYSTEMS #
 
 SRC_FILES	+=	create_prompt.c				\
+				expand_word.c				\
 				get_var_len.c				\
 				handle_fatal_error.c		\
 				register_signal_handlers.c	\

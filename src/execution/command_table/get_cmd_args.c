@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:13:06 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 19:08:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 21:06:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static void		fill_args(t_simplecmd *simple_cmd, size_t i, t_ast_node *node)
 	if (i < simple_cmd->argc)
 	{
 		simple_cmd->cmd_args[i] = ft_strdup(node->data);
-		substitute_word(&(simple_cmd->cmd_args[i]));
-		remove_quotes(&(simple_cmd->cmd_args[i]));
+		expand_word(&(simple_cmd->cmd_args[i]));
 	}
 	fill_args(simple_cmd, i + 1, node->right);
 }

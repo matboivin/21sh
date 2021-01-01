@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 18:34:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 21:07:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	handle_fatal_error(int sig);
 */
 
 void	substitute_word(char **data);
+void	expand_word(char **tok_word);
 
 /*
 ** Remove the quotes from the beginning and end of word tokens
