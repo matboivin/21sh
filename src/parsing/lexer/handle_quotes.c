@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:17:34 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 19:17:07 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 21:50:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 
 static int	close_quote(t_lexer *lexer, char **stack)
 {
-	*stack = push_char(lexer, *stack);
-	return (0);
+	return (push_char(lexer, stack));
 }
 
 /*
@@ -45,14 +44,14 @@ static int	raise_matching_error(char **stack, char quote_type)
 
 static int	handle_quote_type(t_lexer *lexer, char **stack, char quote_type)
 {
-	*stack = push_char(lexer, *stack);
+	push_char(lexer, stack);
 	while (lexer->input[lexer->pos] && lexer->input[lexer->pos] != quote_type)
 	{
 		if ((lexer->input[lexer->pos] == BACKSLASH)
 			&& (quote_type == WEAK_QUOTE))
 			escape_char(lexer, stack);
 		else
-			*stack = push_char(lexer, *stack);
+			push_char(lexer, stack);
 	}
 	if (lexer->input[lexer->pos] == quote_type)
 		return (close_quote(lexer, stack));

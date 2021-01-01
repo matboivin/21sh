@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 19:08:32 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 21:48:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int				escape_char(t_lexer *lexer, char **stack);
 ** Adds the current character to the stack
 */
 
-char			*push_char(t_lexer *lexer, char *stack);
+int				push_char(t_lexer *lexer, char **stack);
 
 /*
 ** Gets next token

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:18:08 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 19:15:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 21:49:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ int			handle_text(t_lexer *lexer, char **stack)
 	if (is_quote(lexer->input[lexer->pos]))
 		ret = handle_quotes(lexer, stack);
 	else
-		*stack = push_char(lexer, *stack);
+		push_char(lexer, stack);
 	return (ret);
 }

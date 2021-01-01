@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 19:58:00 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 20:52:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 21:50:17 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,19 @@
 ** stack: A pointer to the stack
 ** lexer: The lexer
 **
-** returns: The new stack
-**          NULL otherwise
+** returns: 0 on success
+**          -1 on error
 */
 
-char		*push_char(t_lexer *lexer, char *stack)
+int			push_char(t_lexer *lexer, char **stack)
 {
 	char	*result;
-	size_t	len_stack;
 
-	len_stack = 0;
-	if (stack)
-		len_stack = ft_strlen(stack);
-	result = ft_strnew(len_stack + 1);
+	result = ft_append_char(*stack, lexer->input + lexer->pos);
 	if (!result)
-		return (NULL);
-	if (stack)
-	{
-		ft_strlcpy(result, stack, (len_stack + 1));
-		ft_strdel(&stack);
-	}
-	ft_strlcpy(result + len_stack, lexer->input + lexer->pos, 2);
+		return (FAIL_RET);
+	ft_strdel(stack);
+	*stack = result;
 	lexer->pos++;
-	return (result);
+	return (0);
 }
