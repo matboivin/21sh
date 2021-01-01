@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 19:58:00 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 21:26:58 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 20:52:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ char		*push_char(t_lexer *lexer, char *stack)
 {
 	char	*result;
 	size_t	len_stack;
-	size_t	len;
 
 	len_stack = 0;
 	if (stack)
 		len_stack = ft_strlen(stack);
-	len = len_stack + 1;
-	result = ft_strnew(len);
+	result = ft_strnew(len_stack + 1);
 	if (!result)
 		return (NULL);
 	if (stack)

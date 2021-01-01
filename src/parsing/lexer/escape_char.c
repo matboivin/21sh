@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 19:50:04 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 21:24:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 20:52:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int		escape_char(t_lexer *lexer, char **stack)
 {
-	lexer->pos++;
+	*stack = push_char(lexer, *stack);
 	if (lexer->input[lexer->pos])
 	{
 		*stack = push_char(lexer, *stack);
