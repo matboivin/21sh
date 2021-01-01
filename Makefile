@@ -46,6 +46,7 @@ SRC_FILES	+=	get_command.c				\
 # LEXER #
 
 SRC_FILES	+=	add_token_to_lexer.c		\
+				add_word_to_lexer.c			\
 				eat.c						\
 				escape_char.c				\
 				get_token.c					\

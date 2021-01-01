@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:17:34 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 18:57:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 19:17:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 #include "sh_utils.h"
 #include "sh_lexer.h"
 
+/*
+** If open quotes are closed, returns 0 (success)
+*/
+
 static int	close_quote(t_lexer *lexer, char **stack)
 {
 	*stack = push_char(lexer, *stack);
 	return (0);
 }
+
+/*
+** Else, raises matching error and returns -1
+*/
 
 static int	raise_matching_error(char **stack, char quote_type)
 {
@@ -26,6 +34,14 @@ static int	raise_matching_error(char **stack, char quote_type)
 	handle_matching_error(quote_type);
 	return (FAIL_RET);
 }
+
+/*
+** These functions check if the quotes are matching (closed)
+** and then adds the characters between quotes to the text stack
+**
+** returns: 0 on success
+**          -1 on error
+*/
 
 static int	handle_quote_type(t_lexer *lexer, char **stack, char quote_type)
 {

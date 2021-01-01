@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_token.c                                     :+:      :+:    :+:   */
+/*   add_word_to_lexer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/22 19:18:29 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 19:11:57 by mboivin          ###   ########.fr       */
+/*   Created: 2021/01/01 19:04:40 by mboivin           #+#    #+#             */
+/*   Updated: 2021/01/01 19:08:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft_str.h"
 #include "sh_lexer.h"
 
 /*
-** This function handles each encountered token, ignores EAT tokens (tabs,
-** spaces) and adds them to the lexer, then increments the index on the string
-** input
+** This function adds a word token (default token type) to the lexer
 */
 
-void	handle_token(t_lexer *lexer, t_regex token, char **stack)
+void	add_word_to_lexer(t_lexer *lexer, char **stack)
 {
-	if (*stack && stack)
-		add_word_to_lexer(lexer, stack);
-	if (token.type != TOKEN_EAT)
-		add_token_to_lexer(lexer, token.op, token.len, token.type);
-	lexer->pos += token.len;
+	add_token_to_lexer(lexer, *stack, ft_strlen(*stack), TOKEN_WORD);
+	ft_strdel(stack);
 }

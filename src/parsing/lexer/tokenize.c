@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 19:00:42 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 19:08:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@
 **          1 if the input is not finished
 **          -1 on error
 */
-
-static int	is_quote(int c)
-{
-	return ((c == STRONG_QUOTE) || (c == WEAK_QUOTE));
-}
 
 int			tokenize(t_lexer *lexer)
 {
@@ -49,7 +44,7 @@ int			tokenize(t_lexer *lexer)
 			ret = handle_text(lexer, &stack);
 	}
 	if (stack && !ret)
-		add_text_to_lexer(lexer, &stack);
+		add_word_to_lexer(lexer, &stack);
 	ft_strdel(&stack);
 	if (token.type == TOKEN_PIPE)
 		return (lexer->pos == ft_strlen(lexer->input));
