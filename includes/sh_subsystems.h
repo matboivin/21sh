@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 21:07:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 23:59:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,13 @@ void	handle_fatal_error(int sig);
 ** Substitutes the variable names by their values
 */
 
-void	substitute_word(char **data);
 void	expand_word(char **tok_word);
+void	substitute_var(char **result, char *tok_word, size_t *i);
 
 /*
 ** Remove the quotes from the beginning and end of word tokens
 */
 
 void	remove_quotes(char **data);
-
-/*
-** Checks an environment variable name format:
-** underscores, digits, and ASCII letters, and that begin with a non-digit
-** and returns its length
-*/
-
-size_t	get_var_len(char *s);
 
 #endif

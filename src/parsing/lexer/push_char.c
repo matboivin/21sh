@@ -6,10 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 19:58:00 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 21:50:17 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 23:11:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include "libft_str.h"
 #include "sh_lexer.h"
 
@@ -25,13 +26,9 @@
 
 int			push_char(t_lexer *lexer, char **stack)
 {
-	char	*result;
-
-	result = ft_append_char(*stack, lexer->input + lexer->pos);
-	if (!result)
+	*stack = ft_append_char(*stack, lexer->input + lexer->pos, true);
+	if (!(*stack))
 		return (FAIL_RET);
-	ft_strdel(stack);
-	*stack = result;
 	lexer->pos++;
 	return (0);
 }

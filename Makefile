@@ -105,13 +105,12 @@ SRC_FILES	+=	add_simple_cmd.c			\
 
 SRC_FILES	+=	create_prompt.c				\
 				expand_word.c				\
-				get_var_len.c				\
 				handle_fatal_error.c		\
 				register_signal_handlers.c	\
 				remove_quotes.c				\
 				sh_ctrl.c					\
 				start_shell.c				\
-				substitute_word.c
+				substitute_var.c
 
 # ENV HANDLING #
 
