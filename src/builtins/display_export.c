@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 22:34:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/01 21:54:15 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int			display_export(void)
 		ft_str_arr_del(sorted_env);
 		if (ret == FAIL_RET)
 		{
-			print_errno("ft_printf");
+			print_errno("write error");
 			return (EXIT_FAILURE);
 		}
 	}
