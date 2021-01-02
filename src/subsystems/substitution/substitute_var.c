@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 17:10:12 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 02:20:08 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 13:16:14 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,14 @@ void			substitute_var(char **result, char *tok_word, size_t *i)
 	char		*var_name;
 	char		*var_value;
 
-	var_name = get_var_name(tok_word, i);
+	var_name = NULL;
 	var_value = NULL;
+	if (is_quote(tok_word[*i + 1]))
+	{
+		(*i)++;
+		return ;
+	}
+	var_name = get_var_name(tok_word, i);
 	if (var_name)
 	{
 		if (is_valid_identifier(var_name))
