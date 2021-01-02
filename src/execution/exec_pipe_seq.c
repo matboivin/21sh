@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 23:41:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 12:54:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,17 @@ static void		create_pipe(t_shctrl *ft_sh, t_streams *redir)
 }
 
 /*
+** Each command in a pipeline is executed in its own subshell, which is a
+** separate child process
+*/
+
+static void		exec_in_subshell(t_shctrl *ft_sh, t_simplecmd *simple_cmd)
+{
+	exec_simple_cmd(simple_cmd);
+	exit_shell(ft_sh);
+}
+
+/*
 ** This function executes a pipe sequence
 **
 ** The output of each command in the pipeline is connected via a pipe to the
@@ -81,10 +92,7 @@ void			exec_pipe_seq(t_shctrl *ft_sh, t_cmd *cmd)
 		redirect_stream(redir.out, STDOUT_FILENO);
 		spawn_process(ft_sh, &pid);
 		if (is_child_process(pid))
-		{
-			exec_simple_cmd(cmd->simple_cmds[cmd->curr_cmd]);
-			exit_shell(ft_sh);
-		}
+			exec_in_subshell(ft_sh, cmd->simple_cmds[cmd->curr_cmd]);
 		cmd->curr_cmd++;
 	}
 	restore_default_streams(backup);

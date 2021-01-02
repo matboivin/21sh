@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 18:24:50 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 01:57:10 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 13:04:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*open_weak_quote(char *tok_word, size_t *i)
 	while (tok_word[*i + len] && tok_word[*i + len] != WEAK_QUOTE)
 	{
 		if (tok_word[*i + len] == BACKSLASH)
-			remove_backslash(&result, tok_word + *i, &len);
+			remove_backslash(&result, tok_word + *i, &len, true);
 		else if (tok_word[*i + len] == DOLLAR_SIGN)
 			substitute_var(&result, tok_word + *i, &len);
 		else

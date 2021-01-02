@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 21:03:27 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 01:54:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 13:04:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		expand_word(char **tok_word)
 		if (is_quote((*tok_word)[i]))
 			remove_quotes(&result, *tok_word, &i);
 		else if ((*tok_word)[i] == BACKSLASH)
-			remove_backslash(&result, *tok_word, &i);
+			remove_backslash(&result, *tok_word, &i, false);
 		else if ((*tok_word)[i] == DOLLAR_SIGN)
 			substitute_var(&result, *tok_word, &i);
 		else
