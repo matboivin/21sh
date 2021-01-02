@@ -154,6 +154,8 @@ Before you study regular expressions, it is important that you understand how to
 
 See 2.2 Quoting: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html)
 
+> The backslash retains its special meaning only when followed by one of the following characters: ‘$’, ‘`’, ‘"’, ‘\’, or newline. Within double quotes, backslashes that are followed by one of these characters are removed. Backslashes preceding characters without a special meaning are left unmodified. A double quote may be quoted within double quotes by preceding it with a backslash.  [(Source)](https://www.gnu.org/software/bash/manual/bash.html#Double-Quotes)
+
 ### Parser
 
 - Check for grammar errors
