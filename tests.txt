@@ -3,25 +3,24 @@ valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./minishell
 > FILE ; ls > FILE | rev | wc -c >> FILE ; cat FILE ; < INFILE cat
 cat <<<<< bar
 cat << << bar
-echo -nnnnnnnnnnnnnnnnnnnnn truc
-echo -nnnnnnnnnnnnnnnnnnnnno truc
-echo -n -n -n -n hi
+echo -nnnnnnnnnnnnnnnnnnnnn FOO
+echo -nnnnnnnnnnnnnnnnnnnnno foo
+echo -n -n -n -n bar
 echo "$ $ $ $ $SHELL----------$LOL.......$123TEST"
 echo $PWD; echo $OLDPWD; cd ../../../..; pwd; echo $PWD; echo $OLDPWD
-export BONJOUR\\JESUIS
+export HELLO\\WORLD
 export N\\T
 export bO_nJq123o__1ju_je3134sui__a=a; echo $bO_nJq123o__1ju_je3134sui__a
 export A==a; echo $A
 export A=a=a=a=a=a; echo $A
 echo |
-echo TEST >> a
-echo truc > FILE1 >> FILE2 >> FILE3
-echo >> t lol
+echo TEST >> foo
+echo bar > FILE1 >> FILE2 >> FILE3
+echo >> FILE lol
 touch TEST; chmod 001 TEST
 ec""ho bonjour
 echo s'h'e'l'l
 echo a'b'c"d"e'f'g"h"i'j'k"l"m'n'o"p'q'r"s't'u"v"w"x"y'z'
-echo TEST > a'b'c"d"e'f'g"h"i'j'k"l"m'n'o"p'q'r"s't'u"v"w"x"y'z'
 echo \$SHELL
 echo "a\\b"
 echo "a\\ \ b c\" \'$SHELL\'"
