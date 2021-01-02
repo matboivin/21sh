@@ -2,6 +2,5 @@
 
 ## TODO
 
-- lexer: quotes
 - Checks supplémentaires
-- Norme, retirer debug mode
+- Norme, retirer debug mod

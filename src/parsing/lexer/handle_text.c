@@ -6,24 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:18:08 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 21:49:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 00:37:09 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdlib.h>
+#include "sh_subsystems.h"
 #include "sh_lexer.h"
-
-/*
-** This function checks whether the character is a quote
-** STRONG QUOTE : '
-** WEAK QUOTE : "
-*/
-
-static bool	is_quote(int c)
-{
-	return ((c == STRONG_QUOTE) || (c == WEAK_QUOTE));
-}
 
 /*
 ** This function handles text (no token type found)

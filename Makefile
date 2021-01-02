@@ -106,7 +106,9 @@ SRC_FILES	+=	add_simple_cmd.c			\
 SRC_FILES	+=	create_prompt.c				\
 				expand_word.c				\
 				handle_fatal_error.c		\
+				is_quote.c					\
 				register_signal_handlers.c	\
+				remove_backslash.c			\
 				remove_quotes.c				\
 				sh_ctrl.c					\
 				start_shell.c				\

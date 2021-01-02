@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 17:10:12 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 00:07:28 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 00:24:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 static size_t	get_var_len(char *s)
 {
-	size_t	i;
+	size_t		i;
 
 	i = 0;
 	if (ft_isdigit(s[i]))

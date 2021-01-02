@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 23:59:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 01:52:45 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_SUBSYSTEMS_H
 # define SH_SUBSYSTEMS_H
 
+# include <stdbool.h>
 # include "sh_define.h"
 
 /*
@@ -40,16 +41,18 @@ void	register_signal_handlers(void);
 void	handle_fatal_error(int sig);
 
 /*
-** Substitutes the variable names by their values
+** Quotes removal, backslash escaping and environment variables substitution
 */
 
 void	expand_word(char **tok_word);
 void	substitute_var(char **result, char *tok_word, size_t *i);
+void	remove_quotes(char **result, char *tok_word, size_t *i);
+void	remove_backslash(char **result, char *tok_word, size_t *i);
 
 /*
-** Remove the quotes from the beginning and end of word tokens
+** Checks whether the character is a quote
 */
 
-void	remove_quotes(char **data);
+bool	is_quote(int c);
 
 #endif
