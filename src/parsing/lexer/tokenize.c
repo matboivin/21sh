@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 13:19:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 13:46:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			tokenize(t_lexer *lexer)
 		else
 			ret = handle_text(lexer, &stack);
 	}
-	if (stack && !ret)
+	if (stack && ret != FAIL_RET)
 		add_word_to_lexer(lexer, &stack);
 	ft_strdel(&stack);
 	if (token.type && token.type == TOKEN_PIPE)
