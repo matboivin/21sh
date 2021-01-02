@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 19:08:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 03:18:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int			tokenize(t_lexer *lexer)
 
 	stack = NULL;
 	ret = EXIT_SUCCESS;
-	lexer->pos = DEFAULT_VALUE;
 	while (lexer->input[lexer->pos] && !ret)
 	{
 		token = get_token(lexer->input + lexer->pos);

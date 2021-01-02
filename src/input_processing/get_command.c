@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 18:21:23 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 03:18:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,18 @@ static int	prompt_user(t_shctrl *ft_sh, char *prompt)
 {
 	int		ret;
 
-	ret = 0;
+	ret = EXIT_SUCCESS;
 	if (prompt)
+	{
 		ft_sh->lexer->input = ft_readline(prompt);
+		if (ft_strcmp(prompt, PS2))
+			ft_strdel(&prompt);
+	}
 	else
 		ft_sh->lexer->input = ft_readline(PS1);
-	if (ft_strcmp(prompt, PS2))
-		ft_strdel(&prompt);
 	if (!ft_sh->lexer->input)
 		handle_eof(ft_sh);
+	ft_sh->lexer->pos = DEFAULT_VALUE;
 	ret = tokenize(ft_sh->lexer);
 	ft_strdel(&(ft_sh->lexer->input));
 	return (ret);
@@ -59,6 +62,7 @@ int			get_command(t_shctrl *ft_sh)
 {
 	int		ret;
 
+	ret = EXIT_SUCCESS;
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	if (!ft_sh->lexer)
 		exit_shell(ft_sh);
