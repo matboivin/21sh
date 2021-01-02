@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 18:24:50 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 13:04:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 13:13:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "sh_subsystems.h"
 
 /*
-** This function removes from the beginning and end of word tokens
+** This function handles strong quotes: '
 */
 
 static char	*open_strong_quote(char *tok_word, size_t *i)
@@ -33,6 +33,10 @@ static char	*open_strong_quote(char *tok_word, size_t *i)
 	*i += len;
 	return (result);
 }
+
+/*
+** This function handles weak quotes: "
+*/
 
 static char	*open_weak_quote(char *tok_word, size_t *i)
 {
@@ -57,6 +61,10 @@ static char	*open_weak_quote(char *tok_word, size_t *i)
 	*i += len;
 	return (result);
 }
+
+/*
+** This function removes from the beginning and end of word tokens
+*/
 
 void		remove_quotes(char **result, char *tok_word, size_t *i)
 {
