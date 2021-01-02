@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 17:55:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 02:52:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ bool			parse_cmd_suffix(t_ast_node **ast, t_lexer *lexer)
 	ret_file = get_suffix_file(&suffix_node->right, lexer);
 	if (ret_word || ret_file)
 	{
+		while (ret_word || ret_file)
+		{
+			ret_word = get_suffix_word(&suffix_node->left, lexer);
+			ret_file = get_suffix_file(&suffix_node->right, lexer);
+		}
 		append_node_right(ast, suffix_node);
 		return (true);
 	}
