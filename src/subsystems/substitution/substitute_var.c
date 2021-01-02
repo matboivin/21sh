@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 17:10:12 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 00:24:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/02 02:20:08 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ static char		*get_var_value(char *var_name)
 	{
 		if (ft_findenv(var_name) != FAIL_RET)
 			result = ft_strdup(ft_getenv(var_name));
+		else
+			result = ft_strdup("");
 	}
 	return (result);
 }
