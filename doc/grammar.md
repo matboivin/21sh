@@ -1,4 +1,4 @@
-# Grammar for minishell
+# Grammar for ft_sh
 
 Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html#tag_18_10)
 
@@ -17,8 +17,12 @@ Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/online
    containing more than one character. */
 
 
-%token  DGREAT
-/*      '>>'     */
+%token  DSEMI
+/*      ';;'    */
+
+
+%token  DLESS  DGREAT
+/*      '<<'   '>>'    */
 
 
 /* -------------------------------------------------------

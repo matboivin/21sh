@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 01:49:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/04 13:32:15 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 # include <signal.h>
 # include "libft_define.h"
 
-# define SHELL_NAME "minishell"
+# define SHELL_NAME "ft_sh"
 
 /*
 ** PS1: environment variable which contains the value of the default prompt.
 ** It changes the shell command prompt appearance and environment.
 */
-# define PS1 "\033[34m┌─[\033[0mminishell\033[34m]\n└──╼\033[0m "
-# define PS1_OP "\033[34m┌─[\033[0mminishell\033[34m]─[\033[0m"
+# define PS1 "\033[34m┌─[\033[0mft_sh\033[34m]\n└──╼\033[0m "
+# define PS1_OP "\033[34m┌─[\033[0mft_sh\033[34m]─[\033[0m"
 # define PS1_END "\033[34m]\n└──╼\033[0m "
 
 /*

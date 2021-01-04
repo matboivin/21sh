@@ -1,4 +1,4 @@
-BIN_NAME := minishell
+BIN_NAME := ft_sh
 
 SHELL = /bin/sh
 RM = /bin/rm
@@ -8,7 +8,7 @@ RM = /bin/rm
 
 # ********************************* INCLUDES ********************************* #
 
-INC_FILES	=	minishell.h					\
+INC_FILES	=	ft_sh.h						\
 				sh_ast.h					\
 				sh_builtins.h				\
 				sh_command.h				\
@@ -228,7 +228,7 @@ debug: re
 	@echo "DEBUG\t\tDebug build done"
 
 check_leaks: $(BIN_NAME)
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./minishell
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ft_sh
 
 show_tree:
 	@dot -Tsvg ast.dot -o ast.svg

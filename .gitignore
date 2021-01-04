@@ -57,5 +57,5 @@ ast.dot
 ast.svg
 
 *.swp
-minishell
+ft_sh
 test/

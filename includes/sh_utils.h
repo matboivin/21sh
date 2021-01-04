@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 21:36:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/04 13:34:31 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** Prints the usage message
 */
 
-void	print_usage(void);
+void	print_usage(char *argv0);
 
 /*
 ** Error messages

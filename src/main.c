@@ -6,19 +6,18 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 00:38:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/04 13:34:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_sh.h"
 
 int				main(int argc, char **argv, char **envp)
 {
 	t_shctrl	ft_sh;
 
-	(void)argv;
 	if (argc != NO_ARGS)
-		print_usage();
+		print_usage(argv[0]);
 	start_shell(envp);
 	create_shell(&ft_sh);
 	return (shell_loop(&ft_sh));

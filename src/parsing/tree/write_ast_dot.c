@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:05:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/04 13:36:13 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	write_branch(int fd, t_ast_node *node)
 
 void		write_ast_dot(int fd, t_ast_node *root)
 {
-	ft_dprintf(fd, "digraph minishell_parsing {");
+	ft_dprintf(fd, "digraph ft_sh_parsing {");
 	if (!root->left && !root->right)
 		ft_dprintf(fd, "\n    \"%s\";", root->data);
 	else
