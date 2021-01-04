@@ -1,6 +1,10 @@
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./minishell
-
-> FILE ; ls > FILE | rev | wc -c >> FILE ; cat FILE ; < INFILE cat
+echo |
+echo \
+>
+<
+ls # -l
+ls ;; ls
+; ls ; ls
 cat <<<<< bar
 cat << << bar
 echo -nnnnnnnnnnnnnnnnnnnnn FOO
@@ -13,12 +17,14 @@ export N\\T
 export bO_nJq123o__1ju_je3134sui__a=a; echo $bO_nJq123o__1ju_je3134sui__a
 export A==a; echo $A
 export A=a=a=a=a=a; echo $A
-echo |
-echo TEST >> foo
+echo TEST > foo > bar
 echo bar > FILE1 >> FILE2 >> FILE3
-echo >> FILE lol
+echo >> FILE foo
+echo >> FILE1 foo > FILE2
+cat < NONEMPTY > FILE2
 touch TEST; chmod 001 TEST
 ec""ho bonjour
+ech"ho" bonjour
 echo s'h'e'l'l
 echo a'b'c"d"e'f'g"h"i'j'k"l"m'n'o"p'q'r"s't'u"v"w"x"y'z'
 echo \$SHELL
@@ -26,3 +32,13 @@ echo "a\\b"
 echo "a\\ \ b c\" \'$SHELL\'"
 echo $"SHELL"
 echo $'SHELL'
+"/bin/ls" "-l"
+top | grep root
+cat /dev/random | cat
+ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|
+> FILE ; ls > FILE | rev | wc -c >> FILE ; cat FILE ; < INFILE cat
+
+To fix:
+echo test "" test ""
+echo test '' test ''
+export AA+=BBB
