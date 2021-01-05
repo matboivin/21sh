@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 03:01:19 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 17:50:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/05 15:34:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,45 @@
 ** This function constructs a custom prompt
 */
 
+static int	cut_path(char *pathname)
+{
+	int		i;
+	int		count;
+
+	i = 0;
+	count = 0;
+	while (pathname[i] && count < 3)
+	{
+		if (pathname[i] == '/')
+			count++;
+		i++;
+	}
+	if (i)
+		i--;
+	return (i);
+}
+
 char		*create_prompt(void)
 {
 	char	*shell_prompt;
+	char	*workind_dir;
 	char	cwd[PATH_MAX];
+	int		i;
 
 	shell_prompt = NULL;
+	workind_dir = NULL;
+	i = 0;
 	if (getcwd(cwd, PATH_MAX) != NULL)
-		shell_prompt = ft_join_n_str(3, PS1_OP, cwd, PS1_END);
+	{
+		i = cut_path(cwd);
+		shell_prompt = ft_join_n_str(4, PS1_OP, "~", cwd + i, PS1_END);
+	}
 	else if (ft_getenv("PWD") != NULL)
-		shell_prompt = ft_join_n_str(3, PS1_OP, ft_getenv("PWD"), PS1_END);
+	{
+		workind_dir = ft_getenv("PWD");
+		i = cut_path(workind_dir);
+		shell_prompt = ft_join_n_str(4, PS1_OP, "~", workind_dir, PS1_END);
+	}
 	else
 		return (NULL);
 	return (shell_prompt);

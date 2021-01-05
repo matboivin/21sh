@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 01:20:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/05 15:30:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static int	set_old_pwd(void)
 	int		ret;
 
 	new_var = NULL;
+	ret = 0;
 	if (!ft_getenv("PWD"))
 		set_working_dir();
 	if (ft_findenv("OLDPWD") != FAIL_RET)
