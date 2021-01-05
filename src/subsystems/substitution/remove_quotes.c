@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 18:24:50 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 13:13:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/05 16:56:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*open_strong_quote(char *tok_word, size_t *i)
 	while (tok_word[*i + len] && tok_word[*i + len] != STRONG_QUOTE)
 		len++;
 	if (!len)
-		return (NULL);
+		return (ft_strdup(EMPTY_STR));
 	result = ft_substr(tok_word, *i, len);
 	*i += len;
 	return (result);
@@ -57,7 +57,7 @@ static char	*open_weak_quote(char *tok_word, size_t *i)
 		len++;
 	}
 	if (!len)
-		return (NULL);
+		return (ft_strdup(EMPTY_STR));
 	*i += len;
 	return (result);
 }
