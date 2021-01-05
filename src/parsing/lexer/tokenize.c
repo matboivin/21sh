@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:21 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 13:46:28 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/05 16:54:34 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			tokenize(t_lexer *lexer)
 	while (lexer->input[lexer->pos] && !ret)
 	{
 		token = get_token(lexer->input + lexer->pos);
-		if (lexer->input[lexer->pos] == COMMENT_START)
+		if ((lexer->input[lexer->pos] == COMMENT_START) && !stack)
 			break ;
 		if (lexer->input[lexer->pos] == BACKSLASH)
 			ret = escape_char(lexer, &stack);
