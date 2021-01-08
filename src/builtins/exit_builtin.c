@@ -6,10 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 18:37:16 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/08 14:39:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <errno.h>
+#include <stdlib.h>
 #include <string.h>
 #include "libft_num.h"
 #include "libft_printf.h"
@@ -27,7 +29,11 @@
 
 static int	check_args(int argc, char *cmd_name, char *n)
 {
-	if (!ft_isnumeric(n))
+	char	*end;
+
+	end = NULL;
+	strtol(n, &end, DEC_BASE);
+	if ((!ft_isnumeric(n)) || (errno == ERANGE))
 	{
 		g_status = INCORRECT_USAGE;
 		print_error(3, cmd_name, n, "numeric argument required");
