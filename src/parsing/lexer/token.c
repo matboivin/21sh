@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/14 16:17:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 17:55:13 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 **
 ** create_token()   :  Constructor
 ** malloc_token()   :  Malloc function
-** destroy_token()  :  Destructor
 ** free_token()     :  Free function
 ** delete_tokens()  :  Free all tokens in lexer
 */

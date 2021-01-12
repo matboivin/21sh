@@ -46,7 +46,7 @@ Subdirectories are organized following more or less this architecture:
 - Environment Variables: set, expand and print environment variables.
 - Word expansions, substitutions, aliases.
 - Wildcards (bonus).
-- Subshells (not required for the minishell school project).
+- Subshells.
 - Also added signal handling functions.
 
 5. **Recoded builtin functions** required by the school project.

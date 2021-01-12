@@ -3,6 +3,7 @@ echo \
 >
 <
 ls # -l
+echo#
 ls ;; ls
 ; ls ; ls
 cat <<<<< bar
@@ -37,8 +38,5 @@ top | grep root
 cat /dev/random | cat
 ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls
 > FILE ; ls > FILE | rev | wc -c >> FILE ; cat FILE ; < INFILE cat
-
-To fix:
 echo test "" test ""
 echo test '' test ''
-export AA+=BBB
