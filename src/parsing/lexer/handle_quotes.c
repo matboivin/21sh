@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:17:34 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 21:50:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:38:17 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@
 ** If open quotes are closed, returns 0 (success)
 */
 
-static int	close_quote(t_lexer *lexer, char **stack)
+static int	close_quote(t_lexer *lexer, char **tok_stack)
 {
-	return (push_char(lexer, stack));
+	return (push_char(lexer, tok_stack));
 }
 
 /*
 ** Else, raises matching error and returns -1
 */
 
-static int	raise_matching_error(char **stack, char quote_type)
+static int	raise_matching_error(char **tok_stack, char quote_type)
 {
-	ft_strdel(stack);
+	ft_strdel(tok_stack);
 	handle_matching_error(quote_type);
 	return (FAIL_RET);
 }
@@ -42,26 +42,26 @@ static int	raise_matching_error(char **stack, char quote_type)
 **          -1 on error
 */
 
-static int	handle_quote_type(t_lexer *lexer, char **stack, char quote_type)
+static int	handle_quote_type(t_lexer *lexer, char **tok_stack, char quote_type)
 {
-	push_char(lexer, stack);
+	push_char(lexer, tok_stack);
 	while (lexer->input[lexer->pos] && lexer->input[lexer->pos] != quote_type)
 	{
 		if ((lexer->input[lexer->pos] == BACKSLASH)
 			&& (quote_type == WEAK_QUOTE))
-			escape_char(lexer, stack);
+			escape_char(lexer, tok_stack);
 		else
-			push_char(lexer, stack);
+			push_char(lexer, tok_stack);
 	}
 	if (lexer->input[lexer->pos] == quote_type)
-		return (close_quote(lexer, stack));
+		return (close_quote(lexer, tok_stack));
 	else
-		return (raise_matching_error(stack, quote_type));
+		return (raise_matching_error(tok_stack, quote_type));
 }
 
-int			handle_quotes(t_lexer *lexer, char **stack)
+int			handle_quotes(t_lexer *lexer, char **tok_stack)
 {
 	if (lexer->input[lexer->pos] == STRONG_QUOTE)
-		return (handle_quote_type(lexer, stack, STRONG_QUOTE));
-	return (handle_quote_type(lexer, stack, WEAK_QUOTE));
+		return (handle_quote_type(lexer, tok_stack, STRONG_QUOTE));
+	return (handle_quote_type(lexer, tok_stack, WEAK_QUOTE));
 }

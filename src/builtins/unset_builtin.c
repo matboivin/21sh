@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:55 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 21:42:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:16:47 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int			unset_builtin(int argc, char **argv)
 	}
 	while (i < argc)
 	{
-		if ((!is_valid_identifier(argv[i])) || ft_strchr(argv[i], ENV_VAR_SEP))
+		if (!is_valid_identifier(argv[i]))
 			ret = handle_invalid_id(argv[CMD_NAME], argv[i]);
-		else
+		else if (!ft_strchr(argv[i], ENV_VAR_SEP))
 		{
 			if (ft_unsetenv(argv[i]) == FAIL_RET)
 				unset_export(argv[i]);

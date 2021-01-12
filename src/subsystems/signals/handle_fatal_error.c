@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:52:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 22:21:17 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:32:38 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,8 @@ void		handle_fatal_error(int sig)
 		if (!g_char_dev)
 		{
 			shell_prompt = create_prompt();
-			if (shell_prompt)
-			{
-				ft_printf("%s", shell_prompt);
-				ft_strdel(&shell_prompt);
-			}
-			else
-				ft_printf("%s", PS1);
+			ft_printf("%s", shell_prompt);
+			ft_strdel(&shell_prompt);
 		}
 		g_char_dev = false;
 	}

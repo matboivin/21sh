@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:33:44 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 22:00:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:19:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,12 @@ char	**dup_environment(size_t count, bool replace);
 */
 
 int		ft_findenv(char *key);
-int		get_env_len(char *env);
+
+/*
+** Calculates the length of an environment variable
+*/
+
+int		get_env_len(char *key);
 
 /*
 ** Returns a string that is the value of the environment variable key

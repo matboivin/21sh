@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 18:08:57 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 21:59:50 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:21:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,6 @@
 ** returns: The index of the variable
 **          -1 otherwise
 */
-
-int			get_env_len(char *env)
-{
-	int		i;
-
-	i = 0;
-	while (env[i] && env[i] != ENV_VAR_SEP)
-		i++;
-	return (i);
-}
 
 int			ft_findenv(char *key)
 {

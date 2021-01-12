@@ -53,6 +53,7 @@
 - [6.2.2 Creating Pipes in C](https://tldp.org/LDP/lpg/node11.html)
 - [Closing pipe file descriptor in C](https://stackoverflow.com/questions/22032120/closing-pipe-file-descriptor-in-c)
 - [Communication par tuyau](http://www.zeitoun.net/articles/communication-par-tuyau/start)
+- [Chapter 21. Subshells](https://tldp.org/LDP/abs/html/subshells.html)
 
 ### Parsing
 

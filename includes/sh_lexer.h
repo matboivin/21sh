@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 18:20:28 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:36:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ typedef struct	s_lexer
 ** free_token()     :  Free function
 */
 
-t_token		create_token(const char *s, size_t p_len, t_tok_type p_type);
-t_token		*malloc_token(const char *s, size_t p_len, t_tok_type p_type);
-void		free_token(t_token **to_free);
-void		delete_tokens(t_token **tokens, size_t size);
+t_token	create_token(const char *s, size_t p_len, t_tok_type p_type);
+t_token	*malloc_token(const char *s, size_t p_len, t_tok_type p_type);
+void	free_token(t_token **to_free);
+void	delete_tokens(t_token **tokens, size_t size);
 
 /*
 ** Lexer: lexical analyzer
@@ -148,22 +148,22 @@ int		tokenize(t_lexer *lexer);
 ** Token handlers
 */
 
-void	handle_token(t_lexer *lexer, t_regex token, char **stack);
-int		handle_quotes(t_lexer *lexer, char **stack);
-int		handle_text(t_lexer *lexer, char **stack);
-void	add_word_to_lexer(t_lexer *lexer, char **stack);
+void	handle_token(t_lexer *lexer, t_regex token, char **tok_stack);
+int		handle_quotes(t_lexer *lexer, char **tok_stack);
+int		handle_text(t_lexer *lexer, char **tok_stack);
+void	add_word_to_lexer(t_lexer *lexer, char **tok_stack);
 
 /*
 ** Escapes a character following a backslash
 */
 
-int		escape_char(t_lexer *lexer, char **stack);
+int		escape_char(t_lexer *lexer, char **tok_stack);
 
 /*
 ** Adds the current character to the stack
 */
 
-int		push_char(t_lexer *lexer, char **stack);
+int		push_char(t_lexer *lexer, char **tok_stack);
 
 /*
 ** Gets next token

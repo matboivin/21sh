@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_char.c                                        :+:      :+:    :+:   */
+/*   get_env_len.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/24 19:58:00 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 23:37:02 by mboivin          ###   ########.fr       */
+/*   Created: 2020/11/09 18:08:57 by mboivin           #+#    #+#             */
+/*   Updated: 2021/01/12 23:28:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include "libft_str.h"
-#include "sh_lexer.h"
+#include "libft_ctype.h"
+#include "sh_env.h"
 
 /*
-** The lexer adds the current character to the stack
+** This function calculates the length of an environment variable
 **
-** stack: A pointer to the stack
-** lexer: The lexer
+** key: Name of the variable
 **
-** returns: 0 on success
-**          -1 on error
+** returns: The length of the variable
 */
 
-int		push_char(t_lexer *lexer, char **tok_stack)
+int			get_env_len(char *key)
 {
-	*tok_stack = ft_append_char(*tok_stack, lexer->input + lexer->pos, true);
-	if (!(*tok_stack))
-		return (FAIL_RET);
-	lexer->pos++;
-	return (0);
+	size_t	len;
+
+	len = 0;
+	if (ft_isdigit(key[len]))
+		return (1);
+	while ((ft_isalnum(key[len])) || (key[len] == '_'))
+		len++;
+	return (len);
 }

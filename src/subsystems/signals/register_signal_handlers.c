@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:51:19 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/26 12:37:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:33:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	handle_sig_err(void)
 
 void		register_signal_handlers(void)
 {
-	if (
-		(signal(SIGINT, handle_fatal_error) == SIG_ERR)
-		|| (signal(SIGQUIT, SIG_IGN) == SIG_ERR))
+	if (signal(SIGINT, handle_fatal_error) == SIG_ERR)
+		handle_sig_err();
+	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
 		handle_sig_err();
 }

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 21:39:04 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:26:00 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@
 
 static bool		command_found(char **cmd_path, char *path_to_check)
 {
-	bool		ret;
+	bool		is_found;
 	struct stat	statbuf;
 
-	ret = false;
+	is_found = false;
 	if (lstat(path_to_check, &statbuf) != FAIL_RET)
 	{
-		ret = true;
+		is_found = true;
 		*cmd_path = ft_strreplace(*cmd_path, path_to_check);
 	}
 	ft_strdel(&path_to_check);
-	return (ret);
+	return (is_found);
 }
 
 static char		*get_path_value(void)
@@ -80,15 +80,15 @@ static int		search_executable(char **cmd_path)
 
 int				search_command(t_simplecmd *simple_cmd)
 {
-	int			ret;
+	int			is_found;
 
-	ret = 0;
+	is_found = 0;
 	if (!simple_cmd->argc)
 		return (FAIL_RET);
 	search_builtin(simple_cmd);
 	if (!simple_cmd->builtin_func && !contain_slash(simple_cmd->cmd_path))
-		ret = search_executable(&(simple_cmd->cmd_path));
-	if (simple_cmd->cmd_path && ret != FAIL_RET)
+		is_found = search_executable(&(simple_cmd->cmd_path));
+	if (simple_cmd->cmd_path && is_found != FAIL_RET)
 		return (0);
 	return (FAIL_RET);
 }

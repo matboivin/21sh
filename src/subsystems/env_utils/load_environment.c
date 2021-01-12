@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 23:20:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:29:33 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char		**g_env;
 ** envp: The environment represented as an array of strings
 */
 
-static void	increment_count(void)
+static void	increment_level(void)
 {
 	char	*new_val;
 	char	*str_repr;
@@ -63,5 +63,5 @@ void		load_environment(char **envp)
 		}
 		i++;
 	}
-	increment_count();
+	increment_level();
 }

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 21:47:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/05 18:01:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:34:32 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@
 
 void	get_next_token(t_lexer *lexer)
 {
-	lexer->pos += 1;
+	lexer->pos++;
 }

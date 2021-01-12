@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 18:17:02 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:21:17 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** Print error messages
 */
 
-void		handle_syntax_error(const char *token)
+void	handle_syntax_error(const char *token)
 {
 	g_status = INCORRECT_USAGE;
 	ft_dprintf(
@@ -30,7 +30,7 @@ void		handle_syntax_error(const char *token)
 		token);
 }
 
-void		handle_matching_error(char c)
+void	handle_matching_error(char c)
 {
 	g_status = INCORRECT_USAGE;
 	ft_dprintf(
@@ -40,7 +40,7 @@ void		handle_matching_error(char c)
 		c);
 }
 
-void		handle_cmd_not_found(char *filename)
+void	handle_cmd_not_found(char *filename)
 {
 	g_status = CMD_NO_FOUND;
 	print_error(2, filename, "command not found");

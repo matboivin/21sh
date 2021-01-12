@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/04 13:32:15 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 22:53:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@
 # define ENV_VAR_SEP '='
 # define PATHS_SEP ':'
 # define DIRS_SEP "/"
-# define ENV_KEY 0
-# define ENV_VAL 1
 
 /*
 ** Execution, pipes and files

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:18:08 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 00:37:09 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:38:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
 **          -1 on error
 */
 
-int			handle_text(t_lexer *lexer, char **stack)
+int		handle_text(t_lexer *lexer, char **tok_stack)
 {
-	int		ret;
+	int	ret;
 
 	ret = EXIT_SUCCESS;
 	if (is_quote(lexer->input[lexer->pos]))
-		ret = handle_quotes(lexer, stack);
+		ret = handle_quotes(lexer, tok_stack);
 	else
-		push_char(lexer, stack);
+		push_char(lexer, tok_stack);
 	return (ret);
 }

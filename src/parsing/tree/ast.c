@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:03:49 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/02 19:52:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 23:45:46 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@
 
 void			create_tree_root(t_ast_node **root)
 {
-	*root = malloc_ast_node(
-		NODE_PROGRAM,
-		"Program");
+	*root = malloc_ast_node(NODE_PROGRAM, "Program");
 }
 
 t_ast_node		create_ast_node(t_node_type p_type, char *p_data)
