@@ -41,7 +41,7 @@ SRC_FILES	+=	cd_builtin.c				\
 
 SRC_FILES	+=	get_command.c				\
 				process_input.c				\
-				shell_loop.c
+				wait_for_input.c
 
 # LEXER #
 

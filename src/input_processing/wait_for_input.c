@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_loop.c                                       :+:      :+:    :+:   */
+/*   wait_for_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:02:51 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/17 18:57:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 19:10:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 **   Return status
 */
 
-int			shell_loop(t_shctrl *ft_sh)
+int		wait_for_input(t_shctrl *ft_sh)
 {
 	while (!g_done)
 		process_input(ft_sh);

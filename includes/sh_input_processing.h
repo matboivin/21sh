@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 15:21:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:40:45 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 19:10:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** While the shell is not 'done', processes the user input
 */
 
-int		shell_loop(t_shctrl *ft_sh);
+int		wait_for_input(t_shctrl *ft_sh);
 
 /*
 ** Processes the command input
