@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:02:51 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 19:10:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/13 00:10:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 /*
 ** While the shell is not 'done', processes the user input: a command
-**   Prompt the user for and input
+**   Prompt the user for an input
 **   Parse the command
 **   Execute the command
 **   Return status

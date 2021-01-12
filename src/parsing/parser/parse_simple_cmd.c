@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 22:21:23 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/13 00:14:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 **
 **      NODE_SIMPLE_CMD                 NODE_SIMPLE_CMD
 **             /                               /
-**         "cmd_name"                      NODE_IO_FILE
+**       NODE_IO_FILE                     "cmd_name"
 **
 **      NODE_SIMPLE_CMD                  NODE_SIMPLE_CMD
 **        /         \                     /         \

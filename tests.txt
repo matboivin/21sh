@@ -25,7 +25,7 @@ echo >> FILE1 foo > FILE2
 cat < NONEMPTY > FILE2
 touch TEST; chmod 001 TEST
 ec""ho bonjour
-ech"ho" bonjour
+ech"o" bonjour
 echo s'h'e'l'l
 echo a'b'c"d"e'f'g"h"i'j'k"l"m'n'o"p'q'r"s't'u"v"w"x"y'z'
 echo \$SHELL

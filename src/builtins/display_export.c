@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 21:54:15 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/13 00:22:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ static char	**sort_export_list(void)
 	i = 0;
 	result = dup_environment(ft_str_arr_len(g_env), false);
 	if (!result)
+	{
+		print_errno("malloc");
 		return (NULL);
+	}
 	while (result[i])
 	{
 		j = 0;
@@ -103,11 +106,10 @@ int			display_export(void)
 	{
 		ret = print_env_var(sorted_env);
 		ft_str_arr_del(sorted_env);
-		if (ret == FAIL_RET)
-		{
+		if (ret != FAIL_RET)
+			return (EXIT_SUCCESS);
+		else
 			print_errno("write error");
-			return (EXIT_FAILURE);
-		}
 	}
-	return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }

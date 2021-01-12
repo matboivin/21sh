@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 01:11:11 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 13:08:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/13 00:15:56 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ static bool	is_followed_by_special(char *tok_word, size_t i)
 	return (false);
 }
 
-void		remove_backslash(
-	char **result, char *tok_word, size_t *i, bool check_special)
+void		remove_backslash(char **result, char *tok_word, size_t *i, bool check_special)
 {
 	if (check_special)
 	{

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/04 13:34:31 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/13 00:18:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "sh_ctrl.h"
 
 /*
-** Prints the usage message
+** Usage message
 */
 
 void	print_usage(char *argv0);
