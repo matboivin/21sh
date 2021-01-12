@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 18:40:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 18:41:41 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,19 @@ static int	print_syntax_error(t_lexer *lexer)
 	return (FAIL_RET);
 }
 
-int			parse(t_ast_node **ast, t_lexer *lexer)
+int			parse(t_ast_node **root, t_lexer *lexer)
 {
-	bool	ret;
+	bool	parsed;
 
-	ret = true;
+	parsed = true;
 	lexer->pos = 0;
-	create_tree_root(ast);
-	while ((lexer->pos < lexer->size) && ret)
-		ret = parse_command(ast, lexer);
+	create_tree_root(root);
+	while ((lexer->pos < lexer->size) && parsed)
+		parsed = parse_command(root, lexer);
 	if (lexer->pos < lexer->size)
 		return (print_syntax_error(lexer));
+#ifdef DEBUG
+	print_ast(*root);
+#endif /* DEBUG */
 	return (0);
 }

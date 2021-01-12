@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:34:28 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:34:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 18:41:48 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ bool	parse_pipe_sequence(t_ast_node **ast, t_lexer *lexer);
 ** Parses a command
 */
 
-bool	parse_command(t_ast_node **ast, t_lexer *lexer);
+bool	parse_command(t_ast_node **root, t_lexer *lexer);
 
 #endif

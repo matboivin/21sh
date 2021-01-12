@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 03:18:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 18:39:52 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,21 @@ static void	handle_eof(t_shctrl *ft_sh)
 ** This function prompts the user for a command
 */
 
-static int	prompt_user(t_shctrl *ft_sh, char *prompt)
+static int	prompt_user(t_shctrl *ft_sh)
 {
 	int		ret;
+	char	*prompt;
 
 	ret = EXIT_SUCCESS;
-	if (prompt)
+	prompt = NULL;
+	if (ft_sh->lexer->size == DEFAULT_SIZE)
 	{
+		prompt = create_prompt();
 		ft_sh->lexer->input = ft_readline(prompt);
-		if (ft_strcmp(prompt, PS2))
-			ft_strdel(&prompt);
+		ft_strdel(&prompt);
 	}
 	else
-		ft_sh->lexer->input = ft_readline(PS1);
+		ft_sh->lexer->input = ft_readline(PS2);
 	if (!ft_sh->lexer->input)
 		handle_eof(ft_sh);
 	ft_sh->lexer->pos = DEFAULT_VALUE;
@@ -60,22 +62,20 @@ static int	prompt_user(t_shctrl *ft_sh, char *prompt)
 
 int			get_command(t_shctrl *ft_sh)
 {
-	int		ret;
+	int		multiline;
 
-	ret = EXIT_SUCCESS;
+	multiline = EXIT_SUCCESS;
 	ft_sh->lexer = malloc_lexer(DEFAULT_CAPACITY);
 	if (!ft_sh->lexer)
 		exit_shell(ft_sh);
-	ret = prompt_user(ft_sh, create_prompt());
-	while (ret == 1)
-		ret = prompt_user(ft_sh, PS2);
+	do
+	{
+		multiline = prompt_user(ft_sh);
+	} while (multiline == 1);
 #ifdef DEBUG
 	print_lexer(ft_sh->lexer);
 #endif /* DEBUG */
-	if (ret == EXIT_SUCCESS)
-		ret = parse(&(ft_sh->ast), ft_sh->lexer);
-#ifdef DEBUG
-	print_ast(ft_sh->ast);
-#endif /* DEBUG */
-	return (ret);
+	if (multiline == EXIT_SUCCESS)
+		return (parse(&(ft_sh->ast), ft_sh->lexer));
+	return (multiline);
 }

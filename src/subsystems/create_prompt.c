@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 03:01:19 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/05 17:33:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 18:46:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ char		*create_prompt(void)
 		shell_prompt = ft_join_n_str(4, PS1_OP, "~", workind_dir, PS1_END);
 	}
 	else
-		return (NULL);
+		return (ft_strdup(PS1));
 	return (shell_prompt);
 }
