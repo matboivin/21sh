@@ -161,9 +161,9 @@ OBJ_DIR		=	obj
 
 SUB_DIRS	=	builtins					\
 				execution					\
-				execution/command_search	\
-				execution/command_table		\
 				execution/stream_op			\
+				expansion/command_search	\
+				expansion/command_table		\
 				input_processing			\
 				parsing/lexer				\
 				parsing/parser				\
@@ -171,6 +171,7 @@ SUB_DIRS	=	builtins					\
 				subsystems					\
 				subsystems/env_utils		\
 				subsystems/signals			\
+				subsystems/startup			\
 				subsystems/substitution		\
 				utils
 

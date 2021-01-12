@@ -35,23 +35,27 @@ Subdirectories are organized following more or less this architecture:
   - A parser: processes the tokens according to a grammar and builds the AST.
   - An AST: stores the data.
 
-3. **Execution**
+3. **Expansion**
+
+- Word expansions, substitutions, aliases.
+
+4. **Subsystems**
+
+- Environment Variables: set, expand and print environment variables.
+- Utils for expansion.
+- Wildcards (bonus).
+- Subshells.
+- Also added signal handling functions.
+
+5. **Execution**
 
 - Traverse the AST and execute commands.
 - Create pipes to communicate the output of one process to the input of the next one.
 - Handle redirections.
 
-4. **Subsystems**
+6. **Recoded builtin functions** required by the school project.
 
-- Environment Variables: set, expand and print environment variables.
-- Word expansions, substitutions, aliases.
-- Wildcards (bonus).
-- Subshells.
-- Also added signal handling functions.
-
-5. **Recoded builtin functions** required by the school project.
-
-6. **Utils** (functions to display error messages and so forth).
+7. **Utils** (functions to display error messages and so forth).
 
 # Steps
 
