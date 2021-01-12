@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   handle_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 18:16:54 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 18:17:02 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,28 @@
 ** Print error messages
 */
 
-void		print_errno(char *target)
+void		handle_syntax_error(const char *token)
 {
-	g_status = EXIT_FAILURE;
-#ifdef DEBUG
-	ft_printf("errno %d %s\n", errno, strerror(errno));
-#endif /* DEBUG */
-	if (errno == EACCES)
-	{
-		if (is_directory(target))
-			errno = EISDIR;
-	}
-	print_error(2, target, strerror(errno));
+	g_status = INCORRECT_USAGE;
+	ft_dprintf(
+		STDERR_FILENO,
+		"%s: syntax error near unexpected token `%s'\n",
+		SHELL_NAME,
+		token);
 }
 
-void		print_error(int count, ...)
+void		handle_matching_error(char c)
 {
-	va_list	ap;
+	g_status = INCORRECT_USAGE;
+	ft_dprintf(
+		STDERR_FILENO,
+		"%s: unexpected EOF while looking for matching `%c'\n",
+		SHELL_NAME,
+		c);
+}
 
-	if (count < 1)
-		return ;
-	ft_dprintf(STDERR_FILENO, "%s", SHELL_NAME);
-	va_start(ap, count);
-	while (count > 0)
-	{
-		ft_dprintf(STDERR_FILENO, ": %s", va_arg(ap, char *));
-		count--;
-	}
-	va_end(ap);
-	ft_dprintf(STDERR_FILENO, "\n");
+void		handle_cmd_not_found(char *filename)
+{
+	g_status = CMD_NO_FOUND;
+	print_error(2, filename, "command not found");
 }

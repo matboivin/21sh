@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 13:03:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 18:20:39 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void	handle_fatal_error(int sig);
 void	expand_word(char **tok_word);
 void	substitute_var(char **result, char *tok_word, size_t *i);
 void	remove_quotes(char **result, char *tok_word, size_t *i);
-void	remove_backslash(
-	char **result, char *tok_word, size_t *i, bool check_special);
+void	remove_backslash(char **result, char *tok_word, size_t *i, bool check_special);
 
 /*
 ** Checks whether the character is a quote

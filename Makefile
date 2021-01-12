@@ -86,15 +86,20 @@ SRC_FILES	+=	add_simple_cmd.c			\
 				build_cmd_table.c			\
 				command.c					\
 				contain_slash.c				\
+				dup_streams.c				\
 				exec_pipe_seq.c				\
+				exec_simple_cmd.c			\
 				execute.c					\
+				invoke_builtin.c			\
 				is_builtin.c				\
 				is_open_file.c				\
 				get_cmd_arg_count.c			\
 				get_cmd_args.c				\
 				get_cmd_filename.c			\
 				get_files.c					\
+				handle_redirection.c		\
 				redirect_stream.c			\
+				restore_default_streams.c	\
 				search_builtin.c			\
 				search_command.c			\
 				simple_command.c			\
@@ -131,6 +136,7 @@ SRC_FILES	+=	dup_environment.c			\
 # UTILS #
 
 SRC_FILES	+=	builtin_error.c				\
+				handle_error.c				\
 				is_directory.c				\
 				print_error.c				\
 				print_usage.c				\
@@ -157,6 +163,7 @@ SUB_DIRS	=	builtins					\
 				execution					\
 				execution/command_search	\
 				execution/command_table		\
+				execution/stream_op			\
 				input_processing			\
 				parsing/lexer				\
 				parsing/parser				\

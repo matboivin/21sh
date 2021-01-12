@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.c                                          :+:      :+:    :+:   */
+/*   exec_simple_cmd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 18:28:27 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 18:13:48 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 18:08:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,23 @@
 #include "sh_execution.h"
 
 /*
-** This function executes all simple commands
-** When a simple command other than a builtin is to be executed, it is invoked
-** in a child process
+** This function executes a simple command
 */
 
-void	execute(t_shctrl *ft_sh, t_cmd *cmd)
+void			exec_simple_cmd(t_simplecmd *simple_cmd)
 {
-	if (cmd->cmd_count == DEFAULT_VALUE)
-		return ;
-	if (cmd->cmd_count == 1 && is_builtin(cmd->simple_cmds[cmd->curr_cmd]))
-		exec_simple_cmd(cmd->simple_cmds[cmd->curr_cmd]);
-	else
-		exec_pipe_seq(ft_sh, cmd);
+	t_streams	backup;
+
+	handle_redirection(simple_cmd, &backup);
+	if (simple_cmd->cmd_path)
+	{
+		if (is_builtin(simple_cmd))
+			invoke_builtin(simple_cmd);
+		else
+		{
+			execve(simple_cmd->cmd_path, simple_cmd->cmd_args, g_env);
+			print_errno(simple_cmd->cmd_args[CMD_NAME]);
+		}
+	}
+	restore_default_streams(backup);
 }

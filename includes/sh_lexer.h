@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:33:39 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/01 21:48:42 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/12 18:20:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define DEFAULT_SIZE 0
 
 /*
-** Tokens
+** Token types
 */
 
 typedef enum	e_tok_type
@@ -95,10 +95,10 @@ typedef struct	s_lexer
 ** free_token()     :  Free function
 */
 
-t_token			create_token(const char *s, size_t p_len, t_tok_type p_type);
-t_token			*malloc_token(const char *s, size_t p_len, t_tok_type p_type);
-void			free_token(t_token **to_free);
-void			delete_tokens(t_token **tokens, size_t size);
+t_token		create_token(const char *s, size_t p_len, t_tok_type p_type);
+t_token		*malloc_token(const char *s, size_t p_len, t_tok_type p_type);
+void		free_token(t_token **to_free);
+void		delete_tokens(t_token **tokens, size_t size);
 
 /*
 ** Lexer: lexical analyzer
@@ -109,79 +109,78 @@ void			delete_tokens(t_token **tokens, size_t size);
 ** free_lexer()     :  Free function
 */
 
-void			create_lexer(t_lexer *lexer, size_t p_capacity);
-t_lexer			*malloc_lexer(size_t p_capacity);
-void			destroy_lexer(t_lexer to_destroy);
-void			free_lexer(t_lexer **to_free);
+void	create_lexer(t_lexer *lexer, size_t p_capacity);
+t_lexer	*malloc_lexer(size_t p_capacity);
+void	destroy_lexer(t_lexer to_destroy);
+void	free_lexer(t_lexer **to_free);
 
 /*
 ** Checks whether the lexer is full
 */
 
-bool			lexer_is_full(t_lexer *lexer);
+bool	lexer_is_full(t_lexer *lexer);
 
 /*
 ** Doubles the capacity of the lexer
 */
 
-void			increase_lexer(t_lexer *lexer);
+void	increase_lexer(t_lexer *lexer);
 
 /*
 ** Adds a token to the lexer
 */
 
-void			add_token_to_lexer(
-	t_lexer *lexer, const char *s, size_t p_len, t_tok_type p_type);
+void	add_token_to_lexer(t_lexer *lexer, const char *s, size_t p_len, t_tok_type p_type);
 
 /*
 ** Searches if input character is a token
 */
 
-t_regex			get_token(char *input);
+t_regex	get_token(char *input);
 
 /*
 ** Splits the input string into tokens and handles syntax errors
 */
 
-int				tokenize(t_lexer *lexer);
+int		tokenize(t_lexer *lexer);
 
 /*
 ** Token handlers
 */
 
-void			handle_token(t_lexer *lexer, t_regex token, char **stack);
-int				handle_quotes(t_lexer *lexer, char **stack);
-int				handle_text(t_lexer *lexer, char **stack);
-void			add_word_to_lexer(t_lexer *lexer, char **stack);
+void	handle_token(t_lexer *lexer, t_regex token, char **stack);
+int		handle_quotes(t_lexer *lexer, char **stack);
+int		handle_text(t_lexer *lexer, char **stack);
+void	add_word_to_lexer(t_lexer *lexer, char **stack);
 
 /*
 ** Escapes a character following a backslash
 */
 
-int				escape_char(t_lexer *lexer, char **stack);
+int		escape_char(t_lexer *lexer, char **stack);
 
 /*
 ** Adds the current character to the stack
 */
 
-int				push_char(t_lexer *lexer, char **stack);
+int		push_char(t_lexer *lexer, char **stack);
 
 /*
 ** Gets next token
 */
 
-void			get_next_token(t_lexer *lexer);
+void	get_next_token(t_lexer *lexer);
 
 /*
 ** Eats the current token if its type is the one expected
 */
 
-int				eat(t_lexer *lexer, t_tok_type expected);
+int		eat(t_lexer *lexer, t_tok_type expected);
 
 /*
 ** Prints the lexer size, capacity and tokens
 */
 
-void			print_lexer(t_lexer *lexer);
+void	print_lexer(t_lexer *lexer);
 
 #endif

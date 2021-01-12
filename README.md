@@ -114,6 +114,8 @@ io_file          : LESS      WORD
 - [ ] Autocomplete
 - [ ] Save pwd
 - [ ] export: Append values
+- [ ] Timeout
+- [ ] Better lexer
 - [ ] Refactor a lot of parts
 
 ### License
