@@ -16,6 +16,7 @@ INC_FILES	=	ft_sh.h						\
 				sh_define.h					\
 				sh_env.h					\
 				sh_execution.h				\
+				sh_expansion.h				\
 				sh_input_processing.h		\
 				sh_lexer.h					\
 				sh_parser.h					\
@@ -80,36 +81,39 @@ SRC_FILES	+=	ast.c						\
 				save_ast_svg.c				\
 				write_ast_dot.c
 
-# EXECUTION #
+# EXPANSION#
 
 SRC_FILES	+=	add_simple_cmd.c			\
 				build_cmd_table.c			\
 				command.c					\
 				contain_slash.c				\
-				dup_streams.c				\
-				exec_pipe_seq.c				\
-				exec_simple_cmd.c			\
-				execute.c					\
-				invoke_builtin.c			\
-				is_builtin.c				\
+				expand_word.c				\
 				is_open_file.c				\
 				get_cmd_arg_count.c			\
 				get_cmd_args.c				\
 				get_cmd_filename.c			\
 				get_files.c					\
-				handle_redirection.c		\
-				redirect_stream.c			\
-				restore_default_streams.c	\
 				search_builtin.c			\
 				search_command.c			\
 				simple_command.c			\
-				spawn_process.c				\
 				traverse_tree.c
+
+# EXECUTION #
+
+SRC_FILES	+=	dup_streams.c				\
+				exec_pipe_seq.c				\
+				exec_simple_cmd.c			\
+				execute.c					\
+				invoke_builtin.c			\
+				is_builtin.c				\
+				handle_redirection.c		\
+				redirect_stream.c			\
+				restore_default_streams.c	\
+				spawn_process.c
 
 # SUBSYSTEMS #
 
 SRC_FILES	+=	create_prompt.c				\
-				expand_word.c				\
 				handle_fatal_error.c		\
 				is_quote.c					\
 				register_signal_handlers.c	\

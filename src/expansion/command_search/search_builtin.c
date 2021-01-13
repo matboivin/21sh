@@ -6,13 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 22:17:01 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/14 00:11:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_str.h"
 #include "sh_builtins.h"
-#include "sh_execution.h"
+#include "sh_expansion.h"
 
 /*
 ** This function searches the command in the list of builtins

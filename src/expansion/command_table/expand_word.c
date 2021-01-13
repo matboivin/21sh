@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 21:03:27 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/02 13:04:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/14 00:06:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "libft_str.h"
 #include "sh_subsystems.h"
+#include "sh_expansion.h"
 
 void		expand_word(char **tok_word)
 {

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 18:20:39 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/14 00:07:21 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	handle_fatal_error(int sig);
 ** Quotes removal, backslash escaping and environment variables substitution
 */
 
-void	expand_word(char **tok_word);
 void	substitute_var(char **result, char *tok_word, size_t *i);
 void	remove_quotes(char **result, char *tok_word, size_t *i);
 void	remove_backslash(char **result, char *tok_word, size_t *i, bool check_special);

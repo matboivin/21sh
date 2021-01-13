@@ -6,12 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 18:11:18 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/27 18:59:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/14 00:12:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh_utils.h"
 #include "sh_execution.h"
+#include "sh_expansion.h"
 
 /*
 ** This function visits an AST node

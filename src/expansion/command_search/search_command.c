@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 23:26:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/14 00:11:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "libft_str.h"
 #include "sh_env.h"
 #include "sh_utils.h"
-#include "sh_execution.h"
+#include "sh_expansion.h"
 
 static bool		command_found(char **cmd_path, char *path_to_check)
 {

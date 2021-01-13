@@ -6,14 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:46:26 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 20:52:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/14 00:11:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stddef.h>
 #include "libft_str.h"
-#include "sh_execution.h"
+#include "sh_expansion.h"
 
 /*
 ** This function adds a simple command to the command table

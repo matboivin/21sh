@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:52:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/30 20:58:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/14 00:11:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <unistd.h>
 #include "libft_str.h"
 #include "sh_utils.h"
-#include "sh_execution.h"
+#include "sh_expansion.h"
 
 /*
 ** Redirecting Input
