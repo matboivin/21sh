@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:44:25 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/15 22:04:51 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/15 22:35:25 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*a_wandre_a_day(int n)
 	switch (n)
 	{
 	case 0:
-		return ("seriously bro ;o");
+		return ("srsly bro ;o");
 	case 1:
 		return ("lol");
 	case 2:
@@ -47,9 +47,20 @@ static char	*a_wandre_a_day(int n)
 	case 9:
 		return ("I will evaluate your Snow crash :x");
 	case 10:
-		return ("I will evaluate your Darkly ;)");
+		return ("I hope for you I won't evaluate your Darkly :(");
+	case 11:
+		return ("need a pro tip? RTFM!");
+	case 12:
+		return ("you need to learn the basic imo");
+	case 13:
+		return ("srsly stop :(");
+	case 14:
+		return ("Lol dafuck");
+	case 15:
+		return ("Haha wtf.");
+	default:
+		return ("WTF. ><");
 	}
-	return ("WTF??");
 }
 
 void		wandroulette(char *filename)
@@ -57,8 +68,10 @@ void		wandroulette(char *filename)
 	int		n;
 
 	n = 0;
-	if (!ft_strcmp(filename, "sl"))
+	if (filename && !ft_strcmp(filename, "sl"))
 		ft_printf("%sthe command you're looking for is 'ls' bro ;o\n", WANDRE_PREFIX);
+	else if (filename && !ft_strcmp(filename, "cqt"))
+		ft_printf("%sdid u mean 'cat' bro? :o\n", WANDRE_PREFIX);
 	else
 	{
 		srand(time(NULL));
@@ -69,5 +82,5 @@ void		wandroulette(char *filename)
 
 void		wake_wandre(void)
 {
-	ft_printf("Warning /!\\ The wandre mode is activated!\n\n%shi! :)\n", WANDRE_PREFIX);
+	ft_printf("Warning /!\\ The wandre mode is activated!\n\n%shi! :)\n\n", WANDRE_PREFIX);
 }

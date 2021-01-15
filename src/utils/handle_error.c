@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/15 20:05:27 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/15 22:34:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	handle_syntax_error(const char *token)
 		"%s: syntax error near unexpected token `%s'\n",
 		SHELL_NAME,
 		token);
+#ifdef WANDRE_MODE
+	wandroulette(NULL);
+#endif /* WANDRE_MODE */
 }
 
 void	handle_matching_error(char c)
@@ -39,6 +42,9 @@ void	handle_matching_error(char c)
 		"%s: unexpected EOF while looking for matching `%c'\n",
 		SHELL_NAME,
 		c);
+#ifdef WANDRE_MODE
+	wandroulette(NULL);
+#endif /* WANDRE_MODE */
 }
 
 void	handle_cmd_not_found(char *filename)
