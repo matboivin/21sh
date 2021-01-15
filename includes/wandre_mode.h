@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   wandre_mode.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/15 20:24:14 by mboivin          ###   ########.fr       */
+/*   Created: 2021/01/15 18:45:20 by mboivin           #+#    #+#             */
+/*   Updated: 2021/01/15 20:24:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wandre_mode.h"
-#include "ft_sh.h"
+#ifndef WANDRE_MODE_H
+# define WANDRE_MODE_H
 
-/*
-** ft_sh
-** A minimalist interactive shell mimicking bash
-*/
+# define MAX_MSG 11
+# define WANDRE_PREFIX "    \033[0;31mwandre:\033[0m "
 
-int				main(int argc, char **argv, char **envp)
-{
-	t_shctrl	ft_sh;
+void	wake_wandre(void);
+void	wandroulette(char *filename);
 
-	if (argc != NO_ARGS)
-		print_usage(argv[0]);
-#ifdef WANDRE_MODE
-	wake_wandre();
-#endif /* WANDRE_MODE */
-	start_shell(envp);
-	create_shell(&ft_sh);
-	return (wait_for_input(&ft_sh));
-}
+#endif
