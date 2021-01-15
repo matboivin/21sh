@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 23:21:17 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/15 20:05:27 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include "libft_printf.h"
+#include "wandre_mode.h"
 #include "sh_utils.h"
 
 /*
@@ -44,4 +45,7 @@ void	handle_cmd_not_found(char *filename)
 {
 	g_status = CMD_NO_FOUND;
 	print_error(2, filename, "command not found");
+#ifdef WANDRE_MODE
+	wandroulette(filename);
+#endif /* WANDRE_MODE */
 }

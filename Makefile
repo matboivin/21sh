@@ -21,7 +21,8 @@ INC_FILES	=	ft_sh.h						\
 				sh_lexer.h					\
 				sh_parser.h					\
 				sh_subsystems.h				\
-				sh_utils.h
+				sh_utils.h					\
+				wandre_mode.h
 
 # ********************************* C FILES ********************************** #
 
@@ -148,6 +149,10 @@ SRC_FILES	+=	builtin_error.c				\
 				exit_shell.c				\
 				free_all.c
 
+# PLUGIN #
+
+SRC_FILES	+=	wandre_mode.c
+
 # ********************************* OBJECTS ********************************** #
 
 OBJ_FILES		=	$(SRC_FILES:%.c=%.o)
@@ -169,6 +174,7 @@ SUB_DIRS	=	builtins					\
 				execution/stream_op			\
 				expansion/command_search	\
 				expansion/command_table		\
+				feature						\
 				input_processing			\
 				parsing/lexer				\
 				parsing/parser				\
@@ -247,6 +253,11 @@ show_tree:
 	@dot -Tsvg ast.dot -o ast.svg
 	@xdg-open ast.svg
 
+# WANDRE MODE #
+
+wandre: CFLAGS += -D WANDRE_MODE
+wandre: re
+
 # CLEAN #
 
 clean:
@@ -260,4 +271,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all install re-install show debug show_tree check_leaks clean fclean re
+.PHONY: all install re-install show wandre debug show_tree check_leaks clean fclean re
