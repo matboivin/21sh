@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/15 22:34:19 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/15 22:53:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	handle_syntax_error(const char *token)
 		SHELL_NAME,
 		token);
 #ifdef WANDRE_MODE
-	wandroulette(NULL);
+	wandroulette();
 #endif /* WANDRE_MODE */
 }
 
@@ -43,7 +43,7 @@ void	handle_matching_error(char c)
 		SHELL_NAME,
 		c);
 #ifdef WANDRE_MODE
-	wandroulette(NULL);
+	wandroulette();
 #endif /* WANDRE_MODE */
 }
 
@@ -52,6 +52,7 @@ void	handle_cmd_not_found(char *filename)
 	g_status = CMD_NO_FOUND;
 	print_error(2, filename, "command not found");
 #ifdef WANDRE_MODE
-	wandroulette(filename);
+	if (!wanderror(filename))
+		wandroulette();
 #endif /* WANDRE_MODE */
 }

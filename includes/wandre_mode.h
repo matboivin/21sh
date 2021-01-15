@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:45:20 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/15 22:30:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/15 22:52:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define WANDRE_PREFIX "    \033[0;31mwandre:\033[0m "
 
 void	wake_wandre(void);
-void	wandroulette(char *filename);
+void	wandroulette(void);
+int		wanderror(char *filename);
 
 #endif

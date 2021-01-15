@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:44:25 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/15 22:35:25 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/15 22:52:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,30 @@ static char	*a_wandre_a_day(int n)
 	}
 }
 
-void		wandroulette(char *filename)
+void		wandroulette(void)
 {
 	int		n;
 
-	n = 0;
-	if (filename && !ft_strcmp(filename, "sl"))
-		ft_printf("%sthe command you're looking for is 'ls' bro ;o\n", WANDRE_PREFIX);
-	else if (filename && !ft_strcmp(filename, "cqt"))
-		ft_printf("%sdid u mean 'cat' bro? :o\n", WANDRE_PREFIX);
-	else
+	srand(time(NULL));
+	n = (rand() % MAX_MSG) + 1;
+	ft_printf("%s%s\n", WANDRE_PREFIX, a_wandre_a_day(n));
+}
+
+int			wanderror(char *filename)
+{
+	if (!filename)
+		return (0);
+	if (!ft_strcmp(filename, "sl"))
 	{
-		srand(time(NULL));
-		n = (rand() % MAX_MSG) + 1;
-		ft_printf("%s%s\n", WANDRE_PREFIX, a_wandre_a_day(n));
+		ft_printf("%sthe command you're looking for is 'ls' bro ;o\n", WANDRE_PREFIX);
+		return (1);
 	}
+	else if (!ft_strcmp(filename, "cqt"))
+	{
+		ft_printf("%sdid u mean 'cat' bro? :o\n", WANDRE_PREFIX);
+		return (1);
+	}
+	return (0);
 }
 
 void		wake_wandre(void)
