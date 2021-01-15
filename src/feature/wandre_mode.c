@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:44:25 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/15 20:25:38 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/15 22:04:51 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static char	*a_wandre_a_day(int n)
 	case 10:
 		return ("I will evaluate your Darkly ;)");
 	}
-	return ("wesh");
+	return ("WTF??");
 }
 
 void		wandroulette(char *filename)
@@ -69,5 +69,5 @@ void		wandroulette(char *filename)
 
 void		wake_wandre(void)
 {
-	ft_printf("Warning /!\\ The wandre mode is activated!\n%shi! :)\n", WANDRE_PREFIX);
+	ft_printf("Warning /!\\ The wandre mode is activated!\n\n%shi! :)\n", WANDRE_PREFIX);
 }

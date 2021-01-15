@@ -6,12 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:02:51 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/13 00:10:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/15 22:06:31 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_printf.h"
 #include "sh_utils.h"
+#include "wandre_mode.h"
 #include "sh_input_processing.h"
 
 /*
@@ -31,5 +32,8 @@ int		wait_for_input(t_shctrl *ft_sh)
 	ft_printf(
 		"\n----------- DEBUG: STATUS -----------\nexited with: %d\n", g_status);
 #endif /* DEBUG */
+#ifdef WANDRE_MODE
+	ft_printf("%sbye :)\n\n", WANDRE_PREFIX);
+#endif /* WANDRE_MODE */
 	return (g_status);
 }
