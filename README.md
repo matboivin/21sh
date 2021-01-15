@@ -102,6 +102,19 @@ io_file          : LESS      WORD
                  ;
 ```
 
+### wandre mode
+
+Inspired by the [bash-insulter](https://github.com/hkbakke/bash-insulter).
+
+```console
+$ make install && make wandre
+$ ./ft_sh
+```
+
+<p align="center">
+  <img src="assets/wandroulette.png" alt="wandre mode" width="600" />
+</p>
+
 ### Future improvements (next step: 21sh)
 
 - [ ] Hashtable for command search
