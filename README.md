@@ -7,6 +7,10 @@ All programs written in C follow [42 style guideline](https://github.com/42Paris
 
 > A minimalist interactive shell mimicking bash.
 
+<p align="center">
+  <img src="assets/demo.gif" alt="demo" width="600" />
+</p>
+
 ### Table of content
 
 - [Getting Started](#getting-started)
@@ -89,7 +93,7 @@ $ ./ft_sh
 ```
 
 <p align="center">
-  <img src="assets/wandroulette.png" alt="wandre mode" width="600" />
+  <img src="assets/wandre_demo.gif" alt="wandre mode" width="600" />
 </p>
 
 Inspired by the [bash-insulter](https://github.com/hkbakke/bash-insulter).
