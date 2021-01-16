@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/13 00:14:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/16 13:04:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@
 ** This function parses a simple command
 **
 ** Grammar rule:
-** simple_command : io_file cmd_name cmd_suffix
-**                | io_file cmd_name
+** simple_command : io_file cmd_word cmd_suffix
+**                | io_file cmd_word
 **                | io_file
 **                |         cmd_name cmd_suffix
 **                |         cmd_name
 **
 **      NODE_SIMPLE_CMD                 NODE_SIMPLE_CMD
 **             /                               /
-**       NODE_IO_FILE                     "cmd_name"
+**       NODE_IO_FILE                      cmd_name
 **
 **      NODE_SIMPLE_CMD                  NODE_SIMPLE_CMD
 **        /         \                     /         \
-** NODE_IO_FILE   "cmd_name"        "cmd_name"      NODE_CMD_SUFFIX
+** NODE_IO_FILE    cmd_word         cmd_name      NODE_CMD_SUFFIX
 **
-**                        NODE_SIMPLE_CMD
-**                         /           \
-**                 NODE_IO_FILE     "cmd_name"
-**                                       \
-**                                 NODE_CMD_SUFFIX
+**      NODE_SIMPLE_CMD
+**       /           \
+**  NODE_IO_FILE   cmd_word
+**                     \
+**                  NODE_CMD_SUFFIX
 **
 ** returns: true if the node creation succeeded
 **          false otherwise

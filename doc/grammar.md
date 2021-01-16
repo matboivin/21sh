@@ -30,39 +30,50 @@ Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/online
    ------------------------------------------------------- */
 %start program
 %%
-program          : command NEWLINE
-                 | NEWLINE
-                 | /* empty */
+program          : command linebreak
+                 | linebreak
                  ;
 command          :              pipe_sequence
                  | command SEMI pipe_sequence
                  ;
-pipe_sequence    :                    simple_command
-                 | pipe_sequence PIPE simple_command
+pipe_sequence    :                              simple_command
+                 | pipe_sequence PIPE linebreak simple_command
                  ;
-simple_command   : io_file WORD cmd_suffix
-                 | io_file WORD
+simple_command   : io_file cmd_word cmd_suffix
+                 | io_file cmd_word
                  | io_file
-                 |         WORD cmd_suffix
-                 |         WORD
+                 |         cmd_name cmd_suffix
+                 |         cmd_name
+                 ;
+cmd_name         : WORD
+                 ;
+cmd_word         : WORD
                  ;
 cmd_suffix       :            io_file
                  | cmd_suffix io_file
                  |            WORD
                  | cmd_suffix WORD
                  ;
-io_file          : LESS      WORD
-                 | GREAT     WORD
-                 | DGREAT    WORD
+io_file          : LESS      filename
+                 | GREAT     filename
+                 | DGREAT    filename
+                 ;
+filename         : WORD
+                 ;
+newline_list     :              NEWLINE
+                 | newline_list NEWLINE
+                 ;
+linebreak        : newline_list
+                 | /* empty */
                  ;
 ```
 
 `simple_command` examples:
 
-| Grammar rule            |                        | Examples                   |
-| ----------------------- | ---------------------- | -------------------------- |
-| io_file WORD cmd_suffix | < infile CMD > outfile | `< infile wc -c > outfile` |
-| io_file WORD            | < infile CMD           | `< infile wc -c`           |
-| WORD cmd_suffix         | CMD > outfile          | `ls > outfile` or `ls -la` |
-| io_file                 | > outfile              | `> outfile`                |
-| WORD                    | CMD                    | `ls`                       |
+| Grammar rule                |                        | Examples                   |
+| --------------------------- | ---------------------- | -------------------------- |
+| io_file cmd_word cmd_suffix | < infile CMD > outfile | `< infile wc -c > outfile` |
+| io_file cmd_word            | < infile CMD           | `< infile wc -c`           |
+| cmd_name cmd_suffix         | CMD > outfile          | `ls > outfile` or `ls -la` |
+| io_file                     | > outfile              | `> outfile`                |
+| cmd_name                    | CMD                    | `ls`                       |

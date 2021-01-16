@@ -7,11 +7,25 @@ All programs written in C follow [42 style guideline](https://github.com/42Paris
 
 > A minimalist interactive shell mimicking bash.
 
-<p align="center">
-  <img src="assets/ast.gif" alt="AST gif" width="800" />
-</p>
+### Table of content
 
-> Debug mode: Each time an input is received, displays the tokens, draws the AST and displays the command table.
+- [Getting Started](#getting-started)
+
+  - [Disclaimer](#disclaimer)
+  - [Prerequisites](#prerequisites)
+  - [Dependencies](#dependencies)
+  - [Installing](#installing)
+
+- [Usage](#usage)
+
+  - [Debug mode](#debug-mode)
+  - [wandre mode](#wandre-mode)
+
+- [ft_sh grammar](#ft_sh-grammar)
+- [Future improvements](#future-improvements)
+- [Acknowledgements](#acknowledgements)
+
+## Getting Started
 
 ### Disclaimer
 
@@ -40,10 +54,47 @@ $ git clone --recursive https://github.com/matboivin/ft_sh
 Change it to your working directory and run:
 ```console
 $ make install && make
+```
+
+## Usage
+
+```console
 $ ./ft_sh
 ```
 
-### ft_sh grammar
+### Debug mode
+
+You need to run `make install`.
+
+```console
+$ make debug
+$ ./ft_sh
+```
+
+<p align="center">
+  <img src="assets/ast.gif" alt="AST gif" width="800" />
+</p>
+
+> Debug mode: Each time an input is received, displays the tokens, draws the AST and displays the command table.
+
+### wandre mode
+
+Wake wandre up. wandre will insult the user when they type a wrong command.
+
+You need to run `make install`.
+
+```console
+$ make wandre
+$ ./ft_sh
+```
+
+<p align="center">
+  <img src="assets/wandroulette.png" alt="wandre mode" width="600" />
+</p>
+
+Inspired by the [bash-insulter](https://github.com/hkbakke/bash-insulter).
+
+## ft_sh grammar
 
 Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html#tag_18_10)
 
@@ -75,47 +126,47 @@ Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/online
    ------------------------------------------------------- */
 %start program
 %%
-program          : command NEWLINE
-                 | NEWLINE
-                 | /* empty */
+program          : command linebreak
+                 | linebreak
                  ;
 command          :              pipe_sequence
                  | command SEMI pipe_sequence
                  ;
-pipe_sequence    :                    simple_command
-                 | pipe_sequence PIPE simple_command
+pipe_sequence    :                              simple_command
+                 | pipe_sequence PIPE linebreak simple_command
                  ;
-simple_command   : io_file WORD cmd_suffix
-                 | io_file WORD
+simple_command   : io_file cmd_word cmd_suffix
+                 | io_file cmd_word
                  | io_file
-                 |         WORD cmd_suffix
-                 |         WORD
+                 |         cmd_name cmd_suffix
+                 |         cmd_name
+                 ;
+cmd_name         : WORD
+                 ;
+cmd_word         : WORD
                  ;
 cmd_suffix       :            io_file
                  | cmd_suffix io_file
                  |            WORD
                  | cmd_suffix WORD
                  ;
-io_file          : LESS      WORD
-                 | GREAT     WORD
-                 | DGREAT    WORD
+io_file          : LESS      filename
+                 | GREAT     filename
+                 | DGREAT    filename
+                 ;
+filename         : WORD
+                 ;
+newline_list     :              NEWLINE
+                 | newline_list NEWLINE
+                 ;
+linebreak        : newline_list
+                 | /* empty */
                  ;
 ```
 
-### wandre mode
+## Future improvements
 
-Inspired by the [bash-insulter](https://github.com/hkbakke/bash-insulter).
-
-```console
-$ make install && make wandre
-$ ./ft_sh
-```
-
-<p align="center">
-  <img src="assets/wandroulette.png" alt="wandre mode" width="600" />
-</p>
-
-### Future improvements (next step: 21sh)
+### next step: 21sh
 
 - [ ] Hashtable for command search
 - [ ] Stack error messages
@@ -131,13 +182,13 @@ $ ./ft_sh
 - [ ] Better lexer
 - [ ] Refactor a lot of parts
 
-### License
+## License
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
 
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/).
 
-### Acknowledgements
+## Acknowledgements
 
 School project done at [42 Paris](https://www.42.fr).

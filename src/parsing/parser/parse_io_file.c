@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 19:58:03 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 16:46:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/16 13:02:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ static bool		parse_redir_op(t_ast_node **ast, t_lexer *lexer)
 ** This function parses an IO file
 **
 ** Grammar rule:
-** io_file : '<'       WORD
-**         | '>'       WORD
-**         | '>>'      WORD
+** io_file : '<'       filename
+**         | '>'       filename
+**         | '>>'      filename
 **
-** NODE_IO_FILE
-**      |
-**   "operator"
-**      |
-**  NODE_WORD
-**      |
-**  "filename"
+**  NODE_IO_FILE
+**       |
+**   operator
+**       |
+**   NODE_WORD
+**       |
+**   filename
 **
 ** returns: true if the node creation succeeded
 **          false otherwise
