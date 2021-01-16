@@ -8,23 +8,19 @@ All programs written in C follow [42 style guideline](https://github.com/42Paris
 > A minimalist interactive shell mimicking bash.
 
 <p align="center">
-  <img src="assets/demo.gif" alt="demo" width="600" />
+  <img src="assets/demo.gif" alt="demo" />
 </p>
 
 ### Table of content
 
 - [Getting Started](#getting-started)
-
   - [Disclaimer](#disclaimer)
   - [Prerequisites](#prerequisites)
   - [Dependencies](#dependencies)
   - [Installing](#installing)
-
 - [Usage](#usage)
-
   - [Debug mode](#debug-mode)
   - [wandre mode](#wandre-mode)
-
 - [ft_sh grammar](#ft_sh-grammar)
 - [Future improvements](#future-improvements)
 - [Acknowledgements](#acknowledgements)
@@ -93,7 +89,7 @@ $ ./ft_sh
 ```
 
 <p align="center">
-  <img src="assets/wandre_demo.gif" alt="wandre mode" width="600" />
+  <img src="assets/wandre_demo.gif" alt="wandre mode" />
 </p>
 
 Inspired by the [bash-insulter](https://github.com/hkbakke/bash-insulter).
@@ -170,21 +166,7 @@ linebreak        : newline_list
 
 ## Future improvements
 
-### next step: 21sh
-
-- [ ] Hashtable for command search
-- [ ] Stack error messages
-- [ ] Termcaps: line editing, cursor, ...
-- [ ] History
-- [ ] Handle AND_IF and OR_IF
-- [ ] IO_HERE ('<<')
-- [ ] Wildcards
-- [ ] Autocomplete
-- [ ] Save pwd
-- [ ] export: Append values
-- [ ] Timeout
-- [ ] Better lexer
-- [ ] Refactor a lot of parts
+- next step: [21sh](https://github.com/matboivin/ft_sh/issues/3)
 
 ## License
 
