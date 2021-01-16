@@ -104,11 +104,6 @@ show_tree:
 	@dot -Tsvg ast.dot -o ast.svg
 	@xdg-open ast.svg
 
-# WANDRE MODE #
-
-wandre: CFLAGS += -D WANDRE_MODE
-wandre: re
-
 # CLEAN #
 
 clean:
@@ -122,4 +117,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all install re-install show wandre debug show_tree check_leaks clean fclean re
+.PHONY: all install re-install show debug show_tree check_leaks clean fclean re

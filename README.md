@@ -64,7 +64,9 @@ $ ./ft_sh
 
 ### Debug mode
 
-You need to run `make install`.
+Each time an input is received, this mode displays the tokens, draws the AST and displays the command table.
+
+Ensure you ran `make install`.
 
 ```console
 $ make debug
@@ -75,17 +77,25 @@ $ ./ft_sh
   <img src="assets/ast.gif" alt="AST gif" width="800" />
 </p>
 
-> Debug mode: Each time an input is received, displays the tokens, draws the AST and displays the command table.
-
 ### wandre mode
 
-Wake wandre up. wandre will insult the user when they type a wrong command.
+wandre will insult the user when they type a wrong command.
 
-You need to run `make install`.
+To wake up wandre, type `!wandre` in the `ft_sh`, and `!stopit_wandre` to deactivate it.
 
 ```console
-$ make wandre
-$ ./ft_sh
+./ft_sh 
+┌─[ft_sh]─[~/path/to/ft_sh]
+└──╼ !wandre
+Warning /!\ The wandre mode is activated! Type '!stopit_wandre' to deactivate
+
+    wandre: hi! :)
+
+┌─[ft_sh]─[~/code/cursus/ft_sh]
+└──╼ !stopit_wandre
+wandre mode deactivated
+
+    wandre: bye :)
 ```
 
 <p align="center">

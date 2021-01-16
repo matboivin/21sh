@@ -6,14 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:44:25 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/15 22:52:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/17 00:23:32 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <time.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include "libft_str.h"
 #include "libft_printf.h"
 #include "sh_utils.h"
 #include "wandre_mode.h"
@@ -72,24 +70,49 @@ void		wandroulette(void)
 	ft_printf("%s%s\n", WANDRE_PREFIX, a_wandre_a_day(n));
 }
 
-int			wanderror(char *filename)
+void		wanderror(char *filename)
 {
-	if (!filename)
-		return (0);
-	if (!ft_strcmp(filename, "sl"))
-	{
+	if (filename && !ft_strcmp(filename, "sl"))
 		ft_printf("%sthe command you're looking for is 'ls' bro ;o\n", WANDRE_PREFIX);
-		return (1);
-	}
-	else if (!ft_strcmp(filename, "cqt"))
-	{
+	else if (filename && !ft_strcmp(filename, "cqt"))
 		ft_printf("%sdid u mean 'cat' bro? :o\n", WANDRE_PREFIX);
-		return (1);
-	}
-	return (0);
+	else
+		wandroulette();
 }
 
 void		wake_wandre(void)
 {
-	ft_printf("Warning /!\\ The wandre mode is activated!\n\n%shi! :)\n\n", WANDRE_PREFIX);
+	if (wandre_mode)
+	{
+		ft_printf("%sI'm already awake ><\n", WANDRE_PREFIX);
+		return ;
+	}
+	wandre_mode = true;
+	ft_printf("Warning /!\\ The wandre mode is activated! Type '!stopit_wandre' to deactivate\n\n%shi! :)\n\n", WANDRE_PREFIX);
+}
+
+void		stop_wandre(void)
+{
+	if (!wandre_mode)
+	{
+		ft_printf("Type '!wandre' to wake up wandre\n");
+		return ;
+	}
+	wandre_mode = false;
+	ft_printf("wandre mode deactivated\n\n%sbye :)\n\n", WANDRE_PREFIX);
+}
+
+int			wandre_mode_is_on(char *cmd_name)
+{
+	if (!ft_strncmp(cmd_name, WAKE_WANDRE_CMD, WAKE_CMD_LEN))
+	{
+		wake_wandre();
+		return (1);
+	}
+	if (!ft_strncmp(cmd_name, STOP_WANDRE_CMD, STOP_CMD_LEN))
+	{
+		stop_wandre();
+		return (1);
+	}
+	return (0);
 }

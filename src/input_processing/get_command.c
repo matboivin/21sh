@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 18:39:52 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/16 23:56:41 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "sh_env.h"
 #include "sh_subsystems.h"
 #include "sh_parser.h"
+#include "wandre_mode.h"
 #include "sh_input_processing.h"
 
 /*
@@ -45,6 +46,11 @@ static int	prompt_user(t_shctrl *ft_sh)
 		prompt = create_prompt();
 		ft_sh->lexer->input = ft_readline(prompt);
 		ft_strdel(&prompt);
+		if (wandre_mode_is_on(ft_sh->lexer->input))
+		{
+			ft_strdel(&(ft_sh->lexer->input));
+			return (-1);
+		}
 	}
 	else
 		ft_sh->lexer->input = ft_readline(PS2);

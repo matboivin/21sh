@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 22:53:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/16 23:54:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_DEFINE_H
 # define SH_DEFINE_H
 # include <signal.h>
+# include <stdbool.h>
 # include "libft_define.h"
 
 # define SHELL_NAME "ft_sh"
@@ -123,6 +124,7 @@ extern volatile sig_atomic_t	g_status;
 
 extern volatile sig_atomic_t	g_done;
 extern volatile sig_atomic_t	g_char_dev;
+extern bool	wandre_mode;
 
 /*
 ** Environment
