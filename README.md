@@ -91,7 +91,7 @@ Warning /!\ The wandre mode is activated! Type '!stopit_wandre' to deactivate
 
     wandre: hi! :)
 
-┌─[ft_sh]─[~/code/cursus/ft_sh]
+┌─[ft_sh]─[~/path/to/ft_sh]
 └──╼ !stopit_wandre
 wandre mode deactivated
 
