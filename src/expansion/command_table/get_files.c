@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:52:10 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/14 00:11:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/17 01:12:55 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,61 +20,64 @@
 #include "sh_utils.h"
 #include "sh_expansion.h"
 
+static int	open_fd(int *fd, int flags, char *filename)
+{
+	if (is_open_file(*fd))
+		close(*fd);
+	*fd = open(filename, flags, FILE_PERMISSIONS);
+	if (*fd == FAIL_RET)
+	{
+		print_errno(filename);
+		g_status = EXIT_FAILURE;
+		return (FAIL_RET);
+	}
+	return (0);
+}
+
+static int	handle_fd(t_simplecmd *simple_cmd, int type, int flags, char *node_data)
+{
+	int		ret;
+	char	*filename;
+
+	ret = 0;
+	filename = ft_strdup(node_data);
+	expand_word(&filename);
+	if (type == REDIR_OUT)
+		ret = open_fd(&(simple_cmd->output_fd), flags, filename);
+	else
+		ret = open_fd(&(simple_cmd->input_fd), flags, filename);
+	ft_strdel(&filename);
+	return (ret);
+}
+
 /*
 ** Redirecting Input
 **   <  :  O_RDONLY
-*/
-
-static int	redir_input(int *fd, char *node_data)
-{
-	if (is_open_file(*fd))
-		close(*fd);
-	*fd = open(node_data, O_RDONLY);
-	if (*fd == FAIL_RET)
-	{
-		print_errno(node_data);
-		g_status = EXIT_FAILURE;
-		return (FAIL_RET);
-	}
-	return (0);
-}
-
-/*
+**
 ** Redirecting Output
 **   >  :  O_WRONLY | O_CREAT | O_TRUNC
-*/
-
-static int	redir_output(int *fd, char *node_data)
-{
-	if (is_open_file(*fd))
-		close(*fd);
-	*fd = open(node_data, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSIONS);
-	if (*fd == FAIL_RET)
-	{
-		print_errno(node_data);
-		g_status = EXIT_FAILURE;
-		return (FAIL_RET);
-	}
-	return (0);
-}
-
-/*
+**
 ** Appending Redirected Output
 **   >> :  O_WRONLY | O_CREAT | O_APPEND
 */
 
-static int	redir_append_output(int *fd, char *node_data)
+static void	set_up_opt(char *op, int *flags, int *type)
 {
-	if (is_open_file(*fd))
-		close(*fd);
-	*fd = open(node_data, O_WRONLY | O_CREAT | O_APPEND, FILE_PERMISSIONS);
-	if (*fd == FAIL_RET)
+	if (!ft_strcmp(op, REDIR_INPUT))
 	{
-		print_errno(node_data);
-		g_status = EXIT_FAILURE;
-		return (FAIL_RET);
+		*type = REDIR_IN;
+		*flags = O_RDONLY;
 	}
-	return (0);
+	else if (!ft_strcmp(op, REDIR_OUTPUT))
+	{
+		*type = REDIR_OUT;
+		*flags = O_WRONLY | O_CREAT | O_TRUNC;
+	}
+	else if (!ft_strcmp(op, REDIR_APPEND_OUTPUT))
+	{
+		*type = REDIR_OUT;
+		*flags = O_WRONLY | O_CREAT | O_APPEND;
+	}
 }
 
 /*
@@ -83,17 +86,15 @@ static int	redir_append_output(int *fd, char *node_data)
 
 static int	open_files(t_simplecmd *simple_cmd, t_ast_node *node)
 {
+	int		flags;
+	int		type;
 	int		ret;
 
 	ret = 0;
 	if (!node || node->type != NODE_IO_FILE)
 		return (0);
-	if (!ft_strcmp(node->data, REDIR_INPUT))
-		ret = redir_input(&(simple_cmd->input_fd), node->left->data);
-	else if (!ft_strcmp(node->data, REDIR_OUTPUT))
-		ret = redir_output(&(simple_cmd->output_fd), node->left->data);
-	else if (!ft_strcmp(node->data, REDIR_APPEND_OUTPUT))
-		ret = redir_append_output(&(simple_cmd->output_fd), node->left->data);
+	set_up_opt(node->data, &flags, &type);
+	ret = handle_fd(simple_cmd, type, flags, node->left->data);
 	if (ret == FAIL_RET)
 		return (FAIL_RET);
 	return (open_files(simple_cmd, node->right));

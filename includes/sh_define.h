@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/16 23:54:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/17 00:38:05 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@
 # define REDIR_INPUT "<"
 # define REDIR_OUTPUT ">"
 # define REDIR_APPEND_OUTPUT ">>"
+# define REDIR_IN 0
+# define REDIR_OUT 1
 # define NO_FILE -1
 # define CMD_NAME 0
 # define READ_END 0
