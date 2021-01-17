@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:48:54 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/16 19:55:34 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/17 01:37:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 ** lexer: Contains the tokens
 ** ast: Abstract Syntax Tree generated from parsing
 ** cmd: Command table
-** errors: Stacked error messages
 */
 
 typedef struct	s_shctrl
@@ -33,7 +32,6 @@ typedef struct	s_shctrl
 	t_lexer		*lexer;
 	t_ast_node	*ast;
 	t_cmd		*cmd;
-	t_stack		errors;
 }				t_shctrl;
 
 /*
