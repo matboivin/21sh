@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 18:35:27 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/14 00:07:21 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/19 13:07:42 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 */
 
 void	start_shell(char **envp);
+
+/*
+** Displays a prompt and get user's input
+*/
+
+char	*sh_readline(const char *prompt);
 
 /*
 ** Creates a custom shell prompt

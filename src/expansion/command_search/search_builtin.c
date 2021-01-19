@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 20:14:36 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/14 00:11:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/19 13:38:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 /*
 ** This function searches the command in the list of builtins
 */
+
+// Need fixing
 
 static t_builtin_list	g_builtin_list[] =
 {

@@ -93,6 +93,7 @@ SRC_FILES	+=	create_prompt.c				\
 				remove_backslash.c			\
 				remove_quotes.c				\
 				sh_ctrl.c					\
+				sh_readline.c				\
 				start_shell.c				\
 				substitute_var.c
 

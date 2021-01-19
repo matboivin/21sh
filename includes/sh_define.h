@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:52:37 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/17 00:38:05 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/19 13:14:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 ** Lexer
 */
 
+# define INPUT_BUFF_SIZE 1
 # define DEFAULT_CAPACITY 42
 # define MAX_TOKENS 14
 
@@ -125,7 +126,6 @@ extern volatile sig_atomic_t	g_status;
 */
 
 extern volatile sig_atomic_t	g_done;
-extern volatile sig_atomic_t	g_char_dev;
 extern bool	wandre_mode;
 
 /*

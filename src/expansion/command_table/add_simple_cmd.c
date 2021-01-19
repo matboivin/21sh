@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 17:46:26 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/14 00:11:53 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/19 13:15:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,6 @@
 /*
 ** This function adds a simple command to the command table
 */
-
-static void			check_char_devices(int argc, char **argv)
-{
-	int				i;
-	size_t			len;
-
-	i = FIRST_PARAM;
-	len = 0;
-	if (argc == NO_ARGS)
-		return ;
-	len = get_cmd_filename(argv[CMD_NAME]);
-	if (ft_strcmp(argv[CMD_NAME] + len, "cat"))
-		return ;
-	while (i < argc)
-	{
-		if ((!ft_strcmp(argv[i], "/dev/random"))
-			|| (!ft_strcmp(argv[i], "/dev/zero")))
-			g_char_dev = true;
-		i++;
-	}
-}
 
 static t_simplecmd	*get_simple_cmd(t_ast_node *node)
 {
@@ -56,10 +35,7 @@ static t_simplecmd	*get_simple_cmd(t_ast_node *node)
 	{
 		ret = search_command(result);
 		if (ret != FAIL_RET)
-		{
-			check_char_devices(result->argc, result->cmd_args);
 			return (result);
-		}
 	}
 	free_simple_cmd(result);
 	return (NULL);

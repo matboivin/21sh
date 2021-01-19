@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 20:47:52 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/16 23:56:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/19 13:37:46 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,39 @@ static void	handle_eof(t_shctrl *ft_sh)
 ** This function prompts the user for a command
 */
 
-static int	prompt_user(t_shctrl *ft_sh)
+static int	scan_input(t_lexer *lexer)
 {
 	int		ret;
-	char	*prompt;
 
 	ret = EXIT_SUCCESS;
+	lexer->pos = DEFAULT_VALUE;
+	if (lexer->input)
+	{
+		if (wandre_mode_is_on(lexer->input))
+			ret = -1;
+		else
+			ret = tokenize(lexer);
+		ft_strdel(&(lexer->input));
+	}
+	return (ret);
+}
+
+static int	prompt_user(t_shctrl *ft_sh)
+{
+	char	*prompt;
+
 	prompt = NULL;
 	if (ft_sh->lexer->size == DEFAULT_SIZE)
 	{
 		prompt = create_prompt();
-		ft_sh->lexer->input = ft_readline(prompt);
+		ft_sh->lexer->input = sh_readline(prompt);
 		ft_strdel(&prompt);
-		if (wandre_mode_is_on(ft_sh->lexer->input))
-		{
-			ft_strdel(&(ft_sh->lexer->input));
-			return (-1);
-		}
 	}
 	else
-		ft_sh->lexer->input = ft_readline(PS2);
+		ft_sh->lexer->input = sh_readline(PS2);
 	if (!ft_sh->lexer->input)
 		handle_eof(ft_sh);
-	ft_sh->lexer->pos = DEFAULT_VALUE;
-	ret = tokenize(ft_sh->lexer);
-	ft_strdel(&(ft_sh->lexer->input));
-	return (ret);
+	return (scan_input(ft_sh->lexer));
 }
 
 /*
