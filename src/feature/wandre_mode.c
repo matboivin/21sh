@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:44:25 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/17 00:23:32 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/19 13:50:08 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <time.h>
 #include <stdio.h>
 #include "libft_printf.h"
+#include "sh_env.h"
 #include "sh_utils.h"
 #include "wandre_mode.h"
 
@@ -49,7 +50,7 @@ static char	*a_wandre_a_day(int n)
 	case 11:
 		return ("need a pro tip? RTFM!");
 	case 12:
-		return ("you need to learn the basic imo");
+		return ("you need to learn the basics imo");
 	case 13:
 		return ("srsly stop :(");
 	case 14:
@@ -67,7 +68,10 @@ void		wandroulette(void)
 
 	srand(time(NULL));
 	n = (rand() % MAX_MSG) + 1;
-	ft_printf("%s%s\n", WANDRE_PREFIX, a_wandre_a_day(n));
+	if (n == MAX_MSG)
+		ft_printf("%s!voteban %s ><\n", WANDRE_PREFIX, ft_getenv("USER"));
+	else
+		ft_printf("%s%s\n", WANDRE_PREFIX, a_wandre_a_day(n));
 }
 
 void		wanderror(char *filename)
@@ -88,7 +92,7 @@ void		wake_wandre(void)
 		return ;
 	}
 	wandre_mode = true;
-	ft_printf("Warning /!\\ The wandre mode is activated! Type '!stopit_wandre' to deactivate\n\n%shi! :)\n\n", WANDRE_PREFIX);
+	ft_printf("Warning /!\\ The wandre mode is activated! Type '!stopit_wandre' to deactivate\n\n%shi %s! :)\n\n", WANDRE_PREFIX, ft_getenv("USER"));
 }
 
 void		stop_wandre(void)
