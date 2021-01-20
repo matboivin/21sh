@@ -1,5 +1,9 @@
 # Notions
 
+- UNIX
+- More understanding of how bash works
+- Lexer, parser and AST
+
 ## Links
 
 ### References
