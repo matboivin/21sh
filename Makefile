@@ -90,19 +90,12 @@ $(BIN_NAME): $(OBJ_DIR) $(OBJ) $(INC)
 
 # DEBUG #
 
-show:
-	@echo "VPATH: $(VPATH)"
-
 debug: CFLAGS += $(DEBUG_CFLAGS)
 debug: re
 	@echo "DEBUG\t\tDebug build done"
 
 check_leaks: $(BIN_NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ft_sh
-
-show_tree:
-	@dot -Tsvg ast.dot -o ast.svg
-	@xdg-open ast.svg
 
 # CLEAN #
 
@@ -117,4 +110,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all install re-install show debug show_tree check_leaks clean fclean re
+.PHONY: all install re-install debug check_leaks clean fclean re

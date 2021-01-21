@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 03:01:19 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 18:46:06 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/21 22:14:31 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static int	remove_home_from_path(char *pathname)
 char		*create_prompt(void)
 {
 	char	*shell_prompt;
-	char	*workind_dir;
+	char	*working_dir;
 	char	cwd[PATH_MAX];
 	int		i;
 
 	shell_prompt = NULL;
-	workind_dir = NULL;
+	working_dir = NULL;
 	i = 0;
 	if (getcwd(cwd, PATH_MAX) != NULL)
 	{
@@ -56,9 +56,9 @@ char		*create_prompt(void)
 	}
 	else if (ft_getenv("PWD") != NULL)
 	{
-		workind_dir = ft_getenv("PWD");
-		i = remove_home_from_path(workind_dir);
-		shell_prompt = ft_join_n_str(4, PS1_OP, "~", workind_dir, PS1_END);
+		working_dir = ft_getenv("PWD");
+		i = remove_home_from_path(working_dir);
+		shell_prompt = ft_join_n_str(4, PS1_OP, "~", working_dir, PS1_END);
 	}
 	else
 		return (ft_strdup(PS1));
