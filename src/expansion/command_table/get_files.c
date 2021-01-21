@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 22:52:10 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/17 01:12:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/01/21 15:07:29 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "sh_utils.h"
 #include "sh_expansion.h"
 
-static int	open_fd(int *fd, int flags, char *filename)
+static int		open_fd(int *fd, int flags, char *filename)
 {
 	if (is_open_file(*fd))
 		close(*fd);
@@ -34,10 +34,10 @@ static int	open_fd(int *fd, int flags, char *filename)
 	return (0);
 }
 
-static int	handle_fd(t_simplecmd *simple_cmd, int type, int flags, char *node_data)
+static int		handle_fd(t_simplecmd *simple_cmd, int type, int flags, char *node_data)
 {
-	int		ret;
-	char	*filename;
+	int			ret;
+	char		*filename;
 
 	ret = 0;
 	filename = ft_strdup(node_data);
@@ -61,7 +61,7 @@ static int	handle_fd(t_simplecmd *simple_cmd, int type, int flags, char *node_da
 **   >> :  O_WRONLY | O_CREAT | O_APPEND
 */
 
-static void	set_up_opt(char *op, int *flags, int *type)
+static void		set_up_opt(char *op, int *flags, int *type)
 {
 	if (!ft_strcmp(op, REDIR_INPUT))
 	{
@@ -84,11 +84,11 @@ static void	set_up_opt(char *op, int *flags, int *type)
 ** This function open files for redirections
 */
 
-static int	open_files(t_simplecmd *simple_cmd, t_ast_node *node)
+static int		open_files(t_simplecmd *simple_cmd, t_ast_node *node)
 {
-	int		flags;
-	int		type;
-	int		ret;
+	int			flags;
+	int			type;
+	int			ret;
 
 	ret = 0;
 	if (!node || node->type != NODE_IO_FILE)
@@ -100,12 +100,24 @@ static int	open_files(t_simplecmd *simple_cmd, t_ast_node *node)
 	return (open_files(simple_cmd, node->right));
 }
 
-int			get_files(t_simplecmd *simple_cmd, t_ast_node *node)
+int				get_files(t_simplecmd *simple_cmd, t_ast_node *node)
 {
-	int		ret;
+	t_ast_node	*cursor;
+	int			ret;
 
-	ret = open_files(simple_cmd, node->left);
-	if (!ret && node->right && (node->right->type == NODE_CMD_SUFFIX))
-		ret = open_files(simple_cmd, node->right->right);
+	cursor = node;
+	ret = open_files(simple_cmd, cursor->left);
+	if (cursor->right)
+	{
+		cursor = cursor->right;
+		if (!ret && (cursor->type == NODE_CMD_SUFFIX))
+			ret = open_files(simple_cmd, cursor->right);
+		else if ((cursor->type == NODE_WORD) && cursor->right)
+		{
+			cursor = cursor->right;
+			if (cursor->type == NODE_CMD_SUFFIX)
+				ret = open_files(simple_cmd, cursor->right);
+		}
+	}
 	return (ret);
 }
