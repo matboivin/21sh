@@ -34,6 +34,9 @@ echo '\\\\'
 echo s'h'e'l'l
 echo a'b'c"d"e'f'g"h"i'j'k"l"m'n'o"p'q'r"s't'u"v"w"x"y'z'
 echo \$SHELL
+echo foo "" bar ""
+echo foo '' bar ''
+echo a\ \ \ \ \ \ \ b
 echo "a\\b"
 echo "a\\ \ b c\" \'$SHELL\'"
 echo $"SHELL"
@@ -43,5 +46,3 @@ top | grep root
 cat /dev/random | cat
 ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls
 > FILE ; ls | rev | wc -c >> FILE ; cat FILE ; < INFILE cat
-echo test "" test ""
-echo test '' test ''
