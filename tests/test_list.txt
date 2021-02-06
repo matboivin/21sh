@@ -14,7 +14,6 @@ echo -n -n -n -n bar
 echo "$ $ $ $ $SHELL----------$LOL.......$123TEST"
 echo $PWD; echo $OLDPWD; cd ../../../..; pwd; echo $PWD; echo $OLDPWD
 export HELLO\\WORLD
-export N\\T
 export bO_nJq123o__1ju_je3134sui__a=a; echo $bO_nJq123o__1ju_je3134sui__a
 export A==a; echo $A
 export A=a=a=a=a=a; echo $A
@@ -22,10 +21,16 @@ echo TEST > foo > bar
 echo bar > FILE1 >> FILE2 >> FILE3
 echo >> FILE foo
 echo >> FILE1 foo > FILE2
+> FILE
+< FILE cat
+< FILE1 cat < FILE2
+< FILE1 cat < FILE2 < FILE3
 cat < NONEMPTY > FILE2
 touch TEST; chmod 001 TEST
 ec""ho bonjour
 ech"o" bonjour
+echo "\\\\"
+echo '\\\\'
 echo s'h'e'l'l
 echo a'b'c"d"e'f'g"h"i'j'k"l"m'n'o"p'q'r"s't'u"v"w"x"y'z'
 echo \$SHELL
@@ -37,6 +42,6 @@ echo $'SHELL'
 top | grep root
 cat /dev/random | cat
 ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls
-> FILE ; ls > FILE | rev | wc -c >> FILE ; cat FILE ; < INFILE cat
+> FILE ; ls | rev | wc -c >> FILE ; cat FILE ; < INFILE cat
 echo test "" test ""
 echo test '' test ''
