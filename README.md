@@ -104,6 +104,8 @@ wandre mode deactivated
 
 Inspired by the [bash-insulter](https://github.com/hkbakke/bash-insulter).
 
+For more wandre, click [here](https://github.com/matboivin/wandroulette).
+
 ## ft_sh grammar
 
 Adapted from: [Shell Command Language (POSIX)](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/V3_chap02.html#tag_18_10)
