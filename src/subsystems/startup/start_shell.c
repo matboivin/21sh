@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 15:11:11 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/19 13:15:29 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/02/19 16:13:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,20 @@ bool					wandre_mode;
 ** envp: The environment represented as an array of strings
 */
 
-void	start_shell(char **envp)
+static void	set_default_env(void)
+{
+	g_env = ft_calloc(DEFAULT_ENV, sizeof(char *));
+	if (!g_env)
+		exit(EXIT_FAILURE);
+	set_working_dir();
+	ft_putenv(DEFAULT_SHLVL);
+	ft_putenv(DEFAULT_SHELL);
+}
+
+void		start_shell(char **envp)
 {
 	if (!(*envp))
-	{
-		g_env = ft_calloc(DEFAULT_ENV, sizeof(char *));
-		if (!g_env)
-			return ;
-		set_working_dir();
-		ft_putenv(DEFAULT_SHLVL);
-		ft_putenv(DEFAULT_SHELL);
-	}
+		set_default_env();
 	else
 		load_environment(envp);
 	g_status = EXIT_SUCCESS;

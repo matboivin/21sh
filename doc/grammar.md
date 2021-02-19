@@ -67,13 +67,3 @@ linebreak        : newline_list
                  | /* empty */
                  ;
 ```
-
-`simple_command` examples:
-
-| Grammar rule                |                        | Examples                   |
-| --------------------------- | ---------------------- | -------------------------- |
-| io_file cmd_word cmd_suffix | < infile CMD > outfile | `< infile wc -c > outfile` |
-| io_file cmd_word            | < infile CMD           | `< infile cat`             |
-| cmd_name cmd_suffix         | CMD > outfile          | `ls > outfile` or `ls -la` |
-| io_file                     | > outfile              | `> outfile`                |
-| cmd_name                    | CMD                    | `ls`                       |

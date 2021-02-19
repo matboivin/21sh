@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/16 23:35:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/02/19 16:13:34 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int				main(int argc, char **argv, char **envp)
 
 	if (argc != NO_ARGS)
 		print_usage(argv[0]);
-	start_shell(envp);
 	create_shell(&ft_sh);
+	start_shell(envp);
 	return (wait_for_input(&ft_sh));
 }

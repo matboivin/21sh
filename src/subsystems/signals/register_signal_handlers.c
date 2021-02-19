@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:51:19 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 23:33:35 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/02/19 16:13:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 ** This function registers signal handlers
 ** SIGINT is handled
 ** SIGQUIT is ignored
-** SIGUSR1 is used to signal the program exits and needs cleanup
 */
 
 static void	handle_sig_err(void)
