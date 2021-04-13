@@ -6,10 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 12:48:56 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 03:08:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/13 12:11:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
 #include "libft_mem.h"
@@ -36,7 +37,10 @@ char		**dup_environment(size_t count, bool replace)
 		return (NULL);
 	result = ft_calloc((count + 1), sizeof(char *));
 	if (!result)
-		return (NULL);
+	{
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
 	i = 0;
 	key = 0;
 	while (i < count)
@@ -45,7 +49,10 @@ char		**dup_environment(size_t count, bool replace)
 		{
 			result[key] = ft_strdup(g_env[i]);
 			if (!result[key])
-				return (NULL);
+			{
+				perror("malloc");
+				exit(EXIT_FAILURE);
+			}
 			key++;
 		}
 		i++;

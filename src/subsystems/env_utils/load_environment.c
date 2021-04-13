@@ -6,11 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:09:50 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 23:29:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/13 12:11:58 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stdio.h>
 #include "libft_conv.h"
 #include "libft_mem.h"
 #include "libft_str.h"
@@ -51,7 +51,10 @@ void		load_environment(char **envp)
 	count = ft_str_arr_len(envp);
 	g_env = ft_calloc((count + 1), sizeof(char *));
 	if (!g_env)
+	{
+		perror("malloc");
 		exit(EXIT_FAILURE);
+	}
 	i = 0;
 	while (i < count)
 	{
@@ -59,7 +62,10 @@ void		load_environment(char **envp)
 		{
 			g_env[i] = ft_strdup(envp[i]);
 			if (!g_env[i])
+			{
+				perror("malloc");
 				exit(EXIT_FAILURE);
+			}
 		}
 		i++;
 	}

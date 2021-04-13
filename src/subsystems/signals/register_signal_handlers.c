@@ -6,11 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 17:51:19 by mboivin           #+#    #+#             */
-/*   Updated: 2021/02/19 16:13:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/13 12:12:22 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <signal.h>
@@ -27,6 +28,7 @@ static void	handle_sig_err(void)
 {
 	ft_clearenv();
 	g_status = EXIT_FAILURE;
+	perror("signal failed");
 	exit(g_status);
 }
 

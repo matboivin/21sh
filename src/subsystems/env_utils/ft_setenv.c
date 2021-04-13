@@ -6,10 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:14:01 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 21:51:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/13 12:11:54 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
 #include "libft_str.h"
@@ -54,7 +55,10 @@ int			ft_setenv(char *key, char *new_value, bool replace)
 			ft_strdel(&g_env[to_set]);
 			g_env[to_set] = ft_join_n_str(3, key, "=", new_value);
 			if (!g_env[to_set])
-				return (FAIL_RET);
+			{
+				perror("malloc");
+				exit(EXIT_FAILURE);
+			}
 		}
 		return (0);
 	}

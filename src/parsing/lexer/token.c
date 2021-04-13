@@ -6,11 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 17:55:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/13 12:11:18 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "libft_mem.h"
 #include "libft_str.h"
 #include "sh_lexer.h"
@@ -42,8 +43,8 @@ t_token		*malloc_token(const char *s, size_t p_len, t_tok_type p_type)
 	result = malloc(sizeof(t_token));
 	if (!result)
 	{
-		g_status = EXIT_FAILURE;
-		return (NULL);
+		perror("malloc");
+		exit(EXIT_FAILURE);
 	}
 	*result = create_token(s, p_len, p_type);
 	return (result);

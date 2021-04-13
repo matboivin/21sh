@@ -6,12 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 15:11:11 by mboivin           #+#    #+#             */
-/*   Updated: 2021/02/19 16:13:07 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/13 12:12:08 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "libft_mem.h"
 #include "sh_env.h"
 #include "sh_subsystems.h"
@@ -31,7 +32,10 @@ static void	set_default_env(void)
 {
 	g_env = ft_calloc(DEFAULT_ENV, sizeof(char *));
 	if (!g_env)
+	{
+		perror("malloc");
 		exit(EXIT_FAILURE);
+	}
 	set_working_dir();
 	ft_putenv(DEFAULT_SHLVL);
 	ft_putenv(DEFAULT_SHELL);

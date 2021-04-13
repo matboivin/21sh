@@ -6,11 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/15 21:57:33 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/13 12:10:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "libft_mem.h"
 #include "libft_str.h"
 #include "libft_printf.h"
@@ -41,8 +42,8 @@ t_lexer		*malloc_lexer(size_t p_capacity)
 	result = malloc(sizeof(t_lexer));
 	if (!result)
 	{
-		g_status = EXIT_FAILURE;
-		return (NULL);
+		perror("malloc");
+		exit(EXIT_FAILURE);
 	}
 	create_lexer(result, p_capacity);
 	return (result);

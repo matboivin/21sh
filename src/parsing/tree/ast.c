@@ -6,11 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:03:49 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 23:45:46 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/13 12:11:26 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "libft_str.h"
 #include "sh_ast.h"
 
@@ -45,7 +46,10 @@ t_ast_node		*malloc_ast_node(t_node_type p_type, char *p_data)
 
 	result = malloc(sizeof(t_ast_node));
 	if (!result)
-		return (NULL);
+	{
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
 	*result = create_ast_node(p_type, p_data);
 	return (result);
 }
