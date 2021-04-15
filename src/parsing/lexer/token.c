@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2021/04/13 12:11:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/15 19:01:15 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_token		create_token(const char *s, size_t p_len, t_tok_type p_type)
 
 t_token		*malloc_token(const char *s, size_t p_len, t_tok_type p_type)
 {
-	t_token	*result;
+	t_token	*result = NULL;
 
 	result = malloc(sizeof(t_token));
 	if (!result)

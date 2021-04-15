@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 21:03:49 by mboivin           #+#    #+#             */
-/*   Updated: 2021/04/13 12:11:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/15 19:01:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_ast_node		create_ast_node(t_node_type p_type, char *p_data)
 
 t_ast_node		*malloc_ast_node(t_node_type p_type, char *p_data)
 {
-	t_ast_node	*result;
+	t_ast_node	*result = NULL;
 
 	result = malloc(sizeof(t_ast_node));
 	if (!result)

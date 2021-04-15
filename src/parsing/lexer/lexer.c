@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2021/04/13 12:10:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/15 19:01:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		create_lexer(t_lexer *lexer, size_t p_capacity)
 
 t_lexer		*malloc_lexer(size_t p_capacity)
 {
-	t_lexer	*result;
+	t_lexer	*result = NULL;
 
 	result = malloc(sizeof(t_lexer));
 	if (!result)

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:05 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/19 20:49:12 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/15 19:00:37 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 t_cmd		*malloc_cmd(size_t p_capacity)
 {
-	t_cmd	*result;
+	t_cmd	*result = NULL;
 
 	result = malloc(sizeof(t_cmd));
 	if (!result)

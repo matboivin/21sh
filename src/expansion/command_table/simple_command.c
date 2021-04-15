@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:13 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/21 23:04:43 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/04/15 19:01:04 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 t_simplecmd		*malloc_simple_cmd(void)
 {
-	t_simplecmd	*result;
+	t_simplecmd	*result = NULL;
 
 	result = malloc(sizeof(t_simplecmd));
 	if (!result)
