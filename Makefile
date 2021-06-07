@@ -16,7 +16,7 @@ LIBS		=	ft
 
 LIB_DIR		=	libft
 
-INC_DIR		=	includes
+INC_DIR		=	include
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 

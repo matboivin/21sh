@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 20:36:11 by mboivin           #+#    #+#             */
-/*   Updated: 2021/04/15 19:01:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:38:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include "libft_mem.h"
 #include "libft_str.h"
-#include "libft_printf.h"
 #include "sh_lexer.h"
 
 /*
@@ -72,21 +71,21 @@ void		print_lexer(t_lexer *lexer)
 	size_t	i;
 
 	i = 0;
-	ft_printf("\n----------- DEBUG: LEXER -----------\n");
+	printf("\n----------- DEBUG: LEXER -----------\n");
 	if (lexer)
 	{
-		ft_printf(
+		printf(
 			"size: %ld\ncapacity: %ld\ntokens:\n",
 			lexer->size, lexer->capacity);
 		while (i < lexer->size)
 		{
-			ft_printf(
+			printf(
 				"  [%ld]\tlen: %ld\t|%s|\n",
 				i, lexer->tokens[i]->len, lexer->tokens[i]->value);
 			i++;
 		}
 	}
 	else
-		ft_printf("Lexer is empty\n");
-	ft_printf("------------------------------------\n");
+		printf("Lexer is empty\n");
+	printf("------------------------------------\n");
 }

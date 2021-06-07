@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 18:29:41 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/12 18:41:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:38:51 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stddef.h>
 #include "sh_utils.h"
 #include "sh_parser.h"
-#include "libft_printf.h"
 
 /*
 ** This function processes the tokens into an Abstract Syntax Tree (AST)

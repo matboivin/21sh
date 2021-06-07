@@ -6,11 +6,12 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:05 by mboivin           #+#    #+#             */
-/*   Updated: 2021/04/15 19:00:37 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:45:19 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
+#include <stdlib.h>
+#include <stdio.h>
 #include "sh_command.h"
 
 /*
@@ -69,21 +70,21 @@ void		print_cmd(t_cmd *cmd)
 
 	if (!cmd)
 		return ;
-	ft_printf("\n----------- DEBUG: COMMAND TABLE ---\n");
+	printf("\n----------- DEBUG: COMMAND TABLE ---\n");
 	if (cmd->cmd_count == DEFAULT_VALUE)
 	{
-		ft_printf("Command table is empty\n");
+		printf("Command table is empty\n");
 		return ;
 	}
-	ft_printf(
+	printf(
 			"commands: %ld\ncapacity: %ld\n",
 			cmd->cmd_count, cmd->capacity);
 	i = 0;
 	while (i < cmd->cmd_count)
 	{
-		ft_printf("  [%ld]\t", i);
+		printf("  [%ld]\t", i);
 		print_simple_cmd(cmd->simple_cmds[i++]);
-		ft_printf("\n");
+		printf("\n");
 	}
-	ft_printf("------------------------------------\n");
+	printf("------------------------------------\n");
 }

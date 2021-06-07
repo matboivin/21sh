@@ -6,15 +6,17 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:03:47 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/08 14:39:00 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:44:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
+#include "libft_conv.h"
+#include "libft_ctype.h"
 #include "libft_num.h"
-#include "libft_printf.h"
 #include "sh_utils.h"
 #include "sh_builtins.h"
 
@@ -81,7 +83,7 @@ static void	jump_to_top_level(void)
 
 int			exit_builtin(int argc, char **argv)
 {
-	ft_printf("exit\n");
+	printf("exit\n");
 	if (argc > NO_ARGS)
 	{
 		if (!check_args(argc, argv[CMD_NAME], argv[FIRST_PARAM]))

@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/13 00:22:18 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:43:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
-#include "libft_printf.h"
+#include "libft_str.h"
 #include "sh_utils.h"
 #include "sh_env.h"
 #include "sh_builtins.h"
@@ -57,7 +58,7 @@ static char	**sort_export_list(void)
 static int	print_key_value(char *sorted_env)
 {
 	int		ret;
-	size_t	i;
+	int		i;
 	size_t	len;
 	char	*value;
 
@@ -68,7 +69,7 @@ static int	print_key_value(char *sorted_env)
 	i = get_env_len(sorted_env);
 	len = ft_strlen(sorted_env) - i;
 	value = ft_substr(sorted_env, (i + 1), len);
-	ret = ft_printf("declare -x %.*s=\"%s\"\n", i, sorted_env, value);
+	ret = printf("declare -x %.*s=\"%s\"\n", i, sorted_env, value);
 	ft_strdel(&value);
 	return (ret);
 }
@@ -85,7 +86,7 @@ static int	print_env_var(char **sorted_env)
 		while (sorted_env[i] && (ret != FAIL_RET))
 		{
 			if (!ft_strchr(sorted_env[i], ENV_VAR_SEP))
-				ret = ft_printf("declare -x %s\n", sorted_env[i]);
+				ret = printf("declare -x %s\n", sorted_env[i]);
 			else if (ft_strncmp(sorted_env[i], "_=", 2))
 				ret = print_key_value(sorted_env[i]);
 			i++;

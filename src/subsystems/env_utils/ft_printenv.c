@@ -6,12 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:44:39 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/28 17:19:24 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:46:22 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
-#include "libft_printf.h"
+#include "libft_str.h"
 #include "sh_env.h"
 
 /*
@@ -30,7 +32,7 @@ int			ft_printenv(void)
 	while (g_env[i] && (ret != FAIL_RET))
 	{
 		if (ft_strchr(g_env[i], ENV_VAR_SEP))
-			ret = ft_printf("%s\n", g_env[i]);
+			ret = printf("%s\n", g_env[i]);
 		i++;
 	}
 	if (ret == FAIL_RET)

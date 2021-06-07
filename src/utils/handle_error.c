@@ -6,14 +6,15 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:47:58 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/17 00:09:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:41:04 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include <stdarg.h>
 #include <string.h>
-#include "libft_printf.h"
+#include <stdio.h>
+#include <unistd.h>
 #include "wandre_mode.h"
 #include "sh_utils.h"
 
@@ -24,11 +25,7 @@
 void	handle_syntax_error(const char *token)
 {
 	g_status = INCORRECT_USAGE;
-	ft_dprintf(
-		STDERR_FILENO,
-		"%s: syntax error near unexpected token `%s'\n",
-		SHELL_NAME,
-		token);
+	dprintf(STDERR_FILENO, "%s: syntax error near unexpected token `%s'\n", SHELL_NAME, token);
 	if (wandre_mode)
 		wandroulette();
 }
@@ -36,11 +33,7 @@ void	handle_syntax_error(const char *token)
 void	handle_matching_error(char c)
 {
 	g_status = INCORRECT_USAGE;
-	ft_dprintf(
-		STDERR_FILENO,
-		"%s: unexpected EOF while looking for matching `%c'\n",
-		SHELL_NAME,
-		c);
+	dprintf(STDERR_FILENO, "%s: unexpected EOF while looking for matching `%c'\n", SHELL_NAME, c);
 	if (wandre_mode)
 		wandroulette();
 }

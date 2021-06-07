@@ -6,13 +6,15 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:34:33 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/05 15:30:40 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:42:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include <string.h>
-#include "libft_printf.h"
+#include <stdio.h>
+#include <unistd.h>
+#include "libft_str.h"
 #include "sh_env.h"
 #include "sh_utils.h"
 #include "sh_builtins.h"
@@ -114,7 +116,7 @@ int			cd_builtin(int argc, char **argv)
 	{
 		ret = change_to_directory(argv[CMD_NAME], "OLDPWD");
 		if (!ret)
-			ft_printf("%s\n", ft_getenv("PWD"));
+			printf("%s\n", ft_getenv("PWD"));
 	}
 	else
 		ret = set_directory(argv[CMD_NAME], argv[FIRST_PARAM]);

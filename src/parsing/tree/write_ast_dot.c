@@ -6,11 +6,11 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/04 13:36:13 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:39:08 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
+#include <stdio.h>
 #include "sh_ast.h"
 
 /*
@@ -34,23 +34,23 @@ static char	*get_type_name(t_node_type n)
 static void	print_node(int fd, t_ast_node *node)
 {
 	if (node->data)
-		ft_dprintf(fd, "\n    \"%s\\n%p\"", node->data, node);
+		dprintf(fd, "\n    \"%s\\n%p\"", node->data, node);
 	else
-		ft_dprintf(fd, "\n    \"%s\\n%p\"", get_type_name(node->type), node);
+		dprintf(fd, "\n    \"%s\\n%p\"", get_type_name(node->type), node);
 }
 
 static void	print_node_next(int fd, t_ast_node *node)
 {
 	if (node->data)
-		ft_dprintf(fd, " -> \"%s\\n%p\";", node->data, node);
+		dprintf(fd, " -> \"%s\\n%p\";", node->data, node);
 	else
-		ft_dprintf(fd, " -> \"%s\\n%p\";", get_type_name(node->type), node);
+		dprintf(fd, " -> \"%s\\n%p\";", get_type_name(node->type), node);
 }
 
 static void	print_leaf(int fd, char side, int count)
 {
-	ft_dprintf(fd, " -> leaf_%c_%d;", side, count);
-	ft_dprintf(fd, "\n    leaf_%c_%d [shape=plain];", side, count);
+	dprintf(fd, " -> leaf_%c_%d;", side, count);
+	dprintf(fd, "\n    leaf_%c_%d [shape=plain];", side, count);
 }
 
 static void	write_branch(int fd, t_ast_node *node)
@@ -77,10 +77,10 @@ static void	write_branch(int fd, t_ast_node *node)
 
 void		write_ast_dot(int fd, t_ast_node *root)
 {
-	ft_dprintf(fd, "digraph ft_sh_parsing {");
+	dprintf(fd, "digraph ft_sh_parsing {");
 	if (!root->left && !root->right)
-		ft_dprintf(fd, "\n    \"%s\";", root->data);
+		dprintf(fd, "\n    \"%s\";", root->data);
 	else
 		write_branch(fd, root);
-	ft_dprintf(fd, "\n}");
+	dprintf(fd, "\n}");
 }

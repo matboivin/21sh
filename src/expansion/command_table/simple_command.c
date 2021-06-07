@@ -6,11 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 16:49:13 by mboivin           #+#    #+#             */
-/*   Updated: 2021/04/15 19:01:04 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:46:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include "libft_str.h"
 #include "sh_command.h"
 
 /*
@@ -61,7 +63,7 @@ void			print_simple_cmd(t_simplecmd *simple_cmd)
 	if (!simple_cmd || !simple_cmd->cmd_args)
 		return ;
 	i = 0;
-	ft_printf("argc: %d\t", simple_cmd->argc);
+	printf("argc: %ld\t", simple_cmd->argc);
 	while (i < simple_cmd->argc)
-		ft_printf("|%s| ", simple_cmd->cmd_args[i++]);
+		printf("|%s| ", simple_cmd->cmd_args[i++]);
 }

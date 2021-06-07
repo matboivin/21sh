@@ -6,11 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:55:17 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/29 17:37:36 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:44:20 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 #include "sh_builtins.h"
 
 /*
@@ -49,12 +51,12 @@ static int	dislay_args(int argc, char *arg, int *i)
 {
 	int		ret;
 
-	ret = ft_printf("%s", arg);
+	ret = printf("%s", arg);
 	(*i)++;
 	if (ret != FAIL_RET)
 	{
 		if (*i < argc)
-			ret = ft_printf(" ");
+			ret = printf(" ");
 	}
 	return (ret);
 }
@@ -78,7 +80,7 @@ int			echo_builtin(int argc, char **argv)
 			write_ret = dislay_args(argc, argv[i], &i);
 	}
 	if (newline && (write_ret != FAIL_RET))
-		write_ret = ft_printf("\n");
+		write_ret = write(STDOUT_FILENO, "\n", 1);
 	if (write_ret == FAIL_RET)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

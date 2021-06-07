@@ -6,13 +6,13 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:44:25 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/19 13:50:08 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:46:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <time.h>
 #include <stdio.h>
-#include "libft_printf.h"
+#include "libft_str.h"
 #include "sh_env.h"
 #include "sh_utils.h"
 #include "wandre_mode.h"
@@ -69,17 +69,17 @@ void		wandroulette(void)
 	srand(time(NULL));
 	n = (rand() % MAX_MSG) + 1;
 	if (n == MAX_MSG)
-		ft_printf("%s!voteban %s ><\n", WANDRE_PREFIX, ft_getenv("USER"));
+		printf("%s!voteban %s ><\n", WANDRE_PREFIX, ft_getenv("USER"));
 	else
-		ft_printf("%s%s\n", WANDRE_PREFIX, a_wandre_a_day(n));
+		printf("%s%s\n", WANDRE_PREFIX, a_wandre_a_day(n));
 }
 
 void		wanderror(char *filename)
 {
 	if (filename && !ft_strcmp(filename, "sl"))
-		ft_printf("%sthe command you're looking for is 'ls' bro ;o\n", WANDRE_PREFIX);
+		printf("%sthe command you're looking for is 'ls' bro ;o\n", WANDRE_PREFIX);
 	else if (filename && !ft_strcmp(filename, "cqt"))
-		ft_printf("%sdid u mean 'cat' bro? :o\n", WANDRE_PREFIX);
+		printf("%sdid u mean 'cat' bro? :o\n", WANDRE_PREFIX);
 	else
 		wandroulette();
 }
@@ -88,22 +88,22 @@ void		wake_wandre(void)
 {
 	if (wandre_mode)
 	{
-		ft_printf("%sI'm already awake ><\n", WANDRE_PREFIX);
+		printf("%sI'm already awake ><\n", WANDRE_PREFIX);
 		return ;
 	}
 	wandre_mode = true;
-	ft_printf("Warning /!\\ The wandre mode is activated! Type '!stopit_wandre' to deactivate\n\n%shi %s! :)\n\n", WANDRE_PREFIX, ft_getenv("USER"));
+	printf("Warning /!\\ The wandre mode is activated! Type '!stopit_wandre' to deactivate\n\n%shi %s! :)\n\n", WANDRE_PREFIX, ft_getenv("USER"));
 }
 
 void		stop_wandre(void)
 {
 	if (!wandre_mode)
 	{
-		ft_printf("Type '!wandre' to wake up wandre\n");
+		printf("Type '!wandre' to wake up wandre\n");
 		return ;
 	}
 	wandre_mode = false;
-	ft_printf("wandre mode deactivated\n\n%sbye :)\n\n", WANDRE_PREFIX);
+	printf("wandre mode deactivated\n\n%sbye :)\n\n", WANDRE_PREFIX);
 }
 
 int			wandre_mode_is_on(char *cmd_name)

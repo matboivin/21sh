@@ -6,14 +6,15 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:23 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/19 13:09:49 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:39:28 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
+#include <stdio.h>
+#include <unistd.h>
 #include "libft_define.h"
 #include "libft_str.h"
-#include "libft_printf.h"
 #include "sh_subsystems.h"
 
 /*
@@ -58,7 +59,7 @@ char		*sh_readline(const char *prompt)
 
 	line = NULL;
 	if (prompt)
-		ft_dprintf(STDERR_FILENO, "%s", prompt);
+		dprintf(STDERR_FILENO, "%s", prompt);
 	bytes_read = read(STDIN_FILENO, buffer, INPUT_BUFF_SIZE);
 	while (bytes_read > 0)
 	{
