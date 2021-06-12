@@ -13,19 +13,14 @@ All programs written in C follow [42 style guideline](https://github.com/42Paris
 
 ### Table of content
 
-- [Getting Started](#getting-started)
-  - [Disclaimer](#disclaimer)
-  - [Prerequisites](#prerequisites)
+- [Requirements](#requirements)
   - [Dependencies](#dependencies)
-  - [Installing](#installing)
+- [Installation](#installation)
 - [Usage](#usage)
   - [Debug mode](#debug-mode)
   - [wandre mode](#wandre-mode)
 - [ft_sh grammar](#ft_sh-grammar)
-- [Future improvements](#future-improvements)
 - [Acknowledgements](#acknowledgements)
-
-## Getting Started
 
 ### Disclaimer
 
@@ -34,24 +29,25 @@ Don't copy. Learn.
 
 This code is not the one that was turned in for `minishell`. It aims to evolve to `21sh` and `42sh`.
 
-### Prerequisites
+## Requirements
 
 This program was developed on Debian Linux. It runs on Debian and Ubuntu.
 
-- GNU make and a C compiler
+- gcc
+- make
 
 ### Dependencies
 
 - [libft](https://github.com/matboivin/libft)
 
-### Installing
+## Installation
 
-Clone the repository and its dependencies:
+1. Clone the repository and its dependencies:
 ```console
 $ git clone --recursive https://github.com/matboivin/ft_sh
 ```
 
-Change it to your working directory and run:
+2. Change it to your working directory and run:
 ```console
 $ make install && make
 ```
@@ -176,10 +172,10 @@ linebreak        : newline_list
                  ;
 ```
 
-## License
-
-See `LICENSE` for more information.
-
 ## Acknowledgements
 
 School project done at [42 Paris](https://www.42.fr).
+
+## License
+
+See `LICENSE` for more information.
