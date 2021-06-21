@@ -6,24 +6,41 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 13:30:41 by mboivin           #+#    #+#             */
-/*   Updated: 2021/02/19 16:13:34 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/21 19:40:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sh.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "shell.h"
+#include "builtins.h"
+#include "libft_str.h"
 
 /*
-** ft_sh
-** A minimalist interactive shell mimicking bash
-*/
+ * A minimalist interactive shell mimicking bash
+ */
 
-int				main(int argc, char **argv, char **envp)
+static int	reader_loop(void)
 {
-	t_shctrl	ft_sh;
+	// tmp
+	return (0);
+}
 
-	if (argc != NO_ARGS)
-		print_usage(argv[0]);
-	create_shell(&ft_sh);
-	start_shell(envp);
-	return (wait_for_input(&ft_sh));
+int	main(int argc, char **argv, char **envp)
+{
+	t_shell	*shell;
+
+	shell = NULL;
+	if (argc > 1 && !ft_strcmp(argv[1], "--help"))
+	{
+		put_shell_usage(argv[0]);
+		return (0);
+	}
+	shell = init_shell();
+	// init
+	set_shell(shell, argc, argv, envp);
+	if (shell->interactive_shell)
+		reader_loop();
+	exit_shell(&shell);
+	return (0);
 }

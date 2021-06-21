@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_all.c                                         :+:      :+:    :+:   */
+/*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/12 18:22:41 by mboivin           #+#    #+#             */
-/*   Updated: 2020/11/14 20:20:22 by mboivin          ###   ########.fr       */
+/*   Created: 2021/06/21 19:17:42 by mboivin           #+#    #+#             */
+/*   Updated: 2021/06/21 19:28:06 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh_env.h"
-#include "sh_ctrl.h"
-#include "sh_utils.h"
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
-/*
-** This function frees the allocated memory
-*/
+# include "shell.h"
 
-void	free_all(t_shctrl *ft_sh)
-{
-	ft_clearenv();
-	destroy_shell(ft_sh);
-}
+int	printenv_builtin(int argc, char **argv);
+
+#endif

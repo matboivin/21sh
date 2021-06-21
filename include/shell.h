@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_usage.c                                      :+:      :+:    :+:   */
+/*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/06 16:50:46 by mboivin           #+#    #+#             */
-/*   Updated: 2021/06/07 17:41:38 by mboivin          ###   ########.fr       */
+/*   Created: 2020/10/01 13:27:03 by mboivin           #+#    #+#             */
+/*   Updated: 2021/06/21 19:36:24 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include "sh_utils.h"
+#ifndef SHELL_H
+# define SHELL_H
 
-/*
-** This function prints the usage message
-*/
+# define PROGRAM_NAME "42sh"
 
-void	print_usage(char *argv0)
+extern char	**g_shell_environment;
+
+typedef struct	s_shell
 {
-	dprintf(STDERR_FILENO, "Usage: %s\n", argv0);
-	exit(EXIT_SUCCESS);
-}
+	int			interactive_shell;
+	int			login_shell;
+	char		*shell_name;
+}				t_shell;
+
+void	put_shell_usage(char *argv0);
+
+t_shell	*init_shell(void);
+void	exit_shell(t_shell **to_free);
+
+void	set_shell(t_shell *shell, int argc, char **argv, char **envp);
+
+#endif

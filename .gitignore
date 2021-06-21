@@ -57,5 +57,5 @@ ast.dot
 ast.svg
 
 *.swp
-ft_sh
+42sh
 test/

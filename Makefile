@@ -1,4 +1,4 @@
-BIN_NAME := ft_sh
+BIN_NAME := 42sh
 
 SHELL = /bin/sh
 RM = /bin/rm
@@ -19,23 +19,6 @@ LIB_DIR		=	libft
 INC_DIR		=	include
 SRC_DIR		=	src
 OBJ_DIR		=	obj
-
-SUB_DIRS	=	builtins					\
-				execution					\
-				execution/stream_op			\
-				expansion/command_search	\
-				expansion/command_table		\
-				feature						\
-				input_processing			\
-				parsing/lexer				\
-				parsing/parser				\
-				parsing/tree				\
-				subsystems					\
-				subsystems/env_utils		\
-				subsystems/signals			\
-				subsystems/startup			\
-				subsystems/substitution		\
-				utils
 
 SRC_SUBDIRS	=	$(addprefix $(SRC_DIR)/, $(SUB_DIRS))
 
@@ -95,7 +78,7 @@ debug: re
 	@echo "DEBUG\t\tDebug build done"
 
 check_leaks: $(BIN_NAME)
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./ft_sh
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(BIN_NAME)
 
 # CLEAN #
 

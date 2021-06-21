@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   save_ast_dot.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 18:54:10 by mboivin           #+#    #+#             */
-/*   Updated: 2020/12/22 18:05:20 by mboivin          ###   ########.fr       */
+/*   Created: 2021/06/21 18:39:51 by mboivin           #+#    #+#             */
+/*   Updated: 2021/06/21 19:20:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "sh_ast.h"
+#include "stdlib.h"
+#include "libft_str.h"
+#include "shell.h"
 
 /*
-** This function saves a dot graph from a given Abstract Syntax Tree (AST)
-*/
+ * Returns the part of the string s after the last '/'
+ */
 
-void	save_ast_dot(t_ast_node *root)
+char	*get_base_pathname(char *s)
 {
-	int	fd;
+	char	*head;
 
-	if (!root)
-		return ;
-	fd = open(AST_DOT_FILE, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSIONS);
-	if (!fd)
-		exit(EXIT_FAILURE);
-	write_ast_dot(fd, root);
-	close(fd);
+	head = NULL;
+	if (!s)
+		return (PROGRAM_NAME);
+	head = ft_strrchr(s, '/');
+	if (ft_strlen(s) > 1)
+		head++;
+	return (head);
 }

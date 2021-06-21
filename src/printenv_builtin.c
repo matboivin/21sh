@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eat.c                                              :+:      :+:    :+:   */
+/*   printenv_builtin.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/04 21:23:14 by mboivin           #+#    #+#             */
-/*   Updated: 2021/01/13 00:13:10 by mboivin          ###   ########.fr       */
+/*   Created: 2021/06/21 19:17:02 by mboivin           #+#    #+#             */
+/*   Updated: 2021/06/21 19:27:50 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh_lexer.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "builtins.h"
+#include "libft_str.h"
 
 /*
-** This function eats the current token if its type is the one expected
-**
-** returns: 1 if a token was eaten
-**          0 otherwise
-*/
+ * Prints name and value pairs for all environment variables
+ */
 
-int		eat(t_lexer *lexer, t_tok_type expected)
+int	printenv_builtin(int argc, char **argv)
 {
-	if ((lexer->pos < lexer->size) && (lexer->tokens[lexer->pos]->type == expected))
+	size_t	i;
+
+	(void)argv;
+	if (!g_shell_environment)
+		return (EXIT_FAILURE);
+	i = 0;
+	if (argc == 1)
 	{
-		get_next_token(lexer);
-		return (1);
+		while (g_shell_environment[i])
+		{
+			printf("%s\n", g_shell_environment[i]);
+			i++;
+		}
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
