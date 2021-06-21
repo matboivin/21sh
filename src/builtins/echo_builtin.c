@@ -6,13 +6,14 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:55:17 by mboivin           #+#    #+#             */
-/*   Updated: 2021/06/07 17:44:20 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/21 17:46:59 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "libft_str.h"
 #include "sh_builtins.h"
 
 /*
@@ -51,14 +52,14 @@ static int	dislay_args(int argc, char *arg, int *i)
 {
 	int		ret;
 
-	ret = printf("%s", arg);
+	ret = write(STDOUT_FILENO, arg, ft_strlen(arg));
 	(*i)++;
 	if (ret != FAIL_RET)
 	{
 		if (*i < argc)
-			ret = printf(" ");
+			ret = write(STDOUT_FILENO, " ", 1);
 	}
-	return (ret);
+	return (EXIT_SUCCESS);
 }
 
 int			echo_builtin(int argc, char **argv)

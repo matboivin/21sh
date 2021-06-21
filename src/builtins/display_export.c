@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 00:24:16 by mboivin           #+#    #+#             */
-/*   Updated: 2021/06/07 17:43:57 by mboivin          ###   ########.fr       */
+/*   Updated: 2021/06/21 17:47:16 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ static char	**sort_export_list(void)
 	return (result);
 }
 
+// Write error not handled
+
 static int	print_key_value(char *sorted_env)
 {
-	int		ret;
 	int		i;
 	size_t	len;
 	char	*value;
@@ -65,35 +66,31 @@ static int	print_key_value(char *sorted_env)
 	value = NULL;
 	if (!sorted_env)
 		return (FAIL_RET);
-	ret = EXIT_SUCCESS;
 	i = get_env_len(sorted_env);
 	len = ft_strlen(sorted_env) - i;
 	value = ft_substr(sorted_env, (i + 1), len);
-	ret = printf("declare -x %.*s=\"%s\"\n", i, sorted_env, value);
+	printf("declare -x %.*s=\"%s\"\n", i, sorted_env, value);
 	ft_strdel(&value);
-	return (ret);
+	return (EXIT_SUCCESS);
 }
 
 static int	print_env_var(char **sorted_env)
 {
 	size_t	i;
-	int		ret;
 
 	i = 0;
-	ret = EXIT_SUCCESS;
 	if (sorted_env && sorted_env[i])
 	{
-		while (sorted_env[i] && (ret != FAIL_RET))
+		while (sorted_env[i])
 		{
 			if (!ft_strchr(sorted_env[i], ENV_VAR_SEP))
-				ret = printf("declare -x %s\n", sorted_env[i]);
+				printf("declare -x %s\n", sorted_env[i]);
 			else if (ft_strncmp(sorted_env[i], "_=", 2))
-				ret = print_key_value(sorted_env[i]);
+				print_key_value(sorted_env[i]);
 			i++;
 		}
-		return (ret);
 	}
-	return (FAIL_RET);
+	return (EXIT_SUCCESS);
 }
 
 int			display_export(void)
